@@ -2546,5 +2546,52 @@
       "label": "SoundGuys"
     },
     "software": null
+  },
+  {
+    "name": "SteelSeries Arctis Nova Elite",
+    "form": "Closed dynamic · base station (GameHub)",
+    "msrp": 600,
+    "street": 600,
+    "w24": "GameHub base station (Hi-Res 96 kHz/24-bit over 2.4 GHz) + USB-C dongle",
+    "bt": "BT 5.3 · LC3+ · multipoint; OmniPlay mixes up to 4 sources (PC + 2 consoles + BT) at once",
+    "btSimul": true,
+    "wired": "Via GameHub: 3× USB-C, optical in, 3.5 mm line-in/out",
+    "spatial": "First Hi-Res Wireless certified headset · on-device virtual 7.1 · 360° Spatial Audio · full Sonar suite on PC",
+    "soft": "SteelSeries GG + Sonar (Windows only for Sonar)",
+    "optical": true,
+    "planar": false,
+    "anc": true,
+    "nosoft": false,
+    "micType": "Retractable boom + on-ear beamforming mic",
+    "micTier": "Very good",
+    "detach": false,
+    "micNote": "Dual mics — the ClearCast retractable boom plus a smart-switching on-ear beamforming mic; Sonar AI processing on PC. Among the most flexible mic setups on a gaming headset.",
+    "pwr": "2× ~30 h swap",
+    "pwrNum": 60,
+    "battery": "2× 700 mAh (~30 h each), hot-swap in the GameHub — effectively unlimited",
+    "best": "SteelSeries' no-limits flagship: first Hi-Res Wireless certified headset, ~42% stronger ANC than rivals, all-metal build, and the GameHub mixes a PC + two consoles + Bluetooth simultaneously.",
+    "extra": "$600. GameHub-dependent, so not portable. Sonar is still Windows-only. Overkill for anyone not chasing wireless hi-res.",
+    "kind": "gaming",
+    "linux_surround_hardware": true,
+    "dongle_connector": "GameHub base station + USB-C dongle",
+    "charge_port": "USB-C + GameHub battery bay",
+    "sidetone": "hardware-dial",
+    "standalone": {
+      "status": "needs-base-station",
+      "note": "Full audio + virtual 7.1 + hi-res from the GameHub; Sonar app is optional tuning. The GameHub is required."
+    },
+    "source": {
+      "url": "https://www.club386.com/steelseries-arctis-nova-elite-review/",
+      "label": "Club386"
+    },
+    "software": {
+      "name": "SteelSeries GG + Sonar",
+      "macos_support": "none",
+      "windows": "Full: SteelSeries GG + Sonar — parametric EQ, virtual 7.1 / 360 Spatial, AI noise-cancel mic, ChatMix.",
+      "macos": "GG runs, but Sonar (EQ, spatial, AI mic) is Windows-only — Mac gets device settings + firmware only.",
+      "linux": "No app. Generic USB audio; on the Nova Pro the base station still does 7.1 + source-switch in hardware.",
+      "mobile": "No app.",
+      "console": "No app — on-headset controls plus the console's own EQ. Nova Pro base station ChatMix dial still works."
+    }
   }
 ]

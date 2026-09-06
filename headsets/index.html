@@ -621,6 +621,7 @@ const DATA=[
  {"name":"Bose Ultra Open Earbuds","form":"Open-ear clip · consumer","msrp":299,"street":229,"w24":"None (Bluetooth only)","bt":"BT 5.3 · aptX Adaptive / AAC / SBC · multipoint (2 devices)","btSimul":false,"wired":"None","spatial":"Bose Immersive Audio with head tracking","soft":"Bose app (iOS / Android)","optical":false,"planar":false,"anc":false,"nosoft":true,"micType":"Dual mics per bud","micTier":"Average","detach":false,"micNote":"Calls are clear in quiet spaces but degrade quickly outdoors and in wind.","pwr":"~7 h","pwrNum":7,"battery":"~7 h (4.5 h with Immersive Audio), case to ~27 h, USB-C (Qi via optional cover)","best":"Cuff-style clip-ons with the best sound of any open-ear bud — the pick for wearing all day around people.","extra":"Expensive for what is essentially open-ear; leaks sound at high volume, no ANC, and Immersive Audio halves battery."},
  {"name":"Sony LinkBuds Open","form":"Open-ear clip · consumer","msrp":200,"street":149,"w24":"None (Bluetooth only)","bt":"BT 5.3 · AAC / SBC · multipoint (2 devices)","btSimul":false,"wired":"None","spatial":"360 Reality Audio via app (Sony apps)","soft":"Sony Sound Connect (iOS / Android)","optical":false,"planar":false,"anc":false,"nosoft":true,"micType":"Dual mics per bud + AI noise reduction","micTier":"Good","detach":false,"micNote":"Sony's noise reduction keeps voice clear even with the open ring design.","pwr":"~8 h","pwrNum":8,"battery":"~8 h per charge, case to ~22 h, USB-C","best":"Sony's ring-driver open bud with Auto Volume and Wide Area Tap — everyday awareness buds with good voice quality.","extra":"Ring fit is fiddly and can loosen during exercise; open design leaks and offers no isolation on transit."},
  {"name":"Anker Soundcore AeroFit 2","form":"Open-ear clip · consumer","msrp":100,"street":79,"w24":"None (Bluetooth only)","bt":"BT 5.4 · LDAC / AAC / SBC · multipoint (2 devices) · Auracast","btSimul":false,"wired":"None","spatial":"None","soft":"Soundcore app (iOS / Android)","optical":false,"planar":false,"anc":false,"nosoft":true,"micType":"4-mic array with AI noise reduction","micTier":"Average","detach":false,"micNote":"Fine for quick calls indoors; struggles with wind on a run.","pwr":"~10 h","pwrNum":10,"battery":"~10 h per charge, case to ~42 h, USB-C","best":"Budget open-ear hook buds with LDAC and adjustable hooks — the value pick for awareness during workouts.","extra":"Bass-light and leaky like all open-ear buds; hooks are bulkier than Shokz OpenFit 2."},
+ {"name":"SteelSeries Arctis Nova Elite","form":"Closed dynamic · base station (GameHub)","msrp":600,"street":600,"w24":"GameHub base station (Hi-Res 96 kHz/24-bit over 2.4 GHz) + USB-C dongle","bt":"BT 5.3 · LC3+ · multipoint; OmniPlay mixes up to 4 sources (PC + 2 consoles + BT) at once","btSimul":true,"wired":"Via GameHub: 3× USB-C, optical in, 3.5 mm line-in/out","spatial":"First Hi-Res Wireless certified headset · on-device virtual 7.1 · 360° Spatial Audio · full Sonar suite on PC","soft":"SteelSeries GG + Sonar (Windows only for Sonar)","optical":true,"planar":false,"anc":true,"nosoft":false,"micType":"Retractable boom + on-ear beamforming mic","micTier":"Very good","detach":false,"micNote":"Dual mics — the ClearCast retractable boom plus a smart-switching on-ear beamforming mic; Sonar AI processing on PC. Among the most flexible mic setups on a gaming headset.","pwr":"2× ~30 h swap","pwrNum":60,"battery":"2× 700 mAh (~30 h each), hot-swap in the GameHub — effectively unlimited","best":"SteelSeries' no-limits flagship: first Hi-Res Wireless certified headset, ~42% stronger ANC than rivals, all-metal build, and the GameHub mixes a PC + two consoles + Bluetooth simultaneously.","extra":"$600. GameHub-dependent, so not portable. Sonar is still Windows-only. Overkill for anyone not chasing wireless hi-res."},
 ];
 const MIC_CLASS={Excellent:'t-yes','Very good':'t-yes',Good:'t-neutral',Average:'t-part'};
 // Sidetone / mic monitoring (hear your own voice). hw = adjustable dial on headset or base station; sw = app / console setting only. Every model here supports it in some form.
@@ -674,6 +675,7 @@ const SIDETONE={
  "Bose Ultra Open Earbuds":"na",
  "Sony LinkBuds Open":"na",
  "Anker Soundcore AeroFit 2":"na",
+ "SteelSeries Arctis Nova Elite":"hw",
 };
 const KIND={"Apple AirPods Max (H2, USB-C)":"headphones","Apple AirPods Pro 3":"headphones","Sony WH-1000XM6":"headphones","Sony WH-1000XM5":"headphones","Bose QuietComfort Ultra Headphones (2nd gen)":"headphones","Sennheiser Momentum 4 Wireless":"headphones","Bowers & Wilkins Px7 S2e":"headphones","Beats Studio Pro":"headphones","Sonos Ace":"headphones","Nothing Headphone (1)":"headphones","Sony WF-1000XM6":"headphones","Bose QuietComfort Ultra Earbuds (2nd Gen)":"headphones","Samsung Galaxy Buds4 Pro":"headphones","Google Pixel Buds Pro 2":"headphones","Nothing Ear (3)":"headphones","Jabra Elite 10 Gen 2":"headphones","Sennheiser Momentum True Wireless 4":"headphones","Beats Powerbeats Pro 2":"headphones","Technics EAH-AZ100":"headphones","Apple AirPods 4 (ANC)":"headphones","OnePlus Buds Pro 3":"headphones","SteelSeries Arctis GameBuds":"gaming","Sony INZONE Buds":"gaming","Razer Hammerhead V3 HyperSpeed":"gaming","Sony PlayStation Pulse Explore":"gaming","HyperX Cloud Mix Buds 2":"gaming","Shokz OpenRun Pro 2":"headphones","Shokz OpenSwim Pro":"headphones","Shokz OpenFit 2":"headphones","Shokz OpenMeet UC":"headphones","Suunto Wing":"headphones","Bose Ultra Open Earbuds":"headphones","Sony LinkBuds Open":"headphones","Anker Soundcore AeroFit 2":"headphones"};
 // Primary source used for each row's specs / price / assessment.
@@ -738,6 +740,7 @@ const SOURCE={
  "Bose Ultra Open Earbuds":["https://www.rtings.com/headphones/reviews/bose/ultra-open-earbuds-truly-wireless","RTINGS"],
  "Sony LinkBuds Open":["https://www.rtings.com/headphones/reviews/sony/linkbuds-open-truly-wireless","RTINGS"],
  "Anker Soundcore AeroFit 2":["https://www.soundguys.com/anker-soundcore-aerofit-2-review-127161/","SoundGuys"],
+ "SteelSeries Arctis Nova Elite":["https://www.club386.com/steelseries-arctis-nova-elite-review/","Club386"],
 };
 
 // Wireless-dongle host connector (what plugs into the PC / console).
@@ -768,6 +771,7 @@ const DONGLE={
  "SteelSeries Arctis Nova 5 Wireless":"USB-C",
  "Razer Barracuda X (2022)":"USB-C",
  "Sony PlayStation Pulse 3D":"USB-A (PlayStation adapter)",
+ "SteelSeries Arctis Nova Elite":"GameHub base station + USB-C dongle",
 };
 // How the headset itself recharges.
 const CHARGE={
@@ -831,6 +835,7 @@ const CHARGE={
  "Bose Ultra Open Earbuds":"USB-C",
  "Sony LinkBuds Open":"USB-C",
  "Anker Soundcore AeroFit 2":"USB-C",
+ "SteelSeries Arctis Nova Elite":"USB-C + GameHub battery bay",
 };
 
 // Does it work without the vendor app? status: yes | spatial | setup | base
@@ -895,6 +900,7 @@ const STANDALONE={
  "Bose Ultra Open Earbuds":["yes","Audio and modes work without the app; Bose app for EQ and Immersive Audio settings."],
  "Sony LinkBuds Open":["yes","Works app-free; Sound Connect for EQ, Auto Volume and firmware."],
  "Anker Soundcore AeroFit 2":["yes","Works app-free; Soundcore app for EQ and hook-angle tips."],
+ "SteelSeries Arctis Nova Elite":["base","Full audio + virtual 7.1 + hi-res from the GameHub; Sonar app is optional tuning. The GameHub is required."],
 };
 const STANDALONE_TAG={
  yes:["Standalone",'t-yes'],
@@ -921,6 +927,7 @@ const SW_FAMILY={
  "SteelSeries Arctis Nova 5 Wireless":"steelseries",
  "Razer Barracuda X (2022)":"razer",
  "Sony PlayStation Pulse 3D":"playstation",
+ "SteelSeries Arctis Nova Elite":"steelseries",
 };
 const SW_OS={
  steelseries:{app:"SteelSeries GG + Sonar",macFull:"none",
@@ -1001,6 +1008,7 @@ const MICORD={Excellent:0,'Very good':1,Good:2,Average:3};
 // so Linux gets surround with no vendor software. Everything else needs a
 // PipeWire HRTF (HeSuVi) chain or a game's own HRTF on Linux.
 const LINUX_SURROUND=new Set([
+  "SteelSeries Arctis Nova Elite",
   "SteelSeries Arctis Nova Pro Wireless",
   "SteelSeries Arctis Nova Pro Omni",
   "Logitech G Astro A50 X"
