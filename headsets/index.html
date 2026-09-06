@@ -230,6 +230,7 @@
   <div class="primer">
     <h2>How to read the table</h2>
     <ul>
+      <li><strong>Two kinds of thing here.</strong> <em>Gaming headsets</em> (2.4 GHz dongle or base station, boom mic, chat features) and <em>consumer ANC headphones</em> (Bluetooth only, built-in call mics, tagged <em>Headphones</em>). Use the Gaming headset / Headphones (ANC) filters. On headphones the <em>Sidetone</em> column reads "Call sidetone only" — there's no game-chat mixer, and the Software columns are usually blank (no desktop app).</li>
       <li><strong>Surround / spatial is always virtualised</strong> — two drivers plus DSP, never discrete channels. What matters is <em>where that DSP runs</em>, which decides what it works with. <em>On the dongle / base station</em> → virtualises any source, including a PS5/Xbox/optical TV feed, no PC needed. <em>In the OS</em> (Dolby Atmos for Headphones — paid ~$15 on Win/Xbox; DTS Sound Unbound; Sony 360 / Tempest 3D on PS5) → source-agnostic but platform-locked. <em>In the vendor app</em> (SteelSeries Sonar, THX Spatial, etc.) → usually Windows-only.</li>
       <li><strong>Base station + optical input</strong> (Arctis Nova Pro, Astro A50 X) is the only setup that can take a Dolby Digital feed from a TV / optical source and virtualise it on the headset's own hardware. A plain USB dongle only ever receives what the host OS sends it.</li>
       <li><strong>"Simultaneous BT + 2.4 GHz"</strong> means game audio on the low-latency link and phone/Discord on Bluetooth <em>at the same time</em>, mixed in your ears. Most headsets only <em>switch</em> between the two.</li>
@@ -564,6 +565,16 @@ const DATA=[
  {"name":"SteelSeries Arctis Nova 5 Wireless","form":"Closed dynamic (neodymium)","msrp":130,"street":110,"w24":"USB-C dongle","bt":"BT 5.3 (switch)","btSimul":false,"wired":"None","spatial":"360° Spatial Audio · 100+ presets via companion app","soft":"SteelSeries Arctis app (mobile-first) + Sonar (Win)","optical":false,"planar":false,"anc":false,"nosoft":false,"micType":"Retractable boom","micTier":"Good","detach":false,"micNote":"ClearCast Gen2.X retractable boom; clear for chat, slightly thin. Sonar / app EQ helps on PC.","pwr":"~60 h","pwrNum":60,"battery":"~36–60 h depending on mode, USB-C","best":"Cheapest route into the SteelSeries ecosystem with a proper retractable mic + preset app.","extra":"BT switches, doesn't mix. No ANC. The mobile app is the main control surface."},
  {"name":"Razer Barracuda X (2022)","form":"Closed dynamic (40 mm TriForce)","msrp":99,"street":70,"w24":"USB-C dongle","bt":"BT 5.2 (SmartSwitch)","btSimul":false,"wired":"3.5mm analog","spatial":"No on-device spatial (stereo); THX Spatial via the PC app only","soft":"Razer Synapse / Audio app (optional)","optical":false,"planar":false,"anc":false,"nosoft":true,"micType":"Detachable boom","micTier":"Good","detach":true,"micNote":"Detachable cardioid boom; clear and full for a $70 headset. Pop it off for a clean look.","pwr":"~50 h","pwrNum":50,"battery":"~50 h, USB-C","best":"Only sub-$100 headset here with a detachable mic AND a 3.5mm fallback; 250 g.","extra":"No on-headset spatial, no ANC. BT switches, doesn't mix. 2022 model, still sold."},
  {"name":"Sony PlayStation Pulse 3D","form":"Closed dynamic (dual hidden mic)","msrp":100,"street":80,"w24":"USB-A wireless adapter","bt":"None (3.5mm for other devices)","btSimul":false,"wired":"3.5mm analog","spatial":"Tempest 3D AudioTech (PS5)","soft":"None — EQ presets in the PS5 UI","optical":false,"planar":false,"anc":false,"nosoft":true,"micType":"Dual hidden beamforming mics (no boom)","micTier":"Average","detach":false,"micNote":"Two concealed mics with noise reduction; usable for party chat, thin and roomy. No boom.","pwr":"~12 h","pwrNum":12,"battery":"~12 h, USB-C","best":"The default PS5 headset — Tempest 3D done right, clean look, cheap; 3.5mm for everything else.","extra":"Short battery, no Bluetooth, no boom. Tempest is PS5-only (PC gets plain stereo via the adapter)."},
+ {"name":"Apple AirPods Max (H2, USB-C)","form":"Closed dynamic · consumer ANC","msrp":549,"street":520,"w24":"None (Bluetooth only)","bt":"BT 5.3 · Apple auto-switch across iCloud devices","btSimul":false,"wired":"USB-C audio — lossless 24-bit/48 kHz","spatial":"Personalised Spatial Audio + Dolby Atmos with dynamic head tracking (Apple devices only)","soft":"None — settings live in iOS/macOS; no Android app","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics (no boom)","micTier":"Very good","detach":false,"micNote":"Nine mics, excellent voice isolation for calls. Not a gaming/streaming mic — no boom, no chat mixer.","pwr":"~20 h","pwrNum":20,"battery":"~20 h ANC on, USB-C","best":"Best-in-class ANC + build; seamless on Apple, lossless over USB-C. Heavy (385 g), no folding.","extra":"Crippled on Android (basic BT only). No 3.5 mm. No EQ app. Case is famously useless."},
+ {"name":"Apple AirPods Pro 3","form":"In-ear · consumer ANC (earbuds)","msrp":249,"street":249,"w24":"None (Bluetooth only)","bt":"BT 5.3 · Apple auto-switch","btSimul":false,"wired":"None","spatial":"Personalised Spatial Audio + Dolby Atmos with head tracking (Apple devices)","soft":"None — iOS/macOS settings; Live Translation, hearing-aid mode","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Very good","detach":false,"micNote":"Class-leading earbud call quality with voice isolation. Earbuds, so no boom.","pwr":"~8 h","pwrNum":8,"battery":"~8 h ANC (7.5 h w/ Spatial); case adds ~24 h, USB-C","best":"The best ANC earbuds; strongest ANC Apple has shipped, tiny, hearing-health features.","extra":"Earbuds, not over-ear. Apple-ecosystem locked. No wired mode."},
+ {"name":"Sony WH-1000XM6","form":"Closed dynamic · consumer ANC","msrp":449,"street":400,"w24":"None (Bluetooth only)","bt":"BT 5.3 · LDAC · multipoint (2 devices)","btSimul":false,"wired":"3.5 mm analog (passive), USB-C audio","spatial":"360 Reality Audio + Dolby Atmos upmix via Sony's app; head tracking with supported content","soft":"Sony Sound Connect (iOS / Android) — 10-band EQ, ANC modes, presets","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics + AI noise reduction","micTier":"Good","detach":false,"micNote":"Six mics with AI call-noise processing; clean for calls, still not a content-creation mic.","pwr":"~30 h","pwrNum":30,"battery":"~30 h ANC on, 3-min charge = 3 h, USB-C","best":"The all-round ANC benchmark: best-in-class noise cancelling, foldable, great app EQ.","extra":"No aptX. Spatial is app-driven, not baked in. Plastic build."},
+ {"name":"Sony WH-1000XM5","form":"Closed dynamic · consumer ANC","msrp":399,"street":300,"w24":"None (Bluetooth only)","bt":"BT 5.2 · LDAC · multipoint (2 devices)","btSimul":false,"wired":"3.5 mm analog, USB-C (charge only)","spatial":"360 Reality Audio via app; no head tracking","soft":"Sony Sound Connect (iOS / Android)","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Good","detach":false,"micNote":"Four beamforming mics; solid call clarity — the XM6 improved on this.","pwr":"~30 h","pwrNum":30,"battery":"~30 h ANC on, 3-min = 3 h, USB-C","best":"Still excellent and often ~$300; near-XM6 sound and ANC, doesn't fold flat.","extra":"Non-folding design. Superseded by the XM6."},
+ {"name":"Bose QuietComfort Ultra Headphones (2nd gen)","form":"Closed dynamic · consumer ANC","msrp":449,"street":400,"w24":"None (Bluetooth only)","bt":"BT 5.3 · Snapdragon Sound / aptX Adaptive · multipoint","btSimul":false,"wired":"3.5 mm analog, USB-C audio (2nd gen)","spatial":"Bose Immersive Audio (Still / Motion) — Bose's own head-tracked spatialiser","soft":"Bose app (iOS / Android) — EQ, ANC modes, Immersive Audio toggle","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Good","detach":false,"micNote":"Good voice pickup and wind handling; typical premium-ANC call quality.","pwr":"~24 h","pwrNum":24,"battery":"~24 h (18 h with Immersive Audio), USB-C","best":"The most effective ANC + the comfiest fit; Immersive Audio needs no app-side content.","extra":"Immersive Audio costs ~6 h battery. 2nd gen adds USB-C lossless; 1st gen doesn't."},
+ {"name":"Sennheiser Momentum 4 Wireless","form":"Closed dynamic · consumer ANC","msrp":380,"street":250,"w24":"None (Bluetooth only)","bt":"BT 5.2 · aptX Adaptive / aptX / AAC · multipoint","btSimul":false,"wired":"3.5 mm analog, USB-C audio","spatial":"None (no spatial-audio mode)","soft":"Sennheiser Smart Control (iOS / Android) — parametric EQ, sound zones","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Average","detach":false,"micNote":"Below-average call mic for the class — muffled outdoors. Music playback is the strength.","pwr":"~60 h","pwrNum":60,"battery":"~60 h ANC on — class-leading, USB-C","best":"Best battery in the category by far, and warm detailed sound; frequently ~$250.","extra":"No spatial audio. Weak call mic. Plain design."},
+ {"name":"Bowers & Wilkins Px7 S2e","form":"Closed dynamic · consumer ANC","msrp":399,"street":330,"w24":"None (Bluetooth only)","bt":"BT 5.2 · aptX Adaptive / aptX HD · multipoint","btSimul":false,"wired":"3.5 mm analog, USB-C audio","spatial":"None on-device; works as a normal stereo pair with platform spatialisers","soft":"B&W Music app (iOS / Android) — EQ, ANC","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Average","detach":false,"micNote":"Functional for calls, nothing special. This is a music-first headphone.","pwr":"~30 h","pwrNum":30,"battery":"~30 h ANC on, USB-C","best":"Best pure sound quality of the mainstream ANC set; premium materials.","extra":"ANC trails Sony/Bose. No spatial. App is basic."},
+ {"name":"Beats Studio Pro","form":"Closed dynamic · consumer ANC","msrp":350,"street":170,"w24":"None (Bluetooth only)","bt":"BT 5.3 · Apple H-class + Android fast-pair (dual chip)","btSimul":false,"wired":"3.5 mm analog, USB-C audio — lossless via USB-C","spatial":"Spatial Audio with dynamic head tracking (works on iOS AND Android)","soft":"None dedicated — iOS Settings / Android Beats app","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Good","detach":false,"micNote":"Decent voice pickup; the USB-C connection also carries a clean mic path for calls.","pwr":"~24 h","pwrNum":24,"battery":"~24 h ANC (40 h ANC off), fast charge, USB-C","best":"Spatial Audio + USB-C lossless that work cross-platform; often ~$170 on sale.","extra":"Middling ANC, tight clamp, no folding hinge. Bass-forward sound."},
+ {"name":"Sonos Ace","form":"Closed dynamic · consumer ANC","msrp":449,"street":330,"w24":"None (BT only; Wi-Fi link to a Sonos soundbar)","bt":"BT 5.4 · aptX Lossless · multipoint","btSimul":false,"wired":"USB-C audio (lossless), 3.5 mm via USB-C adapter","spatial":"Dolby Atmos with head tracking + TV Audio Swap from a Sonos Arc/Beam soundbar","soft":"Sonos app (iOS / Android) — EQ, ANC, TV swap, spatial toggle","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Good","detach":false,"micNote":"Solid call mics; the headline feature is pulling TV audio off a Sonos soundbar, not the mic.","pwr":"~30 h","pwrNum":30,"battery":"~30 h ANC on, 3-min = 3 h, USB-C","best":"Best-in-class if you own a Sonos soundbar — instant private Atmos TV audio. Great build.","extra":"TV Swap needs a Sonos Arc/Beam. Not part of multiroom Sonos. App required for most features."},
+ {"name":"Nothing Headphone (1)","form":"Closed dynamic · consumer ANC","msrp":299,"street":270,"w24":"None (Bluetooth only)","bt":"BT 5.3 · LDAC · multipoint (2 devices)","btSimul":false,"wired":"3.5 mm analog, USB-C audio","spatial":"Spatial audio with head tracking; Sound by KEF tuning","soft":"Nothing X (iOS / Android) — 8-band EQ, ANC, controls","optical":false,"planar":false,"anc":true,"nosoft":true,"micType":"Beamforming call mics","micTier":"Good","detach":false,"micNote":"Six mics, clear enough for calls. Distinctive transparent industrial design.","pwr":"~35 h","pwrNum":35,"battery":"~35 h ANC on (80 h off), USB-C","best":"Most features per dollar in the ANC class — LDAC, 3.5 mm, spatial, big battery, ~$270.","extra":"ANC a step behind Sony/Bose. Bulky. Brand-new — long-term support unproven."},
 ];
 const MIC_CLASS={Excellent:'t-yes','Very good':'t-yes',Good:'t-neutral',Average:'t-part'};
 // Sidetone / mic monitoring (hear your own voice). hw = adjustable dial on headset or base station; sw = app / console setting only. Every model here supports it in some form.
@@ -583,7 +594,18 @@ const SIDETONE={
  "SteelSeries Arctis Nova 5 Wireless":"sw",
  "Razer Barracuda X (2022)":"sw",
  "Sony PlayStation Pulse 3D":"sw",
+ "Apple AirPods Max (H2, USB-C)":"na",
+ "Apple AirPods Pro 3":"na",
+ "Sony WH-1000XM6":"na",
+ "Sony WH-1000XM5":"na",
+ "Bose QuietComfort Ultra Headphones (2nd gen)":"na",
+ "Sennheiser Momentum 4 Wireless":"na",
+ "Bowers & Wilkins Px7 S2e":"na",
+ "Beats Studio Pro":"na",
+ "Sonos Ace":"na",
+ "Nothing Headphone (1)":"na",
 };
+const KIND={"Apple AirPods Max (H2, USB-C)":"headphones","Apple AirPods Pro 3":"headphones","Sony WH-1000XM6":"headphones","Sony WH-1000XM5":"headphones","Bose QuietComfort Ultra Headphones (2nd gen)":"headphones","Sennheiser Momentum 4 Wireless":"headphones","Bowers & Wilkins Px7 S2e":"headphones","Beats Studio Pro":"headphones","Sonos Ace":"headphones","Nothing Headphone (1)":"headphones"};
 // Primary source used for each row's specs / price / assessment.
 const SOURCE={
  "SteelSeries Arctis Nova Pro Wireless":["https://thetechshowdown.com/products/steelseries-arctis-nova-pro-wireless","The Tech Showdown"],
@@ -612,6 +634,16 @@ const SOURCE={
  "SteelSeries Arctis Nova 5 Wireless":["https://www.tomshardware.com/peripherals/gaming-headsets/steelseries-arctis-nova-5-wireless-review","Tom's Hardware"],
  "Razer Barracuda X (2022)":["https://www.amazon.com/Razer-Barracuda-Wireless-Headset-Playstation/dp/B09XZZQK6Q","Razer / Amazon"],
  "Sony PlayStation Pulse 3D":["https://www.rtings.com/headphones/reviews/sony/pulse-3d-wireless","RTINGS"],
+ "Apple AirPods Max (H2, USB-C)":["https://www.apple.com/airpods-max/","Apple"],
+ "Apple AirPods Pro 3":["https://support.apple.com/en-us/125135","Apple"],
+ "Sony WH-1000XM6":["https://www.soundguys.com/sony-wh-1000xm6-vs-bose-quietcomfort-ultra-headphones-137869/","SoundGuys"],
+ "Sony WH-1000XM5":["https://www.rtings.com/headphones/reviews/sony/wh-1000xm5-wireless","RTINGS"],
+ "Bose QuietComfort Ultra Headphones (2nd gen)":["https://www.whathifi.com/headphones/wireless-headphones/sony-wh-1000xm6-vs-bose-quietcomfort-ultra-headphones-2nd-gen-which-flagship-wireless-over-ears-are-best","What Hi-Fi"],
+ "Sennheiser Momentum 4 Wireless":["https://www.rtings.com/headphones/reviews/sennheiser/momentum-4-wireless","RTINGS"],
+ "Bowers & Wilkins Px7 S2e":["https://www.rtings.com/headphones/reviews/bowers-and-wilkins/px7-s2e-wireless","RTINGS"],
+ "Beats Studio Pro":["https://www.rtings.com/headphones/reviews/beats/studio-pro-wireless","RTINGS"],
+ "Sonos Ace":["https://www.ecoustics.com/products/sonos-ace-ultra-wireless-headphones-2026/","ecoustics"],
+ "Nothing Headphone (1)":["https://www.rtings.com/headphones/reviews/nothing/headphone-1","RTINGS"],
 };
 
 // Wireless-dongle host connector (what plugs into the PC / console).
@@ -671,6 +703,16 @@ const CHARGE={
  "SteelSeries Arctis Nova 5 Wireless":"USB-C",
  "Razer Barracuda X (2022)":"USB-C",
  "Sony PlayStation Pulse 3D":"USB-C",
+ "Apple AirPods Max (H2, USB-C)":"USB-C",
+ "Apple AirPods Pro 3":"USB-C",
+ "Sony WH-1000XM6":"USB-C",
+ "Sony WH-1000XM5":"USB-C",
+ "Bose QuietComfort Ultra Headphones (2nd gen)":"USB-C",
+ "Sennheiser Momentum 4 Wireless":"USB-C",
+ "Bowers & Wilkins Px7 S2e":"USB-C",
+ "Beats Studio Pro":"USB-C",
+ "Sonos Ace":"USB-C",
+ "Nothing Headphone (1)":"USB-C",
 };
 
 // Does it work without the vendor app? status: yes | spatial | setup | base
@@ -701,6 +743,16 @@ const STANDALONE={
  "SteelSeries Arctis Nova 5 Wireless":["setup","Audio works app-free, but 360 presets and firmware need the SteelSeries app."],
  "Razer Barracuda X (2022)":["yes","Full audio + detachable mic + 3.5mm work with nothing installed; THX Spatial is an optional PC extra."],
  "Sony PlayStation Pulse 3D":["yes","Fully native on PS5 — Tempest 3D + EQ in the console, no app."],
+ "Apple AirPods Max (H2, USB-C)":["yes","Fully native on Apple devices — no app to install; Android gets plain Bluetooth only."],
+ "Apple AirPods Pro 3":["yes","Fully native on Apple; features configured in iOS Settings, no separate app."],
+ "Sony WH-1000XM6":["yes","Full audio + ANC work app-free; Sound Connect is only for EQ / spatial / firmware."],
+ "Sony WH-1000XM5":["yes","Works fully without the app; app adds EQ and 360 Reality Audio."],
+ "Bose QuietComfort Ultra Headphones (2nd gen)":["yes","ANC + audio work out of the box; Bose app for EQ, modes and Immersive Audio."],
+ "Sennheiser Momentum 4 Wireless":["yes","Plays and cancels noise app-free; Smart Control only for parametric EQ."],
+ "Bowers & Wilkins Px7 S2e":["yes","Standalone; app is optional EQ + ANC tuning."],
+ "Beats Studio Pro":["yes","No dedicated app needed on either platform; Spatial Audio is a system toggle."],
+ "Sonos Ace":["setup","Basic listening works app-free, but ANC modes, EQ and TV Audio Swap all need the Sonos app."],
+ "Nothing Headphone (1)":["yes","Audio + ANC work app-free; Nothing X only for EQ and controls."],
 };
 const STANDALONE_TAG={
  yes:["Standalone",'t-yes'],
