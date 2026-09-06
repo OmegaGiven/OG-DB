@@ -1,7 +1,7 @@
 {
   "slug": "gpus",
-  "title": "GPU DB",
-  "dbName": "GPU DB",
+  "title": "GPU",
+  "dbName": "GPU",
   "description": "GPUs for local AI and gaming with tracked price history - VRAM and largest model that fits, tensor compute, power draw, and graphics level at 1080p / 1440p / 4K / 4K+RT.",
   "compiled": "Sep 2026",
   "noun": "GPUs",

@@ -1,7 +1,7 @@
 {
   "slug": "phones",
-  "title": "Phone DB",
-  "dbName": "Phone DB",
+  "title": "Phone",
+  "dbName": "Phone",
   "description": "Smartphones 2023-2026 compared: SoC, memory, display, battery/charging, USB, headphone jack, microSD, IR, cameras, OS update years, bootloader / custom-ROM support, price.",
   "compiled": "Sep 2026",
   "noun": "phones",

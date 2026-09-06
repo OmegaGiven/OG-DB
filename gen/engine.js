@@ -68,16 +68,13 @@
 
   const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
   const active=new Set();
-  let query='';
-  const blob=new WeakMap();
-  const rowText=d=>{let t=blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase();blob.set(d,t);}return t;};
   let sortMode=SORTS[0].id;
 
   // header (click to sort)
   const htr=$('#tbl thead tr');
   htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
     COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
-  let colSort=null; // {id, dir:1|-1}
+  let sorts=[]; // [{id,dir}] primary first; click adds a secondary, re-click flips, third click removes
   const scratch=document.createElement('div');
   function sortVal(c,d){
     if(c.sort) return c.sort(d);
@@ -87,26 +84,31 @@
     return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
   }
   function colCmp(a,b){
-    const c=COLUMNS.find(x=>x.id===colSort.id);
-    let va=sortVal(c,a), vb=sortVal(c,b);
-    const ea=(va===''||va==null), eb=(vb===''||vb==null);
-    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
-    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
-    return r*colSort.dir;
+    for(const s of sorts){
+      const c=COLUMNS.find(x=>x.id===s.id); if(!c) continue;
+      let va=sortVal(c,a), vb=sortVal(c,b);
+      const ea=(va===''||va==null), eb=(vb===''||vb==null);
+      if(ea&&eb) continue; if(ea) return 1; if(eb) return -1;
+      const r=(typeof va==='number'&&typeof vb==='number')?va-vb:String(va).localeCompare(String(vb));
+      if(r!==0) return r*s.dir;
+    }
+    return 0;
   }
   function markHeaders(){
     htr.querySelectorAll('th.sortable').forEach(th=>{
-      const on=colSort&&colSort.id===th.dataset.col;
-      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
-      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+      const i=sorts.findIndex(s=>s.id===th.dataset.col);
+      const on=i>=0;
+      th.setAttribute('aria-sort',on?(sorts[i].dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?((sorts.length>1?' '+(i+1):' ')+(sorts[i].dir===1?'▲':'▼')):'';
     });
-    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+    try{sel.selectedIndex=sorts.length?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
   }
   htr.querySelectorAll('th.sortable').forEach(th=>{
     const go=()=>{
-      const id=th.dataset.col;
-      if(colSort&&colSort.id===id) colSort = colSort.dir===1 ? {id,dir:-1} : null; // asc -> desc -> off
-      else colSort = {id,dir:1};
+      const id=th.dataset.col, i=sorts.findIndex(s=>s.id===id);
+      if(i<0) sorts.push({id,dir:1});                 // new column -> appended as next sort level
+      else if(sorts[i].dir===1) sorts[i].dir=-1;      // second click -> descending
+      else sorts.splice(i,1);                          // third click -> drop this level
       markHeaders(); render();
     };
     th.addEventListener('click',go);
@@ -141,7 +143,7 @@
   // sorts
   const sel=$('#sort');
   sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
-  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
+  sel.addEventListener('change',e=>{sortMode=e.target.value;sorts=[];markHeaders();render();});
 
   // column panel
   const panel=$('#colpanel'), colbtn=$('#colbtn');
@@ -167,23 +169,11 @@
     hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
   document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
 
-  function passes(d){
-    if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
-    for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}
-    return true;
-  }
-  const rowq=$('#rowq');
-  if(rowq){
-    rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
-    document.addEventListener('keydown',ev=>{
-      if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
-      if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
-    });
-  }
+  function passes(d){for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}return true;}
 
   function render(){
     let rows=DATA.filter(passes);
-    if(colSort){rows.sort(colCmp);}
+    if(sorts.length){rows.sort(colCmp);}
     else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
     tbody.innerHTML='';
     const frag=document.createDocumentFragment();

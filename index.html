@@ -65,7 +65,8 @@
     line-height:1.6;
   }
   a{color:var(--accent);text-underline-offset:2px}
-  .wrap{max-width:760px;margin:0 auto;padding:clamp(40px,9vw,96px) clamp(18px,5vw,28px) 72px}
+  .wrap{max-width:min(1600px,96vw);margin:0 auto;padding:clamp(28px,5vw,64px) clamp(16px,3vw,32px) 64px}
+  .hero,.search,.nomatch,.contribute,footer{max-width:900px}
 
   /* hero */
   .hero{margin-bottom:44px}
@@ -199,7 +200,7 @@
   <div class="grid" id="grid">
     <a class="card" href="headsets/">
       <div class="card-top">
-        <h2>Headset DB</h2>
+        <h2>Headset</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>Gaming headsets and consumer ANC headphones — connection, power, charge port, surround / spatial engine, mic type &amp; quality, sidetone, per-OS software, standalone-vs-app, and price. </p>
@@ -212,7 +213,7 @@
     </a>
     <a class="card" href="keyboards/">
       <div class="card-top">
-        <h2>Split Keyboard DB</h2>
+        <h2>Split Keyboard</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>Split ergonomic keyboards — commercial and DIY kits — compared on split type, layout, switches, wireless, firmware, tenting, pointing device, and assembly.</p>
@@ -225,7 +226,7 @@
     </a>
     <a class="card" href="mice/">
       <div class="card-top">
-        <h2>Mouse DB</h2>
+        <h2>Mouse</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>PC &amp; gaming mice compared on side buttons, multi-device switching, scroll-wheel type (ratchet / free-spin / toggle), tilt, sensor, weight, and software.</p>
@@ -238,7 +239,7 @@
     </a>
     <a class="card" href="phones/">
       <div class="card-top">
-        <h2>Phone DB</h2>
+        <h2>Phone</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>Smartphones 2022&ndash;2026, mainstream + enthusiast — SoC, memory, display, battery/charging, USB, headphone jack, microSD, IR, cameras, OS update years, bootloader / custom-ROM.</p>
@@ -251,7 +252,7 @@
     </a>
     <a class="card" href="localai/">
       <div class="card-top">
-        <h2>Local AI DB</h2>
+        <h2>Local AI</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>Open-weight models you can run yourself — VRAM by quant (Q4 / Q8 / FP16), max context, image &amp; audio recognition, reasoning / coding tier, tool use, and which runners load them.</p>
@@ -264,7 +265,7 @@
     </a>
     <a class="card" href="laptops/">
       <div class="card-top">
-        <h2>Laptop DB</h2>
+        <h2>Laptop</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>Laptops across five price bands (&lt;$500 &rarr; $2000+) — MacBooks, Framework, Dell, HP, Lenovo, ASUS, Razer, MSI — CPU/GPU options, RAM &amp; storage upgradeability, display, weight, battery, ports, Linux support, repairability.</p>
@@ -277,7 +278,7 @@
     </a>
     <a class="card" href="gpus/">
       <div class="card-top">
-        <h2>GPU DB</h2>
+        <h2>GPU</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>GPUs for local AI and gaming, price-tracked — VRAM and the largest model that fits at Q4, tensor compute, power draw and connector, graphics level at 1080p / 1440p / 4K / 4K+RT.</p>
@@ -291,7 +292,7 @@
     </a>
     <a class="card" href="ssds/">
       <div class="card-top">
-        <h2>SSD DB</h2>
+        <h2>SSD</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>NVMe and SATA SSDs, price-tracked — capacity, PCIe gen, DRAM vs DRAM-less, TLC / QLC, controller, sequential and random speed, endurance, $/TB.</p>
@@ -305,7 +306,7 @@
     </a>
     <a class="card" href="ram/">
       <div class="card-top">
-        <h2>RAM DB</h2>
+        <h2>RAM</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>Desktop DDR4 / DDR5 kits, price-tracked — capacity, speed, latency and timings, EXPO / XMP, rank, IC die, height, $/GB.</p>
@@ -319,7 +320,7 @@
     </a>
     <a class="card" href="hdds/">
       <div class="card-top">
-        <h2>HDD DB</h2>
+        <h2>HDD</h2>
         <span class="go">open &rarr;</span>
       </div>
       <p>Hard drives, price-tracked — capacity, CMR vs SMR, use case, RPM / cache, interface, workload rating, warranty, idle power, $/TB.</p>

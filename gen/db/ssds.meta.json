@@ -1,7 +1,7 @@
 {
   "slug": "ssds",
-  "title": "SSD DB",
-  "dbName": "SSD DB",
+  "title": "SSD",
+  "dbName": "SSD",
   "description": "NVMe and SATA SSDs with tracked price history - capacity, PCIe gen, DRAM, NAND type, controller, speed, endurance, $/TB.",
   "compiled": "Sep 2026",
   "noun": "drives",

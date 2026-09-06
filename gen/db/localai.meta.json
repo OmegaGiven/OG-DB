@@ -1,7 +1,7 @@
 {
   "slug": "localai",
-  "title": "Local AI DB",
-  "dbName": "Local AI DB",
+  "title": "Local AI",
+  "dbName": "Local AI",
   "description": "Open-weight / locally-runnable AI models compared on VRAM by quant, max context, image recognition, audio recognition, reasoning, coding, tool use, and runner support.",
   "compiled": "Sep 2026",
   "noun": "models",
