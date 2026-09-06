@@ -35,7 +35,7 @@ body{
   background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
   font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
 }
-.wrap{max-width:min(2400px,96vw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+.wrap{max-width:min(2600px,99vw);margin:0 auto;padding:clamp(16px,2.5vw,28px) clamp(8px,1.5vw,16px) 64px}
 
 header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
 h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
@@ -86,6 +86,11 @@ table{border-collapse:collapse;width:100%;background:var(--surface)}
 thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
   font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
   padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--accent)}
+thead th.sortable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+thead th[aria-sort="ascending"],thead th[aria-sort="descending"]{color:var(--accent);background:var(--accent-wash)}
+thead th .arrow{color:var(--accent);font-size:10px}
 tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
 tbody tr.row:hover{background:var(--surface-2)}
 td{padding:10px 12px;font-size:13px;vertical-align:top}
@@ -153,13 +158,13 @@ const unlockTag=v=>{v=v||'';return /^no$/i.test(v)?tag('No','t-no')
   :/^yes/i.test(v)?tag(v,'t-yes'):tag(v,'t-part');};
 
 const COLUMNS=[
- {id:'name',hideable:false,label:'Phone',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
- {id:'price',label:'Launch price',cell:money},
- {id:'os',label:'OS & support',cell:d=>`<span style="font-size:12px">${esc(d.os)}</span><span class="sub">${d.osUpdateYears}y OS &middot; ${d.securityYears}y security</span>`},
+ {id:'name',hideable:false,label:'Phone',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
+ {id:'price',label:'Launch price',sort:d=>d.priceUSDLaunch,cell:money},
+ {id:'os',label:'OS & support',sort:d=>d.osUpdateYears,cell:d=>`<span style="font-size:12px">${esc(d.os)}</span><span class="sub">${d.osUpdateYears}y OS &middot; ${d.securityYears}y security</span>`},
  {id:'soc',label:'SoC',cell:d=>`<span style="font-size:12px">${esc(d.soc)}</span>`},
  {id:'mem',label:'RAM / storage',cell:d=>`<span style="font-size:12px">${esc(d.ram)}</span><span class="sub">${esc(d.storage)}</span>`},
- {id:'display',label:'Display',cell:d=>`<span class="price">${d.displayIn}"</span><span class="sub">${esc(d.displayType)} &middot; ${d.refreshHz}Hz &middot; ${d.peakNits?d.peakNits+' nits':''}</span>`},
- {id:'battery',label:'Battery / charge',cell:d=>`<span class="price">${d.batteryMah?d.batteryMah.toLocaleString():'?'} mAh</span><span class="sub">${d.chargeWiredW||'?'}W wired${d.chargeWirelessW?` &middot; ${d.chargeWirelessW}W Qi`:' &middot; no Qi'}</span>`},
+ {id:'display',label:'Display',sort:d=>d.displayIn,cell:d=>`<span class="price">${d.displayIn}"</span><span class="sub">${esc(d.displayType)} &middot; ${d.refreshHz}Hz &middot; ${d.peakNits?d.peakNits+' nits':''}</span>`},
+ {id:'battery',label:'Battery / charge',sort:d=>d.batteryMah,cell:d=>`<span class="price">${d.batteryMah?d.batteryMah.toLocaleString():'?'} mAh</span><span class="sub">${d.chargeWiredW||'?'}W wired${d.chargeWirelessW?` &middot; ${d.chargeWirelessW}W Qi`:' &middot; no Qi'}</span>`},
  {id:'usb',label:'USB',cell:d=>usbTag(d.usb)},
  {id:'jack',label:'Headphone jack',cell:d=>yn(d.headphoneJack)},
  {id:'sd',label:'microSD',cell:d=>yn(d.microSD)},
@@ -167,8 +172,8 @@ const COLUMNS=[
  {id:'ir',label:'IR blaster',cell:d=>yn(d.irBlaster)},
  {id:'ip',label:'IP rating',cell:d=>d.ipRating&&d.ipRating!=='unknown'?tag(d.ipRating,'t-yes'):tag('none','t-no')},
  {id:'cam',label:'Cameras',cell:d=>`<span style="font-size:12px">${esc(d.camMain)}</span><span class="sub">UW ${esc(d.camUltrawide)} &middot; tele ${esc(d.camTele)} &middot; front ${esc(d.camFront)}</span>`},
- {id:'unlock',label:'Bootloader / ROM',cell:d=>unlockTag(d.bootloaderUnlock)+`<span class="sub">${esc(d.customRom)}</span>`},
- {id:'weight',label:'Weight',cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
+ {id:'unlock',label:'Bootloader / ROM',sort:d=>/^no$/i.test(d.bootloaderUnlock||'')?2:/^yes/i.test(d.bootloaderUnlock||'')?0:1,cell:d=>unlockTag(d.bootloaderUnlock)+`<span class="sub">${esc(d.customRom)}</span>`},
+ {id:'weight',label:'Weight',sort:d=>d.weightG,cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
 ];
 
@@ -248,10 +253,44 @@ const EXPAND=[
   const active=new Set();
   let sortMode=SORTS[0].id;
 
-  // header
+  // header (click to sort)
   const htr=$('#tbl thead tr');
   htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
-    COLUMNS.map(c=>`<th data-col="${c.id}">${esc(c.label)}</th>`).join('');
+    COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
+  let colSort=null; // {id, dir:1|-1}
+  const scratch=document.createElement('div');
+  function sortVal(c,d){
+    if(c.sort) return c.sort(d);
+    scratch.innerHTML=c.cell(d);
+    const t=(scratch.textContent||'').replace(/↑|↓|↗/g,'').trim();
+    const n=parseFloat(t.replace(/[$,]/g,''));
+    return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
+  }
+  function colCmp(a,b){
+    const c=COLUMNS.find(x=>x.id===colSort.id);
+    let va=sortVal(c,a), vb=sortVal(c,b);
+    const ea=(va===''||va==null), eb=(vb===''||vb==null);
+    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
+    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
+    return r*colSort.dir;
+  }
+  function markHeaders(){
+    htr.querySelectorAll('th.sortable').forEach(th=>{
+      const on=colSort&&colSort.id===th.dataset.col;
+      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+    });
+    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+  }
+  htr.querySelectorAll('th.sortable').forEach(th=>{
+    const go=()=>{
+      const id=th.dataset.col;
+      colSort = (colSort&&colSort.id===id) ? {id,dir:-colSort.dir} : {id,dir:1};
+      markHeaders(); render();
+    };
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
 
   // column hide CSS
   const st=document.createElement('style');
@@ -281,7 +320,7 @@ const EXPAND=[
   // sorts
   const sel=$('#sort');
   sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
-  sel.addEventListener('change',e=>{sortMode=e.target.value;render();});
+  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
 
   // column panel
   const panel=$('#colpanel'), colbtn=$('#colbtn');
@@ -311,8 +350,8 @@ const EXPAND=[
 
   function render(){
     let rows=DATA.filter(passes);
-    const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];
-    rows.sort(s.cmp);
+    if(colSort){rows.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
     tbody.innerHTML='';
     const frag=document.createDocumentFragment();
     rows.forEach(d=>{
@@ -335,6 +374,7 @@ const EXPAND=[
   }
 
   applyCols();
+  markHeaders();
   render();
 })();
 

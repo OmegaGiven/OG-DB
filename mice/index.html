@@ -35,7 +35,7 @@ body{
   background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
   font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
 }
-.wrap{max-width:min(2400px,96vw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+.wrap{max-width:min(2600px,99vw);margin:0 auto;padding:clamp(16px,2.5vw,28px) clamp(8px,1.5vw,16px) 64px}
 
 header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
 h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
@@ -86,6 +86,11 @@ table{border-collapse:collapse;width:100%;background:var(--surface)}
 thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
   font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
   padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--accent)}
+thead th.sortable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+thead th[aria-sort="ascending"],thead th[aria-sort="descending"]{color:var(--accent);background:var(--accent-wash)}
+thead th .arrow{color:var(--accent);font-size:10px}
 tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
 tbody tr.row:hover{background:var(--surface-2)}
 td{padding:10px 12px;font-size:13px;vertical-align:top}
@@ -154,11 +159,11 @@ const hasToggle=s=>/toggle|smartshift/i.test(s||'');
 const multiHost=d=>d.multiDevice&&!/^none/i.test(d.multiDevice);
 
 const COLUMNS=[
- {id:'name',hideable:false,label:'Mouse',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
- {id:'price',label:'Price (USD)',cell:money},
+ {id:'name',hideable:false,label:'Mouse',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
+ {id:'price',label:'Price (USD)',sort:d=>d.priceUSD,cell:money},
  {id:'shape',label:'Shape',cell:d=>{const s=SHAPE[d.shape];return s?tag(s[0],s[1]):esc(d.shape);}},
- {id:'side',label:'Side buttons',cell:d=>`<span class="price">${d.sideButtons??'?'}</span><span class="sub">${d.buttonsTotal!=null?d.buttonsTotal+' total':''}</span>`},
- {id:'scroll',label:'Scroll wheel',cell:d=>{
+ {id:'side',label:'Side buttons',sort:d=>d.sideButtons,cell:d=>`<span class="price">${d.sideButtons??'?'}</span><span class="sub">${d.buttonsTotal!=null?d.buttonsTotal+' total':''}</span>`},
+ {id:'scroll',label:'Scroll wheel',sort:d=>freeSpin(d.scrollWheel)?(hasToggle(d.scrollWheel)?0:1):/ratchet only/i.test(d.scrollWheel||'')?2:3,cell:d=>{
    const t=freeSpin(d.scrollWheel)?tag(hasToggle(d.scrollWheel)?'Free-spin + toggle':'Free-spin','t-yes')
      :/ratchet only/i.test(d.scrollWheel||'')?tag('Ratchet only','t-neutral')
      :tag('No wheel','t-part');
@@ -169,12 +174,12 @@ const COLUMNS=[
    (d.thumbWheel===true?tag('Thumb wheel','t-yes'):'')},
  {id:'conn',label:'Connection',cell:d=>(d.connection||[]).map(x=>tag(x,/wired/i.test(x)?'t-neutral':'t-yes')).join('')||
    (d.wireless===false?tag('Wired only','t-neutral'):'')},
- {id:'multi',label:'Multi-device',cell:d=>multiHost(d)
+ {id:'multi',label:'Multi-device',sort:d=>multiHost(d)?0:1,cell:d=>multiHost(d)
    ?tag('Multi-host','t-yes')+`<span class="sub">${esc(d.multiDevice)}</span>`
    :tag('Single host','t-neutral')},
  {id:'sensor',label:'Sensor',cell:d=>`<span style="font-size:12px">${esc(d.sensor||'?')}</span>`},
- {id:'dpi',label:'DPI / polling',cell:d=>`<span class="price">${d.maxDPI?d.maxDPI.toLocaleString():'?'}</span><span class="sub">${esc(d.pollingHz||'')} Hz</span>`},
- {id:'weight',label:'Weight',cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
+ {id:'dpi',label:'DPI / polling',sort:d=>d.maxDPI,cell:d=>`<span class="price">${d.maxDPI?d.maxDPI.toLocaleString():'?'}</span><span class="sub">${esc(d.pollingHz||'')} Hz</span>`},
+ {id:'weight',label:'Weight',sort:d=>d.weightG,cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
  {id:'onboard',label:'Onboard memory',cell:d=>yn(d.onboardMemory,'Yes','No')},
  {id:'software',label:'Software',cell:d=>`<span style="font-size:12px">${esc(d.software||'?')}</span>`},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
@@ -244,10 +249,44 @@ const EXPAND=[
   const active=new Set();
   let sortMode=SORTS[0].id;
 
-  // header
+  // header (click to sort)
   const htr=$('#tbl thead tr');
   htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
-    COLUMNS.map(c=>`<th data-col="${c.id}">${esc(c.label)}</th>`).join('');
+    COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
+  let colSort=null; // {id, dir:1|-1}
+  const scratch=document.createElement('div');
+  function sortVal(c,d){
+    if(c.sort) return c.sort(d);
+    scratch.innerHTML=c.cell(d);
+    const t=(scratch.textContent||'').replace(/↑|↓|↗/g,'').trim();
+    const n=parseFloat(t.replace(/[$,]/g,''));
+    return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
+  }
+  function colCmp(a,b){
+    const c=COLUMNS.find(x=>x.id===colSort.id);
+    let va=sortVal(c,a), vb=sortVal(c,b);
+    const ea=(va===''||va==null), eb=(vb===''||vb==null);
+    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
+    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
+    return r*colSort.dir;
+  }
+  function markHeaders(){
+    htr.querySelectorAll('th.sortable').forEach(th=>{
+      const on=colSort&&colSort.id===th.dataset.col;
+      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+    });
+    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+  }
+  htr.querySelectorAll('th.sortable').forEach(th=>{
+    const go=()=>{
+      const id=th.dataset.col;
+      colSort = (colSort&&colSort.id===id) ? {id,dir:-colSort.dir} : {id,dir:1};
+      markHeaders(); render();
+    };
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
 
   // column hide CSS
   const st=document.createElement('style');
@@ -277,7 +316,7 @@ const EXPAND=[
   // sorts
   const sel=$('#sort');
   sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
-  sel.addEventListener('change',e=>{sortMode=e.target.value;render();});
+  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
 
   // column panel
   const panel=$('#colpanel'), colbtn=$('#colbtn');
@@ -307,8 +346,8 @@ const EXPAND=[
 
   function render(){
     let rows=DATA.filter(passes);
-    const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];
-    rows.sort(s.cmp);
+    if(colSort){rows.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
     tbody.innerHTML='';
     const frag=document.createDocumentFragment();
     rows.forEach(d=>{
@@ -331,6 +370,7 @@ const EXPAND=[
   }
 
   applyCols();
+  markHeaders();
   render();
 })();
 

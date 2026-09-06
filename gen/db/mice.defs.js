@@ -7,11 +7,11 @@ const hasToggle=s=>/toggle|smartshift/i.test(s||'');
 const multiHost=d=>d.multiDevice&&!/^none/i.test(d.multiDevice);
 
 const COLUMNS=[
- {id:'name',hideable:false,label:'Mouse',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
- {id:'price',label:'Price (USD)',cell:money},
+ {id:'name',hideable:false,label:'Mouse',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
+ {id:'price',label:'Price (USD)',sort:d=>d.priceUSD,cell:money},
  {id:'shape',label:'Shape',cell:d=>{const s=SHAPE[d.shape];return s?tag(s[0],s[1]):esc(d.shape);}},
- {id:'side',label:'Side buttons',cell:d=>`<span class="price">${d.sideButtons??'?'}</span><span class="sub">${d.buttonsTotal!=null?d.buttonsTotal+' total':''}</span>`},
- {id:'scroll',label:'Scroll wheel',cell:d=>{
+ {id:'side',label:'Side buttons',sort:d=>d.sideButtons,cell:d=>`<span class="price">${d.sideButtons??'?'}</span><span class="sub">${d.buttonsTotal!=null?d.buttonsTotal+' total':''}</span>`},
+ {id:'scroll',label:'Scroll wheel',sort:d=>freeSpin(d.scrollWheel)?(hasToggle(d.scrollWheel)?0:1):/ratchet only/i.test(d.scrollWheel||'')?2:3,cell:d=>{
    const t=freeSpin(d.scrollWheel)?tag(hasToggle(d.scrollWheel)?'Free-spin + toggle':'Free-spin','t-yes')
      :/ratchet only/i.test(d.scrollWheel||'')?tag('Ratchet only','t-neutral')
      :tag('No wheel','t-part');
@@ -22,12 +22,12 @@ const COLUMNS=[
    (d.thumbWheel===true?tag('Thumb wheel','t-yes'):'')},
  {id:'conn',label:'Connection',cell:d=>(d.connection||[]).map(x=>tag(x,/wired/i.test(x)?'t-neutral':'t-yes')).join('')||
    (d.wireless===false?tag('Wired only','t-neutral'):'')},
- {id:'multi',label:'Multi-device',cell:d=>multiHost(d)
+ {id:'multi',label:'Multi-device',sort:d=>multiHost(d)?0:1,cell:d=>multiHost(d)
    ?tag('Multi-host','t-yes')+`<span class="sub">${esc(d.multiDevice)}</span>`
    :tag('Single host','t-neutral')},
  {id:'sensor',label:'Sensor',cell:d=>`<span style="font-size:12px">${esc(d.sensor||'?')}</span>`},
- {id:'dpi',label:'DPI / polling',cell:d=>`<span class="price">${d.maxDPI?d.maxDPI.toLocaleString():'?'}</span><span class="sub">${esc(d.pollingHz||'')} Hz</span>`},
- {id:'weight',label:'Weight',cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
+ {id:'dpi',label:'DPI / polling',sort:d=>d.maxDPI,cell:d=>`<span class="price">${d.maxDPI?d.maxDPI.toLocaleString():'?'}</span><span class="sub">${esc(d.pollingHz||'')} Hz</span>`},
+ {id:'weight',label:'Weight',sort:d=>d.weightG,cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
  {id:'onboard',label:'Onboard memory',cell:d=>yn(d.onboardMemory,'Yes','No')},
  {id:'software',label:'Software',cell:d=>`<span style="font-size:12px">${esc(d.software||'?')}</span>`},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}

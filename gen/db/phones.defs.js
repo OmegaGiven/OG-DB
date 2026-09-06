@@ -6,13 +6,13 @@ const unlockTag=v=>{v=v||'';return /^no$/i.test(v)?tag('No','t-no')
   :/^yes/i.test(v)?tag(v,'t-yes'):tag(v,'t-part');};
 
 const COLUMNS=[
- {id:'name',hideable:false,label:'Phone',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
- {id:'price',label:'Launch price',cell:money},
- {id:'os',label:'OS & support',cell:d=>`<span style="font-size:12px">${esc(d.os)}</span><span class="sub">${d.osUpdateYears}y OS &middot; ${d.securityYears}y security</span>`},
+ {id:'name',hideable:false,label:'Phone',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
+ {id:'price',label:'Launch price',sort:d=>d.priceUSDLaunch,cell:money},
+ {id:'os',label:'OS & support',sort:d=>d.osUpdateYears,cell:d=>`<span style="font-size:12px">${esc(d.os)}</span><span class="sub">${d.osUpdateYears}y OS &middot; ${d.securityYears}y security</span>`},
  {id:'soc',label:'SoC',cell:d=>`<span style="font-size:12px">${esc(d.soc)}</span>`},
  {id:'mem',label:'RAM / storage',cell:d=>`<span style="font-size:12px">${esc(d.ram)}</span><span class="sub">${esc(d.storage)}</span>`},
- {id:'display',label:'Display',cell:d=>`<span class="price">${d.displayIn}"</span><span class="sub">${esc(d.displayType)} &middot; ${d.refreshHz}Hz &middot; ${d.peakNits?d.peakNits+' nits':''}</span>`},
- {id:'battery',label:'Battery / charge',cell:d=>`<span class="price">${d.batteryMah?d.batteryMah.toLocaleString():'?'} mAh</span><span class="sub">${d.chargeWiredW||'?'}W wired${d.chargeWirelessW?` &middot; ${d.chargeWirelessW}W Qi`:' &middot; no Qi'}</span>`},
+ {id:'display',label:'Display',sort:d=>d.displayIn,cell:d=>`<span class="price">${d.displayIn}"</span><span class="sub">${esc(d.displayType)} &middot; ${d.refreshHz}Hz &middot; ${d.peakNits?d.peakNits+' nits':''}</span>`},
+ {id:'battery',label:'Battery / charge',sort:d=>d.batteryMah,cell:d=>`<span class="price">${d.batteryMah?d.batteryMah.toLocaleString():'?'} mAh</span><span class="sub">${d.chargeWiredW||'?'}W wired${d.chargeWirelessW?` &middot; ${d.chargeWirelessW}W Qi`:' &middot; no Qi'}</span>`},
  {id:'usb',label:'USB',cell:d=>usbTag(d.usb)},
  {id:'jack',label:'Headphone jack',cell:d=>yn(d.headphoneJack)},
  {id:'sd',label:'microSD',cell:d=>yn(d.microSD)},
@@ -20,8 +20,8 @@ const COLUMNS=[
  {id:'ir',label:'IR blaster',cell:d=>yn(d.irBlaster)},
  {id:'ip',label:'IP rating',cell:d=>d.ipRating&&d.ipRating!=='unknown'?tag(d.ipRating,'t-yes'):tag('none','t-no')},
  {id:'cam',label:'Cameras',cell:d=>`<span style="font-size:12px">${esc(d.camMain)}</span><span class="sub">UW ${esc(d.camUltrawide)} &middot; tele ${esc(d.camTele)} &middot; front ${esc(d.camFront)}</span>`},
- {id:'unlock',label:'Bootloader / ROM',cell:d=>unlockTag(d.bootloaderUnlock)+`<span class="sub">${esc(d.customRom)}</span>`},
- {id:'weight',label:'Weight',cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
+ {id:'unlock',label:'Bootloader / ROM',sort:d=>/^no$/i.test(d.bootloaderUnlock||'')?2:/^yes/i.test(d.bootloaderUnlock||'')?0:1,cell:d=>unlockTag(d.bootloaderUnlock)+`<span class="sub">${esc(d.customRom)}</span>`},
+ {id:'weight',label:'Weight',sort:d=>d.weightG,cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
 ];
 

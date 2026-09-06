@@ -76,7 +76,7 @@
     font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     line-height:1.5;
   }
-  .wrap{max-width:min(2400px,96vw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+  .wrap{max-width:min(2600px,99vw);margin:0 auto;padding:clamp(16px,2.5vw,28px) clamp(8px,1.5vw,16px) 64px}
   .prose{max-width:70ch}
 
   header.masthead{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:26px}
@@ -169,6 +169,11 @@
     text-transform:uppercase;text-align:left;padding:11px 12px;color:var(--ink);
     border-bottom:2px solid var(--line-strong);white-space:nowrap
   }
+  thead th.sortable{cursor:pointer;user-select:none}
+  thead th.sortable:hover{color:var(--accent)}
+  thead th.sortable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  thead th[aria-sort="ascending"],thead th[aria-sort="descending"]{color:var(--accent);background:var(--accent-soft)}
+  thead th .arrow{color:var(--accent);font-size:10px}
   tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
   tbody tr.row:hover{background:var(--surface-2)}
   td{padding:11px 12px;font-size:13px;vertical-align:top}
@@ -740,6 +745,28 @@ const tbody=document.getElementById('tbody');
 const countEl=document.getElementById('count');
 const active=new Set();
 let sortMode='price-asc';
+let colSort=null; // {id,dir}
+const MICORD={Excellent:0,'Very good':1,Good:2,Average:3};
+const COLSORT={
+  model:d=>d.name.toLowerCase(),
+  price:d=>d.msrp,
+  w24:d=>d.w24||'',
+  bt:d=>/^none/i.test(d.bt)?2:d.btSimul?0:1,
+  wired:d=>/^none/i.test(d.wired)?1:0,
+  pwr:d=>d.pwrNum,
+  charge:d=>CHARGE[d.name]||'',
+  spatial:d=>d.spatial||'',
+  mic:d=>MICORD[d.micTier]??9,
+  sidetone:d=>SIDETONE[d.name]==='hw'?0:1,
+  sw:d=>{const o=SW_OS[SW_FAMILY[d.name]];return o?({full:0,limited:1,none:2}[o.macFull]??3):4;},
+  standalone:d=>({yes:0,spatial:1,setup:2,base:3}[(STANDALONE[d.name]||['z'])[0]]??9),
+  source:d=>(d.source&&d.source.label||'').toLowerCase()
+};
+function colCmp(a,b){
+  const f=COLSORT[colSort.id]; let va=f(a),vb=f(b);
+  let r=(typeof va==='number'&&typeof vb==='number')?va-vb:String(va).localeCompare(String(vb));
+  return r*colSort.dir;
+}
 
 function tag(txt,cls){return `<span class="tag ${cls}">${txt}</span>`}
 function btCell(d){
@@ -836,7 +863,8 @@ function passes(d){
 
 function render(){
   let rows=DATA.filter(passes);
-  rows.sort((a,b)=>{
+  if(colSort){ rows.sort(colCmp); }
+  else rows.sort((a,b)=>{
     if(sortMode==='name') return a.name.localeCompare(b.name);
     if(sortMode==='price-desc') return b.msrp-a.msrp;
     if(sortMode==='batt-desc') return b.pwrNum-a.pwrNum;
@@ -890,7 +918,24 @@ document.querySelectorAll('button.chip[data-filter]').forEach(b=>{
     render();
   });
 });
-document.getElementById('sort').addEventListener('change',e=>{sortMode=e.target.value;render();});
+const sortSel=document.getElementById('sort');
+sortSel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
+function markHeaders(){
+  document.querySelectorAll('#tbl thead th[data-col]').forEach(th=>{
+    const on=colSort&&colSort.id===th.dataset.col;
+    th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+    let a=th.querySelector('.arrow'); if(!a){a=document.createElement('span');a.className='arrow';th.appendChild(a);}
+    a.textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+  });
+  try{sortSel.selectedIndex=colSort?-1:sortSel.selectedIndex;}catch(e){}
+}
+document.querySelectorAll('#tbl thead th[data-col]').forEach(th=>{
+  th.classList.add('sortable');th.setAttribute('role','button');th.tabIndex=0;
+  const go=()=>{const id=th.dataset.col;colSort=(colSort&&colSort.id===id)?{id,dir:-colSort.dir}:{id,dir:1};markHeaders();render();};
+  th.addEventListener('click',go);
+  th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+});
+markHeaders();
 
 /* Column show/hide */
 const tbl=document.getElementById('tbl');

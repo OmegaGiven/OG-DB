@@ -5,24 +5,35 @@ const linTag=v=>{v=v||'';return /excellent|^good/i.test(v)?tag(v,'t-yes'):/fair/
 const repTag=v=>{v=v||'';return /excellent/i.test(v)?tag(v,'t-yes'):/^good|fair/i.test(v)?tag(v,'t-part'):tag(v,'t-no');};
 const money=d=>d.priceUSDStart==null?'<span class="price">&mdash;</span>':
   `<span class="price">$${d.priceUSDStart.toLocaleString()}<small>${esc(d.priceNote||'')}</small></span>`;
+const touch=d=>{
+  if(d.category==='2-in-1') return 'yes';
+  const t=`${d.display||''} ${d.displayOptions||''} ${d.notes||''}`;
+  if(/touch/i.test(t)) return 'yes';
+  if(d.brand==='Apple') return 'no';
+  if(d.category==='gaming'||d.category==='workstation') return 'rare';
+  return 'option';
+};
+const TOUCH={yes:['Touchscreen','t-yes'],no:['No touch','t-no'],rare:['Usually none','t-neutral'],option:['Optional on some','t-part']};
+const BAND_ORDER=['under $500','under $1000','under $1500','under $2000','$2000+'];
 
 const COLUMNS=[
- {id:'name',hideable:false,label:'Laptop',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
- {id:'bucket',label:'Price band',cell:d=>{const b=BUCKET[d.priceBucket];return b?tag(b[0],b[1]):esc(d.priceBucket);}},
- {id:'price',label:'Start price',cell:money},
+ {id:'name',hideable:false,label:'Laptop',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
+ {id:'bucket',label:'Price band',sort:d=>BAND_ORDER.indexOf(d.priceBucket),cell:d=>{const b=BUCKET[d.priceBucket];return b?tag(b[0],b[1]):esc(d.priceBucket);}},
+ {id:'price',label:'Start price',sort:d=>d.priceUSDStart,cell:money},
  {id:'cat',label:'Category',cell:d=>tag(d.category,CAT[d.category]||'t-neutral')},
+ {id:'touch',label:'Touchscreen',sort:d=>({yes:0,option:1,rare:2,no:3}[touch(d)]),cell:d=>{const t=TOUCH[touch(d)];return tag(t[0],t[1]);}},
  {id:'cpu',label:'CPU options',cell:d=>`<span style="font-size:11.5px">${esc(d.cpuOptions)}</span>`},
  {id:'gpu',label:'GPU options',cell:d=>`<span style="font-size:11.5px">${esc(d.gpuOptions)}</span>`},
  {id:'ram',label:'RAM',cell:d=>`<span style="font-size:12px">${esc(d.ram)}</span>`+(d.ramUpgradeable?tag('Upgradeable','t-yes'):tag('Soldered','t-no'))},
  {id:'storage',label:'Storage',cell:d=>`<span style="font-size:12px">${esc(d.storage)}</span>`+(d.storageUpgradeable?tag('Upgradeable','t-yes'):tag('Soldered','t-no'))},
- {id:'display',label:'Display',cell:d=>`<span class="price">${d.sizeInches}"</span><span class="sub">${esc(d.display)}</span>`},
- {id:'weight',label:'Weight',cell:d=>d.weightKg!=null?`<span class="price">${d.weightKg} kg</span>`:'&mdash;'},
- {id:'battery',label:'Battery',cell:d=>`<span class="price">${d.batteryWh?d.batteryWh+' Wh':'?'}</span><span class="sub">${esc(d.batteryLife||'')}</span>`},
+ {id:'display',label:'Display',sort:d=>d.sizeInches,cell:d=>`<span class="price">${d.sizeInches}"</span><span class="sub">${esc(d.display)}</span>`},
+ {id:'weight',label:'Weight',sort:d=>d.weightKg,cell:d=>d.weightKg!=null?`<span class="price">${d.weightKg} kg</span>`:'&mdash;'},
+ {id:'battery',label:'Battery',sort:d=>d.batteryWh,cell:d=>`<span class="price">${d.batteryWh?d.batteryWh+' Wh':'?'}</span><span class="sub">${esc(d.batteryLife||'')}</span>`},
  {id:'ports',label:'Ports',cell:d=>`<span style="font-size:11.5px">${esc(d.ports)}</span>`},
- {id:'charge',label:'Charge',cell:d=>d.chargeW?`<span class="price">${d.chargeW} W</span>`:'&mdash;'},
+ {id:'charge',label:'Charge',sort:d=>d.chargeW,cell:d=>d.chargeW?`<span class="price">${d.chargeW} W</span>`:'&mdash;'},
  {id:'os',label:'OS',cell:d=>`<span style="font-size:12px">${esc(d.os)}</span>`},
- {id:'linux',label:'Linux',cell:d=>linTag(d.linuxSupport)},
- {id:'repair',label:'Repairability',cell:d=>repTag(d.repairability)},
+ {id:'linux',label:'Linux',sort:d=>/excellent/i.test(d.linuxSupport||'')?0:/^good/i.test(d.linuxSupport||'')?1:/fair/i.test(d.linuxSupport||'')?2:3,cell:d=>linTag(d.linuxSupport)},
+ {id:'repair',label:'Repairability',sort:d=>/excellent/i.test(d.repairability||'')?0:/^good/i.test(d.repairability||'')?1:/fair/i.test(d.repairability||'')?2:3,cell:d=>repTag(d.repairability)},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
 ];
 
@@ -34,6 +45,7 @@ const FILTERS=[
  {id:'ru',label:'RAM upgradeable',test:d=>d.ramUpgradeable===true},
  {id:'su',label:'Storage upgradeable',test:d=>d.storageUpgradeable===true},
  {id:'lin',label:'Good Linux support',test:d=>/excellent|^good/i.test(d.linuxSupport||'')},
+ {id:'tch',label:'Touchscreen',test:d=>touch(d)==='yes'},
  {id:'gam',label:'Gaming',test:d=>d.category==='gaming'},
  {id:'ult',label:'Ultrabook',test:d=>d.category==='ultrabook'},
  {id:'wrk',label:'Workstation',test:d=>d.category==='workstation'},
@@ -62,6 +74,7 @@ const EXPAND=[
    <dt>Storage</dt><dd>${esc(d.storage)} &middot; ${d.storageUpgradeable?'upgradeable':'soldered'}</dd>
    <dt>Display</dt><dd>${esc(d.display)}</dd>
    <dt>Display options</dt><dd>${esc(d.displayOptions)}</dd>
+   <dt>Touchscreen</dt><dd>${({yes:'yes',no:'no (not offered)',rare:'rarely offered on this class',option:'optional on some configs'})[touch(d)]}</dd>
  </dl>`},
  {label:'Physical & I/O',html:d=>`<dl class="kv">
    <dt>Size / weight</dt><dd>${d.sizeInches}" &middot; ${d.weightKg} kg</dd>

@@ -7,11 +7,11 @@ const POINT=v=>v==null||v==='none'?tag('None','t-neutral')
   :/built-in/i.test(v)?tag(v,'t-yes'):tag(v,'t-part');
 
 const COLUMNS=[
- {id:'name',hideable:false,label:'Keyboard',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
- {id:'price',label:'Price (USD)',cell:money},
+ {id:'name',hideable:false,label:'Keyboard',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
+ {id:'price',label:'Price (USD)',sort:d=>d.priceUSD,cell:money},
  {id:'split',label:'Split type',cell:d=>{const s=SPLIT[d.splitType];return s?tag(s[0],s[1]):esc(d.splitType);}},
  {id:'layout',label:'Layout',cell:d=>tag(LAY[d.layout]||d.layout,'t-neutral')},
- {id:'keys',label:'Keys',cell:d=>`<span class="price">${d.keys??'?'}</span><span class="sub">${d.thumbKeysPerHand!=null?d.thumbKeysPerHand+' thumb / hand':''}</span>`},
+ {id:'keys',label:'Keys',sort:d=>d.keys,cell:d=>`<span class="price">${d.keys??'?'}</span><span class="sub">${d.thumbKeysPerHand!=null?d.thumbKeysPerHand+' thumb / hand':''}</span>`},
  {id:'switches',label:'Switches',cell:d=>tag(d.switchProfile||'?','t-neutral')+
    (d.hotswap===true?tag('Hot-swap','t-yes'):d.hotswap==='optional'?tag('Hot-swap opt.','t-part'):tag('Soldered','t-no'))},
  {id:'keycaps',label:'Keycaps',cell:d=>yn(d.keycapsIncluded,'Included','Not incl.')},
@@ -21,9 +21,9 @@ const COLUMNS=[
    return h+w+`<span class="sub">halves: ${esc(d.interHalfLink||'?')}</span>`;
  }},
  {id:'firmware',label:'Firmware',cell:d=>tag(d.firmware||'?',/QMK|ZMK|VIA|Vial/i.test(d.firmware||'')?'t-yes':'t-part')},
- {id:'tenting',label:'Tenting',cell:d=>{const t=TENT[d.tenting];return t?tag(t[0],t[1]):esc(d.tenting);}},
- {id:'pointing',label:'Pointing device',cell:d=>POINT(d.pointingDevice)},
- {id:'assembly',label:'Assembly',cell:d=>tag(d.assembly||'?',/prebuilt/i.test(d.assembly||'')?'t-yes':/solder/i.test(d.assembly||'')?'t-no':'t-part')+
+ {id:'tenting',label:'Tenting',sort:d=>({'built-in':0,'kit accessory':1,'none / DIY':2,'none':2}[d.tenting]??3),cell:d=>{const t=TENT[d.tenting];return t?tag(t[0],t[1]):esc(d.tenting);}},
+ {id:'pointing',label:'Pointing device',sort:d=>d.pointingDevice==null||d.pointingDevice==='none'?2:/built-in/i.test(d.pointingDevice)?0:1,cell:d=>POINT(d.pointingDevice)},
+ {id:'assembly',label:'Assembly',sort:d=>({'prebuilt':0}[d.assembly]??(/hotswap/i.test(d.assembly||'')?1:/solder/i.test(d.assembly||'')?2:3)),cell:d=>tag(d.assembly||'?',/prebuilt/i.test(d.assembly||'')?'t-yes':/solder/i.test(d.assembly||'')?'t-no':'t-part')+
    `<span class="sub">${esc(d.availability||'')}</span>`},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
 ];

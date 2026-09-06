@@ -35,7 +35,7 @@ body{
   background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
   font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
 }
-.wrap{max-width:min(2400px,96vw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+.wrap{max-width:min(2600px,99vw);margin:0 auto;padding:clamp(16px,2.5vw,28px) clamp(8px,1.5vw,16px) 64px}
 
 header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
 h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
@@ -86,6 +86,11 @@ table{border-collapse:collapse;width:100%;background:var(--surface)}
 thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
   font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
   padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--accent)}
+thead th.sortable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+thead th[aria-sort="ascending"],thead th[aria-sort="descending"]{color:var(--accent);background:var(--accent-wash)}
+thead th .arrow{color:var(--accent);font-size:10px}
 tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
 tbody tr.row:hover{background:var(--surface-2)}
 td{padding:10px 12px;font-size:13px;vertical-align:top}
@@ -126,7 +131,7 @@ footer a{color:var(--accent)}
   <header class="masthead">
     <h1><a class="crumb" href="../">OG-DB</a><span class="sep">/</span>Laptop DB <span class="compiled">compiled Sep 2026</span></h1>
   </header>
-  <div class="primer"><h2>How to read the table</h2><ul><li><strong>Price band</strong> is the bucket the <em>base config</em> lands in: under $500 / $1000 / $1500 / $2000 / $2000+. Use the band filters to shop a budget. Kits and gaming machines jump bands with GPU or RAM upgrades &mdash; the Price detail spells out the config.</li><li><strong>RAM / storage</strong> tags: <em>Upgradeable</em> means at least one config has an accessible SO-DIMM or M.2 slot; <em>Soldered</em> means what you buy is what you keep. Apple and most thin ultrabooks are soldered on both.</li><li><strong>Linux</strong> &mdash; <em>excellent/good</em> = vendor-certified (Framework, ThinkPad, Dell Developer Edition, ZBook); <em>fair</em> = works with tinkering; <em>poor</em> = ARM Snapdragon or Asahi-only.</li><li>Budget and gaming <em>battery Wh / weight / life</em> figures are approximate &mdash; not always on spec sheets.</li></ul></div>
+  <div class="primer"><h2>How to read the table</h2><ul><li><strong>Price band</strong> is the bucket the <em>base config</em> lands in: under $500 / $1000 / $1500 / $2000 / $2000+. Use the band filters to shop a budget. Kits and gaming machines jump bands with GPU or RAM upgrades &mdash; the Price detail spells out the config.</li><li><strong>RAM / storage</strong> tags: <em>Upgradeable</em> means at least one config has an accessible SO-DIMM or M.2 slot; <em>Soldered</em> means what you buy is what you keep. Apple and most thin ultrabooks are soldered on both.</li><li><strong>Linux</strong> &mdash; <em>excellent/good</em> = vendor-certified (Framework, ThinkPad, Dell Developer Edition, ZBook); <em>fair</em> = works with tinkering; <em>poor</em> = ARM Snapdragon or Asahi-only.</li><li>Budget and gaming <em>battery Wh / weight / life</em> figures are approximate &mdash; not always on spec sheets.</li><li><strong>Touchscreen</strong> is inferred, not sourced per config: convertibles = yes, Apple = no, gaming / workstation panels rarely offer it, most Windows ultrabooks list it as a paid option. Check the exact SKU.</li></ul></div>
   <div class="controls">
     <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
     <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
@@ -152,24 +157,35 @@ const linTag=v=>{v=v||'';return /excellent|^good/i.test(v)?tag(v,'t-yes'):/fair/
 const repTag=v=>{v=v||'';return /excellent/i.test(v)?tag(v,'t-yes'):/^good|fair/i.test(v)?tag(v,'t-part'):tag(v,'t-no');};
 const money=d=>d.priceUSDStart==null?'<span class="price">&mdash;</span>':
   `<span class="price">$${d.priceUSDStart.toLocaleString()}<small>${esc(d.priceNote||'')}</small></span>`;
+const touch=d=>{
+  if(d.category==='2-in-1') return 'yes';
+  const t=`${d.display||''} ${d.displayOptions||''} ${d.notes||''}`;
+  if(/touch/i.test(t)) return 'yes';
+  if(d.brand==='Apple') return 'no';
+  if(d.category==='gaming'||d.category==='workstation') return 'rare';
+  return 'option';
+};
+const TOUCH={yes:['Touchscreen','t-yes'],no:['No touch','t-no'],rare:['Usually none','t-neutral'],option:['Optional on some','t-part']};
+const BAND_ORDER=['under $500','under $1000','under $1500','under $2000','$2000+'];
 
 const COLUMNS=[
- {id:'name',hideable:false,label:'Laptop',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
- {id:'bucket',label:'Price band',cell:d=>{const b=BUCKET[d.priceBucket];return b?tag(b[0],b[1]):esc(d.priceBucket);}},
- {id:'price',label:'Start price',cell:money},
+ {id:'name',hideable:false,label:'Laptop',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear}</span>`},
+ {id:'bucket',label:'Price band',sort:d=>BAND_ORDER.indexOf(d.priceBucket),cell:d=>{const b=BUCKET[d.priceBucket];return b?tag(b[0],b[1]):esc(d.priceBucket);}},
+ {id:'price',label:'Start price',sort:d=>d.priceUSDStart,cell:money},
  {id:'cat',label:'Category',cell:d=>tag(d.category,CAT[d.category]||'t-neutral')},
+ {id:'touch',label:'Touchscreen',sort:d=>({yes:0,option:1,rare:2,no:3}[touch(d)]),cell:d=>{const t=TOUCH[touch(d)];return tag(t[0],t[1]);}},
  {id:'cpu',label:'CPU options',cell:d=>`<span style="font-size:11.5px">${esc(d.cpuOptions)}</span>`},
  {id:'gpu',label:'GPU options',cell:d=>`<span style="font-size:11.5px">${esc(d.gpuOptions)}</span>`},
  {id:'ram',label:'RAM',cell:d=>`<span style="font-size:12px">${esc(d.ram)}</span>`+(d.ramUpgradeable?tag('Upgradeable','t-yes'):tag('Soldered','t-no'))},
  {id:'storage',label:'Storage',cell:d=>`<span style="font-size:12px">${esc(d.storage)}</span>`+(d.storageUpgradeable?tag('Upgradeable','t-yes'):tag('Soldered','t-no'))},
- {id:'display',label:'Display',cell:d=>`<span class="price">${d.sizeInches}"</span><span class="sub">${esc(d.display)}</span>`},
- {id:'weight',label:'Weight',cell:d=>d.weightKg!=null?`<span class="price">${d.weightKg} kg</span>`:'&mdash;'},
- {id:'battery',label:'Battery',cell:d=>`<span class="price">${d.batteryWh?d.batteryWh+' Wh':'?'}</span><span class="sub">${esc(d.batteryLife||'')}</span>`},
+ {id:'display',label:'Display',sort:d=>d.sizeInches,cell:d=>`<span class="price">${d.sizeInches}"</span><span class="sub">${esc(d.display)}</span>`},
+ {id:'weight',label:'Weight',sort:d=>d.weightKg,cell:d=>d.weightKg!=null?`<span class="price">${d.weightKg} kg</span>`:'&mdash;'},
+ {id:'battery',label:'Battery',sort:d=>d.batteryWh,cell:d=>`<span class="price">${d.batteryWh?d.batteryWh+' Wh':'?'}</span><span class="sub">${esc(d.batteryLife||'')}</span>`},
  {id:'ports',label:'Ports',cell:d=>`<span style="font-size:11.5px">${esc(d.ports)}</span>`},
- {id:'charge',label:'Charge',cell:d=>d.chargeW?`<span class="price">${d.chargeW} W</span>`:'&mdash;'},
+ {id:'charge',label:'Charge',sort:d=>d.chargeW,cell:d=>d.chargeW?`<span class="price">${d.chargeW} W</span>`:'&mdash;'},
  {id:'os',label:'OS',cell:d=>`<span style="font-size:12px">${esc(d.os)}</span>`},
- {id:'linux',label:'Linux',cell:d=>linTag(d.linuxSupport)},
- {id:'repair',label:'Repairability',cell:d=>repTag(d.repairability)},
+ {id:'linux',label:'Linux',sort:d=>/excellent/i.test(d.linuxSupport||'')?0:/^good/i.test(d.linuxSupport||'')?1:/fair/i.test(d.linuxSupport||'')?2:3,cell:d=>linTag(d.linuxSupport)},
+ {id:'repair',label:'Repairability',sort:d=>/excellent/i.test(d.repairability||'')?0:/^good/i.test(d.repairability||'')?1:/fair/i.test(d.repairability||'')?2:3,cell:d=>repTag(d.repairability)},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
 ];
 
@@ -181,6 +197,7 @@ const FILTERS=[
  {id:'ru',label:'RAM upgradeable',test:d=>d.ramUpgradeable===true},
  {id:'su',label:'Storage upgradeable',test:d=>d.storageUpgradeable===true},
  {id:'lin',label:'Good Linux support',test:d=>/excellent|^good/i.test(d.linuxSupport||'')},
+ {id:'tch',label:'Touchscreen',test:d=>touch(d)==='yes'},
  {id:'gam',label:'Gaming',test:d=>d.category==='gaming'},
  {id:'ult',label:'Ultrabook',test:d=>d.category==='ultrabook'},
  {id:'wrk',label:'Workstation',test:d=>d.category==='workstation'},
@@ -209,6 +226,7 @@ const EXPAND=[
    <dt>Storage</dt><dd>${esc(d.storage)} &middot; ${d.storageUpgradeable?'upgradeable':'soldered'}</dd>
    <dt>Display</dt><dd>${esc(d.display)}</dd>
    <dt>Display options</dt><dd>${esc(d.displayOptions)}</dd>
+   <dt>Touchscreen</dt><dd>${({yes:'yes',no:'no (not offered)',rare:'rarely offered on this class',option:'optional on some configs'})[touch(d)]}</dd>
  </dl>`},
  {label:'Physical & I/O',html:d=>`<dl class="kv">
    <dt>Size / weight</dt><dd>${d.sizeInches}" &middot; ${d.weightKg} kg</dd>
@@ -245,10 +263,44 @@ const EXPAND=[
   const active=new Set();
   let sortMode=SORTS[0].id;
 
-  // header
+  // header (click to sort)
   const htr=$('#tbl thead tr');
   htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
-    COLUMNS.map(c=>`<th data-col="${c.id}">${esc(c.label)}</th>`).join('');
+    COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
+  let colSort=null; // {id, dir:1|-1}
+  const scratch=document.createElement('div');
+  function sortVal(c,d){
+    if(c.sort) return c.sort(d);
+    scratch.innerHTML=c.cell(d);
+    const t=(scratch.textContent||'').replace(/↑|↓|↗/g,'').trim();
+    const n=parseFloat(t.replace(/[$,]/g,''));
+    return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
+  }
+  function colCmp(a,b){
+    const c=COLUMNS.find(x=>x.id===colSort.id);
+    let va=sortVal(c,a), vb=sortVal(c,b);
+    const ea=(va===''||va==null), eb=(vb===''||vb==null);
+    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
+    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
+    return r*colSort.dir;
+  }
+  function markHeaders(){
+    htr.querySelectorAll('th.sortable').forEach(th=>{
+      const on=colSort&&colSort.id===th.dataset.col;
+      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+    });
+    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+  }
+  htr.querySelectorAll('th.sortable').forEach(th=>{
+    const go=()=>{
+      const id=th.dataset.col;
+      colSort = (colSort&&colSort.id===id) ? {id,dir:-colSort.dir} : {id,dir:1};
+      markHeaders(); render();
+    };
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
 
   // column hide CSS
   const st=document.createElement('style');
@@ -278,7 +330,7 @@ const EXPAND=[
   // sorts
   const sel=$('#sort');
   sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
-  sel.addEventListener('change',e=>{sortMode=e.target.value;render();});
+  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
 
   // column panel
   const panel=$('#colpanel'), colbtn=$('#colbtn');
@@ -308,8 +360,8 @@ const EXPAND=[
 
   function render(){
     let rows=DATA.filter(passes);
-    const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];
-    rows.sort(s.cmp);
+    if(colSort){rows.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
     tbody.innerHTML='';
     const frag=document.createDocumentFragment();
     rows.forEach(d=>{
@@ -332,6 +384,7 @@ const EXPAND=[
   }
 
   applyCols();
+  markHeaders();
   render();
 })();
 

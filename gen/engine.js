@@ -19,10 +19,44 @@
   const active=new Set();
   let sortMode=SORTS[0].id;
 
-  // header
+  // header (click to sort)
   const htr=$('#tbl thead tr');
   htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
-    COLUMNS.map(c=>`<th data-col="${c.id}">${esc(c.label)}</th>`).join('');
+    COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
+  let colSort=null; // {id, dir:1|-1}
+  const scratch=document.createElement('div');
+  function sortVal(c,d){
+    if(c.sort) return c.sort(d);
+    scratch.innerHTML=c.cell(d);
+    const t=(scratch.textContent||'').replace(/↑|↓|↗/g,'').trim();
+    const n=parseFloat(t.replace(/[$,]/g,''));
+    return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
+  }
+  function colCmp(a,b){
+    const c=COLUMNS.find(x=>x.id===colSort.id);
+    let va=sortVal(c,a), vb=sortVal(c,b);
+    const ea=(va===''||va==null), eb=(vb===''||vb==null);
+    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
+    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
+    return r*colSort.dir;
+  }
+  function markHeaders(){
+    htr.querySelectorAll('th.sortable').forEach(th=>{
+      const on=colSort&&colSort.id===th.dataset.col;
+      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+    });
+    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+  }
+  htr.querySelectorAll('th.sortable').forEach(th=>{
+    const go=()=>{
+      const id=th.dataset.col;
+      colSort = (colSort&&colSort.id===id) ? {id,dir:-colSort.dir} : {id,dir:1};
+      markHeaders(); render();
+    };
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
 
   // column hide CSS
   const st=document.createElement('style');
@@ -52,7 +86,7 @@
   // sorts
   const sel=$('#sort');
   sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
-  sel.addEventListener('change',e=>{sortMode=e.target.value;render();});
+  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
 
   // column panel
   const panel=$('#colpanel'), colbtn=$('#colbtn');
@@ -82,8 +116,8 @@
 
   function render(){
     let rows=DATA.filter(passes);
-    const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];
-    rows.sort(s.cmp);
+    if(colSort){rows.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
     tbody.innerHTML='';
     const frag=document.createDocumentFragment();
     rows.forEach(d=>{
@@ -106,5 +140,6 @@
   }
 
   applyCols();
+  markHeaders();
   render();
 })();
