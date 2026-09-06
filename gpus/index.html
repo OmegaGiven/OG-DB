@@ -174,6 +174,8 @@ const RES={'4K + RT':['4K + RT','t-yes'],'4K':['4K','t-yes'],'1440p / entry 4K':
 const RORD={'4K + RT':0,'4K':1,'1440p / entry 4K':2,'1440p':3,'1080p':4,'1080p (RT needs upscaling)':5,'n/a':9};
 const SEG={consumer:'t-neutral',prosumer:'t-part',workstation:'t-part',datacenter:'t-part',integrated:'t-neutral'};
 const hasTensor=d=>!/^none/i.test(d.tensorCores||'');
+// first "N fps native" figure in a "Cyberpunk 2077 ... ~N fps native; ..." string
+const nativeFps=s=>{const m=String(s||'').match(/(\d+)\s*fps?\s*native/i);return m?+m[1]:0;};
 
 const COLUMNS=[
  {id:'name',hideable:false,label:'GPU',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${esc(d.architecture)} &middot; ${d.releaseYear}</span>`},
@@ -202,9 +204,11 @@ const FILTERS=[
  {id:'m30',label:'Runs 30B+ at Q4',test:d=>d.aiMaxModelQ4B>=30},
  {id:'m70',label:'Runs 70B+ at Q4',test:d=>d.aiMaxModelQ4B>=70},
  {id:'ten',label:'Tensor / matrix cores',test:hasTensor},
- {id:'r4k',label:'4K capable (res target)',test:d=>/^4K/.test(d.resTarget||'')},
- {id:'k60n',label:'4K 60fps native (Cyberpunk Ultra)',test:d=>{const m=(d.game4k||'').match(/(\d+)\s*fps?\s*native/i);return m&&+m[1]>=55;}},
+ {id:'p60_1080',label:'1080p 60fps native',test:d=>nativeFps(d.game1080p)>=55},
+ {id:'p60_1440',label:'1440p 60fps native',test:d=>nativeFps(d.game1440p)>=55},
+ {id:'k60n',label:'4K 60fps native',test:d=>nativeFps(d.game4k)>=55},
  {id:'k60u',label:'4K 60fps with upscaling',test:d=>{const ns=(d.game4k||'').match(/\d+/g)||[];return /^4K/.test(d.resTarget||'')||ns.some(n=>+n>=58);}},
+ {id:'r4k',label:'4K capable (res target)',test:d=>/^4K/.test(d.resTarget||'')},
  {id:'r1440',label:'1440p or better',test:d=>/4K|1440p/.test(d.resTarget||'')},
  {id:'rt',label:'RT tier A / S',test:d=>d.gamingTierRT==='S'||d.gamingTierRT==='A'},
  {id:'p250',label:'≤ 250 W',test:d=>d.tdpW!=null&&d.tdpW<=250},
