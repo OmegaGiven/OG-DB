@@ -42,7 +42,8 @@ mkdir -p "$(dirname "$LOG")"
 log(){ printf '%s %s\n' "$(date -u +%FT%TZ)" "$*" | tee -a "$LOG" >&2; }
 
 cd "$REPO"
-[ $DRY -eq 1 ] || git pull -q --ff-only
+# the station clone is a pure mirror of origin/main -- never keep local-only work here
+[ $DRY -eq 1 ] || { git fetch -q origin && git reset -q --hard origin/main; }
 if [ $LLM -eq 1 ] && ! curl -fsS --max-time 10 "$OGDB_OLLAMA/api/tags" >/dev/null 2>&1; then
   log "ollama unreachable at $OGDB_OLLAMA -- continuing without the model (ambiguous rows skipped)"; LLM=0
 fi
