@@ -269,6 +269,7 @@
       <button class="chip" data-filter="open" aria-pressed="false">Bone conduction / open-ear</button>
       <button class="chip" data-filter="simul" aria-pressed="false">Simultaneous BT + 2.4</button>
       <button class="chip" data-filter="optical" aria-pressed="false">Base station / optical in</button>
+      <button class="chip" data-filter="hwsurround" aria-pressed="false">Surround from any source (TV / console, on-device)</button>
       <button class="chip" data-filter="linuxsurround" aria-pressed="false">Surround works on Linux (hardware)</button>
       <button class="chip" data-filter="bt" aria-pressed="false">Has Bluetooth</button>
       <button class="chip" data-filter="mpoint" aria-pressed="false">BT multipoint (2+ hosts)</button>
@@ -1094,6 +1095,17 @@ const LINUX_SURROUND=new Set([
   "SteelSeries Arctis Nova Pro Omni",
   "Logitech G Astro A50 X"
 ]);
+// Surround virtualisation done on the base station / dongle itself, so you get
+// multichannel-decoded spatial audio from ANY source — a TV's optical out, a
+// console, a PC with no software installed. These are the base-station models
+// with an optical / USB multichannel input; everything else needs the host
+// (game HRTF, vendor app, or a PipeWire chain) to do the decode.
+const HW_SURROUND=new Set([
+  "SteelSeries Arctis Nova Elite",
+  "SteelSeries Arctis Nova Pro Wireless",
+  "SteelSeries Arctis Nova Pro Omni",
+  "Logitech G Astro A50 X"
+]);
 const COLSORT={
   model:d=>d.name.toLowerCase(),
   price:d=>d.msrp,
@@ -1205,6 +1217,7 @@ function passes(d){
     if(f==='open' && !/bone|open-ear|open ear/i.test(d.form||"")) return false;
     if(f==='simul' && !d.btSimul) return false;
     if(f==='optical' && !d.optical) return false;
+    if(f==='hwsurround' && !HW_SURROUND.has(d.name)) return false;
     if(f==='linuxsurround' && !LINUX_SURROUND.has(d.name)) return false;
     if(f==='bt' && /^none/i.test(d.bt)) return false;
     if(f==='mpoint' && !/multipoint|multi-point/i.test(d.bt||'')) return false;
