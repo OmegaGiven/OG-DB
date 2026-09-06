@@ -124,7 +124,7 @@
   .count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
 
   .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
-  table{border-collapse:collapse;width:100%;min-width:1240px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:1360px;background:var(--surface)}
   thead th{
     position:sticky;top:0;z-index:2;background:var(--surface-2);
     font-family:"Chivo",sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;
@@ -162,15 +162,17 @@
 
   footer{margin-top:32px;font-size:12px;color:var(--ink-soft);max-width:65ch}
   footer a{color:var(--accent)}
-  .srcgrid{columns:2;column-gap:26px;font-size:11.5px;margin-top:8px}
-  @media (max-width:640px){.srcgrid{columns:1}}
+  a.srclink{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);
+    text-decoration:none;white-space:nowrap
+  }
+  a.srclink:hover,a.srclink:focus-visible{text-decoration:underline}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="masthead">
     <h1>Headset DB <span class="compiled">compiled Sep 2026</span></h1>
-    <p class="standfirst">Headsets compared on the things that actually decide a purchase: <strong>how</strong> you connect, <strong>power</strong>, spatial-audio support and <strong>where</strong> its DSP runs, mic type and quality, sidetone, the <strong>software</strong> you're tied to, and price. Wireless and wired, gaming and general-purpose. Click any row for the detail.</p>
   </header>
 
   <div class="primer">
@@ -227,6 +229,7 @@
           <th>Microphone</th>
           <th>Sidetone</th>
           <th>Software</th>
+          <th>Source</th>
         </tr>
       </thead>
       <tbody id="tbody"></tbody>
@@ -234,24 +237,7 @@
   </div>
 
   <footer>
-    <p><strong>Notes.</strong> Discrete 7.1 in a headset does not exist — the "7.1" badge is always DSP on a chip. This list currently leans toward wireless gaming / spatial headsets; non-gaming ANC cans (Sony WH-1000XM6, Bose QC Ultra, AirPods Max) do Dolby Atmos / spatial for <em>music and Apple/Android video</em> over Bluetooth but have no low-latency link or game-console path — they'll be added as a separate group. Formats: <em>DTS Headphone:X</em> and <em>THX Spatial</em> are competing object/channel virtualisers; <em>Dolby Atmos for Headphones</em> is the most widely supported for movie content specifically.</p>
-    <p>Spec/price sources — verify current pricing at retailer before buying:</p>
-    <div class="srcgrid">
-      <a href="https://www.tomshardware.com/best-picks/best-wireless-headsets">Tom's Hardware — best wireless headsets</a><br>
-      <a href="https://www.gamesradar.com/best-gaming-headsets/">GamesRadar — best gaming headsets 2026</a><br>
-      <a href="https://www.amazon.com/SteelSeries-Arctis-Wireless-Multi-System-Headset/dp/B09ZLRCH1H">SteelSeries Arctis Nova Pro Wireless</a><br>
-      <a href="https://www.amazon.com/Corsair-Virtuoso-Wireless-Gaming-Headset/dp/B0DG8XHXPD">Corsair Virtuoso Max</a><br>
-      <a href="https://www.tomsguide.com/gaming/gaming-peripherals/razer-blackshark-v3-pro-review">Tom's Guide — Razer BlackShark V3 Pro</a><br>
-      <a href="https://tech.sportskeeda.com/wearables/razer-blackshark-v3-pro-vs-audeze-maxwell-which-better-headphone">Razer V3 Pro vs Audeze Maxwell</a><br>
-      <a href="https://www.soundguys.com/sony-inzone-h9-ii-vs-inzone-h9-146291/">SoundGuys — Sony INZONE H9 II</a><br>
-      <a href="https://www.tomshardware.com/peripherals/gaming-headsets/astro-a50-x-review">Tom's Hardware — Astro A50 X</a><br>
-      <a href="https://www.tomshardware.com/peripherals/gaming-headsets/turtle-beach-stealth-pro-ii-review">Tom's Hardware — Turtle Beach Stealth Pro II</a><br>
-      <a href="https://www.trustedreviews.com/versus/playstation-pulse-elite-vs-sony-inzone-h9-4540185">PlayStation Pulse Elite vs INZONE H9</a><br>
-      <a href="https://en.wikipedia.org/wiki/Dolby_Headphone">Dolby Headphone (background)</a><br>
-      <a href="https://www.tomshardware.com/peripherals/gaming-headsets/best-gaming-headsets">Tom's Hardware — mic quality picks</a><br>
-      <a href="https://www.soundguys.com/playstation-pulse-elite-review-113057/">SoundGuys — Pulse Elite mic</a><br>
-      <a href="https://www.tomshardware.com/reviews/razer-barracuda-pro">Tom's Hardware — Barracuda Pro beamforming mic</a>
-    </div>
+    <p><strong>Notes.</strong> Discrete 7.1 in a headset does not exist — the "7.1" badge is always DSP on a chip. This list currently leans toward wireless gaming / spatial headsets; non-gaming ANC cans (Sony WH-1000XM6, Bose QC Ultra, AirPods Max) do Dolby Atmos / spatial for <em>music and Apple/Android video</em> over Bluetooth but have no low-latency link or game-console path — they'll be added as a separate group. Formats: <em>DTS Headphone:X</em> and <em>THX Spatial</em> are competing object/channel virtualisers; <em>Dolby Atmos for Headphones</em> is the most widely supported for movie content specifically. Per-row <strong>Source</strong> links open the review used for that entry's specs and assessment; prices are point-in-time Sep-2026 US figures — verify at a retailer before buying.</p>
   </footer>
 </div>
 
@@ -502,6 +488,27 @@ const SIDETONE={
  "HyperX Cloud Alpha Wireless":"sw","Turtle Beach Stealth Pro II":"sw","Turtle Beach Stealth 700 Gen 3":"hw",
  "EPOS H3Pro Hybrid":"sw"
 };
+// Primary source used for each row's specs / price / assessment.
+const SOURCE={
+ "SteelSeries Arctis Nova Pro Wireless":["https://thetechshowdown.com/products/steelseries-arctis-nova-pro-wireless","The Tech Showdown"],
+ "SteelSeries Arctis Nova Pro Omni":["https://www.gamesradar.com/best-gaming-headsets/","GamesRadar"],
+ "SteelSeries Arctis Nova 7 Gen 2":["https://www.tomshardware.com/best-picks/best-wireless-headsets","Tom's Hardware"],
+ "Audeze Maxwell":["https://www.rtings.com/headphones/reviews/best/by-usage/gaming","RTINGS"],
+ "Corsair Virtuoso Max Wireless":["https://www.techpowerup.com/review/corsair-virtuoso-max-wireless/","TechPowerUp"],
+ "Razer BlackShark V3 Pro":["https://www.tomsguide.com/gaming/gaming-peripherals/razer-blackshark-v3-pro-review","Tom's Guide"],
+ "Razer Barracuda Pro":["https://www.tomshardware.com/reviews/razer-barracuda-pro","Tom's Hardware"],
+ "Logitech G Pro X 2 Lightspeed":["https://www.gamesradar.com/best-gaming-headsets/","GamesRadar"],
+ "Logitech G733 Lightspeed":["https://www.tomshardware.com/best-picks/best-wireless-headsets","Tom's Hardware"],
+ "Logitech G Astro A50 X":["https://www.tomshardware.com/peripherals/gaming-headsets/astro-a50-x-review","Tom's Hardware"],
+ "Sony INZONE H9 II":["https://www.soundguys.com/sony-inzone-h9-ii-vs-inzone-h9-146291/","SoundGuys"],
+ "Sony INZONE H5":["https://www.soundguys.com/sony-inzone-h9-ii-vs-inzone-h9-146291/","SoundGuys"],
+ "Sony PlayStation Pulse Elite":["https://www.soundguys.com/playstation-pulse-elite-review-113057/","SoundGuys"],
+ "HyperX Cloud III Wireless":["https://www.tomshardware.com/best-picks/best-wireless-headsets","Tom's Hardware"],
+ "HyperX Cloud Alpha Wireless":["https://www.rtings.com/headphones/reviews/best/by-usage/gaming","RTINGS"],
+ "Turtle Beach Stealth Pro II":["https://www.tomshardware.com/peripherals/gaming-headsets/turtle-beach-stealth-pro-ii-review","Tom's Hardware"],
+ "Turtle Beach Stealth 700 Gen 3":["https://www.tomshardware.com/best-picks/best-wireless-headsets","Tom's Hardware"],
+ "EPOS H3Pro Hybrid":["https://www.pcgamesn.com/best-gaming-headset","PCGamesN"]
+};
 
 const tbody=document.getElementById('tbody');
 const countEl=document.getElementById('count');
@@ -537,6 +544,11 @@ function sidetoneCell(d){
 }
 function pwrCell(d){
   return `<span class="price" style="font-size:13px">${d.pwr}</span>`;
+}
+function srcCell(d){
+  const s=SOURCE[d.name];
+  if(!s) return '<span style="color:var(--ink-soft)">—</span>';
+  return `<a class="srclink" href="${s[0]}" target="_blank" rel="noopener">${s[1]} &#8599;</a>`;
 }
 
 function passes(d){
@@ -578,10 +590,11 @@ function render(){
       <td style="font-size:12px">${d.spatial}</td>
       <td>${micCell(d)}</td>
       <td>${sidetoneCell(d)}</td>
-      <td>${softCell(d)}</td>`;
+      <td>${softCell(d)}</td>
+      <td>${srcCell(d)}</td>`;
     const ex=document.createElement('tr');
     ex.className='expand';ex.hidden=true;
-    ex.innerHTML=`<td colspan="11"><div class="inner">
+    ex.innerHTML=`<td colspan="12"><div class="inner">
       <div><h4>Best for</h4><p>${d.best}</p></div>
       <div><h4>Microphone — ${d.micTier}</h4><p>${d.micNote}</p></div>
       <div><h4>Power</h4><p>${d.battery}${SIDETONE[d.name]==='hw'?' · sidetone adjustable on a hardware dial':' · sidetone level set in the app / console menu'}</p></div>
