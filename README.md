@@ -18,6 +18,7 @@ Live: **https://omegagiven.github.io/OG-DB/**
 | RAM DB | DDR4 / DDR5 kits, price-tracked &mdash; capacity, speed, CL, EXPO/XMP, rank, IC die, height, $/GB. | [`/ram/`](https://omegagiven.github.io/OG-DB/ram/) | [`ram.json`](ram/ram.json) |
 | HDD DB | Hard drives, price-tracked &mdash; capacity, CMR/SMR, use case, RPM, workload, warranty, idle power, $/TB. | [`/hdds/`](https://omegagiven.github.io/OG-DB/hdds/) | [`hdds.json`](hdds/hdds.json) |
 | Robot Vacuum | Robot vacuums &mdash; cleaning ability (suction, pickup %), mop + dock features, LiDAR vs camera navigation, cloud dependence + privacy risk, local control (Valetudo / Matter / Home Assistant), warranty, price. | [`/vacuums/`](https://omegagiven.github.io/OG-DB/vacuums/) | [`vacuums.json`](vacuums/vacuums.json) |
+| 3D Printer | FDM + resin printers &mdash; build volume and $/L, hotend / extruder, multi-colour mechanism (toolchanger / dual nozzle / multi-spool feeder / MMU) with max colours and purge waste, enclosure + heated chamber, speed, bed, levelling, camera / AI, firmware openness, cloud vs LAN, assembly, materials, price. | [`/printers/`](https://omegagiven.github.io/OG-DB/printers/) | [`printers.json`](printers/printers.json) |
 | Mouse DB | PC & gaming mice — side-button count, multi-device switching, scroll-wheel type (ratchet / free-spin / toggle), tilt, sensor, DPI/polling, weight, onboard memory, software, price. | [`/mice/`](https://omegagiven.github.io/OG-DB/mice/) | [`mice.json`](mice/mice.json) |
 
 ## Requests
