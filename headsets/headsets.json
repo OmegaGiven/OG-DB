@@ -23,6 +23,8 @@
     "battery": "2× 22 h hot-swap batteries, infinite via swap",
     "best": "Best all-rounder + the base station's optical in is the single most useful port for a living-room TV/Jellyfin feed.",
     "extra": "Base station switches 2 sources (e.g. PC + PS5) with a dial. ANC is competent, not class-leading. Also sold as Nova Pro Wireless X (Xbox).",
+    "dongle_connector": "USB-C dongle + base station",
+    "charge_port": "USB-C + base-station battery bay",
     "sidetone": "hardware-dial",
     "source": {
       "url": "https://thetechshowdown.com/products/steelseries-arctis-nova-pro-wireless",
@@ -62,6 +64,8 @@
     "battery": "2× hot-swap batteries",
     "best": "The Nova Pro for people who also want the Xbox path and the deepest EQ/spatial tuning.",
     "extra": "2026 flagship variant. Premium price; functionally the Nova Pro Wireless with wider platform support and expanded Sonar.",
+    "dongle_connector": "USB-C dongle + base station",
+    "charge_port": "USB-C + base-station battery bay",
     "sidetone": "hardware-dial",
     "source": {
       "url": "https://www.gamesradar.com/best-gaming-headsets/",
@@ -101,6 +105,8 @@
     "battery": "~38 h, 15-min charge = 6 h",
     "best": "Cheapest headset that truly mixes BT + 2.4 GHz at once. Great value.",
     "extra": "No ANC, no base station. Xbox variant exists. Widely recommended mid-tier pick for 2026.",
+    "dongle_connector": "USB-C",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
@@ -140,6 +146,8 @@
     "battery": "~80 h",
     "best": "Best raw sound quality in the class — planar drivers. Sounds great with no software at all.",
     "extra": "Heavy (~490 g / clamp-y). PS5 model ($299) vs Xbox model ($329, includes the Dolby licence). No ANC.",
+    "dongle_connector": "USB-C (USB-A adapter)",
+    "charge_port": "USB-C",
     "sidetone": "hardware-dial",
     "source": {
       "url": "https://www.rtings.com/headphones/reviews/best/by-usage/gaming",
@@ -179,6 +187,8 @@
     "battery": "~60 h, 15-min charge = 6 h",
     "best": "Atmos + good ANC + simultaneous dual-wireless without a base station.",
     "extra": "iCUE is a heavy install. PC and Xbox versions. Metal build, memory-foam pads.",
+    "dongle_connector": "USB-A",
+    "charge_port": "USB-C",
     "sidetone": "hardware-dial",
     "source": {
       "url": "https://www.techpowerup.com/review/corsair-virtuoso-max-wireless/",
@@ -218,6 +228,8 @@
     "battery": "~70 h",
     "best": "Competitive-FPS positional accuracy; well-reviewed for movie immersion too.",
     "extra": "BT and 2.4 GHz switch, don't mix. Synapse is bloated. Tuning roller on the cup.",
+    "dongle_connector": "USB-C (USB-A adapter)",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.tomsguide.com/gaming/gaming-peripherals/razer-blackshark-v3-pro-review",
@@ -257,6 +269,8 @@
     "battery": "~40 h",
     "best": "Doubles as a street/travel ANC headphone — no boom mic, cleaner look.",
     "extra": "2022 model, still current. Switch not mix. Bluetooth EQ via mobile app.",
+    "dongle_connector": "USB-C",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.tomshardware.com/reviews/razer-barracuda-pro",
@@ -296,6 +310,8 @@
     "battery": "~50 h",
     "best": "Neutral tuning, light, sounds fine unplugged; esports staple.",
     "extra": "No ANC. G HUB needed only for EQ / DTS toggle. Triple connectivity (dongle, BT, wired).",
+    "dongle_connector": "USB-A",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.gamesradar.com/best-gaming-headsets/",
@@ -335,6 +351,8 @@
     "battery": "~29 h",
     "best": "Cheap, light, colourful. Pure PC/PS 2.4 GHz headset.",
     "extra": "No Bluetooth at all. Thin bass. Popular budget pick.",
+    "dongle_connector": "USB-A",
+    "charge_port": "Micro-USB",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
@@ -374,6 +392,8 @@
     "battery": "<24 h",
     "best": "One base station switches video + audio across three consoles (PLAYSYNC). Optical in works for a TV feed.",
     "extra": "Most expensive mainstream headset. No ANC. Everything depends on the base station — not portable. Astro A50 Gen 5 (2025, ~$300) is the cheaper no-HDMI sibling, also with optical in.",
+    "dongle_connector": "Base station — USB-C + HDMI to host",
+    "charge_port": "Base-station dock (contact pins)",
     "sidetone": "hardware-dial",
     "source": {
       "url": "https://www.tomshardware.com/peripherals/gaming-headsets/astro-a50-x-review",
@@ -413,6 +433,8 @@
     "battery": "~30 h with ANC",
     "best": "Best-in-class personalised spatial if you're on PS5 + PC; lighter than the first H9.",
     "extra": "360 profile is tied to Sony's ecosystem. Good ANC. H7 II / H5 are cheaper (H5 ~$149, no ANC).",
+    "dongle_connector": "USB-C",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.soundguys.com/sony-inzone-h9-ii-vs-inzone-h9-146291/",
@@ -452,6 +474,8 @@
     "battery": "~28 h",
     "best": "Cheapest way into Sony's 360 spatial for PC/PS5.",
     "extra": "No ANC. Lightweight. BT switches, doesn't mix.",
+    "dongle_connector": "USB-C",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.soundguys.com/sony-inzone-h9-ii-vs-inzone-h9-146291/",
@@ -491,6 +515,8 @@
     "battery": "~30 h, charge hanger included",
     "best": "Cheapest planar-magnetic wireless headset, and Tempest 3D is excellent for PS5 games/movies.",
     "extra": "Really a PS5 accessory. PS Link also works on PC/Mac but you lose Tempest (that's PS5-only). No true multipoint.",
+    "dongle_connector": "USB-A (PlayStation Link)",
+    "charge_port": "USB-C + charging hanger (contacts)",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.soundguys.com/playstation-pulse-elite-review-113057/",
@@ -530,6 +556,8 @@
     "battery": "~120 h",
     "best": "Marathon battery, comfortable, cheap, sounds good with zero software.",
     "extra": "No Bluetooth — deal-breaker if you want phone audio in the same cups. PC/PS 2.4 GHz only.",
+    "dongle_connector": "USB-A (USB-C adapter)",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
@@ -569,6 +597,8 @@
     "battery": "~300 h (class record)",
     "best": "You charge it three times a year. Warm, pleasant tuning.",
     "extra": "No BT, no ANC, no wired mode. Pure 2.4 GHz workhorse.",
+    "dongle_connector": "USB-A",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.rtings.com/headphones/reviews/best/by-usage/gaming",
@@ -608,6 +638,8 @@
     "battery": "2× hot-swap batteries + dock",
     "best": "Hot-swap batteries and a dock like the Nova Pro, plus a portable dongle the A50 X lacks.",
     "extra": "Superhuman Hearing (footstep boost) is polarising. Multi-platform variants (PS/Xbox). No optical in on the dock.",
+    "dongle_connector": "USB-A transmitter + dock",
+    "charge_port": "USB-C + charging dock",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.tomshardware.com/peripherals/gaming-headsets/turtle-beach-stealth-pro-ii-review",
@@ -647,6 +679,8 @@
     "battery": "~80 h",
     "best": "Mid-price ANC headset that genuinely mixes game + phone audio.",
     "extra": "Platform-specific SKUs. No wired fallback. Good value for the feature set.",
+    "dongle_connector": "USB-C (USB-A adapter)",
+    "charge_port": "USB-C",
     "sidetone": "hardware-dial",
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
@@ -686,6 +720,8 @@
     "battery": "~30 h (19 h with ANC + BT)",
     "best": "Discontinued but often under $100 — Sennheiser-lineage sound, ANC, BT mixing at a bargain.",
     "extra": "Stock is drying up. Gaming Suite optional. Great clearance buy if you find one.",
+    "dongle_connector": "USB-A",
+    "charge_port": "USB-C",
     "sidetone": "app-or-console",
     "source": {
       "url": "https://www.pcgamesn.com/best-gaming-headset",
