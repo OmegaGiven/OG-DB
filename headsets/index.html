@@ -270,6 +270,7 @@
       <button class="chip" data-filter="optical" aria-pressed="false">Base station / optical in</button>
       <button class="chip" data-filter="linuxsurround" aria-pressed="false">Surround works on Linux (hardware)</button>
       <button class="chip" data-filter="bt" aria-pressed="false">Has Bluetooth</button>
+      <button class="chip" data-filter="mpoint" aria-pressed="false">BT multipoint (2+ hosts)</button>
       <button class="chip" data-filter="planar" aria-pressed="false">Planar magnetic</button>
       <button class="chip" data-filter="anc" aria-pressed="false">ANC</button>
       <button class="chip" data-filter="standalone" aria-pressed="false">Fully standalone (app optional)</button>
@@ -1117,6 +1118,7 @@ function passes(d){
     if(f==='optical' && !d.optical) return false;
     if(f==='linuxsurround' && !LINUX_SURROUND.has(d.name)) return false;
     if(f==='bt' && /^none/i.test(d.bt)) return false;
+    if(f==='mpoint' && !/multipoint|multi-point/i.test(d.bt||'')) return false;
     if(f==='planar' && !d.planar) return false;
     if(f==='anc' && !d.anc) return false;
     if(f==='standalone' && (STANDALONE[d.name]||['x'])[0]!=='yes') return false;
