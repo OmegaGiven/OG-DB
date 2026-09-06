@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Wireless Surround Headset Register</title>
-<meta name="description" content="Comparison database of wireless gaming/spatial headsets: connections, spatial-audio engine, software, price.">
+<title>Headset DB</title>
+<meta name="description" content="Comparison database of headsets — connections, power, spatial-audio engine, mic, sidetone, software, price.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@500;700;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -168,19 +168,19 @@
 <body>
 <div class="wrap">
   <header class="masthead">
-    <p class="kicker">Living-room + desktop audio · compiled Sep 2026</p>
-    <h1>Wireless Surround Headset Register</h1>
-    <p class="standfirst">Every "surround" headphone is <em>virtualised</em> — two drivers plus DSP, never discrete channels. What actually differs between models: <strong>where</strong> that DSP runs, <strong>how</strong> you connect, and which <strong>software</strong> you're tied to. Click any row for the detail.</p>
+    <p class="kicker">Headset comparison database · compiled Sep 2026</p>
+    <h1>Headset DB</h1>
+    <p class="standfirst">Headsets compared on the things that actually decide a purchase: <strong>how</strong> you connect, <strong>power</strong>, spatial-audio support and <strong>where</strong> its DSP runs, mic type and quality, sidetone, the <strong>software</strong> you're tied to, and price. Wireless and wired, gaming and general-purpose. Click any row for the detail.</p>
   </header>
 
   <div class="primer">
-    <h2>Read this before the table</h2>
+    <h2>How to read the table</h2>
     <ul>
-      <li><strong>Where the spatial DSP lives</strong> decides what it works with. <em>On the dongle / base station</em> → virtualises any source, including a PS5/Xbox/optical TV feed, no PC needed. <em>In the OS</em> (Dolby Atmos for Headphones — paid ~$15 on Win/Xbox; DTS Sound Unbound; Sony 360 / Tempest 3D on PS5) → source-agnostic but platform-locked. <em>In the vendor app</em> (SteelSeries Sonar, THX Spatial, etc.) → usually Windows-only.</li>
-      <li><strong>For your Jellyfin-to-TV plan</strong> the base-station units with an <em>optical input</em> (Arctis Nova Pro, Astro A50 X) are the ones that can decode a Dolby Digital feed and virtualise it on their own hardware. A plain USB dongle only ever receives what the host OS sends it.</li>
+      <li><strong>Surround / spatial is always virtualised</strong> — two drivers plus DSP, never discrete channels. What matters is <em>where that DSP runs</em>, which decides what it works with. <em>On the dongle / base station</em> → virtualises any source, including a PS5/Xbox/optical TV feed, no PC needed. <em>In the OS</em> (Dolby Atmos for Headphones — paid ~$15 on Win/Xbox; DTS Sound Unbound; Sony 360 / Tempest 3D on PS5) → source-agnostic but platform-locked. <em>In the vendor app</em> (SteelSeries Sonar, THX Spatial, etc.) → usually Windows-only.</li>
+      <li><strong>Base station + optical input</strong> (Arctis Nova Pro, Astro A50 X) is the only setup that can take a Dolby Digital feed from a TV / optical source and virtualise it on the headset's own hardware. A plain USB dongle only ever receives what the host OS sends it.</li>
       <li><strong>"Simultaneous BT + 2.4 GHz"</strong> means game audio on the low-latency link and phone/Discord on Bluetooth <em>at the same time</em>, mixed in your ears. Most headsets only <em>switch</em> between the two.</li>
-      <li><strong>Power.</strong> Every headset here is wireless with a rechargeable battery — none is wired-only. All still play audio over USB/3.5mm while charging <em>except</em> the dongle-only models (HyperX Cloud III / Alpha, Logitech G733), which go silent when flat. "2× … swap" means hot-swap batteries — effectively unlimited runtime.</li>
-      <li><strong>Sidetone</strong> = hearing your own voice in the cups so you don't shout. All 19 support it; the split is whether the <em>level</em> is on a hardware dial (headset or base station) or buried in the app / console menu. On sealed ANC headsets sidetone matters more.</li>
+      <li><strong>Power.</strong> Wired-only entries read "Wired" here; everything else shows rated battery hours. Wireless models still play over USB/3.5mm while charging <em>except</em> dongle-only ones (HyperX Cloud III / Alpha, Logitech G733), which go silent when flat. "2× … swap" = hot-swap batteries, effectively unlimited runtime.</li>
+      <li><strong>Sidetone</strong> = hearing your own voice in the cups so you don't shout. The split is whether the <em>level</em> is on a hardware dial (headset or base station) or buried in the app / console menu. Matters more on sealed ANC headsets.</li>
       <li><strong>Mic quality</strong> is a 4-step read from review consensus — <em>Excellent</em> (broadcast-grade, stream on it) · <em>Very good</em> · <em>Good</em> (clear for chat/calls, a bit compressed) · <em>Average</em> (party chat only). Every model here has a mic; the ones marked <em>Integrated / fixed</em> can't be removed or swapped. Any headset mic still loses to a $60 standalone USB mic.</li>
       <li><strong>Street prices</strong> below are rough Sep-2026 US figures and move constantly — treat MSRP as the anchor.</li>
     </ul>
@@ -234,7 +234,7 @@
   </div>
 
   <footer>
-    <p><strong>Notes.</strong> Discrete 7.1 in a headset does not exist — the "7.1" badge is always DSP on a chip. Non-gaming ANC cans (Sony WH-1000XM6, Bose QC Ultra, AirPods Max) do Dolby Atmos / spatial for <em>music and Apple/Android video</em> over Bluetooth, but have no low-latency link and no game-console path, so they're out of scope here. Formats: <em>DTS Headphone:X</em> and <em>THX Spatial</em> are competing object/channel virtualisers; <em>Dolby Atmos for Headphones</em> is the most widely supported for movie content specifically.</p>
+    <p><strong>Notes.</strong> Discrete 7.1 in a headset does not exist — the "7.1" badge is always DSP on a chip. This list currently leans toward wireless gaming / spatial headsets; non-gaming ANC cans (Sony WH-1000XM6, Bose QC Ultra, AirPods Max) do Dolby Atmos / spatial for <em>music and Apple/Android video</em> over Bluetooth but have no low-latency link or game-console path — they'll be added as a separate group. Formats: <em>DTS Headphone:X</em> and <em>THX Spatial</em> are competing object/channel virtualisers; <em>Dolby Atmos for Headphones</em> is the most widely supported for movie content specifically.</p>
     <p>Spec/price sources — verify current pricing at retailer before buying:</p>
     <div class="srcgrid">
       <a href="https://www.tomshardware.com/best-picks/best-wireless-headsets">Tom's Hardware — best wireless headsets</a><br>
