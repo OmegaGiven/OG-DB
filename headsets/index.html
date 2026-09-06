@@ -239,6 +239,7 @@
       <li><strong>Proprietary software</strong> names the vendor app and shows which OSes it runs on (Win / macOS / mobile / Linux). Pattern: the full tuning app (EQ, spatial, mic DSP) is <em>Windows-first</em>; only Logitech / Astro (G HUB) and Audeze (HQ) ship a full <em>macOS</em> app, Corsair's is cut-down, the rest give Mac plug-and-play stereo only. <em>Linux</em> always falls back to generic USB audio — no vendor app exists. Expand a row for the per-OS breakdown.</li>
       <li><strong>Standalone</strong> answers "does it work without installing anything?" — <em>Standalone</em> = full audio and features app-free (app is optional EQ tuning); <em>spatial needs app</em> = plays fine but virtual surround is locked behind the app or the OS; <em>Setup app needed</em> = a profile or firmware step requires the app once (the Sony INZONE 360 profile); <em>Needs base station</em> = the hardware, not the software, is the dependency (Nova Pro, Astro A50 X).</li>
       <li><strong>Mic quality</strong> is a 4-step read from review consensus — <em>Excellent</em> (broadcast-grade, stream on it) · <em>Very good</em> · <em>Good</em> (clear for chat/calls, a bit compressed) · <em>Average</em> (party chat only). Every model here has a mic; the ones marked <em>Integrated / fixed</em> can't be removed or swapped. Any headset mic still loses to a $60 standalone USB mic.</li>
+      <li><strong>Surround on Linux.</strong> No headset has a Linux spatial app. But the base-station units that virtualise 7.1 <em>in hardware</em> — Arctis Nova Pro Wireless / Omni, Astro A50 X (filter above) — give surround on Linux with nothing installed. For any other headphone, build a PipeWire HRTF chain with HeSuVi impulse files, or use a game's own HRTF (OpenAL Soft / Steam Audio).</li>
       <li><strong>Street prices</strong> below are rough Sep-2026 US figures and move constantly — treat MSRP as the anchor.</li>
     </ul>
   </div>
@@ -248,6 +249,7 @@
       <span class="glabel">Filter</span>
       <button class="chip" data-filter="simul" aria-pressed="false">Simultaneous BT + 2.4</button>
       <button class="chip" data-filter="optical" aria-pressed="false">Base station / optical in</button>
+      <button class="chip" data-filter="linuxsurround" aria-pressed="false">Surround works on Linux (hardware)</button>
       <button class="chip" data-filter="bt" aria-pressed="false">Has Bluetooth</button>
       <button class="chip" data-filter="planar" aria-pressed="false">Planar magnetic</button>
       <button class="chip" data-filter="anc" aria-pressed="false">ANC</button>
@@ -855,6 +857,14 @@ const active=new Set();
 let sortMode='price-asc';
 let colSort=null; // {id,dir}
 const MICORD={Excellent:0,'Very good':1,Good:2,Average:3};
+// Headsets whose 7.1 virtualisation runs on the base station / dongle hardware,
+// so Linux gets surround with no vendor software. Everything else needs a
+// PipeWire HRTF (HeSuVi) chain or a game's own HRTF on Linux.
+const LINUX_SURROUND=new Set([
+  "SteelSeries Arctis Nova Pro Wireless",
+  "SteelSeries Arctis Nova Pro Omni",
+  "Logitech G Astro A50 X"
+]);
 const COLSORT={
   model:d=>d.name.toLowerCase(),
   price:d=>d.msrp,
@@ -955,6 +965,7 @@ function passes(d){
   for(const f of active){
     if(f==='simul' && !d.btSimul) return false;
     if(f==='optical' && !d.optical) return false;
+    if(f==='linuxsurround' && !LINUX_SURROUND.has(d.name)) return false;
     if(f==='bt' && /^none/i.test(d.bt)) return false;
     if(f==='planar' && !d.planar) return false;
     if(f==='anc' && !d.anc) return false;
@@ -1039,7 +1050,10 @@ function markHeaders(){
 }
 document.querySelectorAll('#tbl thead th[data-col]').forEach(th=>{
   th.classList.add('sortable');th.setAttribute('role','button');th.tabIndex=0;
-  const go=()=>{const id=th.dataset.col;colSort=(colSort&&colSort.id===id)?{id,dir:-colSort.dir}:{id,dir:1};markHeaders();render();};
+  const go=()=>{const id=th.dataset.col;
+    if(colSort&&colSort.id===id) colSort=colSort.dir===1?{id,dir:-1}:null;
+    else colSort={id,dir:1};
+    markHeaders();render();};
   th.addEventListener('click',go);
   th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
 });

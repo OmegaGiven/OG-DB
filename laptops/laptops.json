@@ -2078,5 +2078,37 @@
       "url": "https://www.dell.com/en-us/shop/gaming-laptops/sf/alienware-laptops",
       "label": "Dell / Alienware"
     }
+  },
+  {
+    "name": "Framework Laptop 13 (Intel Core Ultra Series 1, DIY)",
+    "brand": "Framework",
+    "releaseYear": 2024,
+    "priceUSDStart": 899,
+    "priceNote": "DIY Edition base (Core Ultra 5 125H, no RAM/SSD/OS); ~$1,200 typical configured",
+    "priceBucket": "under $1000",
+    "category": "ultrabook",
+    "cpuOptions": "Intel Core Ultra 5 125H / Ultra 7 155H / Ultra 7 165H",
+    "gpuOptions": "Intel Arc (integrated)",
+    "ram": "8-96 GB DDR5-5600, 2x SO-DIMM",
+    "ramUpgradeable": true,
+    "storage": "M.2 2280 NVMe, user-installed",
+    "storageUpgradeable": true,
+    "display": "13.5\" 2880x1920 IPS 120Hz, 500 nits (2.8K panel)",
+    "displayOptions": "2.8K 120Hz matte; older 2256x1504 60Hz panel available",
+    "sizeInches": 13.5,
+    "weightKg": 1.3,
+    "batteryWh": 61,
+    "batteryLife": "~9-11h light use",
+    "ports": "4x swappable Expansion Cards (USB-C/TB4, USB-A, HDMI, DP, SD, Ethernet), 3.5mm",
+    "chargeW": 60,
+    "os": "Windows 11 or Linux (user choice)",
+    "linuxSupport": "excellent (official)",
+    "repairability": "excellent (iFixit 10/10)",
+    "webcam": "1080p, hardware privacy switches",
+    "notes": "Same modular chassis as the AMD 13; Intel variant is the pick if you want Thunderbolt 4 on every port.",
+    "source": {
+      "url": "https://frame.work/laptop13",
+      "label": "Framework"
+    }
   }
 ]
