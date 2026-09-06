@@ -1,0 +1,11 @@
+{
+  "slug": "phones",
+  "title": "Phone DB",
+  "dbName": "Phone DB",
+  "description": "Smartphones 2023-2026 compared: SoC, memory, display, battery/charging, USB, headphone jack, microSD, IR, cameras, OS update years, bootloader / custom-ROM support, price.",
+  "compiled": "Sep 2026",
+  "noun": "phones",
+  "dataFile": "phones/phones.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>OS &amp; support</strong> &mdash; promised <em>major OS versions</em> then <em>security years</em>, both counted from launch. Apple makes no public number; those are estimates from history + regulatory filings.</li><li><strong>Bootloader / ROM</strong> &mdash; <em>Yes</em> means officially unlockable; <em>carrier-locked varies</em> covers Samsung (global units unlock, US Snapdragon never does). Custom-ROM cell says whether LineageOS / GrapheneOS / etc. is <em>official</em> or community.</li><li><strong>USB</strong> &mdash; most phones are USB-C 2.0 (480 Mbps, no video); green = USB 3.x and/or DisplayPort out; red = Lightning.</li><li><strong>Non-US prices</strong> (Xiaomi, OnePlus China, Honor, Oppo, Vivo, Realme, Zenfone) are converted from EUR/CNY launch RRP &mdash; see the Price detail; many aren't officially US-sold.</li><li><strong>Peak-nits</strong> isn't normalised &mdash; Chinese-brand 4500-6500 figures are tiny-window marketing peaks, not full-screen brightness.</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> Covers roughly 2022&ndash;2026 with an enthusiast lean (jack, microSD, IR, unlockable). Update-year promises are vendor claims, not guarantees. Per-row <strong>Source</strong> is usually the GSMArena spec page or the vendor. Missing but wanted: removable battery, repairability score, PWM dimming frequency, US band compatibility for imports, UFS version, Qi2 magnets. Compiled Sep 2026.</p></footer>"
+}
