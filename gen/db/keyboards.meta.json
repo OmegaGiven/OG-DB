@@ -1,0 +1,11 @@
+{
+  "slug": "keyboards",
+  "title": "Split Keyboard DB",
+  "dbName": "Split Keyboard DB",
+  "description": "Split ergonomic keyboards compared: split type, layout, switches, wireless, firmware, tenting, pointing device, assembly, price.",
+  "compiled": "Sep 2026",
+  "noun": "keyboards",
+  "dataFile": "keyboards/keyboards.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>Split type</strong> &mdash; <em>Fully separate</em> = two independent halves you place anywhere; <em>Unibody split</em> = one piece with a fixed angled gap (Kinesis Advantage, MD600); <em>Adjustable bridge</em> = halves on an articulating mount (Naya).</li><li><strong>Layout</strong> &mdash; <em>Column-stagger</em> (ortho columns offset per finger length) is the ergonomic-keyboard norm; <em>Row-stagger</em> keeps a normal typewriter grid, gentler relearn (Keychron Q11, MD770).</li><li><strong>Firmware</strong> &mdash; QMK / VIA / Vial / ZMK are open and fully remappable; Oryx and Bazecor are vendor GUIs on top of QMK; a few are closed.</li><li><strong>Assembly</strong> &mdash; <em>Prebuilt</em> ships ready; <em>kit</em> ranges from solderless hot-swap to full soldering; <em>PCB / files only</em> means you source parts yourself. Kit prices in the Price column are the base kit &mdash; expand a row for what's included.</li><li>Kit prices are not apples-to-apples (bare PCB pair vs full solderless kit vs vendor-assembled). Don't sort on price naively.</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> \"Split\" here means the two halves separate or sit at a fixed ergonomic angle &mdash; Alice-layout boards (one-piece, mild centre split) are out of scope. DIY prices and availability move constantly; group-buy kits come and go. Per-row <strong>Source</strong> links the vendor or build-doc page. Compiled Sep 2026 &mdash; verify current pricing before buying.</p></footer>"
+}

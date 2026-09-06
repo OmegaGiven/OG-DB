@@ -94,7 +94,7 @@
   .lbl::after{content:"";flex:1;height:1px;background:var(--line)}
 
   /* database cards */
-  .grid{display:grid;gap:14px;grid-template-columns:1fr}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
   .card{
     position:relative;display:block;text-decoration:none;color:inherit;
     background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;
@@ -164,8 +164,8 @@
     <h1 class="wordmark">OG<span class="dot">-</span>DB</h1>
     <p class="tagline">A set of small, opinionated reference databases.</p>
     <div class="meta">
-      <span><b>1</b> database</span>
-      <span><b>18</b> entries tracked</span>
+      <span><b>3</b> databases</span>
+      <span><b>121</b> entries tracked</span>
       <span>updated <b>2026-09-06</b></span>
     </div>
   </header>
@@ -182,9 +182,34 @@
         <span><b>18</b> entries</span>
         <span><b>14</b> columns</span>
         <span>compiled <b>Sep 2026</b></span>
-        <span><b>JSON</b> available</span>
       </div>
-      <div class="schema"><span>headsets</span> ( model · price · 2.4GHz+dongle · bluetooth · wired · power · charge_port · spatial · mic · sidetone · software_by_os · standalone · source )</div>
+      <div class="schema"><span>headsets</span> ( model · price · 2.4GHz+dongle · bluetooth · wired · power · charge_port · spatial · mic · sidetone · software · standalone · source )</div>
+    </a>
+    <a class="card" href="keyboards/">
+      <div class="card-top">
+        <h2>Split Keyboard DB</h2>
+        <span class="go">open &rarr;</span>
+      </div>
+      <p>Split ergonomic keyboards — commercial and DIY kits — compared on split type, layout, switches, wireless, firmware, tenting, pointing device, and assembly.</p>
+      <div class="stats">
+        <span><b>49</b> entries</span>
+        <span><b>13</b> columns</span>
+        <span>compiled <b>Sep 2026</b></span>
+      </div>
+      <div class="schema"><span>keyboards</span> ( name · price · split_type · layout · keys · switches · keycaps · connection · firmware · tenting · pointing_device · assembly · source )</div>
+    </a>
+    <a class="card" href="mice/">
+      <div class="card-top">
+        <h2>Mouse DB</h2>
+        <span class="go">open &rarr;</span>
+      </div>
+      <p>PC &amp; gaming mice compared on side buttons, multi-device switching, scroll-wheel type (ratchet / free-spin / toggle), tilt, sensor, weight, and software.</p>
+      <div class="stats">
+        <span><b>54</b> entries</span>
+        <span><b>14</b> columns</span>
+        <span>compiled <b>Sep 2026</b></span>
+      </div>
+      <div class="schema"><span>mice</span> ( name · price · shape · side_buttons · scroll_wheel · tilt · connection · multi_device · sensor · dpi · weight · onboard · software · source )</div>
     </a>
   </div>
 

@@ -1,0 +1,11 @@
+{
+  "slug": "mice",
+  "title": "Mouse DB",
+  "dbName": "Mouse DB",
+  "description": "PC and gaming mice compared: side buttons, multi-device connectivity, scroll-wheel type (ratchet / free-spin / toggle), sensor, weight, software, price.",
+  "compiled": "Sep 2026",
+  "noun": "mice",
+  "dataFile": "mice/mice.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>Scroll wheel</strong> &mdash; <em>Ratchet only</em> is a normal notched wheel; <em>Free-spin</em> flywheel-spins for fast document scrolling; <em>Free-spin + toggle</em> switches between the two (a physical button, or Logitech's electromagnetic SmartShift that auto-shifts on a hard flick). Trackballs with a ring or twist-ball show as <em>No wheel</em>.</li><li><strong>Multi-device</strong> = can you pair several computers and switch with a button? <em>Multi-host</em> rows list how many and how. Most gaming mice pair one dongle + Bluetooth but have no fast-switch, so they read <em>Single host</em>.</li><li><strong>Side buttons</strong> counts thumb-side programmable buttons; MMO mice go to 12. <strong>Total</strong> is every programmable input.</li><li><strong>Polling</strong> notes when a 4K / 8K rate needs a separate HyperPolling-style dongle.</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> Enthusiast-brand (Lamzu, Pulsar, Vaxee, Endgame, Ninjutso) prices and weights are street estimates that move a lot. Logitech MX-line \"onboard memory: no\" means full remapping needs Options+ running, unlike gaming mice with true onboard profiles. Per-row <strong>Source</strong> links the vendor page. Compiled Sep 2026 &mdash; verify pricing before buying.</p></footer>"
+}

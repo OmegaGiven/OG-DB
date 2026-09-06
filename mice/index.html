@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mouse DB</title>
+<meta name="description" content="PC and gaming mice compared: side buttons, multi-device connectivity, scroll-wheel type (ratchet / free-spin / toggle), sensor, weight, software, price.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}
+:root{
+  --bg:#f2f3f5;--surface:#fff;--surface-2:#e9ebee;--ink:#191c22;--ink-soft:#59606d;
+  --line:#d7dbe1;--line-strong:#bfc5cd;--accent:#c0740f;--accent-ink:#8a5300;--accent-wash:#f6ecdd;
+  --yes:#2f7d55;--yes-bg:#e0efe6;--no:#a23f57;--no-bg:#f3e2e6;--partial:#8a6d1f;--partial-bg:#f1e9d4;
+  --shadow:0 1px 2px rgba(20,22,27,.05),0 10px 30px -14px rgba(20,22,27,.16);
+  --grid:rgba(25,28,34,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
+}
+.wrap{max-width:min(2400px,96vw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+
+header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
+h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
+  line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1 .crumb{color:var(--ink-soft);text-decoration:none}
+h1 .crumb:hover,h1 .crumb:focus-visible{color:var(--accent)}
+h1 .sep{color:var(--line-strong);margin:0 .35em;font-weight:400}
+.compiled{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+  color:var(--ink-soft);font-weight:400;white-space:nowrap;margin-left:12px;vertical-align:middle}
+
+.primer{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px;padding:15px 18px;margin:20px 0 24px;box-shadow:var(--shadow);max-width:92ch}
+.primer h2{font-family:"Chivo",sans-serif;font-weight:700;font-size:13px;margin:0 0 8px;
+  text-transform:uppercase;letter-spacing:.08em}
+.primer ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink-soft)}
+.primer li{margin:5px 0}
+.primer strong{color:var(--ink)}
+.primer em{color:var(--ink);font-style:normal;font-weight:500}
+
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.controls .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.glabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+button.chip{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:500;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;cursor:pointer;transition:.12s}
+button.chip:hover{border-color:var(--accent)}
+button.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1d23}
+button.chip:focus-visible,select:focus-visible,tr.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:5px 8px;background:var(--surface);
+  color:var(--ink);border:1px solid var(--line-strong);border-radius:6px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
+
+.colwrap{position:relative}
+.colpanel{position:absolute;top:calc(100% + 6px);right:0;z-index:20;background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:8px;box-shadow:var(--shadow);padding:12px 14px;
+  width:260px;max-height:70vh;overflow:auto;display:flex;flex-direction:column;gap:7px}
+.colpanel .colhead{margin:0 0 2px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.colpanel label{display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer}
+.colpanel input{accent-color:var(--accent)}
+.colactions{display:flex;gap:8px;margin-top:6px;border-top:1px solid var(--line);padding-top:9px}
+.colactions button{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;
+  background:var(--surface-2);color:var(--ink);border:1px solid var(--line-strong);border-radius:6px;padding:4px 10px}
+.colactions button:hover{border-color:var(--accent)}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
+  font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
+  padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
+tbody tr.row:hover{background:var(--surface-2)}
+td{padding:10px 12px;font-size:13px;vertical-align:top}
+.name{font-family:"Chivo",sans-serif;font-weight:700;font-size:13.5px}
+.sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-soft);
+  font-weight:400;margin-top:2px;letter-spacing:.02em}
+.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+.price small{display:block;color:var(--ink-soft);font-weight:400;font-size:10.5px;white-space:normal;max-width:22ch}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;
+  padding:2px 6px;border-radius:4px;margin:1px 3px 1px 0;white-space:nowrap}
+.t-yes{background:var(--yes-bg);color:var(--yes)}
+.t-no{background:var(--no-bg);color:var(--no)}
+.t-part{background:var(--partial-bg);color:var(--partial)}
+.t-neutral{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+a.srclink{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);text-decoration:none;white-space:nowrap}
+a.srclink:hover,a.srclink:focus-visible{text-decoration:underline}
+
+.expand{background:var(--bg)}
+.expand td{padding:0}
+.expand .inner{padding:16px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 26px}
+.expand h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.expand p{margin:0;font-size:12.5px;color:var(--ink-soft)}
+.expand p strong{color:var(--ink);font-weight:600}
+dl.kv{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;font-size:12.5px;color:var(--ink-soft);max-width:120ch}
+dl.kv dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-top:1px}
+dl.kv dd{margin:0}
+.chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
+tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
+
+footer{margin-top:30px;font-size:12px;color:var(--ink-soft);max-width:70ch}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1><a class="crumb" href="../">OG-DB</a><span class="sep">/</span>Mouse DB <span class="compiled">compiled Sep 2026</span></h1>
+  </header>
+  <div class="primer"><h2>How to read the table</h2><ul><li><strong>Scroll wheel</strong> &mdash; <em>Ratchet only</em> is a normal notched wheel; <em>Free-spin</em> flywheel-spins for fast document scrolling; <em>Free-spin + toggle</em> switches between the two (a physical button, or Logitech's electromagnetic SmartShift that auto-shifts on a hard flick). Trackballs with a ring or twist-ball show as <em>No wheel</em>.</li><li><strong>Multi-device</strong> = can you pair several computers and switch with a button? <em>Multi-host</em> rows list how many and how. Most gaming mice pair one dongle + Bluetooth but have no fast-switch, so they read <em>Single host</em>.</li><li><strong>Side buttons</strong> counts thumb-side programmable buttons; MMO mice go to 12. <strong>Total</strong> is every programmable input.</li><li><strong>Polling</strong> notes when a 4K / 8K rate needs a separate HyperPolling-style dongle.</li></ul></div>
+  <div class="controls">
+    <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
+    <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
+    <div class="grp colwrap">
+      <button class="chip" id="colbtn" aria-expanded="false" aria-controls="colpanel">Columns ▾</button>
+      <div class="colpanel" id="colpanel" hidden>
+        <p class="colhead">Show columns</p>
+        <div class="colactions"><button type="button" data-all="1">All</button><button type="button" data-all="0">Minimal</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="tablewrap"><table id="tbl"><thead><tr></tr></thead><tbody id="tbody"></tbody></table></div>
+  <footer><p><strong>Notes.</strong> Enthusiast-brand (Lamzu, Pulsar, Vaxee, Endgame, Ninjutso) prices and weights are street estimates that move a lot. Logitech MX-line "onboard memory: no" means full remapping needs Options+ running, unlike gaming mice with true onboard profiles. Per-row <strong>Source</strong> links the vendor page. Compiled Sep 2026 &mdash; verify pricing before buying.</p></footer>
+</div>
+<script>
+const DATA=[{"name":"Logitech MX Master 3S","brand":"Logitech","priceUSD":100,"priceNote":"MSRP; frequently ~$80-90 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":7,"thumbWheel":true,"scrollWheel":"electromagnetic auto + manual toggle (SmartShift)","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (Bluetooth or Logi Bolt), Easy-Switch button + Flow cross-computer","wireless":true,"sensor":"Logitech Darkfield 8K","maxDPI":8000,"pollingHz":"125","weightG":141,"onboardMemory":false,"software":"Logitech Options+","battery":"70 days rechargeable, USB-C, 1min = 3h","os":"Windows / macOS / Linux / iPadOS / ChromeOS","notes":"Best-in-class MagSpeed electromagnetic wheel with SmartShift auto-ratchet; quiet clicks; tracks on glass; not for fast gaming.","source":{"url":"https://www.logitech.com/en-us/products/mice/mx-master-3s.html","label":"Logitech"}},{"name":"Logitech MX Master 4","brand":"Logitech","priceUSD":120,"priceNote":"MSRP at Sept 2025 launch","shape":"ergo right-hand","sideButtons":3,"buttonsTotal":8,"thumbWheel":true,"scrollWheel":"electromagnetic auto + manual toggle (SmartShift)","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (Bluetooth or Logi Bolt), Easy-Switch button + Flow cross-computer","wireless":true,"sensor":"Logitech Darkfield 8K","maxDPI":8000,"pollingHz":"125","weightG":150,"onboardMemory":false,"software":"Logitech Options+","battery":"70 days rechargeable, USB-C, 1min = 3h","os":"Windows / macOS / Linux / iPadOS / ChromeOS","notes":"Adds haptic feedback motor, extra thumb button and an Action Ring context menu over the MX Master 3S; same MagSpeed wheel.","source":{"url":"https://www.techpowerup.com/341480/logitech-introduces-the-mx-master-4-for-ususd-120","label":"TechPowerUp"}},{"name":"Logitech MX Anywhere 3S","brand":"Logitech","priceUSD":80,"priceNote":"MSRP; often ~$65 street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"electromagnetic auto + manual toggle (SmartShift)","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (Bluetooth or Logi Bolt), Easy-Switch button + Flow","wireless":true,"sensor":"Logitech Darkfield 8K","maxDPI":8000,"pollingHz":"125","weightG":99,"onboardMemory":false,"software":"Logitech Options+","battery":"70 days rechargeable, USB-C, 1min = 3h","os":"Windows / macOS / Linux / iPadOS / ChromeOS","notes":"Compact travel version of the MX line with the same MagSpeed ratchet/free-spin wheel; no dedicated thumb wheel.","source":{"url":"https://www.logitech.com/en-us/products/mice/mx-anywhere-3s.html","label":"Logitech"}},{"name":"Logitech MX Vertical","brand":"Logitech","priceUSD":100,"priceNote":"MSRP; often ~$75 street","shape":"vertical","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (Bluetooth or Unifying), Easy-Switch button + Flow","wireless":true,"sensor":"Logitech optical","maxDPI":4000,"pollingHz":"125","weightG":135,"onboardMemory":false,"software":"Logitech Options+","battery":"4 months rechargeable, USB-C, 1min = 3h","os":"Windows / macOS / Linux / ChromeOS","notes":"57-degree vertical handshake grip to reduce wrist pronation; plain notched wheel, no free-spin.","source":{"url":"https://www.logitech.com/en-us/products/mice/mx-vertical-ergonomic-mouse.html","label":"Logitech"}},{"name":"Logitech MX Ergo S","brand":"Logitech","priceUSD":100,"priceNote":"MSRP Sept 2024","shape":"trackball","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts, Easy-Switch button + Flow","wireless":true,"sensor":"optical trackball 2048 DPI","maxDPI":2048,"pollingHz":"125","weightG":259,"onboardMemory":false,"software":"Logitech Options+","battery":"120 days rechargeable, USB-C, 1min = 24h","os":"Windows / macOS / Linux / ChromeOS","notes":"Thumb-operated ball on an adjustable 0/20-degree tilt plate; quieter clicks and USB-C vs original MX Ergo; precision-speed button.","source":{"url":"https://www.logitech.com/en-us/shop/p/mx-ergo-s-wireless-trackball-mouse","label":"Logitech"}},{"name":"Logitech ERGO M575S","brand":"Logitech","priceUSD":50,"priceNote":"MSRP; often ~$40 street","shape":"trackball","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (1 Bolt dongle + 1 Bluetooth), manual pairing switch","wireless":true,"sensor":"optical trackball","maxDPI":2000,"pollingHz":"125","weightG":145,"onboardMemory":false,"software":"Logitech Options+","battery":"AA x1, up to 24 months","os":"Windows / macOS / Linux / ChromeOS","notes":"Entry thumb trackball; no wired mode, no tilt, no free-spin - just a dependable notched wheel.","source":{"url":"https://www.logitech.com/en-us/products/mice/ergo-m575-wireless-trackball.html","label":"Logitech"}},{"name":"Logitech Lift Vertical Ergonomic Mouse","brand":"Logitech","priceUSD":70,"priceNote":"MSRP; often ~$55 street","shape":"vertical","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (Bolt or Bluetooth), Easy-Switch button + Flow","wireless":true,"sensor":"Logitech optical","maxDPI":4000,"pollingHz":"125","weightG":125,"onboardMemory":false,"software":"Logitech Options+","battery":"AA x1, up to 24 months","os":"Windows / macOS / Linux / iPadOS / ChromeOS","notes":"Smaller-handed alternative to MX Vertical at 58 degrees; left-handed version sold separately; no wired mode.","source":{"url":"https://www.logitech.com/en-us/products/mice/lift-vertical-ergonomic-mouse.html","label":"Logitech"}},{"name":"Logitech Signature M650 L","brand":"Logitech","priceUSD":40,"priceNote":"MSRP; often ~$30 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (1 Bolt + 1 Bluetooth), manual switch","wireless":true,"sensor":"Logitech optical","maxDPI":2000,"pollingHz":"125","weightG":115,"onboardMemory":false,"software":"Logitech Options+","battery":"AA x1, up to 24 months","os":"Windows / macOS / Linux / iPadOS / ChromeOS","notes":"Budget silent-click ergo mouse; SmartWheel gives light near-free spin under fast flicks but has no true free-spin mode.","source":{"url":"https://www.logitech.com/en-us/products/mice/signature-m650.html","label":"Logitech"}},{"name":"Keychron M6 Wireless","brand":"Keychron","priceUSD":60,"priceNote":"~$40 for PixArt 3395 1K version, ~$60 for 8K PixArt 3950 version","shape":"ambidextrous","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (1 dongle + 2 Bluetooth), pairing switch","wireless":true,"sensor":"PixArt PAW3395 (or PAW3950 on 8K model)","maxDPI":26000,"pollingHz":"1000 (8000 on PAW3950 dongle model)","weightG":86,"onboardMemory":true,"software":"Keychron Launcher (web) / VIA-style","battery":"up to 180h rechargeable, USB-C, 800mAh","os":"Windows / macOS / Linux","notes":"Lightweight tri-mode with silent-switch option and 5 onboard profiles; software-free web configurator.","source":{"url":"https://www.keychron.com/products/keychron-m6-wireless-mouse","label":"Keychron"}},{"name":"ProtoArc EM01 NL","brand":"ProtoArc","priceUSD":50,"priceNote":"~$50 street","shape":"trackball","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (1 dongle + 2 Bluetooth), mode button","wireless":true,"sensor":"optical trackball","maxDPI":1600,"pollingHz":"125","weightG":180,"onboardMemory":false,"software":"none (button-cycled DPI/light)","battery":"up to 100 days rechargeable, USB-C, 900mAh","os":"Windows / macOS / Android / iOS","notes":"Budget thumb trackball with adjustable 20-degree tilt and RGB; wireless only, no software remapping.","source":{"url":"https://www.protoarc.com/products/em01-nl-trackball-mouse","label":"ProtoArc"}},{"name":"MCHOSE AX5 Pro Max","brand":"MCHOSE","priceUSD":50,"priceNote":"approx street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (1 dongle + 2 Bluetooth), pairing button","wireless":true,"sensor":"PixArt PAW3395","maxDPI":26000,"pollingHz":"1000 (4000 w/ dongle)","weightG":74,"onboardMemory":true,"software":"MCHOSE driver","battery":"up to 150h rechargeable, USB-C","os":"Windows / macOS","notes":"Budget lightweight tri-mode gaming mouse; frequent value pick, build and software less polished than majors.","source":{"url":"https://www.mchose.com/","label":"MCHOSE"}},{"name":"Kensington SlimBlade Pro","brand":"Kensington","priceUSD":130,"priceNote":"MSRP; often ~$100 street","shape":"trackball","sideButtons":0,"buttonsTotal":4,"thumbWheel":false,"scrollWheel":"twist-ball scroll (no wheel)","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"1 Bluetooth + 1 dongle host, mode switch (no rapid multi-host switching)","wireless":true,"sensor":"optical trackball","maxDPI":800,"pollingHz":"125","weightG":379,"onboardMemory":false,"software":"KensingtonWorks","battery":"up to 4 months rechargeable, USB-C","os":"Windows / macOS / ChromeOS / Linux (basic)","notes":"Large 55mm finger ball; scrolling is done by twisting the ball itself; 4 corner buttons, no thumb buttons.","source":{"url":"https://www.kensington.com/p/products/electronic-control-solutions/trackball-products/slimblade-pro-trackball/","label":"Kensington"}},{"name":"Kensington Expert Mouse Wireless","brand":"Kensington","priceUSD":120,"priceNote":"MSRP; often ~$90 street","shape":"trackball","sideButtons":0,"buttonsTotal":4,"thumbWheel":false,"scrollWheel":"scroll ring","tiltScroll":false,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"1 dongle + 1 Bluetooth host, mode switch","wireless":true,"sensor":"optical trackball","maxDPI":400,"pollingHz":"125","weightG":240,"onboardMemory":false,"software":"KensingtonWorks","battery":"AA x2","os":"Windows / macOS / ChromeOS","notes":"Iconic 55mm center ball with a physical scroll ring around it; ambidextrous; 4 corner buttons, wrist rest included.","source":{"url":"https://www.kensington.com/p/products/electronic-control-solutions/trackball-products/expert-mouse-wireless-trackball/","label":"Kensington"}},{"name":"Kensington Pro Fit Ergo Vertical Wireless Trackball","brand":"Kensington","priceUSD":80,"priceNote":"MSRP; often ~$60 street","shape":"trackball","sideButtons":2,"buttonsTotal":9,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (1 dongle + 2 Bluetooth), channel button","wireless":true,"sensor":"optical trackball","maxDPI":1600,"pollingHz":"125","weightG":175,"onboardMemory":false,"software":"KensingtonWorks","battery":"AA x2, up to ~12 months","os":"Windows / macOS / ChromeOS","notes":"Vertical thumb-ball trackball at a 60-degree angle; 9 programmable buttons and true 3-device switching.","source":{"url":"https://www.kensington.com/p/products/electronic-control-solutions/trackball-products/pro-fit-ergo-vertical-wireless-trackball/","label":"Kensington"}},{"name":"Kensington Orbit Fusion Wireless Trackball","brand":"Kensington","priceUSD":60,"priceNote":"MSRP; often ~$45 street","shape":"trackball","sideButtons":0,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"scroll ring","tiltScroll":false,"connection":["2.4GHz dongle"],"multiDevice":"none (single dongle host)","wireless":true,"sensor":"optical trackball","maxDPI":1600,"pollingHz":"125","weightG":129,"onboardMemory":false,"software":"KensingtonWorks","battery":"AA x2","os":"Windows / macOS / ChromeOS","notes":"Finger-operated 40mm ball with scroll ring and detachable wrist rest; 2.4GHz only, no Bluetooth.","source":{"url":"https://www.kensington.com/p/products/electronic-control-solutions/trackball-products/orbit-fusion-wireless-trackball/","label":"Kensington"}},{"name":"Elecom HUGE (M-HT1DRBK)","brand":"Elecom","priceUSD":60,"priceNote":"approx US street; wireless model","shape":"trackball","sideButtons":3,"buttonsTotal":8,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":true,"connection":["2.4GHz dongle"],"multiDevice":"none (single dongle host)","wireless":true,"sensor":"optical trackball","maxDPI":1500,"pollingHz":"125","weightG":240,"onboardMemory":false,"software":"Elecom Mouse Assistant","battery":"AA x2","os":"Windows / macOS","notes":"Large 52mm thumb ball with a big palm rest, 8 buttons, tilt wheel and adjustable click tension; 2.4GHz only.","source":{"url":"https://www.elecom.co.jp/products/M-HT1DRBK.html","label":"Elecom"}},{"name":"Elecom DEFT Pro (M-DPT1MRBK)","brand":"Elecom","priceUSD":65,"priceNote":"approx US street","shape":"trackball","sideButtons":3,"buttonsTotal":8,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":true,"connection":["USB wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (dongle + Bluetooth), switch on base","wireless":true,"sensor":"optical trackball","maxDPI":1500,"pollingHz":"125","weightG":128,"onboardMemory":false,"software":"Elecom Mouse Assistant","battery":"AA x1","os":"Windows / macOS","notes":"Index/middle-finger 52mm ball, 8 buttons plus tilt wheel; one of the few Elecom balls with wired + BT + dongle.","source":{"url":"https://www.elecom.co.jp/products/M-DPT1MRBK.html","label":"Elecom"}},{"name":"Elecom EX-G Pro Trackball (M-XPT1MRBK)","brand":"Elecom","priceUSD":70,"priceNote":"approx US street","shape":"trackball","sideButtons":3,"buttonsTotal":8,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":true,"connection":["USB wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (dongle + Bluetooth), base switch","wireless":true,"sensor":"optical trackball","maxDPI":1500,"pollingHz":"125","weightG":116,"onboardMemory":false,"software":"Elecom Mouse Assistant","battery":"AA x1","os":"Windows / macOS","notes":"Compact thumb-ball with 8 buttons, tilt wheel and tri-mode connectivity; supports low click-noise switches.","source":{"url":"https://www.elecom.co.jp/products/M-XPT1MRBK.html","label":"Elecom"}},{"name":"Ploopy Classic Trackball","brand":"Ploopy","priceUSD":110,"priceNote":"kit price; assembled slightly more","shape":"trackball","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"stepless","tiltScroll":false,"connection":["USB-C wired"],"multiDevice":"none","wireless":false,"sensor":"PMW3360","maxDPI":12000,"pollingHz":"1000","weightG":300,"onboardMemory":true,"software":"QMK / VIA (open source)","battery":"N/A wired","os":"Windows / macOS / Linux","notes":"Open-source, 3D-printed, QMK-programmable finger trackball; fully remappable firmware, optical encoder scroll.","source":{"url":"https://ploopy.co/classic-trackball/","label":"Ploopy"}},{"name":"Razer Basilisk V3","brand":"Razer","priceUSD":70,"priceNote":"MSRP; often ~$45 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":10,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["USB wired"],"multiDevice":"none","wireless":false,"sensor":"Razer Focus+ 26K","maxDPI":26000,"pollingHz":"1000","weightG":101,"onboardMemory":true,"software":"Razer Synapse","battery":"N/A wired","os":"Windows","notes":"Wired HyperScroll wheel with a physical toggle between tactile and free-spin plus tilt; sniper button on thumb.","source":{"url":"https://www.razer.com/gaming-mice/razer-basilisk-v3","label":"Razer"}},{"name":"Razer Basilisk V3 Pro","brand":"Razer","priceUSD":160,"priceNote":"MSRP; often ~$120 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":10,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"none (game-focused; one active link at a time)","wireless":true,"sensor":"Razer Focus Pro 30K","maxDPI":30000,"pollingHz":"1000 (4000 w/ HyperPolling dongle)","weightG":112,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 90h rechargeable, USB-C","os":"Windows / macOS (limited)","notes":"Wireless HyperScroll Tilt wheel with tactile / free-spin / Smart-Reel auto modes; optional wireless charging dock.","source":{"url":"https://www.razer.com/gaming-mice/razer-basilisk-v3-pro","label":"Razer"}},{"name":"Razer Basilisk V3 Pro 35K","brand":"Razer","priceUSD":160,"priceNote":"MSRP 2025 refresh","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":11,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"none (game-focused; one active link at a time)","wireless":true,"sensor":"Razer Focus Pro 35K Gen 2","maxDPI":35000,"pollingHz":"1000 (8000 w/ HyperPolling dongle)","weightG":112,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 140h rechargeable, USB-C","os":"Windows / macOS (limited)","notes":"Spec-bump of the V3 Pro: 35K Gen-2 sensor, native 8K wireless polling, longer battery; same HyperScroll Tilt wheel.","source":{"url":"https://www.razer.com/gaming-mice/razer-basilisk-v3-pro-35k","label":"Razer"}},{"name":"Razer DeathAdder V3 Pro","brand":"Razer","priceUSD":150,"priceNote":"MSRP; often ~$100-120 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Razer Focus Pro 30K","maxDPI":30000,"pollingHz":"1000 (4000 w/ HyperPolling dongle)","weightG":63,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 90h rechargeable, USB-C","os":"Windows / macOS (limited)","notes":"Lightweight esports ergo shape; no Bluetooth, plain notched wheel, minimal buttons - built for FPS.","source":{"url":"https://www.razer.com/gaming-mice/razer-deathadder-v3-pro","label":"Razer"}},{"name":"Razer DeathAdder V4 Pro","brand":"Razer","priceUSD":170,"priceNote":"MSRP 2025","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Razer Focus Pro 45K","maxDPI":45000,"pollingHz":"1000 (8000 native, no separate dongle)","weightG":56,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 150h rechargeable, USB-C","os":"Windows / macOS (limited)","notes":"Lighter DeathAdder with 45K sensor and built-in 8K polling; still FPS-minimal, no BT or free-spin.","source":{"url":"https://www.razer.com/gaming-mice/razer-deathadder-v4-pro","label":"Razer"}},{"name":"Razer Viper V3 Pro","brand":"Razer","priceUSD":160,"priceNote":"MSRP; often ~$130 street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Razer Focus Pro 35K","maxDPI":35000,"pollingHz":"1000 (8000 w/ HyperPolling dongle)","weightG":54,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 95h rechargeable, USB-C","os":"Windows / macOS (limited)","notes":"Ultralight ambidextrous esports mouse (right-side buttons only); pure competitive tool, no BT.","source":{"url":"https://www.razer.com/gaming-mice/razer-viper-v3-pro","label":"Razer"}},{"name":"Razer Naga V2 Pro","brand":"Razer","priceUSD":180,"priceNote":"MSRP; often ~$150 street","shape":"MMO ergo","sideButtons":12,"buttonsTotal":20,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"Bluetooth + HyperSpeed dongle; swap side plates (2/6/12 button)","wireless":true,"sensor":"Razer Focus Pro 30K","maxDPI":30000,"pollingHz":"1000 (4000 w/ HyperPolling dongle)","weightG":134,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 150h rechargeable, USB-C","os":"Windows / macOS (limited)","notes":"Flagship MMO mouse: swappable 2/6/12-button thumb plates plus HyperScroll tilt toggle wheel.","source":{"url":"https://www.razer.com/gaming-mice/razer-naga-v2-pro","label":"Razer"}},{"name":"Razer Naga V2 HyperSpeed","brand":"Razer","priceUSD":100,"priceNote":"MSRP; often ~$80 street","shape":"MMO ergo","sideButtons":12,"buttonsTotal":19,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (HyperSpeed dongle + Bluetooth)","wireless":true,"sensor":"Razer 30K optical","maxDPI":30000,"pollingHz":"1000","weightG":95,"onboardMemory":true,"software":"Razer Synapse","battery":"AA x1, up to 250h (400h BT)","os":"Windows / macOS (limited)","notes":"AA-powered 12-side-button MMO mouse with HyperScroll toggle wheel; no wired mode, fixed side plate.","source":{"url":"https://www.razer.com/gaming-mice/razer-naga-v2-hyperspeed","label":"Razer"}},{"name":"Razer Pro Click V2 Vertical Edition","brand":"Razer","priceUSD":100,"priceNote":"MSRP 2025","shape":"vertical","sideButtons":2,"buttonsTotal":8,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"4 hosts (1 HyperSpeed dongle + 3 Bluetooth), Easy-Switch button","wireless":true,"sensor":"Razer optical 30K","maxDPI":30000,"pollingHz":"1000","weightG":108,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 6 months rechargeable, USB-C","os":"Windows / macOS","notes":"Razer's productivity vertical mouse; genuine multi-host switching across four devices, silent clicks.","source":{"url":"https://www.razer.com/productivity-mice/razer-pro-click-v2-vertical-edition","label":"Razer"}},{"name":"Razer Pro Click V2","brand":"Razer","priceUSD":120,"priceNote":"MSRP 2025","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":9,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"4 hosts (1 HyperSpeed dongle + 3 Bluetooth), Easy-Switch button","wireless":true,"sensor":"Razer optical 30K","maxDPI":30000,"pollingHz":"1000","weightG":100,"onboardMemory":true,"software":"Razer Synapse","battery":"up to 8 months rechargeable, USB-C","os":"Windows / macOS","notes":"Productivity ergo with a free-spin toggle wheel plus tilt and true 4-device switching - a rare Razer MX Master rival.","source":{"url":"https://www.razer.com/productivity-mice/razer-pro-click-v2","label":"Razer"}},{"name":"Logitech G502 X Plus","brand":"Logitech","priceUSD":160,"priceNote":"MSRP; often ~$130 street","shape":"ergo right-hand","sideButtons":3,"buttonsTotal":13,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Logitech HERO 25K","maxDPI":25600,"pollingHz":"1000","weightG":106,"onboardMemory":true,"software":"Logitech G HUB","battery":"up to 120h rechargeable (37h RGB), USB-C","os":"Windows / macOS","notes":"Loaded wireless gaming mouse: dual-mode scroll with manual free-spin toggle, tilt, removable DPI-shift button, LIGHTFORCE switches.","source":{"url":"https://www.logitechg.com/en-us/products/gaming-mice/g502-x-plus-wireless-lightforce.html","label":"Logitech G"}},{"name":"Logitech G502 X Lightspeed","brand":"Logitech","priceUSD":140,"priceNote":"MSRP; often ~$110 street","shape":"ergo right-hand","sideButtons":3,"buttonsTotal":13,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Logitech HERO 25K","maxDPI":25600,"pollingHz":"1000","weightG":102,"onboardMemory":true,"software":"Logitech G HUB","battery":"up to 140h rechargeable, USB-C","os":"Windows / macOS","notes":"Same as G502 X Plus without RGB; keeps the physical ratchet/free-spin toggle and tilt wheel.","source":{"url":"https://www.logitechg.com/en-us/products/gaming-mice/g502-x-lightspeed-wireless-gaming-mouse.html","label":"Logitech G"}},{"name":"Logitech G Pro X Superlight 2","brand":"Logitech","priceUSD":160,"priceNote":"MSRP; often ~$130 street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Logitech HERO 2","maxDPI":44000,"pollingHz":"1000 (2000/4000 selectable)","weightG":60,"onboardMemory":true,"software":"Logitech G HUB","battery":"up to 95h rechargeable, USB-C","os":"Windows / macOS","notes":"Minimalist ultralight esports mouse; right-side buttons present but not sculpted; plain wheel, no BT.","source":{"url":"https://www.logitechg.com/en-us/products/gaming-mice/pro-x-superlight-2.html","label":"Logitech G"}},{"name":"Logitech G303 Shroud Edition","brand":"Logitech","priceUSD":130,"priceNote":"MSRP; often ~$80 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Logitech HERO 25K","maxDPI":25600,"pollingHz":"1000","weightG":75,"onboardMemory":true,"software":"Logitech G HUB","battery":"up to 145h rechargeable, USB-C","os":"Windows / macOS","notes":"Revived angular G303 shape tuned with pro Shroud; light and fast, no free-spin or BT.","source":{"url":"https://www.logitechg.com/en-us/products/gaming-mice/g303-shroud-edition-wireless-gaming-mouse.html","label":"Logitech G"}},{"name":"Logitech G309 Lightspeed","brand":"Logitech","priceUSD":80,"priceNote":"MSRP 2024","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (Lightspeed dongle + Bluetooth)","wireless":true,"sensor":"Logitech HERO 2","maxDPI":25600,"pollingHz":"1000 (2000/4000 w/ optional POWERPLAY)","weightG":86,"onboardMemory":true,"software":"Logitech G HUB","battery":"AA x1, up to 300h (600h BT); POWERPLAY compatible","os":"Windows / macOS","notes":"Value Lightspeed mouse; AA battery, adds Bluetooth so it doubles as a light productivity mouse.","source":{"url":"https://www.logitechg.com/en-us/products/gaming-mice/g309-lightspeed-wireless-gaming-mouse.html","label":"Logitech G"}},{"name":"Logitech G604 Lightspeed","brand":"Logitech","priceUSD":100,"priceNote":"MSRP; often ~$70 street","shape":"ergo right-hand","sideButtons":6,"buttonsTotal":15,"thumbWheel":false,"scrollWheel":"ratchet + free-spin (button toggle)","tiltScroll":true,"connection":["2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (Lightspeed dongle + Bluetooth), mode button","wireless":true,"sensor":"Logitech HERO 25K","maxDPI":25600,"pollingHz":"1000","weightG":135,"onboardMemory":true,"software":"Logitech G HUB","battery":"AA x1, up to 240h (5.5 months BT)","os":"Windows / macOS","notes":"Lightweight-MMO hybrid with six thumb buttons and a MagSpeed-style ratchet/free-spin toggle wheel; AA powered.","source":{"url":"https://www.logitechg.com/en-us/products/gaming-mice/g604-lightspeed-wireless-gaming-mouse.html","label":"Logitech G"}},{"name":"Logitech G600 MMO Gaming Mouse","brand":"Logitech","priceUSD":80,"priceNote":"MSRP; often ~$50 street","shape":"MMO ergo","sideButtons":12,"buttonsTotal":20,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":true,"connection":["USB wired"],"multiDevice":"none","wireless":false,"sensor":"Logitech optical","maxDPI":8200,"pollingHz":"1000","weightG":133,"onboardMemory":true,"software":"Logitech G HUB / LGS","battery":"N/A wired","os":"Windows / macOS","notes":"Classic 12-button thumb-grid MMO mouse with a third 'G-Shift' ring finger button; tilt wheel, no free-spin.","source":{"url":"https://www.logitechg.com/en-us/products/gaming-mice/g600-mmo-gaming-mouse.html","label":"Logitech G"}},{"name":"Corsair Scimitar Elite Wireless SE","brand":"Corsair","priceUSD":130,"priceNote":"MSRP 2025","shape":"MMO ergo","sideButtons":12,"buttonsTotal":16,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (Slipstream dongle + Bluetooth)","wireless":true,"sensor":"Corsair 33K optical","maxDPI":33000,"pollingHz":"1000","weightG":114,"onboardMemory":true,"software":"Corsair iCUE","battery":"up to 150h rechargeable, USB-C","os":"Windows / macOS","notes":"12-button slider thumb pad that physically adjusts fore/aft; SE adds an Elgato virtual Stream Deck integration.","source":{"url":"https://www.corsair.com/us/en/p/gaming-mouse/ch-9314014-ww/scimitar-elite-wireless-se-mmo-gaming-mouse","label":"Corsair"}},{"name":"Corsair M75 Air Wireless","brand":"Corsair","priceUSD":150,"priceNote":"MSRP; often ~$110 street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (Slipstream dongle + Bluetooth)","wireless":true,"sensor":"PixArt PAW3395","maxDPI":26000,"pollingHz":"1000","weightG":60,"onboardMemory":true,"software":"Corsair iCUE","battery":"up to 100h rechargeable, USB-C","os":"Windows / macOS","notes":"Ultralight symmetrical mouse; swappable left/right side buttons; plain wheel, no tilt.","source":{"url":"https://www.corsair.com/us/en/p/gaming-mouse/ch-9316000-na/m75-air-wireless-ultra-lightweight-gaming-mouse","label":"Corsair"}},{"name":"Corsair Dark Core RGB Pro SE","brand":"Corsair","priceUSD":90,"priceNote":"MSRP; often ~$60 street","shape":"ergo right-hand","sideButtons":3,"buttonsTotal":8,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (Slipstream dongle + Bluetooth)","wireless":true,"sensor":"PixArt PMW3391","maxDPI":18000,"pollingHz":"1000","weightG":133,"onboardMemory":true,"software":"Corsair iCUE","battery":"up to 50h rechargeable (Qi wireless charging on SE)","os":"Windows / macOS","notes":"Wide ergo palm mouse with interchangeable side grips; SE model supports Qi wireless charging.","source":{"url":"https://www.corsair.com/us/en/p/gaming-mouse/ch-9315511-na/dark-core-rgb-pro-se-wireless-gaming-mouse","label":"Corsair"}},{"name":"SteelSeries Aerox 5 Wireless","brand":"SteelSeries","priceUSD":140,"priceNote":"MSRP; often ~$90 street","shape":"ergo right-hand","sideButtons":5,"buttonsTotal":9,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (Quantum 2.0 dongle + Bluetooth)","wireless":true,"sensor":"TrueMove Air","maxDPI":18000,"pollingHz":"1000","weightG":74,"onboardMemory":true,"software":"SteelSeries GG","battery":"up to 180h rechargeable, USB-C","os":"Windows / macOS","notes":"Holey lightweight mouse with a multi-directional thumb-button cluster (9 inputs) and tilt wheel; IP54 rated.","source":{"url":"https://steelseries.com/gaming-mice/aerox-5-wireless","label":"SteelSeries"}},{"name":"SteelSeries Aerox 9 Wireless","brand":"SteelSeries","priceUSD":150,"priceNote":"MSRP; often ~$110 street","shape":"MMO ergo","sideButtons":12,"buttonsTotal":18,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":true,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (Quantum 2.0 dongle + Bluetooth)","wireless":true,"sensor":"TrueMove Air","maxDPI":18000,"pollingHz":"1000","weightG":89,"onboardMemory":true,"software":"SteelSeries GG","battery":"up to 180h rechargeable, USB-C","os":"Windows / macOS","notes":"Lightest 12-side-button MMO mouse thanks to a honeycomb shell; IP54 water/dust resistant; tilt wheel.","source":{"url":"https://steelseries.com/gaming-mice/aerox-9-wireless","label":"SteelSeries"}},{"name":"SteelSeries Prime Wireless","brand":"SteelSeries","priceUSD":130,"priceNote":"MSRP; often ~$80 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"TrueMove Air","maxDPI":18000,"pollingHz":"1000","weightG":80,"onboardMemory":true,"software":"SteelSeries GG","battery":"up to 100h rechargeable, USB-C","os":"Windows / macOS","notes":"Pure FPS mouse designed with pros; magnetic optical switches, no BT, plain wheel.","source":{"url":"https://steelseries.com/gaming-mice/prime-wireless","label":"SteelSeries"}},{"name":"Glorious Model O 2 Wireless","brand":"Glorious","priceUSD":100,"priceNote":"MSRP; often ~$70 street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (2.4GHz dongle + Bluetooth)","wireless":true,"sensor":"BAMF 2.0 (PixArt-based)","maxDPI":26000,"pollingHz":"1000","weightG":68,"onboardMemory":true,"software":"Glorious CORE","battery":"up to 110h rechargeable, USB-C","os":"Windows / macOS","notes":"Lightweight symmetrical shape (right-side buttons only); adds Bluetooth over the original Model O.","source":{"url":"https://www.gloriousgaming.com/products/glorious-model-o-2-wireless","label":"Glorious"}},{"name":"Glorious Model I 2 Wireless","brand":"Glorious","priceUSD":110,"priceNote":"MSRP; often ~$85 street","shape":"ergo right-hand","sideButtons":6,"buttonsTotal":9,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (2.4GHz dongle + Bluetooth)","wireless":true,"sensor":"BAMF 2.0 (PixArt-based)","maxDPI":26000,"pollingHz":"1000","weightG":75,"onboardMemory":true,"software":"Glorious CORE","battery":"up to 100h rechargeable, USB-C","os":"Windows / macOS","notes":"MMO-lite with two removable/reconfigurable thumb buttons over a 4-button base (up to 6 side inputs).","source":{"url":"https://www.gloriousgaming.com/products/glorious-model-i-2-wireless","label":"Glorious"}},{"name":"ASUS ROG Harpe Ace Aim Lab Edition","brand":"ASUS","priceUSD":150,"priceNote":"MSRP; often ~$100 street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (RF dongle + Bluetooth)","wireless":true,"sensor":"ROG AimPoint 36K","maxDPI":36000,"pollingHz":"1000 (8000 w/ ROG Polling Rate Booster)","weightG":54,"onboardMemory":true,"software":"ROG Armoury Crate","battery":"up to 90h rechargeable, USB-C","os":"Windows / macOS","notes":"Ultralight esports mouse co-developed with Aim Lab; right-side buttons only, plain wheel.","source":{"url":"https://rog.asus.com/mice-mouse-pads/mice/gaming-mice/rog-harpe-ace-aim-lab-edition/","label":"ASUS ROG"}},{"name":"ASUS ROG Keris II Ace","brand":"ASUS","priceUSD":130,"priceNote":"MSRP 2024","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (RF dongle + Bluetooth)","wireless":true,"sensor":"ROG AimPoint Pro 42K","maxDPI":42000,"pollingHz":"1000 (8000 w/ SpeedNova / Polling Rate Booster)","weightG":54,"onboardMemory":true,"software":"ROG Armoury Crate","battery":"up to 150h rechargeable, USB-C","os":"Windows / macOS","notes":"Lightweight ergo shape with hot-swappable switch sockets; SpeedNova wireless with 8K option.","source":{"url":"https://rog.asus.com/mice-mouse-pads/mice/gaming-mice/rog-keris-ii-ace/","label":"ASUS ROG"}},{"name":"ASUS ROG Chakram X","brand":"ASUS","priceUSD":160,"priceNote":"MSRP; often ~$120 street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":11,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle","Bluetooth"],"multiDevice":"2 hosts (RF dongle + Bluetooth)","wireless":true,"sensor":"ROG AimPoint 36K","maxDPI":36000,"pollingHz":"8000","weightG":127,"onboardMemory":true,"software":"ROG Armoury Crate","battery":"up to 130h rechargeable, USB-C, Qi charging","os":"Windows / macOS","notes":"Feature-maximal mouse with a detachable analog joystick on the thumb, hot-swap switches and 8K wireless polling.","source":{"url":"https://rog.asus.com/mice-mouse-pads/mice/gaming-mice/rog-chakram-x/","label":"ASUS ROG"}},{"name":"Endgame Gear XM2we","brand":"Endgame Gear","priceUSD":80,"priceNote":"approx street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":6,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"PixArt PAW3370","maxDPI":19000,"pollingHz":"1000","weightG":63,"onboardMemory":true,"software":"Endgame Gear Configurator","battery":"AAA x1, ~110h","os":"Windows / macOS","notes":"Lightweight low-profile ergo favored for its shape and neutral clicks; AAA-powered, no BT.","source":{"url":"https://www.endgamegear.com/en/gaming-mice/xm2we","label":"Endgame Gear"}},{"name":"Pulsar X2V3 Wireless","brand":"Pulsar","priceUSD":110,"priceNote":"MSRP; ~$95 for standard, more for Premium/8K","shape":"ambidextrous","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"PixArt PAW3395","maxDPI":26000,"pollingHz":"1000 (4000/8000 w/ optional dongle)","weightG":53,"onboardMemory":true,"software":"Pulsar Fusion","battery":"up to 100h rechargeable, USB-C","os":"Windows / macOS","notes":"Ultralight symmetrical esports mouse with swappable side buttons and grip covers; no Bluetooth.","source":{"url":"https://www.pulsar.gg/products/x2v3","label":"Pulsar"}},{"name":"Lamzu Maya X","brand":"Lamzu","priceUSD":100,"priceNote":"approx street","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"PixArt PAW3950","maxDPI":30000,"pollingHz":"1000 (8000 w/ optional dongle)","weightG":46,"onboardMemory":true,"software":"Lamzu Configurator (web)","battery":"up to 90h rechargeable, USB-C","os":"Windows / macOS","notes":"Sub-50g ergo enthusiast mouse; premium sensor and switches, minimal buttons, no BT.","source":{"url":"https://lamzu.com/products/maya-x","label":"Lamzu"}},{"name":"Vaxee XE Wireless","brand":"Vaxee","priceUSD":110,"priceNote":"approx street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"PixArt PAW3395","maxDPI":26000,"pollingHz":"1000","weightG":76,"onboardMemory":true,"software":"driverless (button config)","battery":"up to 90h rechargeable, USB-C","os":"Windows / macOS","notes":"Driverless enthusiast mouse tuned for feel and click latency; no software, no BT, plain wheel.","source":{"url":"https://www.vaxee.co/product-page/vaxee-xe-wireless","label":"Vaxee"}},{"name":"Zowie EC2-CW","brand":"Zowie","priceUSD":130,"priceNote":"MSRP","shape":"ergo right-hand","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"Zowie 3370-based","maxDPI":3200,"pollingHz":"1000","weightG":77,"onboardMemory":true,"software":"none (on-device buttons only)","battery":"up to 70h rechargeable, USB-C","os":"Windows / macOS","notes":"Plug-and-play CS competitive mouse; all settings on the underside, no software, no BT, DPI capped low by design.","source":{"url":"https://zowie.benq.com/en-us/mouse/ec2-cw.html","label":"Zowie"}},{"name":"Ninjutso Sora V2","brand":"Ninjutso","priceUSD":110,"priceNote":"approx street","shape":"ambidextrous","sideButtons":2,"buttonsTotal":5,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB-C wired","2.4GHz dongle"],"multiDevice":"none","wireless":true,"sensor":"PixArt PAW3395","maxDPI":26000,"pollingHz":"1000 (4000/8000 w/ optional dongle)","weightG":39,"onboardMemory":true,"software":"Ninjutso web configurator","battery":"up to 70h rechargeable, USB-C","os":"Windows / macOS","notes":"One of the lightest production wireless mice at ~39g; symmetrical, no BT, enthusiast-focused.","source":{"url":"https://ninjutso.com/products/sora-v2","label":"Ninjutso"}},{"name":"UtechSmart Venus Pro Wireless","brand":"UtechSmart","priceUSD":50,"priceNote":"approx street","shape":"MMO ergo","sideButtons":12,"buttonsTotal":16,"thumbWheel":false,"scrollWheel":"ratchet only","tiltScroll":false,"connection":["USB wired","2.4GHz dongle","Bluetooth"],"multiDevice":"3 hosts (dongle + 2 Bluetooth), mode button","wireless":true,"sensor":"PixArt PMW3335","maxDPI":16000,"pollingHz":"1000","weightG":141,"onboardMemory":true,"software":"UtechSmart driver","battery":"up to ~70h rechargeable, USB-C","os":"Windows / macOS (limited)","notes":"Budget 12-button MMO with tri-mode connectivity and 3-device switching; the value pick versus Naga/Scimitar.","source":{"url":"https://www.utechsmart.com/products/venus-pro-wireless-mmo-gaming-mouse","label":"UtechSmart"}}];
+const DB={"name":"Mouse DB","compiled":"Sep 2026","noun":"mice"};
+const money=d=>d.priceUSD==null?'<span class="price">&mdash;</span>':
+  `<span class="price">$${d.priceUSD}<small>${esc(d.priceNote||'')}</small></span>`;
+const SHAPE={'ergo right-hand':['Ergo (right)','t-neutral'],'ambidextrous':['Ambidextrous','t-neutral'],
+  'vertical':['Vertical','t-part'],'trackball':['Trackball','t-part'],'MMO ergo':['MMO ergo','t-part']};
+const freeSpin=s=>/free-spin|smartshift|stepless/i.test(s||'');
+const hasToggle=s=>/toggle|smartshift/i.test(s||'');
+const multiHost=d=>d.multiDevice&&!/^none/i.test(d.multiDevice);
+
+const COLUMNS=[
+ {id:'name',hideable:false,label:'Mouse',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
+ {id:'price',label:'Price (USD)',cell:money},
+ {id:'shape',label:'Shape',cell:d=>{const s=SHAPE[d.shape];return s?tag(s[0],s[1]):esc(d.shape);}},
+ {id:'side',label:'Side buttons',cell:d=>`<span class="price">${d.sideButtons??'?'}</span><span class="sub">${d.buttonsTotal!=null?d.buttonsTotal+' total':''}</span>`},
+ {id:'scroll',label:'Scroll wheel',cell:d=>{
+   const t=freeSpin(d.scrollWheel)?tag(hasToggle(d.scrollWheel)?'Free-spin + toggle':'Free-spin','t-yes')
+     :/ratchet only/i.test(d.scrollWheel||'')?tag('Ratchet only','t-neutral')
+     :tag('No wheel','t-part');
+   return t+`<span class="sub">${esc(d.scrollWheel||'')}</span>`;
+ }},
+ {id:'extra',label:'Tilt / thumb wheel',cell:d=>
+   (d.tiltScroll===true?tag('Tilt scroll','t-yes'):tag('No tilt','t-no'))+
+   (d.thumbWheel===true?tag('Thumb wheel','t-yes'):'')},
+ {id:'conn',label:'Connection',cell:d=>(d.connection||[]).map(x=>tag(x,/wired/i.test(x)?'t-neutral':'t-yes')).join('')||
+   (d.wireless===false?tag('Wired only','t-neutral'):'')},
+ {id:'multi',label:'Multi-device',cell:d=>multiHost(d)
+   ?tag('Multi-host','t-yes')+`<span class="sub">${esc(d.multiDevice)}</span>`
+   :tag('Single host','t-neutral')},
+ {id:'sensor',label:'Sensor',cell:d=>`<span style="font-size:12px">${esc(d.sensor||'?')}</span>`},
+ {id:'dpi',label:'DPI / polling',cell:d=>`<span class="price">${d.maxDPI?d.maxDPI.toLocaleString():'?'}</span><span class="sub">${esc(d.pollingHz||'')} Hz</span>`},
+ {id:'weight',label:'Weight',cell:d=>d.weightG!=null?`<span class="price">${d.weightG} g</span>`:'&mdash;'},
+ {id:'onboard',label:'Onboard memory',cell:d=>yn(d.onboardMemory,'Yes','No')},
+ {id:'software',label:'Software',cell:d=>`<span style="font-size:12px">${esc(d.software||'?')}</span>`},
+ {id:'source',label:'Source',cell:d=>srcLink(d.source)}
+];
+
+const FILTERS=[
+ {id:'multi',label:'Multi-host switching',test:d=>multiHost(d)},
+ {id:'free',label:'Free-spin / toggle wheel',test:d=>freeSpin(d.scrollWheel)},
+ {id:'tog',label:'Ratchet↔free toggle',test:d=>hasToggle(d.scrollWheel)||/button toggle/i.test(d.scrollWheel||'')},
+ {id:'side6',label:'6+ side buttons',test:d=>d.sideButtons!=null&&d.sideButtons>=6},
+ {id:'tilt',label:'Tilt scroll',test:d=>d.tiltScroll===true},
+ {id:'thumb',label:'Thumb wheel',test:d=>d.thumbWheel===true},
+ {id:'bt',label:'Has Bluetooth',test:d=>(d.connection||[]).some(x=>/bluetooth/i.test(x))},
+ {id:'wired',label:'Wired option',test:d=>(d.connection||[]).some(x=>/wired/i.test(x))},
+ {id:'tb',label:'Trackball',test:d=>d.shape==='trackball'},
+ {id:'vert',label:'Vertical',test:d=>d.shape==='vertical'},
+ {id:'ob',label:'Onboard memory',test:d=>d.onboardMemory===true},
+ {id:'light',label:'≤ 70 g',test:d=>d.weightG!=null&&d.weightG<=70}
+];
+
+const SORTS=[
+ {id:'price',label:'Price ↑',cmp:(a,b)=>(a.priceUSD??1e9)-(b.priceUSD??1e9)},
+ {id:'priced',label:'Price ↓',cmp:(a,b)=>(b.priceUSD??-1)-(a.priceUSD??-1)},
+ {id:'wt',label:'Weight ↑',cmp:(a,b)=>(a.weightG??1e9)-(b.weightG??1e9)},
+ {id:'side',label:'Side buttons ↓',cmp:(a,b)=>(b.sideButtons??-1)-(a.sideButtons??-1)},
+ {id:'name',label:'Name A–Z',cmp:(a,b)=>a.name.localeCompare(b.name)}
+];
+
+const EXPAND=[
+ {label:'Notes',html:d=>esc(d.notes)},
+ {label:'Price',html:d=>esc(d.priceNote)},
+ {label:'Connectivity',html:d=>`<dl class="kv">
+   <dt>Links</dt><dd>${esc((d.connection||[]).join(', '))}</dd>
+   <dt>Multi-device</dt><dd>${esc(d.multiDevice||'single host')}</dd>
+   <dt>Battery</dt><dd>${esc(d.battery||'n/a')}</dd>
+ </dl>`},
+ {label:'Spec',html:d=>`<dl class="kv">
+   <dt>Scroll wheel</dt><dd>${esc(d.scrollWheel)}</dd>
+   <dt>Tilt / thumb wheel</dt><dd>tilt: ${d.tiltScroll?'yes':'no'} &middot; thumb wheel: ${d.thumbWheel?'yes':'no'}</dd>
+   <dt>Buttons</dt><dd>${d.buttonsTotal} total &middot; ${d.sideButtons} thumb-side</dd>
+   <dt>Sensor</dt><dd>${esc(d.sensor)} &middot; ${d.maxDPI?d.maxDPI.toLocaleString():'?'} DPI &middot; ${esc(d.pollingHz)} Hz</dd>
+   <dt>Weight</dt><dd>${d.weightG!=null?d.weightG+' g':'?'}</dd>
+   <dt>Onboard memory</dt><dd>${d.onboardMemory?'yes':'no'}</dd>
+   <dt>Software</dt><dd>${esc(d.software)}</dd>
+   <dt>OS</dt><dd>${esc(d.os)}</dd>
+ </dl>`}
+];
+
+/* Generic OG-DB table engine.
+   Expects, defined earlier in the page:
+     DATA      - array of row objects
+     DB        - { name, compiled, noun }         (noun e.g. "keyboards")
+     COLUMNS   - [ { id, label, cell(d)->html, hideable? (default true) } ]   // first column = name, not hideable
+     FILTERS   - [ { id, label, test(d)->bool } ]
+     SORTS     - [ { id, label, cmp(a,b) } ]      // first = default
+     EXPAND    - [ { label, html(d)->html } ]
+*/
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  window.tag=(t,c)=>`<span class="tag ${c||'t-neutral'}">${esc(t)}</span>`;
+  window.esc=esc;
+  window.srcLink=s=>s&&s.url?`<a class="srclink" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label||'source')} &#8599;</a>`:'<span style="color:var(--ink-soft)">&mdash;</span>';
+  window.yn=(v,yes,no)=>v===true?tag(yes||'Yes','t-yes'):v===false?tag(no||'No','t-no'):tag(String(v),'t-part');
+
+  const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
+  const active=new Set();
+  let sortMode=SORTS[0].id;
+
+  // header
+  const htr=$('#tbl thead tr');
+  htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
+    COLUMNS.map(c=>`<th data-col="${c.id}">${esc(c.label)}</th>`).join('');
+
+  // column hide CSS
+  const st=document.createElement('style');
+  st.textContent=COLUMNS.filter(c=>c.hideable!==false).map(c=>
+    `#tbl[data-hide~="${c.id}"] [data-col="${c.id}"]{display:none}`).join('\n');
+  document.head.appendChild(st);
+
+  // min-width so it stays legible; ~150px per visible col
+  function setMin(){
+    const vis=COLUMNS.filter(c=>!hidden.has(c.id)).length+1;
+    tbl.style.minWidth=Math.min(2300,Math.max(760,vis*155))+'px';
+  }
+
+  // filters
+  const fwrap=$('#filters');
+  FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='chip';b.dataset.filter=f.id;b.setAttribute('aria-pressed','false');b.textContent=f.label;
+    b.addEventListener('click',()=>{
+      if(active.has(f.id)){active.delete(f.id);b.setAttribute('aria-pressed','false');}
+      else{active.add(f.id);b.setAttribute('aria-pressed','true');}
+      render();
+    });
+    fwrap.appendChild(b);
+  });
+
+  // sorts
+  const sel=$('#sort');
+  sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
+  sel.addEventListener('change',e=>{sortMode=e.target.value;render();});
+
+  // column panel
+  const panel=$('#colpanel'), colbtn=$('#colbtn');
+  panel.querySelector('.colhead').insertAdjacentHTML('afterend',
+    COLUMNS.filter(c=>c.hideable!==false).map(c=>
+      `<label><input type="checkbox" data-col="${c.id}" checked> ${esc(c.label)}</label>`).join(''));
+  const HIDE_KEY='ogdb.'+DB.noun+'.hidden';
+  let hidden=new Set();
+  try{const s=localStorage.getItem(HIDE_KEY);if(s)hidden=new Set(JSON.parse(s));}catch(e){}
+  const ALL=COLUMNS.filter(c=>c.hideable!==false).map(c=>c.id);
+  function applyCols(){
+    tbl.setAttribute('data-hide',[...hidden].join(' '));
+    panel.querySelectorAll('input[data-col]').forEach(cb=>cb.checked=!hidden.has(cb.dataset.col));
+    colbtn.textContent=hidden.size?`Columns · ${ALL.length-hidden.size}/${ALL.length} ▾`:'Columns ▾';
+    try{localStorage.setItem(HIDE_KEY,JSON.stringify([...hidden]));}catch(e){}
+    setMin();
+  }
+  colbtn.addEventListener('click',e=>{e.stopPropagation();const o=panel.hidden;panel.hidden=!o;colbtn.setAttribute('aria-expanded',String(o));});
+  panel.addEventListener('click',e=>e.stopPropagation());
+  panel.addEventListener('change',e=>{const cb=e.target;if(!cb.dataset.col)return;
+    cb.checked?hidden.delete(cb.dataset.col):hidden.add(cb.dataset.col);applyCols();});
+  panel.querySelectorAll('.colactions button').forEach(b=>b.addEventListener('click',()=>{
+    hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
+  document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
+
+  function passes(d){for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}return true;}
+
+  function render(){
+    let rows=DATA.filter(passes);
+    const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];
+    rows.sort(s.cmp);
+    tbody.innerHTML='';
+    const frag=document.createDocumentFragment();
+    rows.forEach(d=>{
+      const tr=document.createElement('tr');
+      tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
+      tr.innerHTML='<td><span class="chev">▶</span></td>'+
+        COLUMNS.map(c=>`<td data-col="${c.id}">${c.cell(d)}</td>`).join('');
+      const ex=document.createElement('tr');
+      ex.className='expand';ex.hidden=true;
+      ex.innerHTML=`<td colspan="${COLUMNS.length+1}"><div class="inner">`+
+        EXPAND.map(e=>{const h=e.html(d);return h?`<div><h4>${esc(e.label)}</h4><p>${h}</p></div>`:'';}).join('')+
+        `</div></td>`;
+      const toggle=()=>{const o=tr.getAttribute('aria-expanded')==='true';tr.setAttribute('aria-expanded',String(!o));ex.hidden=o;};
+      tr.addEventListener('click',toggle);
+      tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+      frag.appendChild(tr);frag.appendChild(ex);
+    });
+    tbody.appendChild(frag);
+    countEl.textContent=`${rows.length} of ${DATA.length} ${DB.noun} shown`;
+  }
+
+  applyCols();
+  render();
+})();
+
+</script>
+</body>
+</html>

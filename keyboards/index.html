@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split Keyboard DB</title>
+<meta name="description" content="Split ergonomic keyboards compared: split type, layout, switches, wireless, firmware, tenting, pointing device, assembly, price.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}
+:root{
+  --bg:#f2f3f5;--surface:#fff;--surface-2:#e9ebee;--ink:#191c22;--ink-soft:#59606d;
+  --line:#d7dbe1;--line-strong:#bfc5cd;--accent:#c0740f;--accent-ink:#8a5300;--accent-wash:#f6ecdd;
+  --yes:#2f7d55;--yes-bg:#e0efe6;--no:#a23f57;--no-bg:#f3e2e6;--partial:#8a6d1f;--partial-bg:#f1e9d4;
+  --shadow:0 1px 2px rgba(20,22,27,.05),0 10px 30px -14px rgba(20,22,27,.16);
+  --grid:rgba(25,28,34,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
+}
+.wrap{max-width:min(2400px,96vw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+
+header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
+h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
+  line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1 .crumb{color:var(--ink-soft);text-decoration:none}
+h1 .crumb:hover,h1 .crumb:focus-visible{color:var(--accent)}
+h1 .sep{color:var(--line-strong);margin:0 .35em;font-weight:400}
+.compiled{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+  color:var(--ink-soft);font-weight:400;white-space:nowrap;margin-left:12px;vertical-align:middle}
+
+.primer{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px;padding:15px 18px;margin:20px 0 24px;box-shadow:var(--shadow);max-width:92ch}
+.primer h2{font-family:"Chivo",sans-serif;font-weight:700;font-size:13px;margin:0 0 8px;
+  text-transform:uppercase;letter-spacing:.08em}
+.primer ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink-soft)}
+.primer li{margin:5px 0}
+.primer strong{color:var(--ink)}
+.primer em{color:var(--ink);font-style:normal;font-weight:500}
+
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.controls .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.glabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+button.chip{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:500;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;cursor:pointer;transition:.12s}
+button.chip:hover{border-color:var(--accent)}
+button.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1d23}
+button.chip:focus-visible,select:focus-visible,tr.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:5px 8px;background:var(--surface);
+  color:var(--ink);border:1px solid var(--line-strong);border-radius:6px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
+
+.colwrap{position:relative}
+.colpanel{position:absolute;top:calc(100% + 6px);right:0;z-index:20;background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:8px;box-shadow:var(--shadow);padding:12px 14px;
+  width:260px;max-height:70vh;overflow:auto;display:flex;flex-direction:column;gap:7px}
+.colpanel .colhead{margin:0 0 2px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.colpanel label{display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer}
+.colpanel input{accent-color:var(--accent)}
+.colactions{display:flex;gap:8px;margin-top:6px;border-top:1px solid var(--line);padding-top:9px}
+.colactions button{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;
+  background:var(--surface-2);color:var(--ink);border:1px solid var(--line-strong);border-radius:6px;padding:4px 10px}
+.colactions button:hover{border-color:var(--accent)}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
+  font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
+  padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
+tbody tr.row:hover{background:var(--surface-2)}
+td{padding:10px 12px;font-size:13px;vertical-align:top}
+.name{font-family:"Chivo",sans-serif;font-weight:700;font-size:13.5px}
+.sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-soft);
+  font-weight:400;margin-top:2px;letter-spacing:.02em}
+.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+.price small{display:block;color:var(--ink-soft);font-weight:400;font-size:10.5px;white-space:normal;max-width:22ch}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;
+  padding:2px 6px;border-radius:4px;margin:1px 3px 1px 0;white-space:nowrap}
+.t-yes{background:var(--yes-bg);color:var(--yes)}
+.t-no{background:var(--no-bg);color:var(--no)}
+.t-part{background:var(--partial-bg);color:var(--partial)}
+.t-neutral{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+a.srclink{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);text-decoration:none;white-space:nowrap}
+a.srclink:hover,a.srclink:focus-visible{text-decoration:underline}
+
+.expand{background:var(--bg)}
+.expand td{padding:0}
+.expand .inner{padding:16px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 26px}
+.expand h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.expand p{margin:0;font-size:12.5px;color:var(--ink-soft)}
+.expand p strong{color:var(--ink);font-weight:600}
+dl.kv{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;font-size:12.5px;color:var(--ink-soft);max-width:120ch}
+dl.kv dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-top:1px}
+dl.kv dd{margin:0}
+.chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
+tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
+
+footer{margin-top:30px;font-size:12px;color:var(--ink-soft);max-width:70ch}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1><a class="crumb" href="../">OG-DB</a><span class="sep">/</span>Split Keyboard DB <span class="compiled">compiled Sep 2026</span></h1>
+  </header>
+  <div class="primer"><h2>How to read the table</h2><ul><li><strong>Split type</strong> &mdash; <em>Fully separate</em> = two independent halves you place anywhere; <em>Unibody split</em> = one piece with a fixed angled gap (Kinesis Advantage, MD600); <em>Adjustable bridge</em> = halves on an articulating mount (Naya).</li><li><strong>Layout</strong> &mdash; <em>Column-stagger</em> (ortho columns offset per finger length) is the ergonomic-keyboard norm; <em>Row-stagger</em> keeps a normal typewriter grid, gentler relearn (Keychron Q11, MD770).</li><li><strong>Firmware</strong> &mdash; QMK / VIA / Vial / ZMK are open and fully remappable; Oryx and Bazecor are vendor GUIs on top of QMK; a few are closed.</li><li><strong>Assembly</strong> &mdash; <em>Prebuilt</em> ships ready; <em>kit</em> ranges from solderless hot-swap to full soldering; <em>PCB / files only</em> means you source parts yourself. Kit prices in the Price column are the base kit &mdash; expand a row for what's included.</li><li>Kit prices are not apples-to-apples (bare PCB pair vs full solderless kit vs vendor-assembled). Don't sort on price naively.</li></ul></div>
+  <div class="controls">
+    <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
+    <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
+    <div class="grp colwrap">
+      <button class="chip" id="colbtn" aria-expanded="false" aria-controls="colpanel">Columns ▾</button>
+      <div class="colpanel" id="colpanel" hidden>
+        <p class="colhead">Show columns</p>
+        <div class="colactions"><button type="button" data-all="1">All</button><button type="button" data-all="0">Minimal</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="tablewrap"><table id="tbl"><thead><tr></tr></thead><tbody id="tbody"></tbody></table></div>
+  <footer><p><strong>Notes.</strong> "Split" here means the two halves separate or sit at a fixed ergonomic angle &mdash; Alice-layout boards (one-piece, mild centre split) are out of scope. DIY prices and availability move constantly; group-buy kits come and go. Per-row <strong>Source</strong> links the vendor or build-doc page. Compiled Sep 2026 &mdash; verify current pricing before buying.</p></footer>
+</div>
+<script>
+const DATA=[{"name":"ZSA Moonlander MK I","brand":"ZSA","priceUSD":365,"priceNote":"prebuilt, switches + blank keycaps + case included; shipping included","splitType":"fully-separate","layout":"columnar-stagger","keys":72,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"Oryx (QMK)","tenting":"built-in","thumbKeysPerHand":6,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"Integrated thumb cluster arc and fold-out wings for tenting/tilt; heavier and larger than the Voyager.","source":{"url":"https://www.zsa.io/moonlander","label":"ZSA"}},{"name":"ZSA Voyager","brand":"ZSA","priceUSD":365,"priceNote":"prebuilt, low-profile Choc switches + blank keycaps + travel case included; shipping included","splitType":"fully-separate","layout":"columnar-stagger","keys":52,"switchProfile":"low-profile (Choc)","hotswap":true,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"Oryx (QMK)","tenting":"kit accessory","thumbKeysPerHand":2,"pointingDevice":"none","palmRests":"none","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"Ultra-thin 4-row low-profile board; extremely portable, uses magnetic feet and optional tenting kit.","source":{"url":"https://www.zsa.io/voyager","label":"ZSA"}},{"name":"ZSA ErgoDox EZ","brand":"ZSA","priceUSD":325,"priceNote":"prebuilt base; tilt/tent kit and wrist rests add ~$30-50","splitType":"fully-separate","layout":"ortholinear","keys":76,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"Oryx (QMK)","tenting":"kit accessory","thumbKeysPerHand":6,"pointingDevice":"none","palmRests":"optional","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"The keyboard that mainstreamed the modern DIY split; large full-size ortho halves with big thumb blocks.","source":{"url":"https://ergodox-ez.com/","label":"ZSA"}},{"name":"Kinesis Advantage360 Professional","brand":"Kinesis","priceUSD":499,"priceNote":"prebuilt, Gateron switches + keycaps included; wired Signature variant $599","splitType":"fully-separate","layout":"columnar-stagger","keys":76,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired","Bluetooth"],"wireless":true,"firmware":"ZMK","tenting":"built-in","thumbKeysPerHand":6,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS / Android","notes":"Deeply sculpted concave key wells with dished thumb clusters; Pro model is Bluetooth wireless on open-source ZMK.","source":{"url":"https://kinesis-ergo.com/keyboards/advantage360/","label":"Kinesis"}},{"name":"Kinesis Advantage2","brand":"Kinesis","priceUSD":349,"priceNote":"prebuilt, Cherry MX switches + keycaps included; not hotswap","splitType":"unibody-split","layout":"columnar-stagger","keys":72,"switchProfile":"MX","hotswap":false,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"none / DIY","thumbKeysPerHand":6,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Classic one-piece contoured keywell design with fixed split angle; still sold alongside the 360.","source":{"url":"https://kinesis-ergo.com/keyboards/advantage2/","label":"Kinesis"}},{"name":"Kinesis Freestyle Edge RGB","brand":"Kinesis","priceUSD":199,"priceNote":"prebuilt; VX/V3 tenting accessory kit adds ~$35-60","splitType":"fully-separate","layout":"row-stagger","keys":95,"switchProfile":"MX","hotswap":false,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"kit accessory","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / Linux","notes":"Gaming-oriented standard-layout split with a fixed 20\" cable between halves; near-zero learning curve.","source":{"url":"https://gaming.kinesis-ergo.com/product/freestyle-edge/","label":"Kinesis"}},{"name":"Kinesis Freestyle Pro","brand":"Kinesis","priceUSD":179,"priceNote":"prebuilt; separate Lift/VX tenting accessory ~$25-50","splitType":"fully-separate","layout":"row-stagger","keys":91,"switchProfile":"MX","hotswap":false,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"kit accessory","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"optional","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Office-focused standard-layout split, Cherry MX quiet switches, onboard remapping and macros.","source":{"url":"https://kinesis-ergo.com/keyboards/freestyle-pro/","label":"Kinesis"}},{"name":"Keychron Q11","brand":"Keychron","priceUSD":199,"priceNote":"fully-assembled; barebone (no switches/keycaps) ~$185","splitType":"fully-separate","layout":"row-stagger","keys":91,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"none","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Heavy CNC-aluminum 75% split with rotary knob; conventional layout, gasket mount, no built-in tenting.","source":{"url":"https://www.keychron.com/products/keychron-q11-qmk-custom-mechanical-keyboard","label":"Keychron"}},{"name":"Keychron Q11 Ultra 8K","brand":"Keychron","priceUSD":240,"priceNote":"fully-assembled; both halves and host link are wireless","splitType":"fully-separate","layout":"row-stagger","keys":91,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired","Bluetooth","2.4GHz dongle"],"wireless":true,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"none","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"2026 revision: the two halves talk wirelessly to each other, dual batteries, 8kHz polling on the dongle.","source":{"url":"https://www.keychron.com/products/keychron-q11-ultra-8k-wireless-custom-mechanical-keyboard","label":"Keychron"}},{"name":"Keychron K15 Max","brand":"Keychron","priceUSD":124,"priceNote":"fully-assembled, hotswap + RGB variant; white-LED non-hotswap ~$104","splitType":"unibody-split","layout":"row-stagger","keys":84,"switchProfile":"low-profile (Choc)","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired","Bluetooth","2.4GHz dongle"],"wireless":true,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"none","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"One-piece low-profile Alice-layout board; angled halves but no gap or tenting, weakest 'split' fit here.","source":{"url":"https://www.keychron.com/products/keychron-k15-max-alice-layout-qmk-wireless-custom-mechanical-keyboard","label":"Keychron"}},{"name":"Dygma Defy","brand":"Dygma","priceUSD":369,"priceNote":"base wired config; +wireless ~$90, +tenting kit ~$80, +underglow ~$80 (fully loaded ~$610)","splitType":"fully-separate","layout":"row-stagger","keys":70,"switchProfile":"MX + low-profile","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired","Bluetooth","2.4GHz dongle"],"wireless":"optional","firmware":"Bazecor (Kaleidoscope)","tenting":"kit accessory","thumbKeysPerHand":8,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"Near-standard layout with a large 8-key thumb cluster per hand; magnetic wrist rests, optional wireless module.","source":{"url":"https://dygma.com/products/dygma-defy","label":"Dygma"}},{"name":"Dygma Raise 2","brand":"Dygma","priceUSD":399,"priceNote":"base wired config; wireless/tenting/underglow add-ons like the Defy","splitType":"fully-separate","layout":"row-stagger","keys":68,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired","Bluetooth","2.4GHz dongle"],"wireless":"optional","firmware":"Bazecor (Kaleidoscope)","tenting":"kit accessory","thumbKeysPerHand":8,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"65% ANSI-style split aimed at gamers who want a normal layout plus a thumb key cluster; low learning curve.","source":{"url":"https://dygma.com/products/dygma-raise-2","label":"Dygma"}},{"name":"MoErgo Glove80","brand":"MoErgo","priceUSD":399,"priceNote":"prebuilt, low-profile Choc switches + keycaps + travel case; Rev2 w/ silent switches ~$425","splitType":"fully-separate","layout":"columnar-stagger","keys":80,"switchProfile":"low-profile (Choc)","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless","hostConnection":["USB-C wired","Bluetooth"],"wireless":true,"firmware":"ZMK","tenting":"built-in","thumbKeysPerHand":6,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS / Android","notes":"Low-profile contoured keywell (a flatter Glove/Dactyl); integrated flip-out feet, molded palm rests, Bluetooth ZMK.","source":{"url":"https://www.moergo.com/","label":"MoErgo"}},{"name":"Naya Create","brand":"Naya","priceUSD":500,"priceNote":"base wired mechanical config; input modules (trackball/dial/touch) $80-180 each, wireless needs 2+ modules (~$680+)","splitType":"adjustable-bridge","layout":"columnar-stagger","keys":68,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired","Bluetooth","2.4GHz dongle"],"wireless":"optional","firmware":"proprietary","tenting":"built-in","thumbKeysPerHand":4,"pointingDevice":"trackball option","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Motorized/articulating stand system with hot-swappable input modules (trackball, dial, touchpad); very expensive.","source":{"url":"https://naya.tech/products/naya-create-3-0","label":"Naya"}},{"name":"Keyboardio Model 100","brand":"Keyboardio","priceUSD":349,"priceNote":"prebuilt, wooden enclosure, sculpted keycaps + switches included","splitType":"fully-separate","layout":"columnar-stagger","keys":64,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/VIA","tenting":"kit accessory","thumbKeysPerHand":4,"pointingDevice":"none","palmRests":"none","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"Wood-bodied sculpted split with concave key columns, hardwired octopus link, and a magnetic RGBW per-key board.","source":{"url":"https://shop.keyboard.io/products/model-100","label":"Keyboardio"}},{"name":"Ultimate Hacking Keyboard 60 v2","brand":"Ultimate Hacking Keyboard","priceUSD":350,"priceNote":"base prebuilt; add-on modules (trackball, trackpoint, key cluster) $50-70 each, tenting legs kit extra","splitType":"unibody-split","layout":"row-stagger","keys":67,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"kit accessory","thumbKeysPerHand":0,"pointingDevice":"trackball option","palmRests":"optional","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Splits into two halves via a short bridge cable; optional trackball/trackpoint/key-cluster modules snap onto the ends.","source":{"url":"https://ultimatehackingkeyboard.com/","label":"UHK"}},{"name":"Ultimate Hacking Keyboard 60 v2 (wireless)","brand":"Ultimate Hacking Keyboard","priceUSD":450,"priceNote":"approx; wireless-equipped base config, before modules","splitType":"unibody-split","layout":"row-stagger","keys":67,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"wireless or cable","hostConnection":["USB-C wired","Bluetooth"],"wireless":true,"firmware":"proprietary","tenting":"kit accessory","thumbKeysPerHand":0,"pointingDevice":"trackball option","palmRests":"optional","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Same board as the wired UHK 60 v2 with the wireless option enabled; halves connect over Bluetooth.","source":{"url":"https://ultimatehackingkeyboard.com/","label":"UHK"}},{"name":"X-Bows Nature","brand":"X-Bows","priceUSD":149,"priceNote":"prebuilt (sale price; MSRP ~$169), hotswap + keycaps included","splitType":"unibody-split","layout":"row-stagger","keys":87,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":2,"pointingDevice":"none","palmRests":"optional","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"One-piece 'cross' layout with a central column of modifiers hit by the thumbs; low learning curve, no gap/tent.","source":{"url":"https://x-bows.com/products/x-bows-nature","label":"X-Bows"}},{"name":"X-Bows Knight","brand":"X-Bows","priceUSD":199,"priceNote":"prebuilt (sale price; MSRP ~$239), full CNC-aluminum body","splitType":"unibody-split","layout":"row-stagger","keys":87,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":2,"pointingDevice":"none","palmRests":"optional","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Heavier all-aluminum version of the X-Bows ergonomic 'cross' layout; TKL footprint.","source":{"url":"https://x-bows.com/products/x-bows-knight-ergonomic-mechanical-keyboard","label":"X-Bows"}},{"name":"Mistel Barocco MD770","brand":"Mistel","priceUSD":150,"priceNote":"prebuilt; RGB hotswap variant, keycaps + Cherry/hotswap switches included","splitType":"fully-separate","layout":"row-stagger","keys":77,"switchProfile":"MX","hotswap":"optional","keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"none / DIY","thumbKeysPerHand":2,"pointingDevice":"none","palmRests":"optional","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"65% standard-layout split with extra bottom-row thumb keys; onboard macros, no software, popular budget pick.","source":{"url":"https://mistelkeyboard.com/products/f2270f0dc47c73f57fd2d9c9caf70cf6","label":"Mistel"}},{"name":"Mistel Barocco MD600 Alpha","brand":"Mistel","priceUSD":115,"priceNote":"prebuilt, 60% split, Cherry MX switches + keycaps included","splitType":"fully-separate","layout":"row-stagger","keys":62,"switchProfile":"MX","hotswap":false,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"none","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Compact 60% split, the original mainstream 'normal layout in two halves' board; onboard remapping only.","source":{"url":"https://mistelkeyboard.com/","label":"Mistel"}},{"name":"Cloud Nine ErgoTKL","brand":"Cloud Nine","priceUSD":170,"priceNote":"prebuilt, hotswap, keycaps + wrist rests included","splitType":"fully-separate","layout":"row-stagger","keys":87,"switchProfile":"MX","hotswap":true,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"built-in","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Standard-layout TKL split with adjustable splay, tilt and tenting legs built in; hotswap sockets.","source":{"url":"https://cloudninec9.com/products/c9-ergo-keyboard","label":"Cloud Nine"}},{"name":"Matias Ergo Pro","brand":"Matias","priceUSD":200,"priceNote":"prebuilt, Matias Quiet Click Alps-style switches, palm supports included","splitType":"fully-separate","layout":"row-stagger","keys":87,"switchProfile":"unknown","hotswap":false,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"kit accessory","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Uses Matias/Alps quiet tactile switches rather than MX; fixed cable between halves, no software remapping.","source":{"url":"https://matias.ca/ergopro/","label":"Matias"}},{"name":"Logitech Ergo K860","brand":"Logitech","priceUSD":130,"priceNote":"prebuilt membrane; K860 for Business variant similar price","splitType":"unibody-split","layout":"row-stagger","keys":108,"switchProfile":"scissor","hotswap":false,"keycapsIncluded":true,"interHalfLink":"wireless","hostConnection":["Bluetooth","2.4GHz dongle"],"wireless":true,"firmware":"proprietary","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"One-piece curved membrane board with a fixed split-and-tent wave shape and integrated cushioned palm rest.","source":{"url":"https://www.logitech.com/en-us/products/keyboards/k860-split-ergonomic.html","label":"Logitech"}},{"name":"Logitech Wave Keys","brand":"Logitech","priceUSD":60,"priceNote":"prebuilt membrane, wireless","splitType":"unibody-split","layout":"row-stagger","keys":104,"switchProfile":"scissor","hotswap":false,"keycapsIncluded":true,"interHalfLink":"wireless","hostConnection":["Bluetooth","2.4GHz dongle"],"wireless":true,"firmware":"proprietary","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux / ChromeOS","notes":"Budget wavy one-piece board with a very mild split curve and integrated foam wrist rest; entry-level ergo.","source":{"url":"https://www.logitech.com/en-us/products/keyboards/wave-keys.html","label":"Logitech"}},{"name":"Microsoft Sculpt Ergonomic Keyboard","brand":"Microsoft","priceUSD":130,"priceNote":"discontinued; street price now $150-250 used/NOS","splitType":"unibody-split","layout":"row-stagger","keys":98,"switchProfile":"scissor","hotswap":false,"keycapsIncluded":true,"interHalfLink":"wireless","hostConnection":["2.4GHz dongle"],"wireless":true,"firmware":"proprietary","tenting":"built-in","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"discontinued","os":"Windows / macOS / Linux","notes":"Iconic domed one-piece split with a detachable reverse-tilt riser and separate numpad; long the default 'ergo' recommendation.","source":{"url":"https://www.microsoft.com/en/accessories/products/keyboards/sculpt-ergonomic-desktop","label":"Microsoft"}},{"name":"Microsoft Ergonomic Keyboard (2019)","brand":"Microsoft","priceUSD":60,"priceNote":"discontinued 2024; still widely sold new ~$60-90","splitType":"unibody-split","layout":"row-stagger","keys":111,"switchProfile":"scissor","hotswap":false,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"discontinued","os":"Windows / macOS / Linux","notes":"Wired full-size membrane split with cushioned palm rest and dedicated emoji/Office keys; budget successor to the Sculpt.","source":{"url":"https://www.microsoft.com/en/accessories/products/keyboards/ergonomic-keyboard","label":"Microsoft"}},{"name":"Perixx Periboard-535","brand":"Perixx","priceUSD":90,"priceNote":"prebuilt, low-profile Kailh Choc switches, wired","splitType":"unibody-split","layout":"row-stagger","keys":88,"switchProfile":"low-profile (Choc)","hotswap":false,"keycapsIncluded":true,"interHalfLink":"USB-C cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"proprietary","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"included","assembly":"prebuilt","availability":"in production","os":"Windows / macOS / Linux","notes":"Rare budget board that puts real low-profile mechanical switches in a Sculpt-style one-piece split shell.","source":{"url":"https://perixx.com/products/periboard-535","label":"Perixx"}},{"name":"splitkb Aurora Corne (CRKBD)","brand":"splitkb / foostan","priceUSD":110,"priceNote":"PCB kit only: 2 PCBs, per-key + underglow LEDs option; switches, keycaps, case, controllers, screens extra","splitType":"fully-separate","layout":"columnar-stagger","keys":42,"switchProfile":"MX + low-profile","hotswap":"optional","keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"none","palmRests":"none","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"The definitive 3x6+3 columnar split; huge ecosystem of cases, wireless (nice!nano/ZMK) builds and variants.","source":{"url":"https://splitkb.com/products/aurora-corne","label":"splitkb"}},{"name":"splitkb Aurora Lily58","brand":"splitkb / kata0510","priceUSD":110,"priceNote":"PCB kit only; switches, keycaps, case, controllers, OLEDs extra","splitType":"fully-separate","layout":"columnar-stagger","keys":58,"switchProfile":"MX + low-profile","hotswap":"optional","keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":4,"pointingDevice":"none","palmRests":"none","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"5-row columnar split with a number row and 4 thumb keys; easiest 'first ergo kit' for people who want a top row.","source":{"url":"https://splitkb.com/products/aurora-lily58","label":"splitkb"}},{"name":"splitkb Aurora Sofle v2","brand":"splitkb / Josef Adamcik","priceUSD":120,"priceNote":"PCB kit only; switches, keycaps, case, controllers, encoders/OLEDs extra","splitType":"fully-separate","layout":"columnar-stagger","keys":58,"switchProfile":"MX + low-profile","hotswap":"optional","keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":5,"pointingDevice":"none","palmRests":"none","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"Lily58-like 6-column split with rotary encoders, extra thumb key and per-key RGB; very popular streamer/dev board.","source":{"url":"https://splitkb.com/products/aurora-sofle-v2","label":"splitkb"}},{"name":"splitkb Kyria rev3","brand":"splitkb / Thomas Baart","priceUSD":130,"priceNote":"PCB kit only; switches, keycaps, case, controllers, encoders/OLEDs extra","splitType":"fully-separate","layout":"columnar-stagger","keys":50,"switchProfile":"MX + low-profile","hotswap":"optional","keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"kit accessory","thumbKeysPerHand":5,"pointingDevice":"none","palmRests":"optional","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"Aggressive stagger with a big 5-key thumb arc; splitkb sells matching tenting pucks and wrist rests.","source":{"url":"https://splitkb.com/products/kyria-rev3-pcb-kit","label":"splitkb"}},{"name":"Keebio Iris","brand":"Keebio","priceUSD":130,"priceNote":"rev8 full kit (PCBs, plates, hotswap, controllers); switches + keycaps extra. Assembled ~$260","splitType":"fully-separate","layout":"columnar-stagger","keys":56,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"none","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Long-running 4x6+3 split with a number row; recent revs are fully hotswap/solderless and beginner-friendly.","source":{"url":"https://keeb.io/products/iris-keyboard-split-ergonomic-keyboard","label":"Keebio"}},{"name":"Keebio Sinc","brand":"Keebio","priceUSD":130,"priceNote":"full kit, hotswap; switches + keycaps extra","splitType":"fully-separate","layout":"row-stagger","keys":87,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":0,"pointingDevice":"none","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Standard row-stagger 75%-ish split with per-side macro columns and encoders; a solderless upgrade path from a normal board.","source":{"url":"https://keeb.io/products/sinc-keyboard-split-staggered-keyboard-w-rgb-backlight-and-underglow","label":"Keebio"}},{"name":"Bastardkb Skeletyl","brand":"Bastard Keyboards","priceUSD":120,"priceNote":"self-print/assemble kit price approx; vendor prebuilt (bstiq/vendor) ~$300-400","splitType":"fully-separate","layout":"columnar-stagger","keys":36,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"built-in","thumbKeysPerHand":3,"pointingDevice":"none","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Aggressively tented 3x5+3 with a 3D-printed 'skeleton' case; the minimalist end of the Bastardkb family.","source":{"url":"https://bastardkb.com/skeletyl/","label":"Bastard Keyboards"}},{"name":"Bastardkb Scylla","brand":"Bastard Keyboards","priceUSD":130,"priceNote":"kit/parts approx; vendor prebuilt ~$350-450","splitType":"fully-separate","layout":"columnar-stagger","keys":42,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"built-in","thumbKeysPerHand":4,"pointingDevice":"none","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Larger 4x6-ish Skeletyl sibling with 4 thumb keys and a bit more reach; strong built-in tenting.","source":{"url":"https://bastardkb.com/scylla/","label":"Bastard Keyboards"}},{"name":"Bastardkb Charybdis (4x6)","brand":"Bastard Keyboards","priceUSD":150,"priceNote":"kit/parts approx incl. trackball sensor; vendor prebuilt ~$400-500","splitType":"fully-separate","layout":"columnar-stagger","keys":46,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"built-in","thumbKeysPerHand":4,"pointingDevice":"trackball built-in","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Charybdis is the trackball Skeletyl/Scylla: a 34mm ball sits under the right thumb/fingers for mouse-free use.","source":{"url":"https://bastardkb.com/charybdis/","label":"Bastard Keyboards"}},{"name":"Bastardkb Charybdis Nano (3x5)","brand":"Bastard Keyboards","priceUSD":130,"priceNote":"kit/parts approx incl. trackball; vendor prebuilt ~$350-450","splitType":"fully-separate","layout":"columnar-stagger","keys":36,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"built-in","thumbKeysPerHand":3,"pointingDevice":"trackball built-in","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Smallest trackball split in the family: 34-key 3x5+3 with an integrated ball; popular ZMK wireless conversion target.","source":{"url":"https://bastardkb.com/charybdis-nano/","label":"Bastard Keyboards"}},{"name":"Bastardkb Dilemma v2","brand":"Bastard Keyboards","priceUSD":140,"priceNote":"PCB kit incl. Cirque trackpad; switches/keycaps/case extra. Assembled ~$300+","splitType":"fully-separate","layout":"columnar-stagger","keys":34,"switchProfile":"low-profile (Choc)","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":2,"pointingDevice":"trackpad built-in","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Low-profile 3x5+2 unibody-PCB-per-half split with a 35mm Cirque trackpad; 'assembled' PCB needs no soldering.","source":{"url":"https://bastardkb.com/dilemma/","label":"Bastard Keyboards"}},{"name":"Ferris Sweep","brand":"davkbd / community","priceUSD":60,"priceNote":"bare PCB pair (per-hand unibody PCB, no diodes to solder on 'Bling'); Pro Micro/controllers, switches, keycaps extra","splitType":"fully-separate","layout":"columnar-stagger","keys":34,"switchProfile":"low-profile (Choc)","hotswap":"optional","keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":2,"pointingDevice":"none","palmRests":"none","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"The reference 34-key low-profile split; the PCB doubles as the case and it is the default ZMK wireless 'Sweep' build.","source":{"url":"https://github.com/davidphilipbarr/Sweep","label":"Sweep (GitHub)"}},{"name":"Cantor / Cantor Remix","brand":"diepala / community","priceUSD":45,"priceNote":"bare PCB pair; RP2040/Pro Micro, switches, keycaps extra. Remix adds hotswap + USB-C","splitType":"fully-separate","layout":"columnar-stagger","keys":42,"switchProfile":"MX","hotswap":"optional","keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"none","palmRests":"none","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"A Corne-like 3x6+3 designed to be the cheapest, easiest first solder build; PCB is the case.","source":{"url":"https://github.com/diepala/cantor","label":"Cantor (GitHub)"}},{"name":"Chocofi","brand":"Cyboard / community","priceUSD":90,"priceNote":"PCB + FR4 plate/case kit; controllers, Choc switches, keycaps extra","splitType":"fully-separate","layout":"columnar-stagger","keys":36,"switchProfile":"low-profile (Choc)","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"none","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Hotswap low-profile 3x5+3 (Corne-ish); nice!nano-friendly and a common polished wireless daily driver.","source":{"url":"https://github.com/Cyboard-DigitalTailor/Chocofi","label":"Chocofi (GitHub)"}},{"name":"Piantor Pro","brand":"beekeeb","priceUSD":100,"priceNote":"PCB pair with soldered RP2040 + USB-C; switches, keycaps, case extra","splitType":"fully-separate","layout":"columnar-stagger","keys":42,"switchProfile":"MX + low-profile","hotswap":false,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"none","palmRests":"none","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"Corne-compatible 3x6+3 with onboard USB-C RP2040 (no fragile Pro Micro); a favorite 'reliable Corne' kit.","source":{"url":"https://beekeeb.com/product/piantor-pro-split-keyboard-kit/","label":"beekeeb"}},{"name":"Totem","brand":"GEIGEIGEIST","priceUSD":90,"priceNote":"PCB + component kit; controllers, Choc switches, keycaps extra","splitType":"fully-separate","layout":"columnar-stagger","keys":38,"switchProfile":"low-profile (Choc)","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"none","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Low-profile 38-key with a distinctive splayed inner column and hotswap sockets; SMD pre-soldered, easy build.","source":{"url":"https://github.com/GEIGEIGEIST/TOTEM","label":"Totem (GitHub)"}},{"name":"Keyball61","brand":"Yowkees / Shirogane Lab","priceUSD":190,"priceNote":"full kit incl. 34mm trackball + sensor; switches, keycaps, controllers extra","splitType":"fully-separate","layout":"columnar-stagger","keys":61,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"trackball built-in","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Popular Japanese trackball split: 34mm ball under the right thumb cluster, hotswap, number row; also Keyball44/39.","source":{"url":"https://shirogane-lab.com/en/products/keyball61","label":"Shirogane Lab"}},{"name":"Keyball44","brand":"Yowkees / Shirogane Lab","priceUSD":175,"priceNote":"full kit incl. 34mm trackball + sensor; switches, keycaps, controllers extra","splitType":"fully-separate","layout":"columnar-stagger","keys":44,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/Vial","tenting":"none / DIY","thumbKeysPerHand":3,"pointingDevice":"trackball built-in","palmRests":"none","assembly":"kit (hotswap, solderless)","availability":"in production","os":"Windows / macOS / Linux","notes":"Compact 44-key version of the Keyball with the same right-hand 34mm trackball; no number row.","source":{"url":"https://shirogane-lab.com/en/products/keyball44","label":"Shirogane Lab"}},{"name":"Dactyl-Manuform (5x6)","brand":"community (Adereth / tshort)","priceUSD":130,"priceNote":"no official kit; ~$60-100 in parts + printed/ordered case, or $250-450 from a builder on Etsy","splitType":"fully-separate","layout":"columnar-stagger","keys":66,"switchProfile":"MX","hotswap":"optional","keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":"optional","firmware":"QMK/Vial","tenting":"built-in","thumbKeysPerHand":6,"pointingDevice":"trackball option","palmRests":"none","assembly":"kit (soldering)","availability":"in production","os":"Windows / macOS / Linux","notes":"3D-printed sculpted concave keywell with a curved thumb cluster; fully parametric, endless variants incl. trackball.","source":{"url":"https://github.com/abstracthat/dactyl-manuform","label":"Dactyl-Manuform (GitHub)"}},{"name":"Redox","brand":"Mattia Dal Ben (community)","priceUSD":120,"priceNote":"no first-party kit; PCB + acrylic case from group buys/vendors, switches/keycaps/controllers extra","splitType":"fully-separate","layout":"columnar-stagger","keys":70,"switchProfile":"MX","hotswap":false,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired"],"wireless":false,"firmware":"QMK/VIA","tenting":"none / DIY","thumbKeysPerHand":4,"pointingDevice":"none","palmRests":"none","assembly":"kit (soldering)","availability":"group buy / intermittent","os":"Windows / macOS / Linux","notes":"'Reduced ErgoDox' — full ortho split with number row and pinky/thumb clusters but a smaller footprint than the ErgoDox.","source":{"url":"https://github.com/mattdibi/redox-keyboard","label":"Redox (GitHub)"}},{"name":"Torn Keyboard","brand":"rromanov / Torn","priceUSD":180,"priceNote":"approx; full kit incl. PCBs, plates, OLED, encoders, controllers, optional Bluetooth. Switches/keycaps extra","splitType":"fully-separate","layout":"columnar-stagger","keys":46,"switchProfile":"MX","hotswap":true,"keycapsIncluded":false,"interHalfLink":"TRRS cable","hostConnection":["USB-C wired","Bluetooth"],"wireless":"optional","firmware":"QMK/Vial","tenting":"kit accessory","thumbKeysPerHand":4,"pointingDevice":"none","palmRests":"optional","assembly":"kit (hotswap, solderless)","availability":"group buy / intermittent","os":"Windows / macOS / Linux","notes":"Curved-thumb hotswap split with an integrated palm-rest case and optional BLE module; sold in periodic batches.","source":{"url":"https://tornkeyboard.com/","label":"Torn"}}];
+const DB={"name":"Split Keyboard DB","compiled":"Sep 2026","noun":"keyboards"};
+const money=d=>d.priceUSD==null?'<span class="price">&mdash;</span>':
+  `<span class="price">$${d.priceUSD}<small>${esc(d.priceNote||'')}</small></span>`;
+const SPLIT={'fully-separate':['Fully separate','t-yes'],'unibody-split':['Unibody split','t-part'],'adjustable-bridge':['Adjustable bridge','t-part']};
+const LAY={'columnar-stagger':'Column-stagger','row-stagger':'Row-stagger','ortholinear':'Ortholinear','ortho':'Ortholinear'};
+const TENT={'built-in':['Built-in','t-yes'],'kit accessory':['Kit accessory','t-part'],'none / DIY':['None / DIY','t-neutral'],'none':['None','t-neutral']};
+const POINT=v=>v==null||v==='none'?tag('None','t-neutral')
+  :/built-in/i.test(v)?tag(v,'t-yes'):tag(v,'t-part');
+
+const COLUMNS=[
+ {id:'name',hideable:false,label:'Keyboard',cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)}</span>`},
+ {id:'price',label:'Price (USD)',cell:money},
+ {id:'split',label:'Split type',cell:d=>{const s=SPLIT[d.splitType];return s?tag(s[0],s[1]):esc(d.splitType);}},
+ {id:'layout',label:'Layout',cell:d=>tag(LAY[d.layout]||d.layout,'t-neutral')},
+ {id:'keys',label:'Keys',cell:d=>`<span class="price">${d.keys??'?'}</span><span class="sub">${d.thumbKeysPerHand!=null?d.thumbKeysPerHand+' thumb / hand':''}</span>`},
+ {id:'switches',label:'Switches',cell:d=>tag(d.switchProfile||'?','t-neutral')+
+   (d.hotswap===true?tag('Hot-swap','t-yes'):d.hotswap==='optional'?tag('Hot-swap opt.','t-part'):tag('Soldered','t-no'))},
+ {id:'keycaps',label:'Keycaps',cell:d=>yn(d.keycapsIncluded,'Included','Not incl.')},
+ {id:'conn',label:'Connection',cell:d=>{
+   const h=(d.hostConnection||[]).map(x=>tag(x,/wired/i.test(x)?'t-neutral':'t-yes')).join('');
+   const w=d.wireless===true?tag('Wireless','t-yes'):d.wireless==='optional'?tag('Wireless opt.','t-part'):'';
+   return h+w+`<span class="sub">halves: ${esc(d.interHalfLink||'?')}</span>`;
+ }},
+ {id:'firmware',label:'Firmware',cell:d=>tag(d.firmware||'?',/QMK|ZMK|VIA|Vial/i.test(d.firmware||'')?'t-yes':'t-part')},
+ {id:'tenting',label:'Tenting',cell:d=>{const t=TENT[d.tenting];return t?tag(t[0],t[1]):esc(d.tenting);}},
+ {id:'pointing',label:'Pointing device',cell:d=>POINT(d.pointingDevice)},
+ {id:'assembly',label:'Assembly',cell:d=>tag(d.assembly||'?',/prebuilt/i.test(d.assembly||'')?'t-yes':/solder/i.test(d.assembly||'')?'t-no':'t-part')+
+   `<span class="sub">${esc(d.availability||'')}</span>`},
+ {id:'source',label:'Source',cell:d=>srcLink(d.source)}
+];
+
+const FILTERS=[
+ {id:'sep',label:'Fully separate halves',test:d=>d.splitType==='fully-separate'},
+ {id:'col',label:'Column-stagger',test:d=>/columnar/.test(d.layout||'')},
+ {id:'wl',label:'Wireless (native or option)',test:d=>d.wireless===true||d.wireless==='optional'},
+ {id:'hs',label:'Hot-swap',test:d=>d.hotswap===true},
+ {id:'pt',label:'Trackball / trackpad',test:d=>d.pointingDevice&&d.pointingDevice!=='none'},
+ {id:'tb',label:'Built-in tenting',test:d=>d.tenting==='built-in'},
+ {id:'pb',label:'Prebuilt',test:d=>d.assembly==='prebuilt'},
+ {id:'oss',label:'QMK / ZMK / VIA',test:d=>/QMK|ZMK|VIA|Vial/i.test(d.firmware||'')},
+ {id:'kc',label:'Keycaps included',test:d=>d.keycapsIncluded===true},
+ {id:'sm',label:'≤ 44 keys',test:d=>d.keys!=null&&d.keys<=44}
+];
+
+const SORTS=[
+ {id:'price',label:'Price ↑',cmp:(a,b)=>(a.priceUSD??1e9)-(b.priceUSD??1e9)},
+ {id:'priced',label:'Price ↓',cmp:(a,b)=>(b.priceUSD??-1)-(a.priceUSD??-1)},
+ {id:'keys',label:'Key count ↑',cmp:(a,b)=>(a.keys??1e9)-(b.keys??1e9)},
+ {id:'name',label:'Name A–Z',cmp:(a,b)=>a.name.localeCompare(b.name)}
+];
+
+const EXPAND=[
+ {label:'Notes',html:d=>esc(d.notes)},
+ {label:'What the price covers',html:d=>esc(d.priceNote)},
+ {label:'Spec',html:d=>`<dl class="kv">
+   <dt>Split</dt><dd>${esc(d.splitType)}</dd>
+   <dt>Layout</dt><dd>${esc(d.layout)} &middot; ${d.keys} keys &middot; ${d.thumbKeysPerHand} thumb/hand</dd>
+   <dt>Switches</dt><dd>${esc(d.switchProfile)} &middot; hot-swap: ${esc(String(d.hotswap))}</dd>
+   <dt>Link between halves</dt><dd>${esc(d.interHalfLink)}</dd>
+   <dt>Host</dt><dd>${esc((d.hostConnection||[]).join(', '))}${d.wireless===true?' &middot; wireless':d.wireless==='optional'?' &middot; wireless optional':''}</dd>
+   <dt>Firmware</dt><dd>${esc(d.firmware)}</dd>
+   <dt>Tenting</dt><dd>${esc(d.tenting)}</dd>
+   <dt>Palm rests</dt><dd>${esc(d.palmRests)}</dd>
+   <dt>Pointing device</dt><dd>${esc(d.pointingDevice)}</dd>
+   <dt>OS</dt><dd>${esc(d.os)}</dd>
+   <dt>Assembly</dt><dd>${esc(d.assembly)} &middot; ${esc(d.availability)}</dd>
+ </dl>`}
+];
+
+/* Generic OG-DB table engine.
+   Expects, defined earlier in the page:
+     DATA      - array of row objects
+     DB        - { name, compiled, noun }         (noun e.g. "keyboards")
+     COLUMNS   - [ { id, label, cell(d)->html, hideable? (default true) } ]   // first column = name, not hideable
+     FILTERS   - [ { id, label, test(d)->bool } ]
+     SORTS     - [ { id, label, cmp(a,b) } ]      // first = default
+     EXPAND    - [ { label, html(d)->html } ]
+*/
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  window.tag=(t,c)=>`<span class="tag ${c||'t-neutral'}">${esc(t)}</span>`;
+  window.esc=esc;
+  window.srcLink=s=>s&&s.url?`<a class="srclink" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label||'source')} &#8599;</a>`:'<span style="color:var(--ink-soft)">&mdash;</span>';
+  window.yn=(v,yes,no)=>v===true?tag(yes||'Yes','t-yes'):v===false?tag(no||'No','t-no'):tag(String(v),'t-part');
+
+  const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
+  const active=new Set();
+  let sortMode=SORTS[0].id;
+
+  // header
+  const htr=$('#tbl thead tr');
+  htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
+    COLUMNS.map(c=>`<th data-col="${c.id}">${esc(c.label)}</th>`).join('');
+
+  // column hide CSS
+  const st=document.createElement('style');
+  st.textContent=COLUMNS.filter(c=>c.hideable!==false).map(c=>
+    `#tbl[data-hide~="${c.id}"] [data-col="${c.id}"]{display:none}`).join('\n');
+  document.head.appendChild(st);
+
+  // min-width so it stays legible; ~150px per visible col
+  function setMin(){
+    const vis=COLUMNS.filter(c=>!hidden.has(c.id)).length+1;
+    tbl.style.minWidth=Math.min(2300,Math.max(760,vis*155))+'px';
+  }
+
+  // filters
+  const fwrap=$('#filters');
+  FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='chip';b.dataset.filter=f.id;b.setAttribute('aria-pressed','false');b.textContent=f.label;
+    b.addEventListener('click',()=>{
+      if(active.has(f.id)){active.delete(f.id);b.setAttribute('aria-pressed','false');}
+      else{active.add(f.id);b.setAttribute('aria-pressed','true');}
+      render();
+    });
+    fwrap.appendChild(b);
+  });
+
+  // sorts
+  const sel=$('#sort');
+  sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
+  sel.addEventListener('change',e=>{sortMode=e.target.value;render();});
+
+  // column panel
+  const panel=$('#colpanel'), colbtn=$('#colbtn');
+  panel.querySelector('.colhead').insertAdjacentHTML('afterend',
+    COLUMNS.filter(c=>c.hideable!==false).map(c=>
+      `<label><input type="checkbox" data-col="${c.id}" checked> ${esc(c.label)}</label>`).join(''));
+  const HIDE_KEY='ogdb.'+DB.noun+'.hidden';
+  let hidden=new Set();
+  try{const s=localStorage.getItem(HIDE_KEY);if(s)hidden=new Set(JSON.parse(s));}catch(e){}
+  const ALL=COLUMNS.filter(c=>c.hideable!==false).map(c=>c.id);
+  function applyCols(){
+    tbl.setAttribute('data-hide',[...hidden].join(' '));
+    panel.querySelectorAll('input[data-col]').forEach(cb=>cb.checked=!hidden.has(cb.dataset.col));
+    colbtn.textContent=hidden.size?`Columns · ${ALL.length-hidden.size}/${ALL.length} ▾`:'Columns ▾';
+    try{localStorage.setItem(HIDE_KEY,JSON.stringify([...hidden]));}catch(e){}
+    setMin();
+  }
+  colbtn.addEventListener('click',e=>{e.stopPropagation();const o=panel.hidden;panel.hidden=!o;colbtn.setAttribute('aria-expanded',String(o));});
+  panel.addEventListener('click',e=>e.stopPropagation());
+  panel.addEventListener('change',e=>{const cb=e.target;if(!cb.dataset.col)return;
+    cb.checked?hidden.delete(cb.dataset.col):hidden.add(cb.dataset.col);applyCols();});
+  panel.querySelectorAll('.colactions button').forEach(b=>b.addEventListener('click',()=>{
+    hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
+  document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
+
+  function passes(d){for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}return true;}
+
+  function render(){
+    let rows=DATA.filter(passes);
+    const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];
+    rows.sort(s.cmp);
+    tbody.innerHTML='';
+    const frag=document.createDocumentFragment();
+    rows.forEach(d=>{
+      const tr=document.createElement('tr');
+      tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
+      tr.innerHTML='<td><span class="chev">▶</span></td>'+
+        COLUMNS.map(c=>`<td data-col="${c.id}">${c.cell(d)}</td>`).join('');
+      const ex=document.createElement('tr');
+      ex.className='expand';ex.hidden=true;
+      ex.innerHTML=`<td colspan="${COLUMNS.length+1}"><div class="inner">`+
+        EXPAND.map(e=>{const h=e.html(d);return h?`<div><h4>${esc(e.label)}</h4><p>${h}</p></div>`:'';}).join('')+
+        `</div></td>`;
+      const toggle=()=>{const o=tr.getAttribute('aria-expanded')==='true';tr.setAttribute('aria-expanded',String(!o));ex.hidden=o;};
+      tr.addEventListener('click',toggle);
+      tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+      frag.appendChild(tr);frag.appendChild(ex);
+    });
+    tbody.appendChild(frag);
+    countEl.textContent=`${rows.length} of ${DATA.length} ${DB.noun} shown`;
+  }
+
+  applyCols();
+  render();
+})();
+
+</script>
+</body>
+</html>

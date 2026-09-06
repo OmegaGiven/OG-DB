@@ -1,0 +1,1488 @@
+[
+  {
+    "name": "ZSA Moonlander MK I",
+    "brand": "ZSA",
+    "priceUSD": 365,
+    "priceNote": "prebuilt, switches + blank keycaps + case included; shipping included",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 72,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "Oryx (QMK)",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 6,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "Integrated thumb cluster arc and fold-out wings for tenting/tilt; heavier and larger than the Voyager.",
+    "source": {
+      "url": "https://www.zsa.io/moonlander",
+      "label": "ZSA"
+    }
+  },
+  {
+    "name": "ZSA Voyager",
+    "brand": "ZSA",
+    "priceUSD": 365,
+    "priceNote": "prebuilt, low-profile Choc switches + blank keycaps + travel case included; shipping included",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 52,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "Oryx (QMK)",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 2,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "Ultra-thin 4-row low-profile board; extremely portable, uses magnetic feet and optional tenting kit.",
+    "source": {
+      "url": "https://www.zsa.io/voyager",
+      "label": "ZSA"
+    }
+  },
+  {
+    "name": "ZSA ErgoDox EZ",
+    "brand": "ZSA",
+    "priceUSD": 325,
+    "priceNote": "prebuilt base; tilt/tent kit and wrist rests add ~$30-50",
+    "splitType": "fully-separate",
+    "layout": "ortholinear",
+    "keys": 76,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "Oryx (QMK)",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 6,
+    "pointingDevice": "none",
+    "palmRests": "optional",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "The keyboard that mainstreamed the modern DIY split; large full-size ortho halves with big thumb blocks.",
+    "source": {
+      "url": "https://ergodox-ez.com/",
+      "label": "ZSA"
+    }
+  },
+  {
+    "name": "Kinesis Advantage360 Professional",
+    "brand": "Kinesis",
+    "priceUSD": 499,
+    "priceNote": "prebuilt, Gateron switches + keycaps included; wired Signature variant $599",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 76,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth"
+    ],
+    "wireless": true,
+    "firmware": "ZMK",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 6,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS / Android",
+    "notes": "Deeply sculpted concave key wells with dished thumb clusters; Pro model is Bluetooth wireless on open-source ZMK.",
+    "source": {
+      "url": "https://kinesis-ergo.com/keyboards/advantage360/",
+      "label": "Kinesis"
+    }
+  },
+  {
+    "name": "Kinesis Advantage2",
+    "brand": "Kinesis",
+    "priceUSD": 349,
+    "priceNote": "prebuilt, Cherry MX switches + keycaps included; not hotswap",
+    "splitType": "unibody-split",
+    "layout": "columnar-stagger",
+    "keys": 72,
+    "switchProfile": "MX",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 6,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Classic one-piece contoured keywell design with fixed split angle; still sold alongside the 360.",
+    "source": {
+      "url": "https://kinesis-ergo.com/keyboards/advantage2/",
+      "label": "Kinesis"
+    }
+  },
+  {
+    "name": "Kinesis Freestyle Edge RGB",
+    "brand": "Kinesis",
+    "priceUSD": 199,
+    "priceNote": "prebuilt; VX/V3 tenting accessory kit adds ~$35-60",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 95,
+    "switchProfile": "MX",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / Linux",
+    "notes": "Gaming-oriented standard-layout split with a fixed 20\" cable between halves; near-zero learning curve.",
+    "source": {
+      "url": "https://gaming.kinesis-ergo.com/product/freestyle-edge/",
+      "label": "Kinesis"
+    }
+  },
+  {
+    "name": "Kinesis Freestyle Pro",
+    "brand": "Kinesis",
+    "priceUSD": 179,
+    "priceNote": "prebuilt; separate Lift/VX tenting accessory ~$25-50",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 91,
+    "switchProfile": "MX",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "optional",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Office-focused standard-layout split, Cherry MX quiet switches, onboard remapping and macros.",
+    "source": {
+      "url": "https://kinesis-ergo.com/keyboards/freestyle-pro/",
+      "label": "Kinesis"
+    }
+  },
+  {
+    "name": "Keychron Q11",
+    "brand": "Keychron",
+    "priceUSD": 199,
+    "priceNote": "fully-assembled; barebone (no switches/keycaps) ~$185",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 91,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Heavy CNC-aluminum 75% split with rotary knob; conventional layout, gasket mount, no built-in tenting.",
+    "source": {
+      "url": "https://www.keychron.com/products/keychron-q11-qmk-custom-mechanical-keyboard",
+      "label": "Keychron"
+    }
+  },
+  {
+    "name": "Keychron Q11 Ultra 8K",
+    "brand": "Keychron",
+    "priceUSD": 240,
+    "priceNote": "fully-assembled; both halves and host link are wireless",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 91,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth",
+      "2.4GHz dongle"
+    ],
+    "wireless": true,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "2026 revision: the two halves talk wirelessly to each other, dual batteries, 8kHz polling on the dongle.",
+    "source": {
+      "url": "https://www.keychron.com/products/keychron-q11-ultra-8k-wireless-custom-mechanical-keyboard",
+      "label": "Keychron"
+    }
+  },
+  {
+    "name": "Keychron K15 Max",
+    "brand": "Keychron",
+    "priceUSD": 124,
+    "priceNote": "fully-assembled, hotswap + RGB variant; white-LED non-hotswap ~$104",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 84,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth",
+      "2.4GHz dongle"
+    ],
+    "wireless": true,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "One-piece low-profile Alice-layout board; angled halves but no gap or tenting, weakest 'split' fit here.",
+    "source": {
+      "url": "https://www.keychron.com/products/keychron-k15-max-alice-layout-qmk-wireless-custom-mechanical-keyboard",
+      "label": "Keychron"
+    }
+  },
+  {
+    "name": "Dygma Defy",
+    "brand": "Dygma",
+    "priceUSD": 369,
+    "priceNote": "base wired config; +wireless ~$90, +tenting kit ~$80, +underglow ~$80 (fully loaded ~$610)",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 70,
+    "switchProfile": "MX + low-profile",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth",
+      "2.4GHz dongle"
+    ],
+    "wireless": "optional",
+    "firmware": "Bazecor (Kaleidoscope)",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 8,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "Near-standard layout with a large 8-key thumb cluster per hand; magnetic wrist rests, optional wireless module.",
+    "source": {
+      "url": "https://dygma.com/products/dygma-defy",
+      "label": "Dygma"
+    }
+  },
+  {
+    "name": "Dygma Raise 2",
+    "brand": "Dygma",
+    "priceUSD": 399,
+    "priceNote": "base wired config; wireless/tenting/underglow add-ons like the Defy",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 68,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth",
+      "2.4GHz dongle"
+    ],
+    "wireless": "optional",
+    "firmware": "Bazecor (Kaleidoscope)",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 8,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "65% ANSI-style split aimed at gamers who want a normal layout plus a thumb key cluster; low learning curve.",
+    "source": {
+      "url": "https://dygma.com/products/dygma-raise-2",
+      "label": "Dygma"
+    }
+  },
+  {
+    "name": "MoErgo Glove80",
+    "brand": "MoErgo",
+    "priceUSD": 399,
+    "priceNote": "prebuilt, low-profile Choc switches + keycaps + travel case; Rev2 w/ silent switches ~$425",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 80,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth"
+    ],
+    "wireless": true,
+    "firmware": "ZMK",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 6,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS / Android",
+    "notes": "Low-profile contoured keywell (a flatter Glove/Dactyl); integrated flip-out feet, molded palm rests, Bluetooth ZMK.",
+    "source": {
+      "url": "https://www.moergo.com/",
+      "label": "MoErgo"
+    }
+  },
+  {
+    "name": "Naya Create",
+    "brand": "Naya",
+    "priceUSD": 500,
+    "priceNote": "base wired mechanical config; input modules (trackball/dial/touch) $80-180 each, wireless needs 2+ modules (~$680+)",
+    "splitType": "adjustable-bridge",
+    "layout": "columnar-stagger",
+    "keys": 68,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth",
+      "2.4GHz dongle"
+    ],
+    "wireless": "optional",
+    "firmware": "proprietary",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 4,
+    "pointingDevice": "trackball option",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Motorized/articulating stand system with hot-swappable input modules (trackball, dial, touchpad); very expensive.",
+    "source": {
+      "url": "https://naya.tech/products/naya-create-3-0",
+      "label": "Naya"
+    }
+  },
+  {
+    "name": "Keyboardio Model 100",
+    "brand": "Keyboardio",
+    "priceUSD": 349,
+    "priceNote": "prebuilt, wooden enclosure, sculpted keycaps + switches included",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 64,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/VIA",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 4,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "Wood-bodied sculpted split with concave key columns, hardwired octopus link, and a magnetic RGBW per-key board.",
+    "source": {
+      "url": "https://shop.keyboard.io/products/model-100",
+      "label": "Keyboardio"
+    }
+  },
+  {
+    "name": "Ultimate Hacking Keyboard 60 v2",
+    "brand": "Ultimate Hacking Keyboard",
+    "priceUSD": 350,
+    "priceNote": "base prebuilt; add-on modules (trackball, trackpoint, key cluster) $50-70 each, tenting legs kit extra",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 67,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "trackball option",
+    "palmRests": "optional",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Splits into two halves via a short bridge cable; optional trackball/trackpoint/key-cluster modules snap onto the ends.",
+    "source": {
+      "url": "https://ultimatehackingkeyboard.com/",
+      "label": "UHK"
+    }
+  },
+  {
+    "name": "Ultimate Hacking Keyboard 60 v2 (wireless)",
+    "brand": "Ultimate Hacking Keyboard",
+    "priceUSD": 450,
+    "priceNote": "approx; wireless-equipped base config, before modules",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 67,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless or cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth"
+    ],
+    "wireless": true,
+    "firmware": "proprietary",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "trackball option",
+    "palmRests": "optional",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Same board as the wired UHK 60 v2 with the wireless option enabled; halves connect over Bluetooth.",
+    "source": {
+      "url": "https://ultimatehackingkeyboard.com/",
+      "label": "UHK"
+    }
+  },
+  {
+    "name": "X-Bows Nature",
+    "brand": "X-Bows",
+    "priceUSD": 149,
+    "priceNote": "prebuilt (sale price; MSRP ~$169), hotswap + keycaps included",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 87,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 2,
+    "pointingDevice": "none",
+    "palmRests": "optional",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "One-piece 'cross' layout with a central column of modifiers hit by the thumbs; low learning curve, no gap/tent.",
+    "source": {
+      "url": "https://x-bows.com/products/x-bows-nature",
+      "label": "X-Bows"
+    }
+  },
+  {
+    "name": "X-Bows Knight",
+    "brand": "X-Bows",
+    "priceUSD": 199,
+    "priceNote": "prebuilt (sale price; MSRP ~$239), full CNC-aluminum body",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 87,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 2,
+    "pointingDevice": "none",
+    "palmRests": "optional",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Heavier all-aluminum version of the X-Bows ergonomic 'cross' layout; TKL footprint.",
+    "source": {
+      "url": "https://x-bows.com/products/x-bows-knight-ergonomic-mechanical-keyboard",
+      "label": "X-Bows"
+    }
+  },
+  {
+    "name": "Mistel Barocco MD770",
+    "brand": "Mistel",
+    "priceUSD": 150,
+    "priceNote": "prebuilt; RGB hotswap variant, keycaps + Cherry/hotswap switches included",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 77,
+    "switchProfile": "MX",
+    "hotswap": "optional",
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 2,
+    "pointingDevice": "none",
+    "palmRests": "optional",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "65% standard-layout split with extra bottom-row thumb keys; onboard macros, no software, popular budget pick.",
+    "source": {
+      "url": "https://mistelkeyboard.com/products/f2270f0dc47c73f57fd2d9c9caf70cf6",
+      "label": "Mistel"
+    }
+  },
+  {
+    "name": "Mistel Barocco MD600 Alpha",
+    "brand": "Mistel",
+    "priceUSD": 115,
+    "priceNote": "prebuilt, 60% split, Cherry MX switches + keycaps included",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 62,
+    "switchProfile": "MX",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Compact 60% split, the original mainstream 'normal layout in two halves' board; onboard remapping only.",
+    "source": {
+      "url": "https://mistelkeyboard.com/",
+      "label": "Mistel"
+    }
+  },
+  {
+    "name": "Cloud Nine ErgoTKL",
+    "brand": "Cloud Nine",
+    "priceUSD": 170,
+    "priceNote": "prebuilt, hotswap, keycaps + wrist rests included",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 87,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Standard-layout TKL split with adjustable splay, tilt and tenting legs built in; hotswap sockets.",
+    "source": {
+      "url": "https://cloudninec9.com/products/c9-ergo-keyboard",
+      "label": "Cloud Nine"
+    }
+  },
+  {
+    "name": "Matias Ergo Pro",
+    "brand": "Matias",
+    "priceUSD": 200,
+    "priceNote": "prebuilt, Matias Quiet Click Alps-style switches, palm supports included",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 87,
+    "switchProfile": "unknown",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Uses Matias/Alps quiet tactile switches rather than MX; fixed cable between halves, no software remapping.",
+    "source": {
+      "url": "https://matias.ca/ergopro/",
+      "label": "Matias"
+    }
+  },
+  {
+    "name": "Logitech Ergo K860",
+    "brand": "Logitech",
+    "priceUSD": 130,
+    "priceNote": "prebuilt membrane; K860 for Business variant similar price",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 108,
+    "switchProfile": "scissor",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless",
+    "hostConnection": [
+      "Bluetooth",
+      "2.4GHz dongle"
+    ],
+    "wireless": true,
+    "firmware": "proprietary",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "One-piece curved membrane board with a fixed split-and-tent wave shape and integrated cushioned palm rest.",
+    "source": {
+      "url": "https://www.logitech.com/en-us/products/keyboards/k860-split-ergonomic.html",
+      "label": "Logitech"
+    }
+  },
+  {
+    "name": "Logitech Wave Keys",
+    "brand": "Logitech",
+    "priceUSD": 60,
+    "priceNote": "prebuilt membrane, wireless",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 104,
+    "switchProfile": "scissor",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless",
+    "hostConnection": [
+      "Bluetooth",
+      "2.4GHz dongle"
+    ],
+    "wireless": true,
+    "firmware": "proprietary",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux / ChromeOS",
+    "notes": "Budget wavy one-piece board with a very mild split curve and integrated foam wrist rest; entry-level ergo.",
+    "source": {
+      "url": "https://www.logitech.com/en-us/products/keyboards/wave-keys.html",
+      "label": "Logitech"
+    }
+  },
+  {
+    "name": "Microsoft Sculpt Ergonomic Keyboard",
+    "brand": "Microsoft",
+    "priceUSD": 130,
+    "priceNote": "discontinued; street price now $150-250 used/NOS",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 98,
+    "switchProfile": "scissor",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "wireless",
+    "hostConnection": [
+      "2.4GHz dongle"
+    ],
+    "wireless": true,
+    "firmware": "proprietary",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "discontinued",
+    "os": "Windows / macOS / Linux",
+    "notes": "Iconic domed one-piece split with a detachable reverse-tilt riser and separate numpad; long the default 'ergo' recommendation.",
+    "source": {
+      "url": "https://www.microsoft.com/en/accessories/products/keyboards/sculpt-ergonomic-desktop",
+      "label": "Microsoft"
+    }
+  },
+  {
+    "name": "Microsoft Ergonomic Keyboard (2019)",
+    "brand": "Microsoft",
+    "priceUSD": 60,
+    "priceNote": "discontinued 2024; still widely sold new ~$60-90",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 111,
+    "switchProfile": "scissor",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "discontinued",
+    "os": "Windows / macOS / Linux",
+    "notes": "Wired full-size membrane split with cushioned palm rest and dedicated emoji/Office keys; budget successor to the Sculpt.",
+    "source": {
+      "url": "https://www.microsoft.com/en/accessories/products/keyboards/ergonomic-keyboard",
+      "label": "Microsoft"
+    }
+  },
+  {
+    "name": "Perixx Periboard-535",
+    "brand": "Perixx",
+    "priceUSD": 90,
+    "priceNote": "prebuilt, low-profile Kailh Choc switches, wired",
+    "splitType": "unibody-split",
+    "layout": "row-stagger",
+    "keys": 88,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": false,
+    "keycapsIncluded": true,
+    "interHalfLink": "USB-C cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "proprietary",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "included",
+    "assembly": "prebuilt",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Rare budget board that puts real low-profile mechanical switches in a Sculpt-style one-piece split shell.",
+    "source": {
+      "url": "https://perixx.com/products/periboard-535",
+      "label": "Perixx"
+    }
+  },
+  {
+    "name": "splitkb Aurora Corne (CRKBD)",
+    "brand": "splitkb / foostan",
+    "priceUSD": 110,
+    "priceNote": "PCB kit only: 2 PCBs, per-key + underglow LEDs option; switches, keycaps, case, controllers, screens extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 42,
+    "switchProfile": "MX + low-profile",
+    "hotswap": "optional",
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "The definitive 3x6+3 columnar split; huge ecosystem of cases, wireless (nice!nano/ZMK) builds and variants.",
+    "source": {
+      "url": "https://splitkb.com/products/aurora-corne",
+      "label": "splitkb"
+    }
+  },
+  {
+    "name": "splitkb Aurora Lily58",
+    "brand": "splitkb / kata0510",
+    "priceUSD": 110,
+    "priceNote": "PCB kit only; switches, keycaps, case, controllers, OLEDs extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 58,
+    "switchProfile": "MX + low-profile",
+    "hotswap": "optional",
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 4,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "5-row columnar split with a number row and 4 thumb keys; easiest 'first ergo kit' for people who want a top row.",
+    "source": {
+      "url": "https://splitkb.com/products/aurora-lily58",
+      "label": "splitkb"
+    }
+  },
+  {
+    "name": "splitkb Aurora Sofle v2",
+    "brand": "splitkb / Josef Adamcik",
+    "priceUSD": 120,
+    "priceNote": "PCB kit only; switches, keycaps, case, controllers, encoders/OLEDs extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 58,
+    "switchProfile": "MX + low-profile",
+    "hotswap": "optional",
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 5,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Lily58-like 6-column split with rotary encoders, extra thumb key and per-key RGB; very popular streamer/dev board.",
+    "source": {
+      "url": "https://splitkb.com/products/aurora-sofle-v2",
+      "label": "splitkb"
+    }
+  },
+  {
+    "name": "splitkb Kyria rev3",
+    "brand": "splitkb / Thomas Baart",
+    "priceUSD": 130,
+    "priceNote": "PCB kit only; switches, keycaps, case, controllers, encoders/OLEDs extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 50,
+    "switchProfile": "MX + low-profile",
+    "hotswap": "optional",
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 5,
+    "pointingDevice": "none",
+    "palmRests": "optional",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Aggressive stagger with a big 5-key thumb arc; splitkb sells matching tenting pucks and wrist rests.",
+    "source": {
+      "url": "https://splitkb.com/products/kyria-rev3-pcb-kit",
+      "label": "splitkb"
+    }
+  },
+  {
+    "name": "Keebio Iris",
+    "brand": "Keebio",
+    "priceUSD": 130,
+    "priceNote": "rev8 full kit (PCBs, plates, hotswap, controllers); switches + keycaps extra. Assembled ~$260",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 56,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Long-running 4x6+3 split with a number row; recent revs are fully hotswap/solderless and beginner-friendly.",
+    "source": {
+      "url": "https://keeb.io/products/iris-keyboard-split-ergonomic-keyboard",
+      "label": "Keebio"
+    }
+  },
+  {
+    "name": "Keebio Sinc",
+    "brand": "Keebio",
+    "priceUSD": 130,
+    "priceNote": "full kit, hotswap; switches + keycaps extra",
+    "splitType": "fully-separate",
+    "layout": "row-stagger",
+    "keys": 87,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 0,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Standard row-stagger 75%-ish split with per-side macro columns and encoders; a solderless upgrade path from a normal board.",
+    "source": {
+      "url": "https://keeb.io/products/sinc-keyboard-split-staggered-keyboard-w-rgb-backlight-and-underglow",
+      "label": "Keebio"
+    }
+  },
+  {
+    "name": "Bastardkb Skeletyl",
+    "brand": "Bastard Keyboards",
+    "priceUSD": 120,
+    "priceNote": "self-print/assemble kit price approx; vendor prebuilt (bstiq/vendor) ~$300-400",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 36,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Aggressively tented 3x5+3 with a 3D-printed 'skeleton' case; the minimalist end of the Bastardkb family.",
+    "source": {
+      "url": "https://bastardkb.com/skeletyl/",
+      "label": "Bastard Keyboards"
+    }
+  },
+  {
+    "name": "Bastardkb Scylla",
+    "brand": "Bastard Keyboards",
+    "priceUSD": 130,
+    "priceNote": "kit/parts approx; vendor prebuilt ~$350-450",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 42,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 4,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Larger 4x6-ish Skeletyl sibling with 4 thumb keys and a bit more reach; strong built-in tenting.",
+    "source": {
+      "url": "https://bastardkb.com/scylla/",
+      "label": "Bastard Keyboards"
+    }
+  },
+  {
+    "name": "Bastardkb Charybdis (4x6)",
+    "brand": "Bastard Keyboards",
+    "priceUSD": 150,
+    "priceNote": "kit/parts approx incl. trackball sensor; vendor prebuilt ~$400-500",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 46,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 4,
+    "pointingDevice": "trackball built-in",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Charybdis is the trackball Skeletyl/Scylla: a 34mm ball sits under the right thumb/fingers for mouse-free use.",
+    "source": {
+      "url": "https://bastardkb.com/charybdis/",
+      "label": "Bastard Keyboards"
+    }
+  },
+  {
+    "name": "Bastardkb Charybdis Nano (3x5)",
+    "brand": "Bastard Keyboards",
+    "priceUSD": 130,
+    "priceNote": "kit/parts approx incl. trackball; vendor prebuilt ~$350-450",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 36,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "trackball built-in",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Smallest trackball split in the family: 34-key 3x5+3 with an integrated ball; popular ZMK wireless conversion target.",
+    "source": {
+      "url": "https://bastardkb.com/charybdis-nano/",
+      "label": "Bastard Keyboards"
+    }
+  },
+  {
+    "name": "Bastardkb Dilemma v2",
+    "brand": "Bastard Keyboards",
+    "priceUSD": 140,
+    "priceNote": "PCB kit incl. Cirque trackpad; switches/keycaps/case extra. Assembled ~$300+",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 34,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 2,
+    "pointingDevice": "trackpad built-in",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Low-profile 3x5+2 unibody-PCB-per-half split with a 35mm Cirque trackpad; 'assembled' PCB needs no soldering.",
+    "source": {
+      "url": "https://bastardkb.com/dilemma/",
+      "label": "Bastard Keyboards"
+    }
+  },
+  {
+    "name": "Ferris Sweep",
+    "brand": "davkbd / community",
+    "priceUSD": 60,
+    "priceNote": "bare PCB pair (per-hand unibody PCB, no diodes to solder on 'Bling'); Pro Micro/controllers, switches, keycaps extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 34,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": "optional",
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 2,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "The reference 34-key low-profile split; the PCB doubles as the case and it is the default ZMK wireless 'Sweep' build.",
+    "source": {
+      "url": "https://github.com/davidphilipbarr/Sweep",
+      "label": "Sweep (GitHub)"
+    }
+  },
+  {
+    "name": "Cantor / Cantor Remix",
+    "brand": "diepala / community",
+    "priceUSD": 45,
+    "priceNote": "bare PCB pair; RP2040/Pro Micro, switches, keycaps extra. Remix adds hotswap + USB-C",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 42,
+    "switchProfile": "MX",
+    "hotswap": "optional",
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "A Corne-like 3x6+3 designed to be the cheapest, easiest first solder build; PCB is the case.",
+    "source": {
+      "url": "https://github.com/diepala/cantor",
+      "label": "Cantor (GitHub)"
+    }
+  },
+  {
+    "name": "Chocofi",
+    "brand": "Cyboard / community",
+    "priceUSD": 90,
+    "priceNote": "PCB + FR4 plate/case kit; controllers, Choc switches, keycaps extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 36,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Hotswap low-profile 3x5+3 (Corne-ish); nice!nano-friendly and a common polished wireless daily driver.",
+    "source": {
+      "url": "https://github.com/Cyboard-DigitalTailor/Chocofi",
+      "label": "Chocofi (GitHub)"
+    }
+  },
+  {
+    "name": "Piantor Pro",
+    "brand": "beekeeb",
+    "priceUSD": 100,
+    "priceNote": "PCB pair with soldered RP2040 + USB-C; switches, keycaps, case extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 42,
+    "switchProfile": "MX + low-profile",
+    "hotswap": false,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Corne-compatible 3x6+3 with onboard USB-C RP2040 (no fragile Pro Micro); a favorite 'reliable Corne' kit.",
+    "source": {
+      "url": "https://beekeeb.com/product/piantor-pro-split-keyboard-kit/",
+      "label": "beekeeb"
+    }
+  },
+  {
+    "name": "Totem",
+    "brand": "GEIGEIGEIST",
+    "priceUSD": 90,
+    "priceNote": "PCB + component kit; controllers, Choc switches, keycaps extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 38,
+    "switchProfile": "low-profile (Choc)",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Low-profile 38-key with a distinctive splayed inner column and hotswap sockets; SMD pre-soldered, easy build.",
+    "source": {
+      "url": "https://github.com/GEIGEIGEIST/TOTEM",
+      "label": "Totem (GitHub)"
+    }
+  },
+  {
+    "name": "Keyball61",
+    "brand": "Yowkees / Shirogane Lab",
+    "priceUSD": 190,
+    "priceNote": "full kit incl. 34mm trackball + sensor; switches, keycaps, controllers extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 61,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "trackball built-in",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Popular Japanese trackball split: 34mm ball under the right thumb cluster, hotswap, number row; also Keyball44/39.",
+    "source": {
+      "url": "https://shirogane-lab.com/en/products/keyball61",
+      "label": "Shirogane Lab"
+    }
+  },
+  {
+    "name": "Keyball44",
+    "brand": "Yowkees / Shirogane Lab",
+    "priceUSD": 175,
+    "priceNote": "full kit incl. 34mm trackball + sensor; switches, keycaps, controllers extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 44,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/Vial",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 3,
+    "pointingDevice": "trackball built-in",
+    "palmRests": "none",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "Compact 44-key version of the Keyball with the same right-hand 34mm trackball; no number row.",
+    "source": {
+      "url": "https://shirogane-lab.com/en/products/keyball44",
+      "label": "Shirogane Lab"
+    }
+  },
+  {
+    "name": "Dactyl-Manuform (5x6)",
+    "brand": "community (Adereth / tshort)",
+    "priceUSD": 130,
+    "priceNote": "no official kit; ~$60-100 in parts + printed/ordered case, or $250-450 from a builder on Etsy",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 66,
+    "switchProfile": "MX",
+    "hotswap": "optional",
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "built-in",
+    "thumbKeysPerHand": 6,
+    "pointingDevice": "trackball option",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "in production",
+    "os": "Windows / macOS / Linux",
+    "notes": "3D-printed sculpted concave keywell with a curved thumb cluster; fully parametric, endless variants incl. trackball.",
+    "source": {
+      "url": "https://github.com/abstracthat/dactyl-manuform",
+      "label": "Dactyl-Manuform (GitHub)"
+    }
+  },
+  {
+    "name": "Redox",
+    "brand": "Mattia Dal Ben (community)",
+    "priceUSD": 120,
+    "priceNote": "no first-party kit; PCB + acrylic case from group buys/vendors, switches/keycaps/controllers extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 70,
+    "switchProfile": "MX",
+    "hotswap": false,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired"
+    ],
+    "wireless": false,
+    "firmware": "QMK/VIA",
+    "tenting": "none / DIY",
+    "thumbKeysPerHand": 4,
+    "pointingDevice": "none",
+    "palmRests": "none",
+    "assembly": "kit (soldering)",
+    "availability": "group buy / intermittent",
+    "os": "Windows / macOS / Linux",
+    "notes": "'Reduced ErgoDox' — full ortho split with number row and pinky/thumb clusters but a smaller footprint than the ErgoDox.",
+    "source": {
+      "url": "https://github.com/mattdibi/redox-keyboard",
+      "label": "Redox (GitHub)"
+    }
+  },
+  {
+    "name": "Torn Keyboard",
+    "brand": "rromanov / Torn",
+    "priceUSD": 180,
+    "priceNote": "approx; full kit incl. PCBs, plates, OLED, encoders, controllers, optional Bluetooth. Switches/keycaps extra",
+    "splitType": "fully-separate",
+    "layout": "columnar-stagger",
+    "keys": 46,
+    "switchProfile": "MX",
+    "hotswap": true,
+    "keycapsIncluded": false,
+    "interHalfLink": "TRRS cable",
+    "hostConnection": [
+      "USB-C wired",
+      "Bluetooth"
+    ],
+    "wireless": "optional",
+    "firmware": "QMK/Vial",
+    "tenting": "kit accessory",
+    "thumbKeysPerHand": 4,
+    "pointingDevice": "none",
+    "palmRests": "optional",
+    "assembly": "kit (hotswap, solderless)",
+    "availability": "group buy / intermittent",
+    "os": "Windows / macOS / Linux",
+    "notes": "Curved-thumb hotswap split with an integrated palm-rest case and optional BLE module; sold in periodic batches.",
+    "source": {
+      "url": "https://tornkeyboard.com/",
+      "label": "Torn"
+    }
+  }
+]
