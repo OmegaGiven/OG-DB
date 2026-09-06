@@ -73,7 +73,8 @@
     font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
     line-height:1.5;
   }
-  .wrap{max-width:1180px;margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+  .wrap{max-width:min(2400px,96vw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(14px,3vw,32px) 80px}
+  .prose{max-width:70ch}
 
   header.masthead{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:26px}
   .kicker{
@@ -90,7 +91,8 @@
 
   .primer{
     background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
-    border-radius:4px;padding:16px 18px;margin:22px 0 26px;box-shadow:var(--shadow)
+    border-radius:4px;padding:16px 18px;margin:22px 0 26px;box-shadow:var(--shadow);
+    max-width:92ch
   }
   .primer h2{
     font-family:"Chivo",sans-serif;font-weight:700;font-size:14px;margin:0 0 8px;
