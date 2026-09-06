@@ -166,7 +166,7 @@ const fw=d=>/klipper/i.test(d.firmware||'')?'t-yes':/closed/i.test(d.firmware||'
 const COLUMNS=[
  {id:'name',hideable:false,label:'Printer',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear} &middot; ${esc(d.tech)}</span>`},
  {id:'price',label:'Price',sort:d=>d.priceUSD,cell:money},
- {id:'vol',label:'Build volume',sort:d=>d.buildVolumeL,cell:d=>`<span class="price">${esc(d.buildVolumeMm)}</span><span class="sub">${d.buildVolumeL!=null?(d.buildVolumeL+' L'+(d.priceUSD?` &middot; ${Math.round(d.priceUSD/d.buildVolumeL)}/L`:'')):(/belt|∞|infinite/i.test(d.buildVolumeMm||'')?'infinite length &mdash; belt':'')}</span>`},
+ {id:'vol',label:'Build volume',sort:d=>d.buildVolumeL??1e9,cell:d=>`<span class="price">${esc(d.buildVolumeMm)}</span><span class="sub">${d.buildVolumeL!=null?(d.buildVolumeL+' L'+(d.priceUSD?` &middot; $${Math.round(d.priceUSD/d.buildVolumeL)}/L`:'')):(/belt|∞|infinite/i.test(d.buildVolumeMm||'')?'infinite length &mdash; belt':'')}</span>`},
  {id:'color',label:'Multi-colour',sort:d=>CSORD[d.colorSystemType]??9,cell:d=>{const c=CST[d.colorSystemType]||[d.colorSystemType,'t-neutral'];return (d.multiColor?tag(c[0],c[1]):tag('Single colour','t-neutral'))+(d.maxColors>1?`<span class="sub">up to ${d.maxColors} colours &middot; purge waste: ${esc(d.purgeWaste)}</span>`:'');}},
  {id:'colsys',label:'Colour system',cell:d=>`<span style="font-size:11.5px">${esc(d.colorSystem)}</span>`},
  {id:'head',label:'Hotend / extruder',sort:d=>d.nozzleMaxC,cell:d=>isResin(d)?tag('Resin (LCD)','t-neutral'):tag(d.extruder,/direct|toolchanger|dual/i.test(d.extruder||'')?'t-yes':'t-part')+`<span class="sub">${esc(d.hotend)}</span>`},
