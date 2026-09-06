@@ -72,7 +72,7 @@
 
   // header (click to sort)
   const htr=$('#tbl thead tr');
-  htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
+  htr.innerHTML='<th style="width:46px" aria-label="lock / expand"></th>'+
     COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
   let sorts=[]; // [{id,dir}] primary first; click adds a secondary, re-click flips, third click removes
   const scratch=document.createElement('div');
@@ -171,17 +171,32 @@
 
   function passes(d){for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}return true;}
 
+  // pinned rows survive filters/search so one item can be compared against a filtered set
+  const rowKey=d=>String(d.name||d.id||COLUMNS[0].cell(d));
+  const PIN_KEY='ogdb.'+DB.noun+'.pinned';
+  let pinned=new Set();
+  try{const s=localStorage.getItem(PIN_KEY);if(s)pinned=new Set(JSON.parse(s));}catch(e){}
+  function savePins(){try{localStorage.setItem(PIN_KEY,JSON.stringify([...pinned]));}catch(e){}}
+  function togglePin(d){const k=rowKey(d);pinned.has(k)?pinned.delete(k):pinned.add(k);savePins();render();}
+
   function render(){
-    let rows=DATA.filter(passes);
-    if(sorts.length){rows.sort(colCmp);}
-    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
+    let base=DATA.filter(d=>pinned.has(rowKey(d))||passes(d));
+    if(sorts.length){base.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];base.sort(s.cmp);}
+    // pinned rows float to the top, keeping their relative sort order
+    base.sort((a,b)=>(pinned.has(rowKey(b))?1:0)-(pinned.has(rowKey(a))?1:0));
+    const rows=base;
+    const nPin=rows.filter(d=>pinned.has(rowKey(d))).length;
+    const nMatch=rows.length-nPin;
     tbody.innerHTML='';
     const frag=document.createDocumentFragment();
     rows.forEach(d=>{
+      const isPin=pinned.has(rowKey(d));
       const tr=document.createElement('tr');
-      tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
-      tr.innerHTML='<td><span class="chev">▶</span></td>'+
+      tr.className='row'+(isPin?' pinned':'');tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
+      tr.innerHTML=`<td class="lead"><button class="pin${isPin?' on':''}" title="${isPin?'Unlock':'Lock this row so it stays visible through filters'}" aria-pressed="${isPin}">&#128204;</button><span class="chev">▶</span></td>`+
         COLUMNS.map(c=>`<td data-col="${c.id}">${c.cell(d)}</td>`).join('');
+      tr.querySelector('.pin').addEventListener('click',e=>{e.stopPropagation();togglePin(d);});
       const ex=document.createElement('tr');
       ex.className='expand';ex.hidden=true;
       ex.innerHTML=`<td colspan="${COLUMNS.length+1}"><div class="inner">`+
@@ -193,7 +208,10 @@
       frag.appendChild(tr);frag.appendChild(ex);
     });
     tbody.appendChild(frag);
-    countEl.textContent=`${rows.length} of ${DATA.length} ${DB.noun} shown`;
+    countEl.innerHTML=`${nMatch} of ${DATA.length} ${DB.noun} shown`+
+      (nPin?` &middot; <span class="pincount">${nPin} locked</span> <button class="clearpins" type="button">clear</button>`:'');
+    const cp=countEl.querySelector('.clearpins');
+    if(cp) cp.addEventListener('click',()=>{pinned.clear();savePins();render();});
   }
 
   applyCols();

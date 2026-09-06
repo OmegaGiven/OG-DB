@@ -215,6 +215,16 @@
   dl.osdl dd{margin:0}
   .chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
   tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
+  td.lead{white-space:nowrap;padding-right:4px}
+  .pin{border:0;background:none;cursor:pointer;font-size:12px;line-height:1;padding:2px 3px;filter:grayscale(1) opacity(.28);transition:filter .12s}
+  tr.row:hover .pin,.pin:focus-visible{filter:grayscale(.3) opacity(.7)}
+  .pin.on{filter:none}
+  .pin:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  tr.row.pinned{background:var(--accent-soft)}
+  tr.row.pinned td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+  tr.row.pinned:hover{background:var(--accent-soft)}
+  .pincount{color:var(--accent);font-weight:600}
+  .clearpins{border:0;background:none;color:var(--accent);font:inherit;font-size:11px;cursor:pointer;text-decoration:underline;padding:0 2px}
 
   footer{margin-top:32px;font-size:12px;color:var(--ink-soft);max-width:65ch}
   footer a{color:var(--accent)}
@@ -308,7 +318,7 @@
     <table id="tbl">
       <thead>
         <tr>
-          <th style="width:32px" aria-label="expand"></th>
+          <th style="width:46px" aria-label="lock / expand"></th>
           <th data-col="model">Model</th>
           <th data-col="price">MSRP / street</th>
           <th data-col="w24">2.4 GHz link</th>
@@ -1120,8 +1130,13 @@ function passes(d){
   return true;
 }
 
+const PIN_KEY='ogdb.headsets.pinned';
+let pinned=new Set();
+try{const s=localStorage.getItem(PIN_KEY);if(s)pinned=new Set(JSON.parse(s));}catch(e){}
+function savePins(){try{localStorage.setItem(PIN_KEY,JSON.stringify([...pinned]));}catch(e){}}
+function togglePin(name){pinned.has(name)?pinned.delete(name):pinned.add(name);savePins();render();}
 function render(){
-  let rows=DATA.filter(passes);
+  let rows=DATA.filter(d=>pinned.has(d.name)||passes(d));
   if(sorts.length){ rows.sort(colCmp); }
   else rows.sort((a,b)=>{
     if(sortMode==='name') return a.name.localeCompare(b.name);
@@ -1129,12 +1144,15 @@ function render(){
     if(sortMode==='batt-desc') return b.pwrNum-a.pwrNum;
     return a.msrp-b.msrp;
   });
+  rows.sort((a,b)=>(pinned.has(b.name)?1:0)-(pinned.has(a.name)?1:0));
+  const nPin=rows.filter(d=>pinned.has(d.name)).length;
   tbody.innerHTML='';
   rows.forEach((d,i)=>{
+    const isPin=pinned.has(d.name);
     const tr=document.createElement('tr');
-    tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
+    tr.className='row'+(isPin?' pinned':'');tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
     tr.innerHTML=`
-      <td><span class="chev">▶</span></td>
+      <td class="lead"><button class="pin${isPin?' on':''}" title="${isPin?'Unlock':'Lock this row so it stays visible through filters'}" aria-pressed="${isPin}">&#128204;</button><span class="chev">▶</span></td>
       <td data-col="model"><span class="model">${d.name}</span><span class="form">${d.form}</span></td>
       <td data-col="price" class="price">$${d.msrp}<small>~$${d.street} street</small></td>
       <td data-col="w24">${w24Cell(d)}</td>
@@ -1162,11 +1180,15 @@ function render(){
       tr.setAttribute('aria-expanded',String(!open));
       ex.hidden=open;
     };
+    tr.querySelector('.pin').addEventListener('click',e=>{e.stopPropagation();togglePin(d.name);});
     tr.addEventListener('click',toggle);
     tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
     tbody.appendChild(tr);tbody.appendChild(ex);
   });
-  countEl.textContent=`${rows.length} of ${DATA.length} headsets shown`;
+  countEl.innerHTML=`${rows.length-nPin} of ${DATA.length} headsets shown`+
+    (nPin?` &middot; <span class="pincount">${nPin} locked</span> <button class="clearpins" type="button">clear</button>`:'');
+  const cp=countEl.querySelector('.clearpins');
+  if(cp) cp.addEventListener('click',()=>{pinned.clear();savePins();render();});
 }
 
 document.querySelectorAll('button.chip[data-filter]').forEach(b=>{
