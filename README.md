@@ -2,7 +2,7 @@
 
 Small personal reference databases, each published as a self-contained HTML page (no build step, no framework) plus a machine-readable data file.
 
-Live: **https://omegagiven.github.io/OG-DB/** (the site root redirects straight to the Headset DB)
+Live: **https://omegagiven.github.io/OG-DB/**
 
 ## Databases
 

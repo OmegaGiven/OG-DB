@@ -4,16 +4,44 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OG-DB</title>
-<meta http-equiv="refresh" content="0; url=headsets/">
-<link rel="canonical" href="headsets/">
 <style>
-  body{margin:0;background:#101216;color:#9aa2b0;font-family:ui-monospace,Menlo,Consolas,monospace;
-    display:flex;align-items:center;justify-content:center;height:100vh}
-  a{color:#e8a33d}
+  :root{
+    --bg:#f3f4f6;--surface:#fff;--ink:#1a1d23;--ink-soft:#565d6b;
+    --line:#d7dbe0;--line-strong:#bcc2cb;--accent:#c8791f;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#101216;--surface:#181b21;--ink:#e9ebef;--ink-soft:#9aa2b0;--line:#2c313a;--line-strong:#3b414c;--accent:#e8a33d}
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    line-height:1.6;padding:clamp(28px,7vw,72px) clamp(16px,5vw,32px)
+  }
+  main{max-width:640px;margin:0 auto}
+  h1{font-size:15px;letter-spacing:.28em;text-transform:uppercase;margin:0 0 28px;color:var(--accent)}
+  ul{list-style:none;padding:0;margin:0}
+  a.db{
+    display:flex;justify-content:space-between;gap:12px;
+    text-decoration:none;color:inherit;font-size:14px;font-weight:600;
+    border:1px solid var(--line-strong);background:var(--surface);
+    padding:16px 18px;transition:border-color .12s
+  }
+  a.db:hover,a.db:focus-visible{border-color:var(--accent);outline:none}
+  a.db span:last-child{color:var(--accent)}
+  footer{margin-top:44px;font-size:11px;color:var(--ink-soft)}
+  footer a{color:var(--accent)}
 </style>
 </head>
 <body>
-<p>Redirecting to <a href="headsets/">Headset DB</a>&hellip;</p>
-<script>location.replace("headsets/");</script>
+<main>
+  <h1>OG-DB</h1>
+  <ul>
+    <li>
+      <a class="db" href="headsets/"><span>Headset DB</span><span>open &rarr;</span></a>
+    </li>
+  </ul>
+  <footer>Source: <a href="https://github.com/OmegaGiven/OG-DB">github.com/OmegaGiven/OG-DB</a></footer>
+</main>
 </body>
 </html>
