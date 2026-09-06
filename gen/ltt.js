@@ -44,6 +44,16 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const norm = s => String(s).toLowerCase().replace(/[()\[\],/|"'’.]/g, ' ').replace(/\bgb\b/g, 'gb').replace(/\s+/g, ' ').trim();
 const STOP = new Set(['geforce', 'nvidia', 'radeon', 'amd', 'intel', 'arc', 'the', 'wireless', 'gaming', 'edition', 'series', 'rgb', 'x', '-']);
 const toks = s => norm(s).replace(/-/g, ' ').split(' ').filter(t => t && !STOP.has(t));
+// strict GPU model identity: number + tier suffixes + VRAM size
+const TIERS = ['ti', 'super', 'xtx', 'xt', 'gre', 'pro'];
+function modelKey(s) {
+  s = ' ' + s.toLowerCase().replace(/[-_]/g, ' ') + ' ';
+  const num = (s.match(/\b(?:rtx|rx|gtx|arc|radeon|geforce)?\s*([a-b]?\d{3,4})\b/) || [])[1] || '';
+  const suf = TIERS.filter(t => new RegExp('\\b' + t + '\\b').test(s)).sort().join('+');
+  const mem = (s.match(/\b(\d{1,2})\s*gb\b/) || [])[1] || '';
+  return { num, suf, mem };
+}
+const rank = u => (/founders-edition|reference/.test(u) ? 3 : /-nvidia-|-amd-|-intel-/.test(u) || /^nvidia-|^amd-|^intel-/.test(u.split('/').pop()) ? 2 : 1);
 
 async function get(url, referer) {
   const key = crypto.createHash('sha1').update(url).digest('hex').slice(0, 16);
@@ -120,22 +130,31 @@ const FIELDS = {
   if (!sm.html) { console.error('sitemap fetch failed'); process.exit(1); }
   const prods = [...sm.html.matchAll(new RegExp('<loc>(https://www\\.lttlabs\\.com/products/' + cat + '/[a-z0-9-]+)</loc>', 'g'))].map(m => m[1]);
   console.error(`${prods.length} ${cat} products on LTT Labs`);
-  const idx = prods.map(u => ({ u, slugToks: toks(u.split('/').pop()) }));
+  const idx = prods.map(u => ({ u, slugToks: toks(u.split('/').pop()), key: modelKey(u.split('/').pop()) }));
 
   const out = {};
   try { Object.assign(out, JSON.parse(fs.readFileSync(path.join(ROOT, slug, 'ltt.json'), 'utf8'))); } catch (e) {}
 
   for (const r of take) {
-    const rt = toks(r.name);
     let best = null, score = 0;
-    for (const c of idx) {
-      const hit = rt.filter(t => c.slugToks.includes(t)).length;
-      let sc = hit / Math.max(rt.length, 1);
-      if (/founders-edition|reference/.test(c.u)) sc += 0.15;          // prefer the reference card for our per-chip rows
-      if (hit === rt.length) sc += 0.2;
-      if (sc > score) { score = sc; best = c.u; }
+    if (cat === 'graphics-cards') {
+      // strict: same model number + same tier suffixes (ti/super/xt/xtx/gre/pro); VRAM must match if both name it.
+      const rk = modelKey(r.name);
+      if (!rk.num) { console.error(`  ${r.name} -> no model number, skip`); continue; }
+      const cands = idx.filter(c => c.key.num === rk.num && c.key.suf === rk.suf && (!rk.mem || !c.key.mem || rk.mem === c.key.mem));
+      if (!cands.length) { console.error(`  ${r.name} -> no LTT match (key ${rk.num}${rk.suf ? '/' + rk.suf : ''})`); continue; }
+      cands.sort((a, b) => rank(b.u) - rank(a.u));
+      best = cands[0].u; score = 1;
+    } else {
+      const rt = toks(r.name);
+      for (const c of idx) {
+        const hit = rt.filter(t => c.slugToks.includes(t)).length;
+        let sc = hit / Math.max(rt.length, 1);
+        if (hit === rt.length) sc += 0.2;
+        if (sc > score) { score = sc; best = c.u; }
+      }
+      if (!best || score < 0.7) { console.error(`  ${r.name} -> no LTT match (best ${score.toFixed(2)})`); continue; }
     }
-    if (!best || score < 0.6) { console.error(`  ${r.name} -> no LTT match (best ${score.toFixed(2)})`); continue; }
     let page;
     try { page = await get(best, 'https://www.lttlabs.com/categories/' + cat); }
     catch (e) { console.error('  ' + e.message); break; }
