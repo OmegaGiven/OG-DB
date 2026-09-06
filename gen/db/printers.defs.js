@@ -8,12 +8,12 @@ const fw=d=>/klipper/i.test(d.firmware||'')?'t-yes':/closed/i.test(d.firmware||'
 const COLUMNS=[
  {id:'name',hideable:false,label:'Printer',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${d.releaseYear} &middot; ${esc(d.tech)}</span>`},
  {id:'price',label:'Price',sort:d=>d.priceUSD,cell:money},
- {id:'vol',label:'Build volume',sort:d=>d.buildVolumeL,cell:d=>`<span class="price">${esc(d.buildVolumeMm)} mm</span><span class="sub">${d.buildVolumeL!=null?d.buildVolumeL+' L':''}${d.buildVolumeL&&d.priceUSD?` &middot; $${Math.round(d.priceUSD/d.buildVolumeL)}/L`:''}</span>`},
+ {id:'vol',label:'Build volume',sort:d=>d.buildVolumeL,cell:d=>`<span class="price">${esc(d.buildVolumeMm)}</span><span class="sub">${d.buildVolumeL!=null?(d.buildVolumeL+' L'+(d.priceUSD?` &middot; ${Math.round(d.priceUSD/d.buildVolumeL)}/L`:'')):(/belt|∞|infinite/i.test(d.buildVolumeMm||'')?'infinite length &mdash; belt':'')}</span>`},
  {id:'color',label:'Multi-colour',sort:d=>CSORD[d.colorSystemType]??9,cell:d=>{const c=CST[d.colorSystemType]||[d.colorSystemType,'t-neutral'];return (d.multiColor?tag(c[0],c[1]):tag('Single colour','t-neutral'))+(d.maxColors>1?`<span class="sub">up to ${d.maxColors} colours &middot; purge waste: ${esc(d.purgeWaste)}</span>`:'');}},
  {id:'colsys',label:'Colour system',cell:d=>`<span style="font-size:11.5px">${esc(d.colorSystem)}</span>`},
  {id:'head',label:'Hotend / extruder',sort:d=>d.nozzleMaxC,cell:d=>isResin(d)?tag('Resin (LCD)','t-neutral'):tag(d.extruder,/direct|toolchanger|dual/i.test(d.extruder||'')?'t-yes':'t-part')+`<span class="sub">${esc(d.hotend)}</span>`},
  {id:'noz',label:'Nozzle max',sort:d=>d.nozzleMaxC,cell:d=>d.nozzleMaxC?`<span class="price">${d.nozzleMaxC} &deg;C</span><span class="sub">${esc(d.nozzleSwap||'')}</span>`:'&mdash;'},
- {id:'motion',label:'Motion',sort:d=>({'CoreXY':0,'toolchanger':0,'Cartesian XZ':1,'gantry (large)':2,'bedslinger (i3)':3,'delta':4,'resin':5}[d.motion]??9),cell:d=>tag(d.motion,/corexy/i.test(d.motion||'')?'t-yes':'t-neutral')},
+ {id:'motion',label:'Motion',sort:d=>(/belt/i.test(d.motion||'')?-1:/corexy|toolchanger/i.test(d.motion||'')?0:/cartesian/i.test(d.motion||'')?1:/gantry/i.test(d.motion||'')?2:/bedslinger/i.test(d.motion||'')?3:/delta/i.test(d.motion||'')?4:5),cell:d=>tag(d.motion,/belt|corexy/i.test(d.motion||'')?'t-yes':'t-neutral')},
  {id:'enc',label:'Enclosure',sort:d=>d.enclosed===true?0:d.enclosed==='optional kit'?1:2,cell:d=>encTag(d)+(d.activeChamberHeat?tag('Heated chamber','t-yes'):'')},
  {id:'speed',label:'Speed / accel',sort:d=>d.maxSpeedMms,cell:d=>d.maxSpeedMms?`<span class="price">${d.maxSpeedMms} mm/s</span><span class="sub">${d.maxAccelMms2?d.maxAccelMms2.toLocaleString()+' mm/s²':''}</span>`:'&mdash;'},
  {id:'bed',label:'Bed',sort:d=>d.bedMaxC,cell:d=>`<span style="font-size:11.5px">${esc(d.bedType)}</span>`},
@@ -28,6 +28,7 @@ const COLUMNS=[
 ];
 
 const FILTERS=[
+ {id:'belt',label:'Belt / infinite-Z',test:d=>/belt|infinite|∞/i.test((d.motion||'')+' '+(d.buildVolumeMm||''))},
  {id:'fdm',label:'FDM',test:d=>!isResin(d)},
  {id:'resin',label:'Resin',test:isResin},
  {id:'mc',label:'Multi-colour capable',test:d=>d.multiColor===true},
