@@ -1,0 +1,26 @@
+name: Refresh a whole database
+description: A whole database is going stale — prices, models, or specs are out of date across many rows.
+title: "[refresh] "
+labels: ["refresh"]
+body:
+  - type: input
+    id: db
+    attributes:
+      label: Which database
+      placeholder: Headset DB
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is out of date
+      description: New models to add, discontinued ones to drop, price drift, a spec column that needs re-checking, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Useful sources
+      description: Links that would speed up the refresh.
+    validations:
+      required: false

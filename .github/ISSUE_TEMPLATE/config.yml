@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Browse the databases
+    url: https://omegagiven.github.io/OG-DB/
+    about: See what already exists before filing a request.

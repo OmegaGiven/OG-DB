@@ -1,0 +1,35 @@
+name: Propose a new database
+description: Suggest a whole new database for a different line of products.
+title: "[new-db] "
+labels: ["new-db"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Proposed database name
+      placeholder: Mechanical Keyboard DB
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: What it would cover
+      description: The product line, roughly how many entries, and why a table helps.
+    validations:
+      required: true
+  - type: textarea
+    id: columns
+    attributes:
+      label: Columns you'd want
+      description: The fields worth comparing across every entry.
+      placeholder: |
+        switch type, hot-swap, layout, connection, battery, software, price
+    validations:
+      required: true
+  - type: textarea
+    id: seed
+    attributes:
+      label: Seed list (optional)
+      description: A few entries to start it off, if you have them.
+    validations:
+      required: false

@@ -1,0 +1,48 @@
+name: Add or correct an entry
+description: Add a new row to an existing database, or fix / update a value on an existing row.
+title: "[entry] "
+labels: ["entry"]
+body:
+  - type: input
+    id: db
+    attributes:
+      label: Which database
+      placeholder: Headset DB
+    validations:
+      required: true
+  - type: input
+    id: item
+    attributes:
+      label: Which item (or "new item")
+      placeholder: SteelSeries Arctis Nova 5 Wireless
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type of change
+      options:
+        - Add a new entry
+        - Correct a wrong value
+        - Update a stale value (price / spec changed)
+        - Remove an entry
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Which field(s), the current value, and what it should be.
+      placeholder: |
+        Field: charge_port
+        Currently: —
+        Should be: USB-C
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A link backing the change (review, spec sheet, retailer page).
+    validations:
+      required: false

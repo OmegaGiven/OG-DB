@@ -10,6 +10,12 @@ Live: **https://omegagiven.github.io/OG-DB/**
 |---|---|---|---|
 | Headset DB | Headsets compared on source options (2.4 GHz, Bluetooth, base station, wired), power/battery, spatial-audio engine and where the DSP runs, mic type + quality, sidetone, required software, and price. Currently weighted toward wireless gaming / spatial headsets; scope is broadening to wired and general-purpose. | [`/headsets/`](https://omegagiven.github.io/OG-DB/headsets/) | [`headsets.json`](headsets/headsets.json) |
 
+## Requests
+
+Want a row added, a value corrected, a database refreshed, or a whole new
+database for another product line? [Open an issue](https://github.com/OmegaGiven/OG-DB/issues/new/choose)
+— there are templates for each. Existing requests: [issues](https://github.com/OmegaGiven/OG-DB/issues).
+
 ## Conventions
 
 - Each database lives in its own folder with an `index.html` (the interactive view) and a `.json` (the same rows, machine-readable).
