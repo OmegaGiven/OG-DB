@@ -4,50 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OG-DB</title>
+<meta http-equiv="refresh" content="0; url=headsets/">
+<link rel="canonical" href="headsets/">
 <style>
-  :root{
-    --bg:#f3f4f6;--surface:#fff;--ink:#1a1d23;--ink-soft:#565d6b;
-    --line:#d7dbe0;--accent:#c8791f;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{--bg:#101216;--surface:#181b21;--ink:#e9ebef;--ink-soft:#9aa2b0;--line:#2c313a;--accent:#e8a33d}
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    line-height:1.6;padding:clamp(28px,7vw,72px) clamp(16px,5vw,32px)
-  }
-  main{max-width:640px;margin:0 auto}
-  h1{font-size:15px;letter-spacing:.28em;text-transform:uppercase;margin:0 0 4px;color:var(--accent)}
-  p.sub{margin:0 0 40px;color:var(--ink-soft);font-size:13px;max-width:52ch}
-  ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
-  a.db{
-    display:block;text-decoration:none;color:inherit;
-    border:1px solid var(--line);background:var(--surface);
-    padding:16px 18px;transition:border-color .12s
-  }
-  a.db:hover,a.db:focus-visible{border-color:var(--accent);outline:none}
-  a.db .t{font-size:14px;font-weight:600;display:flex;justify-content:space-between;gap:12px}
-  a.db .t span:last-child{color:var(--accent)}
-  a.db .d{margin-top:6px;font-size:12px;color:var(--ink-soft)}
-  footer{margin-top:48px;font-size:11px;color:var(--ink-soft)}
-  footer a{color:var(--accent)}
+  body{margin:0;background:#101216;color:#9aa2b0;font-family:ui-monospace,Menlo,Consolas,monospace;
+    display:flex;align-items:center;justify-content:center;height:100vh}
+  a{color:#e8a33d}
 </style>
 </head>
 <body>
-<main>
-  <h1>OG-DB</h1>
-  <p class="sub">Personal reference databases. Each is a single self-contained HTML page plus a JSON file of the same rows.</p>
-  <ul>
-    <li>
-      <a class="db" href="headsets/">
-        <div class="t"><span>Headset DB</span><span>open &rarr;</span></div>
-        <div class="d">Headsets compared on connections, power, spatial-audio engine, mic type &amp; quality, sidetone, software and price. Currently wireless gaming / spatial models; broadening. <a href="headsets/headsets.json" style="color:var(--accent)">headsets.json</a></div>
-      </a>
-    </li>
-  </ul>
-  <footer>Source: <a href="https://github.com/OmegaGiven/OG-DB">github.com/OmegaGiven/OG-DB</a></footer>
-</main>
+<p>Redirecting to <a href="headsets/">Headset DB</a>&hellip;</p>
+<script>location.replace("headsets/");</script>
 </body>
 </html>
