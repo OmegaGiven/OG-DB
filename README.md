@@ -32,6 +32,22 @@ database for another product line? [Open an issue](https://github.com/OmegaGiven
 
 GPU, SSD, RAM and HDD rows carry `priceHistory: [{date, priceUSD, source}]`. Pages render a sparkline in the price column and a full chart in the expanded row. Append a snapshot with `node gen/snapshot.js <slug> prices.json` (a `{name: price}` map or `[{name, priceUSD, source}]`); it updates `priceUSD`, `$/TB` or `$/GB`, and rebuilds the page. A weekly routine appends new points; ad-hoc refreshes on request.
 
+## LTT Labs enrichment (manual only)
+
+`gen/ltt.js <gpus|mice|keyboards>` optionally pulls the **measured spec block** and
+pro/con highlights from the matching [LTT Labs](https://www.lttlabs.com/) product page
+and writes `<slug>/ltt.json`; `gen/build.js` merges it onto matching rows as `row.ltt`
+(shown as an "LTT Labs" column + an expanded detail block that links back).
+
+- **Never run from cron.** It is a hand-run pass — the data barely changes over time.
+- Polite fetch: real browser headers, 25 s between requests, every page cached under
+  `gen/.ltt-cache/`, hard stop on the first 403.
+- Only the already-published measured specs + highlights + the verified product URL are
+  taken, with attribution and a link back. The FPS / power-draw / acoustic charts load
+  client-side and are **not** scraped — we link out to them.
+- LTT Labs `robots.txt` carries `Content-Signal: search=yes, ai-train=no, use=reference`;
+  this is reference use, kept low-volume.
+
 ## Conventions
 
 - Each database lives in its own folder with an `index.html` (the interactive view) and a `.json` (the same rows, machine-readable).

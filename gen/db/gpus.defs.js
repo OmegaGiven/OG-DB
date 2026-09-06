@@ -25,6 +25,7 @@ const COLUMNS=[
  {id:'g4krt',label:'4K + RT',cell:d=>`<span style="font-size:11.5px">${esc(d.game4kRT)}</span>`},
  {id:'ups',label:'Upscaling',cell:d=>`<span style="font-size:11.5px">${esc(d.upscaling)}</span>`},
  {id:'phys',label:'Size',sort:d=>d.lengthMm,cell:d=>`<span class="price">${d.slots?d.slots+'-slot':'?'}</span><span class="sub">${d.lengthMm?d.lengthMm+' mm':''}</span>`},
+ {id:'ltt',label:'LTT Labs',cell:d=>{if(!d.ltt)return '<span style="color:var(--ink-soft)">—</span>';const m=d.ltt.measured||{};const head=m.tdpW?`${m.tdpW} W measured`:(m.boostMhz?`${m.boostMhz} MHz boost`:(m.dieSizeMm2?`${m.dieSizeMm2} mm² die`:'measured specs'));return `<a href="${esc(d.ltt.url)}" target="_blank" rel="noopener">📊 LTT Labs ↗</a><span class="sub">${esc(head)}</span>`;}},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
 ];
 
@@ -83,5 +84,6 @@ const EXPAND=[
    <dt>Connector</dt><dd>${esc(d.powerConnector)}</dd>
    <dt>Physical</dt><dd>${d.slots?d.slots+'-slot':'?'} &middot; ${d.lengthMm?d.lengthMm+' mm':'?'}</dd>
  </dl>`},
+ {label:'LTT Labs measured',html:d=>{if(!d.ltt)return '';const t=d.ltt,m=t.measured||{};const rows=Object.entries(m).map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(String(v))}</dd>`).join('');const good=(t.good||[]).map(x=>`<li>&#128077; ${esc(x)}</li>`).join('');const bad=(t.bad||[]).map(x=>`<li>&#128078; ${esc(x)}</li>`).join('');return `<dl class="kv">${rows}</dl>${(good||bad)?`<ul style="margin:6px 0 0;padding-left:18px;font-size:11.5px">${good}${bad}</ul>`:''}<div style="font-size:11px;color:var(--ink-soft);margin-top:4px">Measured data courtesy <a href="${esc(t.url)}" target="_blank" rel="noopener">LTT Labs</a> &middot; fetched ${esc(t.fetched)} &middot; FPS / power-draw / acoustic charts are interactive on their page</div>`;}},
  {label:'Notes',html:d=>esc(d.notes)}
 ];

@@ -12,6 +12,7 @@ const defs=fs.readFileSync(path.join(__dirname,'db',slug+'.defs.js'),'utf8');
 const css=fs.readFileSync(path.join(__dirname,'shell.css'),'utf8');
 const engine=fs.readFileSync(path.join(__dirname,'engine.js'),'utf8');
 const data=JSON.parse(fs.readFileSync(path.join(ROOT,meta.dataFile),'utf8'));
+try{const ltt=JSON.parse(fs.readFileSync(path.join(ROOT,slug,'ltt.json'),'utf8'));for(const r of data)if(ltt[r.name])r.ltt=ltt[r.name];}catch(e){}
 
 const DB={name:meta.dbName,compiled:meta.compiled,noun:meta.noun};
 
