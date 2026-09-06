@@ -1,0 +1,11 @@
+{
+  "slug": "localai",
+  "title": "Local AI DB",
+  "dbName": "Local AI DB",
+  "description": "Open-weight / locally-runnable AI models compared on VRAM by quant, max context, image recognition, audio recognition, reasoning, coding, tool use, and runner support.",
+  "compiled": "Sep 2026",
+  "noun": "models",
+  "dataFile": "localai/localai.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>VRAM columns are weights only</strong> at roughly Q4_K_M / Q8 / FP16. Real usage adds the <em>KV cache</em> (see its column &mdash; it can dominate at long context) plus a few hundred MB of runtime overhead. The <em>min GPU</em> note is the smallest card that runs it usefully at a modest context.</li><li><strong>Big MoE models</strong> (DeepSeek V3 / R1, Qwen3-235B, Llama 4) show their naive Q4 size &mdash; hundreds of GB. In practice you run dynamic 1.5&ndash;2.7-bit quants at a fraction of that; the realistic figure is in the expanded <em>Fitting</em> panel.</li><li><strong>Max context is the advertised number.</strong> Almost every \"128k\" model is really good to ~32k; the drop-off is in the context note.</li><li><strong>Reasoning / Coding tiers</strong> are subjective S&ndash;C. Reasoning-distill models are rated on their narrow math/code strength, which overstates general chat &mdash; noted per row.</li><li><strong>Image / Audio</strong> ratings: <em>Excellent</em> = production-grade OCR / doc / ASR; <em>Good</em> = reliable captioning + chart QA; <em>ASR + understanding</em> = transcribes and can answer about the audio.</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> VRAM figures are estimates derived from param counts and community GGUF sizes &mdash; treat as &plusmn;15%. ASR WER / speed depends heavily on the runner (faster-whisper int8 vs HF fp16 vs NeMo). Per-row <strong>Source</strong> is the Hugging Face model card or developer post. Compiled Sep 2026 &mdash; this space moves weekly. Wanted next: numeric KV bytes/token, official quant availability, tokens/sec at a reference GPU.</p></footer>"
+}
