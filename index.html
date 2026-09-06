@@ -4,56 +4,204 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OG-DB</title>
+<meta name="description" content="A set of small, opinionated reference databases — each a single self-contained page plus a JSON file.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
   :root{
-    --bg:#f3f4f6;--surface:#fff;--ink:#1a1d23;--ink-soft:#565d6b;
-    --line:#d7dbe0;--line-strong:#bcc2cb;--accent:#c8791f;
+    --bg:#f2f3f5;
+    --surface:#ffffff;
+    --surface-2:#e9ebee;
+    --ink:#191c22;
+    --ink-soft:#59606d;
+    --line:#d7dbe1;
+    --line-strong:#bfc5cd;
+    --accent:#c0740f;
+    --accent-ink:#8a5300;
+    --accent-wash:#f6ecdd;
+    --shadow:0 1px 2px rgba(20,22,27,.05),0 10px 30px -12px rgba(20,22,27,.18);
+    --grid:rgba(25,28,34,.05);
   }
   @media (prefers-color-scheme:dark){
-    :root{--bg:#101216;--surface:#181b21;--ink:#e9ebef;--ink-soft:#9aa2b0;--line:#2c313a;--line-strong:#3b414c;--accent:#e8a33d}
+    :root:not([data-theme="light"]){
+      --bg:#0e1014;
+      --surface:#171a20;
+      --surface-2:#1f232b;
+      --ink:#e9ebef;
+      --ink-soft:#98a0ae;
+      --line:#2a2f38;
+      --line-strong:#3a414d;
+      --accent:#e8a33d;
+      --accent-ink:#f0b968;
+      --accent-wash:#2c2113;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -16px rgba(0,0,0,.6);
+      --grid:rgba(255,255,255,.045);
+    }
   }
+  :root[data-theme="dark"]{
+    --bg:#0e1014;
+    --surface:#171a20;
+    --surface-2:#1f232b;
+    --ink:#e9ebef;
+    --ink-soft:#98a0ae;
+    --line:#2a2f38;
+    --line-strong:#3a414d;
+    --accent:#e8a33d;
+    --accent-ink:#f0b968;
+    --accent-wash:#2c2113;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -16px rgba(0,0,0,.6);
+    --grid:rgba(255,255,255,.045);
+  }
+
   *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
   body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    line-height:1.6;padding:clamp(28px,7vw,72px) clamp(16px,5vw,32px)
+    margin:0;color:var(--ink);
+    background:
+      linear-gradient(var(--grid) 1px,transparent 1px) 0 0/100% 28px,
+      var(--bg);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6;
   }
-  main{max-width:640px;margin:0 auto}
-  h1{font-size:15px;letter-spacing:.28em;text-transform:uppercase;margin:0 0 28px;color:var(--accent)}
-  ul{list-style:none;padding:0;margin:0}
-  a.db{
-    display:flex;justify-content:space-between;gap:12px;
-    text-decoration:none;color:inherit;font-size:14px;font-weight:600;
-    border:1px solid var(--line-strong);background:var(--surface);
-    padding:16px 18px;transition:border-color .12s
+  a{color:var(--accent);text-underline-offset:2px}
+  .wrap{max-width:760px;margin:0 auto;padding:clamp(40px,9vw,96px) clamp(18px,5vw,28px) 72px}
+
+  /* hero */
+  .hero{margin-bottom:44px}
+  .wordmark{
+    font-family:"Chivo",sans-serif;font-weight:900;letter-spacing:-.03em;
+    font-size:clamp(52px,15vw,120px);line-height:.9;margin:0;
+    display:flex;align-items:baseline;gap:.08em
   }
-  a.db:hover,a.db:focus-visible{border-color:var(--accent);outline:none}
-  a.db span:last-child{color:var(--accent)}
-  .request{
-    margin:14px 0 0;font-size:12.5px;color:var(--ink-soft);line-height:1.6
+  .wordmark .dot{color:var(--accent)}
+  .tagline{
+    margin:18px 0 0;font-size:clamp(15px,2.4vw,18px);color:var(--ink);max-width:46ch;
+    text-wrap:balance
   }
-  .request a{color:var(--accent);text-decoration:none}
-  .request a:hover,.request a:focus-visible{text-decoration:underline}
-  footer{margin-top:44px;font-size:11px;color:var(--ink-soft)}
-  footer a{color:var(--accent)}
+  .meta{
+    margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:12px;
+    letter-spacing:.04em;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:6px 14px
+  }
+  .meta b{color:var(--accent-ink);font-weight:600}
+
+  /* section label */
+  .lbl{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 14px;
+    display:flex;align-items:center;gap:10px
+  }
+  .lbl::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* database cards */
+  .grid{display:grid;gap:14px;grid-template-columns:1fr}
+  .card{
+    position:relative;display:block;text-decoration:none;color:inherit;
+    background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;
+    padding:22px 22px 18px;box-shadow:var(--shadow);
+    transition:transform .16s ease,border-color .16s ease;
+    transform:translateY(0)
+  }
+  .card:hover,.card:focus-visible{transform:translateY(-3px);border-color:var(--accent);outline:none}
+  .card:focus-visible{box-shadow:0 0 0 3px var(--accent-wash),var(--shadow)}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+  .card h2{
+    font-family:"Chivo",sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;
+    margin:0
+  }
+  .go{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);
+    white-space:nowrap;padding-top:6px
+  }
+  .card p{margin:8px 0 14px;font-size:14px;color:var(--ink-soft);max-width:52ch}
+  .stats{
+    display:flex;flex-wrap:wrap;gap:6px 16px;font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:12px
+  }
+  .stats b{color:var(--ink);font-weight:600}
+  .schema{
+    margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    opacity:.85
+  }
+  .schema span{color:var(--accent-ink)}
+
+  /* contribute */
+  .contribute{
+    margin-top:40px;border:1px dashed var(--line-strong);border-radius:10px;
+    padding:20px 22px;background:var(--accent-wash)
+  }
+  .contribute h2{
+    font-family:"Chivo",sans-serif;font-weight:700;font-size:16px;margin:0 0 6px
+  }
+  .contribute p{margin:0 0 12px;font-size:13.5px;color:var(--ink-soft);max-width:56ch}
+  .btnrow{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{
+    font-family:"IBM Plex Sans",sans-serif;font-size:13px;font-weight:600;
+    text-decoration:none;border-radius:7px;padding:8px 14px;transition:.14s
+  }
+  .btn.primary{background:var(--accent);color:#14161a;border:1px solid var(--accent)}
+  .btn.primary:hover{filter:brightness(1.06)}
+  .btn.ghost{color:var(--ink);border:1px solid var(--line-strong);background:var(--surface)}
+  .btn.ghost:hover{border-color:var(--accent)}
+
+  footer{
+    margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-soft);
+    display:flex;flex-wrap:wrap;gap:6px 18px
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .card{transition:border-color .16s ease}
+    .card:hover,.card:focus-visible{transform:none}
+  }
 </style>
 </head>
 <body>
-<main>
-  <h1>OG-DB</h1>
-  <ul>
-    <li>
-      <a class="db" href="headsets/"><span>Headset DB</span><span>open &rarr;</span></a>
-    </li>
-  </ul>
-  <p class="request">
-    Want a row added, a spec corrected, a database updated, or a whole new
-    database for another product line?
-    <a href="https://github.com/OmegaGiven/OG-DB/issues/new/choose">Open a request &rarr;</a>
-    <br>
-    Or browse <a href="https://github.com/OmegaGiven/OG-DB/issues">existing requests</a>.
-  </p>
-  <footer>Source: <a href="https://github.com/OmegaGiven/OG-DB">github.com/OmegaGiven/OG-DB</a></footer>
-</main>
+<div class="wrap">
+
+  <header class="hero">
+    <h1 class="wordmark">OG<span class="dot">-</span>DB</h1>
+    <p class="tagline">A set of small, opinionated reference databases. Each one is a single self-contained page plus a JSON file of the same rows.</p>
+    <div class="meta">
+      <span><b>1</b> database</span>
+      <span><b>18</b> entries tracked</span>
+      <span>updated <b>2026-09-06</b></span>
+    </div>
+  </header>
+
+  <p class="lbl">Databases</p>
+  <div class="grid">
+    <a class="card" href="headsets/">
+      <div class="card-top">
+        <h2>Headset DB</h2>
+        <span class="go">open &rarr;</span>
+      </div>
+      <p>Wireless gaming &amp; spatial headsets compared on the things that decide a purchase — connection, power, surround engine, mic, sidetone, per-OS software, and price.</p>
+      <div class="stats">
+        <span><b>18</b> entries</span>
+        <span><b>13</b> columns</span>
+        <span>compiled <b>Sep 2026</b></span>
+        <span><b>JSON</b> available</span>
+      </div>
+      <div class="schema"><span>headsets</span> ( model · price · 2.4GHz+dongle · bluetooth · wired · power · charge_port · spatial · mic · sidetone · software_by_os · source )</div>
+    </a>
+  </div>
+
+  <section class="contribute">
+    <h2>Request a change</h2>
+    <p>Want a row added, a value corrected, a database refreshed, or a whole new database for another product line? File it on the tracker — there are templates for each.</p>
+    <div class="btnrow">
+      <a class="btn primary" href="https://github.com/OmegaGiven/OG-DB/issues/new/choose">Open a request</a>
+      <a class="btn ghost" href="https://github.com/OmegaGiven/OG-DB/issues">Browse requests</a>
+    </div>
+  </section>
+
+  <footer>
+    <span><a href="https://github.com/OmegaGiven/OG-DB">github.com/OmegaGiven/OG-DB</a></span>
+    <span>static HTML + JSON · no tracking</span>
+  </footer>
+
+</div>
 </body>
 </html>
