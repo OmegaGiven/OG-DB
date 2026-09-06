@@ -147,7 +147,7 @@
   }
   .colactions button:hover{border-color:var(--accent)}
   .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
-  table{border-collapse:collapse;width:100%;min-width:1200px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:1320px;background:var(--surface)}
   #tbl[data-hide~="price"] [data-col="price"],
   #tbl[data-hide~="w24"] [data-col="w24"],
   #tbl[data-hide~="bt"] [data-col="bt"],
@@ -158,6 +158,7 @@
   #tbl[data-hide~="mic"] [data-col="mic"],
   #tbl[data-hide~="sidetone"] [data-col="sidetone"],
   #tbl[data-hide~="sw"] [data-col="sw"],
+  #tbl[data-hide~="standalone"] [data-col="standalone"],
   #tbl[data-hide~="source"] [data-col="source"]{display:none}
   thead th{
     position:sticky;top:0;z-index:2;background:var(--surface-2);
@@ -226,7 +227,8 @@
       <li><strong>"Simultaneous BT + 2.4 GHz"</strong> means game audio on the low-latency link and phone/Discord on Bluetooth <em>at the same time</em>, mixed in your ears. Most headsets only <em>switch</em> between the two.</li>
       <li><strong>Power.</strong> Wired-only entries read "Wired" here; everything else shows rated battery hours. Wireless models still play over USB/3.5mm while charging <em>except</em> dongle-only ones (HyperX Cloud III / Alpha, Logitech G733), which go silent when flat. "2× … swap" = hot-swap batteries, effectively unlimited runtime. <strong>Charge port</strong> is USB-C on almost everything — the Logitech G733 is still micro-USB, and the dock-based sets (Astro A50 X, Pulse Elite, Stealth) also charge on contact pins. The <strong>2.4 GHz link</strong> column now names the dongle's plug (USB-A vs USB-C, adapter noted).</li>
       <li><strong>Sidetone</strong> = hearing your own voice in the cups so you don't shout. The split is whether the <em>level</em> is on a hardware dial (headset or base station) or buried in the app / console menu. Matters more on sealed ANC headsets.</li>
-      <li><strong>Software by OS.</strong> The column shows quick per-OS badges; expand a row for what each platform actually loses. Pattern: the full tuning app (EQ, spatial, mic DSP) is <em>Windows-first</em>. Only Logitech / Astro (G HUB) and Audeze (HQ) ship a full <em>macOS</em> app; Corsair's is cut-down; everyone else gives Mac plug-and-play stereo with no EQ or spatial. <em>Linux</em> gets generic USB audio from all of them — no vendor app exists. <em>Console</em> usually means on-headset controls plus the console's own EQ; PS5 adds Tempest / Sony 360 in the system itself.</li>
+      <li><strong>Proprietary software</strong> names the vendor app and shows which OSes it runs on (Win / macOS / mobile / Linux). Pattern: the full tuning app (EQ, spatial, mic DSP) is <em>Windows-first</em>; only Logitech / Astro (G HUB) and Audeze (HQ) ship a full <em>macOS</em> app, Corsair's is cut-down, the rest give Mac plug-and-play stereo only. <em>Linux</em> always falls back to generic USB audio — no vendor app exists. Expand a row for the per-OS breakdown.</li>
+      <li><strong>Standalone</strong> answers "does it work without installing anything?" — <em>Standalone</em> = full audio and features app-free (app is optional EQ tuning); <em>spatial needs app</em> = plays fine but virtual surround is locked behind the app or the OS; <em>Setup app needed</em> = a profile or firmware step requires the app once (the Sony INZONE 360 profile); <em>Needs base station</em> = the hardware, not the software, is the dependency (Nova Pro, Astro A50 X).</li>
       <li><strong>Mic quality</strong> is a 4-step read from review consensus — <em>Excellent</em> (broadcast-grade, stream on it) · <em>Very good</em> · <em>Good</em> (clear for chat/calls, a bit compressed) · <em>Average</em> (party chat only). Every model here has a mic; the ones marked <em>Integrated / fixed</em> can't be removed or swapped. Any headset mic still loses to a $60 standalone USB mic.</li>
       <li><strong>Street prices</strong> below are rough Sep-2026 US figures and move constantly — treat MSRP as the anchor.</li>
     </ul>
@@ -240,7 +242,7 @@
       <button class="chip" data-filter="bt" aria-pressed="false">Has Bluetooth</button>
       <button class="chip" data-filter="planar" aria-pressed="false">Planar magnetic</button>
       <button class="chip" data-filter="anc" aria-pressed="false">ANC</button>
-      <button class="chip" data-filter="nosoft" aria-pressed="false">No PC software needed</button>
+      <button class="chip" data-filter="standalone" aria-pressed="false">Fully standalone (app optional)</button>
       <button class="chip" data-filter="micdetach" aria-pressed="false">Detachable mic</button>
       <button class="chip" data-filter="micgood" aria-pressed="false">Mic: very good / excellent</button>
       <button class="chip" data-filter="sthw" aria-pressed="false">Hardware sidetone dial</button>
@@ -270,7 +272,8 @@
         <label><input type="checkbox" data-col="spatial" checked> Spatial / surround engine</label>
         <label><input type="checkbox" data-col="mic" checked> Microphone</label>
         <label><input type="checkbox" data-col="sidetone" checked> Sidetone</label>
-        <label><input type="checkbox" data-col="sw" checked> Software</label>
+        <label><input type="checkbox" data-col="sw" checked> Proprietary software</label>
+        <label><input type="checkbox" data-col="standalone" checked> Standalone</label>
         <label><input type="checkbox" data-col="source" checked> Source</label>
         <div class="colactions">
           <button type="button" data-all="1">All</button>
@@ -296,7 +299,8 @@
           <th data-col="spatial">Spatial / surround engine</th>
           <th data-col="mic">Microphone</th>
           <th data-col="sidetone">Sidetone</th>
-          <th data-col="sw">Software</th>
+          <th data-col="sw">Proprietary software</th>
+          <th data-col="standalone">Standalone</th>
           <th data-col="source">Source</th>
         </tr>
       </thead>
@@ -621,6 +625,34 @@ const CHARGE={
  "EPOS H3Pro Hybrid":"USB-C"
 };
 
+// Does it work without the vendor app? status: yes | spatial | setup | base
+const STANDALONE={
+ "SteelSeries Arctis Nova Pro Wireless":["base","Full audio + virtual 7.1 + ChatMix from the base station; Sonar app is optional tuning."],
+ "SteelSeries Arctis Nova Pro Omni":["base","Full audio + 7.1 from the base station; Sonar app is optional."],
+ "SteelSeries Arctis Nova 7 Gen 2":["spatial","Audio and on-headset controls work app-free; 360 Spatial / EQ need Sonar (PC) or the console."],
+ "Audeze Maxwell":["yes","Sounds excellent with nothing installed. Xbox model has Dolby Atmos baked in; EQ via app is optional."],
+ "Corsair Virtuoso Max Wireless":["spatial","Plays and takes calls app-free; Dolby Atmos + SoundID need iCUE."],
+ "Razer BlackShark V3 Pro":["spatial","Audio + mic work app-free; THX Spatial needs Synapse (PC) or a console."],
+ "Razer Barracuda Pro":["yes","Works as a plain 2.4 GHz / Bluetooth headphone; THX Spatial via app is optional."],
+ "Logitech G Pro X 2 Lightspeed":["spatial","Audio + mic work app-free; DTS Headphone:X toggle lives in G HUB."],
+ "Logitech G733 Lightspeed":["spatial","Plain 2.4 GHz headset out of the box; DTS Headphone:X needs G HUB."],
+ "Logitech G Astro A50 X":["base","Base station does audio switching + Dolby Atmos in hardware; G HUB optional."],
+ "Sony INZONE H9 II":["setup","Basic audio works app-free, but the personalised 360 profile and firmware need INZONE Hub (or the mobile app)."],
+ "Sony INZONE H5":["setup","Basic audio works app-free; personalised 360 profile / firmware need INZONE Hub."],
+ "Sony PlayStation Pulse Elite":["yes","Fully native on PS5 — Tempest 3D and EQ are in the console, no app."],
+ "HyperX Cloud III Wireless":["yes","Plug-and-play; DTS spatial toggles on the headset / NGENUITY is optional."],
+ "HyperX Cloud Alpha Wireless":["yes","Plug-and-play; NGENUITY is optional."],
+ "Turtle Beach Stealth Pro II":["spatial","Audio works app-free; Dolby Atmos + Superhuman Hearing need Swarm II."],
+ "Turtle Beach Stealth 700 Gen 3":["spatial","Audio works app-free; Dolby Atmos + Superhuman Hearing need Swarm II."],
+ "EPOS H3Pro Hybrid":["spatial","Works as a plain headset; EPOS 7.1 surround needs the Gaming Suite."]
+};
+const STANDALONE_TAG={
+ yes:["Standalone",'t-yes'],
+ spatial:["Standalone · spatial needs app",'t-part'],
+ setup:["Setup app needed",'t-part'],
+ base:["Needs base station",'t-neutral']
+};
+
 // Which software family a headset uses, then that family's support + limits per OS.
 const SW_FAMILY={
  "SteelSeries Arctis Nova Pro Wireless":"steelseries","SteelSeries Arctis Nova Pro Omni":"steelseries",
@@ -767,15 +799,19 @@ function osBlock(d){
 const MAC_TAG={full:['macOS ✓','t-yes'],limited:['macOS ~','t-part'],none:['macOS ✗','t-no']};
 function swCell(d){
   const o=SW_OS[SW_FAMILY[d.name]];
-  const base=`<div style="font-size:12px">${d.soft}</div>`+
-    (d.nosoft?tag('Works w/o app','t-yes'):tag('App recommended','t-neutral'));
-  if(!o) return base;
+  const name=`<div style="font-size:12px">${(o&&o.app)||d.soft}</div>`;
+  if(!o) return name;
   const m=MAC_TAG[o.macFull]||MAC_TAG.none;
-  const mob=/^no app/i.test(o.mobile)?tag('mobile ✗','t-no'):tag('mobile ✓','t-yes');
-  return base+`<div style="margin-top:3px">${tag('Win ✓','t-yes')}${m2(m)}${mob}${tag('Linux ✗','t-no')}</div>`+
-    `<div style="margin-top:3px;font-size:10.5px;color:var(--ink-soft)">expand row for per-OS limits</div>`;
+  const mob=/^no app/i.test(o.mobile)?['mobile ✗','t-no']:['mobile ✓','t-yes'];
+  return name+`<div style="margin-top:3px">${tag('Win ✓','t-yes')}${tag(m[0],m[1])}${tag(mob[0],mob[1])}${tag('Linux ✗','t-no')}</div>`+
+    `<div style="margin-top:3px;font-size:10.5px;color:var(--ink-soft)">expand row for per-OS detail</div>`;
 }
-function m2(m){return tag(m[0],m[1]);}
+function standaloneCell(d){
+  const s=STANDALONE[d.name];
+  if(!s) return '<span style="color:var(--ink-soft)">—</span>';
+  const t=STANDALONE_TAG[s[0]]||STANDALONE_TAG.yes;
+  return tag(t[0],t[1])+`<div style="margin-top:3px;font-size:11px;color:var(--ink-soft)">${s[1]}</div>`;
+}
 
 function passes(d){
   for(const f of active){
@@ -784,7 +820,7 @@ function passes(d){
     if(f==='bt' && /^none/i.test(d.bt)) return false;
     if(f==='planar' && !d.planar) return false;
     if(f==='anc' && !d.anc) return false;
-    if(f==='nosoft' && !d.nosoft) return false;
+    if(f==='standalone' && (STANDALONE[d.name]||['x'])[0]!=='yes') return false;
     if(f==='micdetach' && !d.detach) return false;
     if(f==='micgood' && !(d.micTier==='Excellent'||d.micTier==='Very good')) return false;
     if(f==='sthw' && SIDETONE[d.name]!=='hw') return false;
@@ -820,10 +856,11 @@ function render(){
       <td data-col="mic">${micCell(d)}</td>
       <td data-col="sidetone">${sidetoneCell(d)}</td>
       <td data-col="sw">${swCell(d)}</td>
+      <td data-col="standalone">${standaloneCell(d)}</td>
       <td data-col="source">${srcCell(d)}</td>`;
     const ex=document.createElement('tr');
     ex.className='expand';ex.hidden=true;
-    ex.innerHTML=`<td colspan="13"><div class="inner">
+    ex.innerHTML=`<td colspan="14"><div class="inner">
       <div><h4>Best for</h4><p>${d.best}</p></div>
       <div><h4>Microphone — ${d.micTier}</h4><p>${d.micNote}</p></div>
       <div><h4>Power</h4><p>${d.battery}${SIDETONE[d.name]==='hw'?' · sidetone adjustable on a hardware dial':' · sidetone level set in the app / console menu'}</p></div>

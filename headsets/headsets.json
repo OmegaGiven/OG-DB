@@ -26,12 +26,16 @@
     "dongle_connector": "USB-C dongle + base station",
     "charge_port": "USB-C + base-station battery bay",
     "sidetone": "hardware-dial",
+    "standalone": {
+      "status": "needs-base-station",
+      "note": "Full audio + virtual 7.1 + ChatMix from the base station; Sonar app is optional tuning."
+    },
     "source": {
       "url": "https://thetechshowdown.com/products/steelseries-arctis-nova-pro-wireless",
       "label": "The Tech Showdown"
     },
-    "software_by_os": {
-      "app": "SteelSeries GG + Sonar",
+    "software": {
+      "name": "SteelSeries GG + Sonar",
       "macos_support": "none",
       "windows": "Full: SteelSeries GG + Sonar — parametric EQ, virtual 7.1 / 360 Spatial, AI noise-cancel mic, ChatMix.",
       "macos": "GG runs, but Sonar (EQ, spatial, AI mic) is Windows-only — Mac gets device settings + firmware only.",
@@ -67,12 +71,16 @@
     "dongle_connector": "USB-C dongle + base station",
     "charge_port": "USB-C + base-station battery bay",
     "sidetone": "hardware-dial",
+    "standalone": {
+      "status": "needs-base-station",
+      "note": "Full audio + 7.1 from the base station; Sonar app is optional."
+    },
     "source": {
       "url": "https://www.gamesradar.com/best-gaming-headsets/",
       "label": "GamesRadar"
     },
-    "software_by_os": {
-      "app": "SteelSeries GG + Sonar",
+    "software": {
+      "name": "SteelSeries GG + Sonar",
       "macos_support": "none",
       "windows": "Full: SteelSeries GG + Sonar — parametric EQ, virtual 7.1 / 360 Spatial, AI noise-cancel mic, ChatMix.",
       "macos": "GG runs, but Sonar (EQ, spatial, AI mic) is Windows-only — Mac gets device settings + firmware only.",
@@ -108,12 +116,16 @@
     "dongle_connector": "USB-C",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Audio and on-headset controls work app-free; 360 Spatial / EQ need Sonar (PC) or the console."
+    },
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
       "label": "Tom's Hardware"
     },
-    "software_by_os": {
-      "app": "SteelSeries GG + Sonar",
+    "software": {
+      "name": "SteelSeries GG + Sonar",
       "macos_support": "none",
       "windows": "Full: SteelSeries GG + Sonar — parametric EQ, virtual 7.1 / 360 Spatial, AI noise-cancel mic, ChatMix.",
       "macos": "GG runs, but Sonar (EQ, spatial, AI mic) is Windows-only — Mac gets device settings + firmware only.",
@@ -149,12 +161,16 @@
     "dongle_connector": "USB-C (USB-A adapter)",
     "charge_port": "USB-C",
     "sidetone": "hardware-dial",
+    "standalone": {
+      "status": "standalone",
+      "note": "Sounds excellent with nothing installed. Xbox model has Dolby Atmos baked in; EQ via app is optional."
+    },
     "source": {
       "url": "https://www.rtings.com/headphones/reviews/best/by-usage/gaming",
       "label": "RTINGS"
     },
-    "software_by_os": {
-      "app": "Audeze HQ",
+    "software": {
+      "name": "Audeze HQ",
       "macos_support": "full",
       "windows": "Full: Audeze HQ — 10-band parametric EQ, mic EQ / noise gate, sidetone, presets.",
       "macos": "Audeze HQ for macOS — identical feature set.",
@@ -190,12 +206,16 @@
     "dongle_connector": "USB-A",
     "charge_port": "USB-C",
     "sidetone": "hardware-dial",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Plays and takes calls app-free; Dolby Atmos + SoundID need iCUE."
+    },
     "source": {
       "url": "https://www.techpowerup.com/review/corsair-virtuoso-max-wireless/",
       "label": "TechPowerUp"
     },
-    "software_by_os": {
-      "app": "Corsair iCUE",
+    "software": {
+      "name": "Corsair iCUE",
       "macos_support": "limited",
       "windows": "Full: Corsair iCUE — EQ, Dolby Atmos, Sonarworks SoundID personalisation, ANC / transparency, mic.",
       "macos": "iCUE for macOS is limited — basic settings; SoundID and full EQ are effectively Windows-only.",
@@ -231,12 +251,16 @@
     "dongle_connector": "USB-C (USB-A adapter)",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Audio + mic work app-free; THX Spatial needs Synapse (PC) or a console."
+    },
     "source": {
       "url": "https://www.tomsguide.com/gaming/gaming-peripherals/razer-blackshark-v3-pro-review",
       "label": "Tom's Guide"
     },
-    "software_by_os": {
-      "app": "Razer Synapse + THX Spatial",
+    "software": {
+      "name": "Razer Synapse + THX Spatial",
       "macos_support": "none",
       "windows": "Full: Razer Synapse + THX Spatial Audio app — EQ, THX 7.1.4, mic tuning, ANC.",
       "macos": "No Synapse for macOS — plug-and-play stereo only, no EQ or spatial.",
@@ -272,12 +296,16 @@
     "dongle_connector": "USB-C",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "standalone",
+      "note": "Works as a plain 2.4 GHz / Bluetooth headphone; THX Spatial via app is optional."
+    },
     "source": {
       "url": "https://www.tomshardware.com/reviews/razer-barracuda-pro",
       "label": "Tom's Hardware"
     },
-    "software_by_os": {
-      "app": "Razer Synapse + THX Spatial",
+    "software": {
+      "name": "Razer Synapse + THX Spatial",
       "macos_support": "none",
       "windows": "Full: Razer Synapse + THX Spatial Audio app — EQ, THX 7.1.4, mic tuning, ANC.",
       "macos": "No Synapse for macOS — plug-and-play stereo only, no EQ or spatial.",
@@ -313,12 +341,16 @@
     "dongle_connector": "USB-A",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Audio + mic work app-free; DTS Headphone:X toggle lives in G HUB."
+    },
     "source": {
       "url": "https://www.gamesradar.com/best-gaming-headsets/",
       "label": "GamesRadar"
     },
-    "software_by_os": {
-      "app": "Logitech G HUB",
+    "software": {
+      "name": "Logitech G HUB",
       "macos_support": "full",
       "windows": "Full: Logitech G HUB — EQ, DTS Headphone:X 2.0 toggle, sidetone, mic (Blue VO!CE on the G Pro X 2).",
       "macos": "G HUB for macOS — same core EQ and DTS toggle.",
@@ -354,12 +386,16 @@
     "dongle_connector": "USB-A",
     "charge_port": "Micro-USB",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Plain 2.4 GHz headset out of the box; DTS Headphone:X needs G HUB."
+    },
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
       "label": "Tom's Hardware"
     },
-    "software_by_os": {
-      "app": "Logitech G HUB",
+    "software": {
+      "name": "Logitech G HUB",
       "macos_support": "full",
       "windows": "Full: Logitech G HUB — EQ, DTS Headphone:X 2.0 toggle, sidetone, mic (Blue VO!CE on the G Pro X 2).",
       "macos": "G HUB for macOS — same core EQ and DTS toggle.",
@@ -395,12 +431,16 @@
     "dongle_connector": "Base station — USB-C + HDMI to host",
     "charge_port": "Base-station dock (contact pins)",
     "sidetone": "hardware-dial",
+    "standalone": {
+      "status": "needs-base-station",
+      "note": "Base station does audio switching + Dolby Atmos in hardware; G HUB optional."
+    },
     "source": {
       "url": "https://www.tomshardware.com/peripherals/gaming-headsets/astro-a50-x-review",
       "label": "Tom's Hardware"
     },
-    "software_by_os": {
-      "app": "Logitech G HUB (Astro)",
+    "software": {
+      "name": "Logitech G HUB (Astro)",
       "macos_support": "full",
       "windows": "Full: G HUB (Astro) — EQ presets, Dolby Atmos + DTS Headphone:X (Dolby licence auto-applies), mic.",
       "macos": "G HUB for macOS — core settings; the spatial licence still applies.",
@@ -436,12 +476,16 @@
     "dongle_connector": "USB-C",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "setup-app-needed",
+      "note": "Basic audio works app-free, but the personalised 360 profile and firmware need INZONE Hub (or the mobile app)."
+    },
     "source": {
       "url": "https://www.soundguys.com/sony-inzone-h9-ii-vs-inzone-h9-146291/",
       "label": "SoundGuys"
     },
-    "software_by_os": {
-      "app": "Sony INZONE Hub",
+    "software": {
+      "name": "Sony INZONE Hub",
       "macos_support": "none",
       "windows": "Full: INZONE Hub — EQ, 360 Spatial Sound for Gaming, ANC, mic, game / chat balance.",
       "macos": "No INZONE Hub for macOS — stereo, no EQ or spatial.",
@@ -477,12 +521,16 @@
     "dongle_connector": "USB-C",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "setup-app-needed",
+      "note": "Basic audio works app-free; personalised 360 profile / firmware need INZONE Hub."
+    },
     "source": {
       "url": "https://www.soundguys.com/sony-inzone-h9-ii-vs-inzone-h9-146291/",
       "label": "SoundGuys"
     },
-    "software_by_os": {
-      "app": "Sony INZONE Hub",
+    "software": {
+      "name": "Sony INZONE Hub",
       "macos_support": "none",
       "windows": "Full: INZONE Hub — EQ, 360 Spatial Sound for Gaming, ANC, mic, game / chat balance.",
       "macos": "No INZONE Hub for macOS — stereo, no EQ or spatial.",
@@ -518,12 +566,16 @@
     "dongle_connector": "USB-A (PlayStation Link)",
     "charge_port": "USB-C + charging hanger (contacts)",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "standalone",
+      "note": "Fully native on PS5 — Tempest 3D and EQ are in the console, no app."
+    },
     "source": {
       "url": "https://www.soundguys.com/playstation-pulse-elite-review-113057/",
       "label": "SoundGuys"
     },
-    "software_by_os": {
-      "app": "None (PS5 system UI)",
+    "software": {
+      "name": "None (PS5 system UI)",
       "macos_support": "none",
       "windows": "No app. The PS Link dongle works on PC / Mac but you lose Tempest 3D (PS5-only).",
       "macos": "Same — PS Link audio only, no Tempest, no EQ.",
@@ -559,12 +611,16 @@
     "dongle_connector": "USB-A (USB-C adapter)",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "standalone",
+      "note": "Plug-and-play; DTS spatial toggles on the headset / NGENUITY is optional."
+    },
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
       "label": "Tom's Hardware"
     },
-    "software_by_os": {
-      "app": "HyperX NGENUITY",
+    "software": {
+      "name": "HyperX NGENUITY",
       "macos_support": "none",
       "windows": "Full: HyperX NGENUITY — EQ, DTS Headphone:X toggle, mic monitoring.",
       "macos": "No NGENUITY for macOS — plug-and-play stereo, works fine but no EQ or spatial.",
@@ -600,12 +656,16 @@
     "dongle_connector": "USB-A",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "standalone",
+      "note": "Plug-and-play; NGENUITY is optional."
+    },
     "source": {
       "url": "https://www.rtings.com/headphones/reviews/best/by-usage/gaming",
       "label": "RTINGS"
     },
-    "software_by_os": {
-      "app": "HyperX NGENUITY",
+    "software": {
+      "name": "HyperX NGENUITY",
       "macos_support": "none",
       "windows": "Full: HyperX NGENUITY — EQ, DTS Headphone:X toggle, mic monitoring.",
       "macos": "No NGENUITY for macOS — plug-and-play stereo, works fine but no EQ or spatial.",
@@ -641,12 +701,16 @@
     "dongle_connector": "USB-A transmitter + dock",
     "charge_port": "USB-C + charging dock",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Audio works app-free; Dolby Atmos + Superhuman Hearing need Swarm II."
+    },
     "source": {
       "url": "https://www.tomshardware.com/peripherals/gaming-headsets/turtle-beach-stealth-pro-ii-review",
       "label": "Tom's Hardware"
     },
-    "software_by_os": {
-      "app": "Turtle Beach Swarm II",
+    "software": {
+      "name": "Turtle Beach Swarm II",
       "macos_support": "none",
       "windows": "Full: Swarm II — EQ, Superhuman Hearing, Dolby Atmos (Stealth Pro II), ANC, mic monitoring.",
       "macos": "No Swarm for macOS — stereo, no EQ.",
@@ -682,12 +746,16 @@
     "dongle_connector": "USB-C (USB-A adapter)",
     "charge_port": "USB-C",
     "sidetone": "hardware-dial",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Audio works app-free; Dolby Atmos + Superhuman Hearing need Swarm II."
+    },
     "source": {
       "url": "https://www.tomshardware.com/best-picks/best-wireless-headsets",
       "label": "Tom's Hardware"
     },
-    "software_by_os": {
-      "app": "Turtle Beach Swarm II",
+    "software": {
+      "name": "Turtle Beach Swarm II",
       "macos_support": "none",
       "windows": "Full: Swarm II — EQ, Superhuman Hearing, Dolby Atmos (Stealth Pro II), ANC, mic monitoring.",
       "macos": "No Swarm for macOS — stereo, no EQ.",
@@ -723,12 +791,16 @@
     "dongle_connector": "USB-A",
     "charge_port": "USB-C",
     "sidetone": "app-or-console",
+    "standalone": {
+      "status": "spatial-needs-app",
+      "note": "Works as a plain headset; EPOS 7.1 surround needs the Gaming Suite."
+    },
     "source": {
       "url": "https://www.pcgamesn.com/best-gaming-headset",
       "label": "PCGamesN"
     },
-    "software_by_os": {
-      "app": "EPOS Gaming Suite",
+    "software": {
+      "name": "EPOS Gaming Suite",
       "macos_support": "none",
       "windows": "Full: EPOS Gaming Suite — 7.1 surround, EQ, Smart Button config, ANC, sidetone, mic.",
       "macos": "No Gaming Suite for macOS — stereo, no EQ or surround.",
