@@ -78,6 +78,7 @@ if [ $DRY -eq 0 ] && [ ${#CHANGED[@]} -gt 0 ]; then
 Automated weekly refresh via ogdb-price-snapshot on station (Newegg
 search cards, lowest clean new-condition match; ambiguous rows resolved
 by ollama/$OGDB_MODEL or skipped)."
+    git pull -q --rebase origin main || true
     git push -q
     log "pushed: ${CHANGED[*]} ($TOTAL_OK/$TOTAL_ROWS rows)"
   else
