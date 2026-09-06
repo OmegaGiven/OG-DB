@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSD DB</title>
+<meta name="description" content="NVMe and SATA SSDs with tracked price history - capacity, PCIe gen, DRAM, NAND type, controller, speed, endurance, $/TB.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}
+:root{
+  --bg:#f2f3f5;--surface:#fff;--surface-2:#e9ebee;--ink:#191c22;--ink-soft:#59606d;
+  --line:#d7dbe1;--line-strong:#bfc5cd;--accent:#c0740f;--accent-ink:#8a5300;--accent-wash:#f6ecdd;
+  --yes:#2f7d55;--yes-bg:#e0efe6;--no:#a23f57;--no-bg:#f3e2e6;--partial:#8a6d1f;--partial-bg:#f1e9d4;
+  --shadow:0 1px 2px rgba(20,22,27,.05),0 10px 30px -14px rgba(20,22,27,.16);
+  --grid:rgba(25,28,34,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
+}
+.wrap{max-width:min(2600px,99vw);margin:0 auto;padding:clamp(16px,2.5vw,28px) clamp(8px,1.5vw,16px) 64px}
+
+header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
+h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
+  line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1 .crumb{color:var(--ink-soft);text-decoration:none}
+h1 .crumb:hover,h1 .crumb:focus-visible{color:var(--accent)}
+h1 .sep{color:var(--line-strong);margin:0 .35em;font-weight:400}
+.compiled{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+  color:var(--ink-soft);font-weight:400;white-space:nowrap;margin-left:12px;vertical-align:middle}
+
+.primer{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px;padding:15px 18px;margin:20px 0 24px;box-shadow:var(--shadow);max-width:92ch}
+.primer h2{font-family:"Chivo",sans-serif;font-weight:700;font-size:13px;margin:0 0 8px;
+  text-transform:uppercase;letter-spacing:.08em}
+.primer ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink-soft)}
+.primer li{margin:5px 0}
+.primer strong{color:var(--ink)}
+.primer em{color:var(--ink);font-style:normal;font-weight:500}
+
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.controls .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.glabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+button.chip{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:500;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;cursor:pointer;transition:.12s}
+button.chip:hover{border-color:var(--accent)}
+button.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1d23}
+button.chip:focus-visible,select:focus-visible,tr.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:5px 8px;background:var(--surface);
+  color:var(--ink);border:1px solid var(--line-strong);border-radius:6px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
+
+.colwrap{position:relative}
+.colpanel{position:absolute;top:calc(100% + 6px);right:0;z-index:20;background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:8px;box-shadow:var(--shadow);padding:12px 14px;
+  width:260px;max-height:70vh;overflow:auto;display:flex;flex-direction:column;gap:7px}
+.colpanel .colhead{margin:0 0 2px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.colpanel label{display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer}
+.colpanel input{accent-color:var(--accent)}
+.colactions{display:flex;gap:8px;margin-top:6px;border-top:1px solid var(--line);padding-top:9px}
+.colactions button{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;
+  background:var(--surface-2);color:var(--ink);border:1px solid var(--line-strong);border-radius:6px;padding:4px 10px}
+.colactions button:hover{border-color:var(--accent)}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
+  font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
+  padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--accent)}
+thead th.sortable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+thead th[aria-sort="ascending"],thead th[aria-sort="descending"]{color:var(--accent);background:var(--accent-wash)}
+thead th .arrow{color:var(--accent);font-size:10px}
+tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
+tbody tr.row:hover{background:var(--surface-2)}
+td{padding:10px 12px;font-size:13px;vertical-align:top}
+.name{font-family:"Chivo",sans-serif;font-weight:700;font-size:13.5px}
+.sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-soft);
+  font-weight:400;margin-top:2px;letter-spacing:.02em}
+.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+.price small{display:block;color:var(--ink-soft);font-weight:400;font-size:10.5px;white-space:normal;max-width:22ch}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;
+  padding:2px 6px;border-radius:4px;margin:1px 3px 1px 0;white-space:nowrap}
+.t-yes{background:var(--yes-bg);color:var(--yes)}
+.t-no{background:var(--no-bg);color:var(--no)}
+.t-part{background:var(--partial-bg);color:var(--partial)}
+.t-neutral{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+a.srclink{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);text-decoration:none;white-space:nowrap}
+a.srclink:hover,a.srclink:focus-visible{text-decoration:underline}
+
+.expand{background:var(--bg)}
+.expand td{padding:0}
+.expand .inner{padding:16px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 26px}
+.expand h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.expand p{margin:0;font-size:12.5px;color:var(--ink-soft)}
+.expand p strong{color:var(--ink);font-weight:600}
+dl.kv{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;font-size:12.5px;color:var(--ink-soft);max-width:120ch}
+dl.kv dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-top:1px}
+dl.kv dd{margin:0}
+.chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
+tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
+
+footer{margin-top:30px;font-size:12px;color:var(--ink-soft);max-width:70ch}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.searchwrap{flex:1 1 220px;min-width:180px}
+.rowsearch{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:6px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;outline:0}
+.rowsearch:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.rowsearch::-webkit-search-cancel-button{-webkit-appearance:none}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1><a class="crumb" href="../">OG-DB</a><span class="sep">/</span>SSD DB <span class="compiled">compiled Sep 2026</span></h1>
+  </header>
+  <div class="primer"><h2>How to read the table</h2><ul><li><strong>Price (trend)</strong> is a sparkline of every recorded price point, newest on the right &mdash; green line = falling, red = rising. Expand a row for the full chart with low / high. Snapshots are appended weekly and on request; most rows start with a single Sept-2026 point, so trends fill in over time.</li><li><strong>2026 is a NAND-shortage year.</strong> Street prices roughly doubled vs 2025 and SATA has inverted &mdash; an 870 EVO now costs more per TB than a 990 PRO. Treat every price as a snapshot; the <em>$/TB</em> column is the honest comparison.</li><li><strong>DRAM vs DRAM-less (HMB)</strong> &mdash; DRAM-less drives are fine as game / bulk storage, weaker as an OS drive under sustained mixed load. <strong>QLC</strong> is cheaper per TB with lower endurance and slow post-cache writes; the TLC-only / Hide-QLC filters remove it.</li><li>Speeds and TBW are the manufacturer rating for the listed capacity. Some budget drives are a <em>component lottery</em> (NAND / controller change under the same part number) &mdash; flagged in NAND as <em>varies</em>.</li></ul></div>
+  <div class="controls">
+    <div class="grp searchwrap"><input id="rowq" class="rowsearch" type="search" placeholder="Search rows… ( / )" autocomplete="off" aria-label="Search rows"></div>
+    <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
+    <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
+    <div class="grp colwrap">
+      <button class="chip" id="colbtn" aria-expanded="false" aria-controls="colpanel">Columns ▾</button>
+      <div class="colpanel" id="colpanel" hidden>
+        <p class="colhead">Show columns</p>
+        <div class="colactions"><button type="button" data-all="1">All</button><button type="button" data-all="0">Minimal</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="tablewrap"><table id="tbl"><thead><tr></tr></thead><tbody id="tbody"></tbody></table></div>
+  <footer><p><strong>Notes.</strong> Roughly a third of prices are exact-SKU retailer quotes; the rest are estimated from tracked siblings and 2025 baselines &mdash; per-SKU confidence lives in the repo's notes file. Random IOPS shown as <em>n/p</em> where the vendor doesn't publish them. Per-row <strong>Source</strong> is TechPowerUp or the vendor page. Compiled Sep 2026.</p></footer>
+</div>
+<script>
+const DATA=[{"name":"Crucial T700 2TB","brand":"Crucial","family":"T700","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB LPDDR4)","nand":"Micron 232L TLC (B58R)","controller":"Phison E26","seqReadMBs":12400,"seqWriteMBs":11800,"randRead4KIOPS":1500000,"randWrite4KIOPS":1500000,"tbwRating":1200,"warrantyYears":5,"priceUSD":330,"pricePerTB":165,"priceHistory":[{"date":"2026-09","priceUSD":330,"source":"Amazon"}],"heatsinkOption":true,"notes":"First-gen Gen5 (2023); largely superseded by T705/T710 but still listed. Needs a heatsink; throttles bare.","source":{"url":"https://www.techpowerup.com/review/crucial-t700-2-tb/","label":"TechPowerUp"}},{"name":"Crucial T705 2TB","brand":"Crucial","family":"T705","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB LPDDR4)","nand":"Micron 232L TLC (B58R, 2400 MT/s)","controller":"Phison E26","seqReadMBs":14500,"seqWriteMBs":12700,"randRead4KIOPS":1550000,"randWrite4KIOPS":1800000,"tbwRating":1200,"warrantyYears":5,"priceUSD":380,"pricePerTB":190,"priceHistory":[{"date":"2026-09","priceUSD":380,"source":"Amazon"}],"heatsinkOption":true,"notes":"Full-speed E26 Gen5; also sold with white/black heatsink SKUs. TLC.","source":{"url":"https://www.tomshardware.com/pc-components/ssds/crucial-t705-2tb-ssd-review","label":"Tom's Hardware"}},{"name":"Crucial T710 2TB","brand":"Crucial","family":"T710","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB LPDDR4)","nand":"Micron G9 276L TLC","controller":"Silicon Motion SM2508","seqReadMBs":14900,"seqWriteMBs":13800,"randRead4KIOPS":2200000,"randWrite4KIOPS":2300000,"tbwRating":1200,"warrantyYears":5,"priceUSD":430,"pricePerTB":215,"priceHistory":[{"date":"2026-09","priceUSD":430,"source":"Amazon"}],"heatsinkOption":true,"notes":"2025 successor to T705; SM2508 runs far cooler than E26. Price from cheapestssd tracker 2026-09-05.","source":{"url":"https://www.crucial.com/products/ssd/crucial-t710-ssd","label":"Crucial"}},{"name":"Samsung 9100 PRO 2TB","brand":"Samsung","family":"9100 PRO","capacityGB":2000,"capacityRangeGB":"1000-8000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB LPDDR4X)","nand":"Samsung 236L TLC (V8)","controller":"Samsung Presto","seqReadMBs":14800,"seqWriteMBs":13400,"randRead4KIOPS":2200000,"randWrite4KIOPS":2600000,"tbwRating":1200,"warrantyYears":5,"priceUSD":350,"pricePerTB":175,"priceHistory":[{"date":"2026-09","priceUSD":350,"source":"Amazon"}],"heatsinkOption":true,"notes":"Samsung's first Gen5. Very volatile in 2026: $303 (Aug) to $476 (spring); $350 is a mid estimate. Heatsink SKU +$20.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/9100-pro-pcie-5-0-nvme-ssd-2tb-mz-vap2t0b-am/","label":"Samsung"}},{"name":"Samsung 9100 PRO 8TB","brand":"Samsung","family":"9100 PRO","capacityGB":8000,"capacityRangeGB":"1000-8000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (8 GB LPDDR4X)","nand":"Samsung 236L TLC (V8)","controller":"Samsung Presto","seqReadMBs":14800,"seqWriteMBs":13400,"randRead4KIOPS":2200000,"randWrite4KIOPS":2600000,"tbwRating":4800,"warrantyYears":5,"priceUSD":1300,"pricePerTB":162,"priceHistory":[{"date":"2026-09","priceUSD":1300,"source":"Amazon"}],"heatsinkOption":true,"notes":"One of the few 8TB TLC Gen5 drives; double-sided. Launched at $999 in 2025, higher in the 2026 shortage. Price estimated.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/9100-pro-pcie-5-0-nvme-ssd-8tb-mz-vap8t0b-am/","label":"Samsung"}},{"name":"WD Black SN8100 2TB","brand":"WD (Sandisk)","family":"SN8100","capacityGB":2000,"capacityRangeGB":"1000-8000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB LPDDR4)","nand":"Kioxia BiCS8 218L TLC (CBA)","controller":"Sandisk SMI2508 (SM2508-based)","seqReadMBs":14900,"seqWriteMBs":14000,"randRead4KIOPS":2300000,"randWrite4KIOPS":2400000,"tbwRating":1200,"warrantyYears":5,"priceUSD":400,"pricePerTB":200,"priceHistory":[{"date":"2026-09","priceUSD":400,"source":"Amazon"}],"heatsinkOption":true,"notes":"Tom's Hardware 'fastest consumer SSD' at launch (2025). Launch MSRP $280; 2026 street higher. Heatsink SKU +$20.","source":{"url":"https://www.techpowerup.com/review/wd-black-sn8100-2-tb/","label":"TechPowerUp"}},{"name":"Corsair MP700 2TB","brand":"Corsair","family":"MP700","capacityGB":2000,"capacityRangeGB":"1000-2000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB DDR4)","nand":"Micron 232L TLC","controller":"Phison E26","seqReadMBs":10000,"seqWriteMBs":10000,"randRead4KIOPS":1500000,"randWrite4KIOPS":1500000,"tbwRating":1400,"warrantyYears":5,"priceUSD":300,"pricePerTB":150,"priceHistory":[{"date":"2026-09","priceUSD":300,"source":"Amazon"}],"heatsinkOption":false,"notes":"Original 2023 MP700; bare drive (no heatsink) and throttles hard without one. Mostly clearance stock now.","source":{"url":"https://www.corsair.com/us/en/c/data-storage/mp700","label":"Corsair"}},{"name":"Corsair MP700 Pro 2TB","brand":"Corsair","family":"MP700 Pro","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB DDR4)","nand":"Micron 232L TLC","controller":"Phison E26","seqReadMBs":12400,"seqWriteMBs":11800,"randRead4KIOPS":1500000,"randWrite4KIOPS":1500000,"tbwRating":1400,"warrantyYears":5,"priceUSD":340,"pricePerTB":170,"priceHistory":[{"date":"2026-09","priceUSD":340,"source":"Amazon"}],"heatsinkOption":true,"notes":"Sold bare, with air cooler, or Hydro X waterblock (SE). Aug-2025 deals hit $170; 2026 street ~2x. Price estimated.","source":{"url":"https://www.storagereview.com/review/corsair-mp700-pro-gen5-ssd-review","label":"StorageReview"}},{"name":"Corsair MP700 Elite 2TB","brand":"Corsair","family":"MP700 Elite","capacityGB":2000,"capacityRangeGB":"1000-2000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"HMB (DRAM-less)","nand":"Kioxia BiCS8 218L TLC","controller":"Phison E31T","seqReadMBs":10000,"seqWriteMBs":8500,"randRead4KIOPS":1300000,"randWrite4KIOPS":1400000,"tbwRating":1200,"warrantyYears":5,"priceUSD":290,"pricePerTB":145,"priceHistory":[{"date":"2026-09","priceUSD":290,"source":"Amazon"}],"heatsinkOption":true,"notes":"DRAM-less budget Gen5 (E31T). Efficient, single-sided, no heatsink required. Launch $250; 2026 estimated.","source":{"url":"https://www.tomshardware.com/pc-components/ssds/corsair-mp700-elite-ssd-review","label":"Tom's Hardware"}},{"name":"Seagate FireCuda 540 2TB","brand":"Seagate","family":"FireCuda 540","capacityGB":2000,"capacityRangeGB":"1000-2000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB DDR4)","nand":"Micron 232L TLC","controller":"Phison E26","seqReadMBs":10000,"seqWriteMBs":10000,"randRead4KIOPS":1490000,"randWrite4KIOPS":1500000,"tbwRating":2000,"warrantyYears":5,"priceUSD":330,"pricePerTB":165,"priceHistory":[{"date":"2026-09","priceUSD":330,"source":"Amazon"}],"heatsinkOption":false,"notes":"Highest TBW in the E26 class (2000 TB at 2TB) + 3yr Rescue data recovery. Bare drive.","source":{"url":"https://www.seagate.com/products/gaming-drives/pc-gaming/firecuda-540-ssd/","label":"Seagate"}},{"name":"Sabrent Rocket 5 2TB","brand":"Sabrent","family":"Rocket 5","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB DDR4)","nand":"Micron 232L TLC","controller":"Phison E26","seqReadMBs":14000,"seqWriteMBs":12000,"randRead4KIOPS":1500000,"randWrite4KIOPS":1550000,"tbwRating":1400,"warrantyYears":5,"priceUSD":350,"pricePerTB":175,"priceHistory":[{"date":"2026-09","priceUSD":350,"source":"Amazon"}],"heatsinkOption":true,"notes":"Full-speed E26; heatsink version sold separately. Price from Amazon listing ($349.99).","source":{"url":"https://www.tomshardware.com/pc-components/ssds/sabrent-rocket-5-2tb-ssd-review","label":"Tom's Hardware"}},{"name":"Gigabyte AORUS Gen5 12000 2TB","brand":"Gigabyte","family":"AORUS Gen5 12000","capacityGB":2000,"capacityRangeGB":"1000-2000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (4 GB LPDDR4)","nand":"Micron 232L TLC","controller":"Phison E26","seqReadMBs":12400,"seqWriteMBs":11800,"randRead4KIOPS":1500000,"randWrite4KIOPS":1500000,"tbwRating":1400,"warrantyYears":5,"priceUSD":340,"pricePerTB":170,"priceHistory":[{"date":"2026-09","priceUSD":340,"source":"Amazon"}],"heatsinkOption":true,"notes":"Ships with a large heatsink (M.2 slot clearance matters). Price estimated from 2025 base ($265) + 2026 inflation.","source":{"url":"https://www.gigabyte.com/SSD/AORUS-Gen5-12000-SSD-2TB","label":"Gigabyte"}},{"name":"ADATA Legend 970 2TB","brand":"ADATA","family":"Legend 970","capacityGB":2000,"capacityRangeGB":"1000-2000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (4 GB DDR4)","nand":"Micron 232L TLC","controller":"Phison E26","seqReadMBs":10000,"seqWriteMBs":10000,"randRead4KIOPS":1400000,"randWrite4KIOPS":1400000,"tbwRating":1400,"warrantyYears":5,"priceUSD":300,"pricePerTB":150,"priceHistory":[{"date":"2026-09","priceUSD":300,"source":"Amazon"}],"heatsinkOption":true,"notes":"Includes an active-fan heatsink (audible). 'Legend 970 Pro' (14 GB/s) is the newer sibling. Price estimated.","source":{"url":"https://www.adata.com/us/consumer/ssd/legend-970/","label":"ADATA"}},{"name":"Team Group T-Force Z540 2TB","brand":"Team Group","family":"Z540","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB DDR4)","nand":"Micron 232L TLC","controller":"Phison E26","seqReadMBs":12400,"seqWriteMBs":11800,"randRead4KIOPS":1400000,"randWrite4KIOPS":1500000,"tbwRating":1400,"warrantyYears":5,"priceUSD":320,"pricePerTB":160,"priceHistory":[{"date":"2026-09","priceUSD":320,"source":"Amazon"}],"heatsinkOption":true,"notes":"Graphene-label bare drive; heatsink ('Z540 with heatsink') SKU available. Price estimated.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/ssd/T-FORCE/z540-pcie5-ssd/","label":"Team Group"}},{"name":"SK hynix Platinum P51 2TB","brand":"SK hynix","family":"Platinum P51","capacityGB":2000,"capacityRangeGB":"500-2000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB LPDDR4)","nand":"SK hynix 238L TLC (V9)","controller":"SK hynix Alistar","seqReadMBs":14700,"seqWriteMBs":13400,"randRead4KIOPS":2100000,"randWrite4KIOPS":2200000,"tbwRating":1200,"warrantyYears":5,"priceUSD":330,"pricePerTB":165,"priceHistory":[{"date":"2026-09","priceUSD":330,"source":"Amazon"}],"heatsinkOption":false,"notes":"In-house Gen5 (2025), efficient and single-sided. Price estimated (little tracker coverage).","source":{"url":"https://ssd.skhynix.com/p51/","label":"SK hynix"}},{"name":"Kingston FURY Renegade G5 2TB","brand":"Kingston","family":"FURY Renegade G5","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 5.0 x4 NVMe","pcieGen":5,"dram":"DRAM (2 GB LPDDR4)","nand":"Kioxia BiCS8 218L TLC","controller":"Silicon Motion SM2508","seqReadMBs":14800,"seqWriteMBs":14000,"randRead4KIOPS":2200000,"randWrite4KIOPS":2200000,"tbwRating":2000,"warrantyYears":5,"priceUSD":350,"pricePerTB":175,"priceHistory":[{"date":"2026-09","priceUSD":350,"source":"Amazon"}],"heatsinkOption":false,"notes":"2025 Gen5 flagship; high 2000 TBW. Price estimated.","source":{"url":"https://www.kingston.com/en/ssd/gaming/kingston-fury-renegade-g5-nvme-m2-ssd","label":"Kingston"}},{"name":"Samsung 990 PRO 2TB","brand":"Samsung","family":"990 PRO","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB LPDDR4)","nand":"Samsung 176L TLC (V7)","controller":"Samsung Pascal","seqReadMBs":7450,"seqWriteMBs":6900,"randRead4KIOPS":1400000,"randWrite4KIOPS":1550000,"tbwRating":1200,"warrantyYears":5,"priceUSD":390,"pricePerTB":195,"priceHistory":[{"date":"2026-09","priceUSD":390,"source":"Amazon"}],"heatsinkOption":true,"notes":"Default 'best Gen4' pick. Amazon $390 promo early Sept 2026 (list $640, hit $430 in Aug). Runs warm bare.","source":{"url":"https://www.techpowerup.com/ssd-specs/samsung-990-pro-2-tb.d867","label":"TechPowerUp"}},{"name":"Samsung 990 PRO 4TB","brand":"Samsung","family":"990 PRO","capacityGB":4000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (4 GB LPDDR4)","nand":"Samsung 236L TLC (V8)","controller":"Samsung Pascal","seqReadMBs":7450,"seqWriteMBs":6900,"randRead4KIOPS":1600000,"randWrite4KIOPS":1550000,"tbwRating":2400,"warrantyYears":5,"priceUSD":650,"pricePerTB":162,"priceHistory":[{"date":"2026-09","priceUSD":650,"source":"Amazon"}],"heatsinkOption":true,"notes":"4TB uses V8 NAND (2023). Tom's 'fastest Gen4 available' 2026. Price estimated from 4TB market median.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/990-pro-pcie-4-0-nvme-ssd-4tb-mz-v9p4t0b-am/","label":"Samsung"}},{"name":"Samsung 990 EVO Plus 2TB","brand":"Samsung","family":"990 EVO Plus","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 / 5.0 x2 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Samsung 236L TLC (V8)","controller":"Samsung Piccolo","seqReadMBs":7250,"seqWriteMBs":6300,"randRead4KIOPS":1050000,"randWrite4KIOPS":1400000,"tbwRating":1200,"warrantyYears":5,"priceUSD":325,"pricePerTB":162,"priceHistory":[{"date":"2026-09","priceUSD":325,"source":"Amazon"}],"heatsinkOption":false,"notes":"Hybrid 4x4/5x2 link. DRAM-less but strong. Tracked $325 Sept 2026 (peak $712 in March).","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/990-evo-plus-nvme-pcie-ssd-2tb-mz-v9s2t0b-am/","label":"Samsung"}},{"name":"Samsung 980 PRO 2TB","brand":"Samsung","family":"980 PRO","capacityGB":2000,"capacityRangeGB":"250-2000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB LPDDR4)","nand":"Samsung 128L TLC (V6)","controller":"Samsung Elpis","seqReadMBs":7000,"seqWriteMBs":5100,"randRead4KIOPS":1000000,"randWrite4KIOPS":1000000,"tbwRating":1200,"warrantyYears":5,"priceUSD":330,"pricePerTB":165,"priceHistory":[{"date":"2026-09","priceUSD":330,"source":"Amazon"}],"heatsinkOption":true,"notes":"2020 flagship, still sold. Make sure firmware is updated (early 2TB batches had a failure bug). Price estimated.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/980-pro-pcie-4-0-nvme-ssd-2tb-mz-v8p2t0b-am/","label":"Samsung"}},{"name":"WD Black SN850X 2TB","brand":"WD (Sandisk)","family":"SN850X","capacityGB":2000,"capacityRangeGB":"1000-8000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB DDR4)","nand":"Kioxia BiCS5 112L TLC","controller":"Sandisk in-house (20-82-10081)","seqReadMBs":7300,"seqWriteMBs":6600,"randRead4KIOPS":1200000,"randWrite4KIOPS":1100000,"tbwRating":1200,"warrantyYears":5,"priceUSD":380,"pricePerTB":190,"priceHistory":[{"date":"2026-09","priceUSD":380,"source":"Amazon"}],"heatsinkOption":true,"notes":"Top Gen4 gaming pick; PS5-compatible heatsink SKU. cheapestssd tracker $380 (Aug 2026); 1TB $264.","source":{"url":"https://www.tomshardware.com/reviews/wd-black-sn850x-ssd-review","label":"Tom's Hardware"}},{"name":"WD Black SN850X 4TB","brand":"WD (Sandisk)","family":"SN850X","capacityGB":4000,"capacityRangeGB":"1000-8000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (4 GB DDR4)","nand":"Kioxia BiCS5 112L TLC","controller":"Sandisk in-house (20-82-10081)","seqReadMBs":7300,"seqWriteMBs":6600,"randRead4KIOPS":1200000,"randWrite4KIOPS":1100000,"tbwRating":2400,"warrantyYears":5,"priceUSD":640,"pricePerTB":160,"priceHistory":[{"date":"2026-09","priceUSD":640,"source":"Amazon"}],"heatsinkOption":true,"notes":"Popular 4TB TLC choice. Price estimated (4TB NVMe median ~$530; SN850X sits above median).","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-black-sn850x-nvme-ssd","label":"Western Digital"}},{"name":"WD Black SN850X 8TB","brand":"WD (Sandisk)","family":"SN850X","capacityGB":8000,"capacityRangeGB":"1000-8000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (8 GB DDR4)","nand":"Kioxia BiCS6 162L TLC","controller":"Sandisk in-house","seqReadMBs":7200,"seqWriteMBs":6600,"randRead4KIOPS":1200000,"randWrite4KIOPS":1100000,"tbwRating":4800,"warrantyYears":5,"priceUSD":950,"pricePerTB":119,"priceHistory":[{"date":"2026-09","priceUSD":950,"source":"Amazon"}],"heatsinkOption":true,"notes":"8TB added 2024 (BiCS6). 2025 deals ~$510 ea; 2026 estimated ~$950. TLC, double-sided.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-black-sn850x-nvme-ssd","label":"Western Digital"}},{"name":"WD Black SN770 1TB","brand":"WD (Sandisk)","family":"SN770","capacityGB":1000,"capacityRangeGB":"250-2000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Kioxia BiCS5 112L TLC","controller":"Sandisk in-house","seqReadMBs":5150,"seqWriteMBs":4900,"randRead4KIOPS":740000,"randWrite4KIOPS":800000,"tbwRating":600,"warrantyYears":5,"priceUSD":150,"pricePerTB":150,"priceHistory":[{"date":"2026-09","priceUSD":150,"source":"Amazon"}],"heatsinkOption":false,"notes":"Long-running DRAM-less mid-range; being replaced by SN7100. Price estimated.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-black-sn770-nvme-ssd","label":"Western Digital"}},{"name":"WD Black SN7100 1TB","brand":"WD (Sandisk)","family":"SN7100","capacityGB":1000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Kioxia BiCS8 218L TLC","controller":"Sandisk in-house","seqReadMBs":7250,"seqWriteMBs":6900,"randRead4KIOPS":1000000,"randWrite4KIOPS":1400000,"tbwRating":600,"warrantyYears":5,"priceUSD":160,"pricePerTB":160,"priceHistory":[{"date":"2026-09","priceUSD":160,"source":"Amazon"}],"heatsinkOption":false,"notes":"2025 SN770 successor; near-SN850X speed, very efficient, single-sided. Price estimated.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-black-sn7100-nvme-ssd","label":"Western Digital"}},{"name":"Crucial T500 2TB","brand":"Crucial","family":"T500","capacityGB":2000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB LPDDR4)","nand":"Micron 232L TLC (B58R)","controller":"Phison E25","seqReadMBs":7400,"seqWriteMBs":7000,"randRead4KIOPS":1180000,"randWrite4KIOPS":1440000,"tbwRating":1200,"warrantyYears":5,"priceUSD":290,"pricePerTB":145,"priceHistory":[{"date":"2026-09","priceUSD":290,"source":"Amazon"}],"heatsinkOption":true,"notes":"Best-value DRAM Gen4 in 2024; Pangoly shows $166 but that looks stale vs 2026 market, so $290 estimated.","source":{"url":"https://www.tomshardware.com/reviews/crucial-t500-ssd-review","label":"Tom's Hardware"}},{"name":"Crucial P3 Plus 2TB","brand":"Crucial","family":"P3 Plus","capacityGB":2000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Micron 176L QLC","controller":"Phison E21T","seqReadMBs":5000,"seqWriteMBs":4200,"randRead4KIOPS":720000,"randWrite4KIOPS":800000,"tbwRating":440,"warrantyYears":5,"priceUSD":210,"pricePerTB":105,"priceHistory":[{"date":"2026-09","priceUSD":210,"source":"Amazon"}],"heatsinkOption":false,"notes":"QLC + DRAM-less: slow once SLC cache fills. Low TBW (440). Price estimated.","source":{"url":"https://www.crucial.com/products/ssd/crucial-p3-plus-ssd","label":"Crucial"}},{"name":"Crucial P310 2TB","brand":"Crucial","family":"P310","capacityGB":2000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Micron 232L QLC","controller":"Phison E27T","seqReadMBs":7100,"seqWriteMBs":6000,"randRead4KIOPS":1000000,"randWrite4KIOPS":1200000,"tbwRating":440,"warrantyYears":5,"priceUSD":279,"pricePerTB":140,"priceHistory":[{"date":"2026-09","priceUSD":279,"source":"Newegg"}],"heatsinkOption":false,"notes":"QLC; 2230 (handheld) and 2280 versions. Newegg $279 (July 2026).","source":{"url":"https://www.crucial.com/products/ssd/crucial-p310-ssd","label":"Crucial"}},{"name":"SK hynix Platinum P41 2TB","brand":"SK hynix","family":"Platinum P41","capacityGB":2000,"capacityRangeGB":"500-2000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB LPDDR4)","nand":"SK hynix 176L TLC","controller":"SK hynix Aries","seqReadMBs":7000,"seqWriteMBs":6500,"randRead4KIOPS":1400000,"randWrite4KIOPS":1300000,"tbwRating":1200,"warrantyYears":5,"priceUSD":247,"pricePerTB":124,"priceHistory":[{"date":"2026-09","priceUSD":247,"source":"Amazon"}],"heatsinkOption":false,"notes":"Same hardware as Solidigm P44 Pro. $247 (Aug 2026) is one of the better $/TB for DRAM TLC Gen4.","source":{"url":"https://ssd.skhynix.com/p41/","label":"SK hynix"}},{"name":"Corsair MP600 Pro LPX 2TB","brand":"Corsair","family":"MP600 Pro LPX","capacityGB":2000,"capacityRangeGB":"500-8000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB DDR4)","nand":"Micron 176L TLC","controller":"Phison E18","seqReadMBs":7100,"seqWriteMBs":6800,"randRead4KIOPS":1000000,"randWrite4KIOPS":1200000,"tbwRating":1400,"warrantyYears":5,"priceUSD":190,"pricePerTB":95,"priceHistory":[{"date":"2026-09","priceUSD":190,"source":"Amazon"}],"heatsinkOption":true,"notes":"Low-profile heatsink, PS5-focused. Slickdeals $145 (2026) suggests a lower street than most DRAM Gen4; $190 typical.","source":{"url":"https://www.corsair.com/us/en/c/data-storage/mp600-pro-lpx","label":"Corsair"}},{"name":"Corsair MP600 Elite 2TB","brand":"Corsair","family":"MP600 Elite","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Kioxia BiCS6 162L TLC","controller":"Phison E27T","seqReadMBs":7000,"seqWriteMBs":6500,"randRead4KIOPS":1000000,"randWrite4KIOPS":1200000,"tbwRating":1200,"warrantyYears":5,"priceUSD":230,"pricePerTB":115,"priceHistory":[{"date":"2026-09","priceUSD":230,"source":"Amazon"}],"heatsinkOption":true,"notes":"DRAM-less E27T; PS5 heatsink variant. Amazon listing showed $170 but likely stale; $230 estimated.","source":{"url":"https://www.corsair.com/us/en/c/data-storage/mp600-elite","label":"Corsair"}},{"name":"Sabrent Rocket 4 Plus 2TB","brand":"Sabrent","family":"Rocket 4 Plus","capacityGB":2000,"capacityRangeGB":"1000-8000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB DDR4)","nand":"Micron 176L TLC (B47R)","controller":"Phison E18","seqReadMBs":7100,"seqWriteMBs":6600,"randRead4KIOPS":1000000,"randWrite4KIOPS":1000000,"tbwRating":1400,"warrantyYears":5,"priceUSD":260,"pricePerTB":130,"priceHistory":[{"date":"2026-09","priceUSD":260,"source":"Amazon"}],"heatsinkOption":true,"notes":"Later 'G' revision (Rocket 4 Plus-G) uses newer NAND. Pangoly best price $195; $260 typical 2026.","source":{"url":"https://sabrent.com/products/sb-rkt4p-2tb","label":"Sabrent"}},{"name":"Kingston FURY Renegade 2TB","brand":"Kingston","family":"FURY Renegade","capacityGB":2000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB DDR4)","nand":"Micron 176L TLC","controller":"Phison E18","seqReadMBs":7300,"seqWriteMBs":7000,"randRead4KIOPS":1000000,"randWrite4KIOPS":1000000,"tbwRating":2000,"warrantyYears":5,"priceUSD":290,"pricePerTB":145,"priceHistory":[{"date":"2026-09","priceUSD":290,"source":"Amazon"}],"heatsinkOption":true,"notes":"Refined KC3000 with higher TBW (2000). Heatsink SKU for PS5. Price estimated.","source":{"url":"https://www.tomshardware.com/reviews/kingston-fury-renegade","label":"Tom's Hardware"}},{"name":"Kingston KC3000 2TB","brand":"Kingston","family":"KC3000","capacityGB":2000,"capacityRangeGB":"512-4096","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB DDR4)","nand":"Micron 176L TLC","controller":"Phison E18","seqReadMBs":7000,"seqWriteMBs":7000,"randRead4KIOPS":1000000,"randWrite4KIOPS":1000000,"tbwRating":1600,"warrantyYears":5,"priceUSD":270,"pricePerTB":135,"priceHistory":[{"date":"2026-09","priceUSD":270,"source":"Amazon"}],"heatsinkOption":false,"notes":"Prosumer E18 drive; same platform as FURY Renegade. Price estimated.","source":{"url":"https://www.kingston.com/en/ssd/kc3000-nvme-m2-solid-state-drive","label":"Kingston"}},{"name":"Kingston NV3 2TB","brand":"Kingston","family":"NV3","capacityGB":2000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"varies (TLC or QLC, component lottery)","controller":"varies (SM2268XT2 / Phison E27T)","seqReadMBs":6000,"seqWriteMBs":5000,"randRead4KIOPS":null,"randWrite4KIOPS":null,"tbwRating":640,"warrantyYears":3,"priceUSD":278,"pricePerTB":139,"priceHistory":[{"date":"2026-09","priceUSD":278,"source":"Amazon"}],"heatsinkOption":false,"notes":"Budget; Kingston does not guarantee NAND/controller and publishes no IOPS. cheapestssd tracker $278 (2026-09-05).","source":{"url":"https://www.kingston.com/en/ssd/nv3-nvme-pcie-ssd","label":"Kingston"}},{"name":"Kingston NV2 1TB","brand":"Kingston","family":"NV2","capacityGB":1000,"capacityRangeGB":"250-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"varies (TLC or QLC, component lottery)","controller":"varies (SM2267XT / Phison E19T / E21T)","seqReadMBs":3500,"seqWriteMBs":2100,"randRead4KIOPS":null,"randWrite4KIOPS":null,"tbwRating":320,"warrantyYears":3,"priceUSD":120,"pricePerTB":120,"priceHistory":[{"date":"2026-09","priceUSD":120,"source":"Amazon"}],"heatsinkOption":false,"notes":"Listed by request under 'PCIe 3.0 budget' but is actually a Gen4 x4 drive at Gen3-class speeds. No published IOPS. Price estimated.","source":{"url":"https://www.kingston.com/en/ssd/nv2-nvme-pcie-ssd","label":"Kingston"}},{"name":"Team Group MP44 2TB","brand":"Team Group","family":"MP44","capacityGB":2000,"capacityRangeGB":"512-8000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"YMTC 232L TLC","controller":"Maxio MAP1602","seqReadMBs":7400,"seqWriteMBs":7000,"randRead4KIOPS":null,"randWrite4KIOPS":null,"tbwRating":1300,"warrantyYears":5,"priceUSD":240,"pricePerTB":120,"priceHistory":[{"date":"2026-09","priceUSD":240,"source":"Amazon"}],"heatsinkOption":false,"notes":"Same MAP1602+YMTC platform as Lexar NM790. TBW/IOPS not consistently published; 1300 TBW from spec sheet. Price estimated.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/ssd/TEAMGROUP/mp44-m2-pcie4-ssd/","label":"Team Group"}},{"name":"Lexar NM790 2TB","brand":"Lexar","family":"NM790","capacityGB":2000,"capacityRangeGB":"512-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"YMTC 232L TLC","controller":"Maxio MAP1602","seqReadMBs":7400,"seqWriteMBs":6500,"randRead4KIOPS":1000000,"randWrite4KIOPS":1000000,"tbwRating":1500,"warrantyYears":5,"priceUSD":230,"pricePerTB":115,"priceHistory":[{"date":"2026-09","priceUSD":230,"source":"Amazon"}],"heatsinkOption":true,"notes":"Best-value DRAM-less TLC of 2023-24; heatsink SKU exists. 4TB hit $220 at Costco Nov 2025. Price estimated.","source":{"url":"https://www.lexar.com/global/product/lexar-nm790-m-2-2280-pcie-gen4x4-nvme-ssd/","label":"Lexar"}},{"name":"Lexar NM790 4TB","brand":"Lexar","family":"NM790","capacityGB":4000,"capacityRangeGB":"512-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"YMTC 232L TLC","controller":"Maxio MAP1602","seqReadMBs":7400,"seqWriteMBs":6500,"randRead4KIOPS":1000000,"randWrite4KIOPS":1000000,"tbwRating":3000,"warrantyYears":5,"priceUSD":420,"pricePerTB":105,"priceHistory":[{"date":"2026-09","priceUSD":420,"source":"Amazon"}],"heatsinkOption":true,"notes":"Popular 4TB TLC for game libraries. Price estimated near cheapest-4TB-NVMe floor ($420, Sept 2026).","source":{"url":"https://www.lexar.com/global/product/lexar-nm790-m-2-2280-pcie-gen4x4-nvme-ssd/","label":"Lexar"}},{"name":"Lexar NM800 Pro 2TB","brand":"Lexar","family":"NM800 Pro","capacityGB":2000,"capacityRangeGB":"512-2000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB DDR4)","nand":"Micron 176L TLC","controller":"InnoGrit IG5236","seqReadMBs":7500,"seqWriteMBs":6500,"randRead4KIOPS":1000000,"randWrite4KIOPS":1200000,"tbwRating":2000,"warrantyYears":5,"priceUSD":250,"pricePerTB":125,"priceHistory":[{"date":"2026-09","priceUSD":250,"source":"Amazon"}],"heatsinkOption":true,"notes":"DRAM + 2000 TBW; heatsink SKU. TPU noted $130 in 2024; $250 estimated for 2026.","source":{"url":"https://www.lexar.com/global/product/lexar-professional-nm800pro-m-2-2280-pcie-gen4x4-nvme-ssd/","label":"Lexar"}},{"name":"ADATA Legend 960 2TB","brand":"ADATA","family":"Legend 960","capacityGB":2000,"capacityRangeGB":"1000-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"DRAM (2 GB DDR4)","nand":"Micron 176L TLC","controller":"Silicon Motion SM2264","seqReadMBs":7400,"seqWriteMBs":6800,"randRead4KIOPS":730000,"randWrite4KIOPS":610000,"tbwRating":1560,"warrantyYears":5,"priceUSD":250,"pricePerTB":125,"priceHistory":[{"date":"2026-09","priceUSD":250,"source":"Amazon"}],"heatsinkOption":true,"notes":"'Legend 960 Max' = heatsink version. Price estimated.","source":{"url":"https://www.adata.com/us/consumer/ssd/legend-960/","label":"ADATA"}},{"name":"WD Blue SN580 1TB","brand":"WD (Sandisk)","family":"SN580","capacityGB":1000,"capacityRangeGB":"250-2000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Kioxia BiCS5 112L TLC","controller":"Sandisk in-house","seqReadMBs":4150,"seqWriteMBs":4150,"randRead4KIOPS":600000,"randWrite4KIOPS":750000,"tbwRating":600,"warrantyYears":5,"priceUSD":115,"pricePerTB":115,"priceHistory":[{"date":"2026-09","priceUSD":115,"source":"Amazon"}],"heatsinkOption":false,"notes":"Listed by request under 'PCIe 3.0 budget' but is a Gen4 x4 drive. Launch MSRP $50; 2026 estimated ~$115.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-blue-sn580-nvme-ssd","label":"Western Digital"}},{"name":"WD Blue SN5000 2TB","brand":"WD (Sandisk)","family":"SN5000","capacityGB":2000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 4.0 x4 NVMe","pcieGen":4,"dram":"HMB (DRAM-less)","nand":"Kioxia BiCS6 162L TLC (4TB SKU is BiCS6 QLC)","controller":"Sandisk in-house","seqReadMBs":5150,"seqWriteMBs":4850,"randRead4KIOPS":730000,"randWrite4KIOPS":850000,"tbwRating":900,"warrantyYears":5,"priceUSD":230,"pricePerTB":115,"priceHistory":[{"date":"2026-09","priceUSD":230,"source":"Amazon"}],"heatsinkOption":false,"notes":"2024 SN580 successor. Note: only the 4TB SKU is QLC; 500GB-2TB are TLC. Price estimated.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-blue-sn5000-nvme-ssd","label":"Western Digital"}},{"name":"Crucial P3 1TB","brand":"Crucial","family":"P3","capacityGB":1000,"capacityRangeGB":"500-4000","formFactor":"M.2 2280","interface":"PCIe 3.0 x4 NVMe","pcieGen":3,"dram":"HMB (DRAM-less)","nand":"Micron 176L QLC","controller":"Phison E21T","seqReadMBs":3500,"seqWriteMBs":3000,"randRead4KIOPS":650000,"randWrite4KIOPS":700000,"tbwRating":220,"warrantyYears":5,"priceUSD":110,"pricePerTB":110,"priceHistory":[{"date":"2026-09","priceUSD":110,"source":"Amazon"}],"heatsinkOption":false,"notes":"Gen3 QLC budget drive; TBW only 220 at 1TB. Price estimated.","source":{"url":"https://www.crucial.com/products/ssd/crucial-p3-ssd","label":"Crucial"}},{"name":"Team Group MP33 1TB","brand":"Team Group","family":"MP33","capacityGB":1000,"capacityRangeGB":"128-2000","formFactor":"M.2 2280","interface":"PCIe 3.0 x4 NVMe","pcieGen":3,"dram":"HMB (DRAM-less)","nand":"3D TLC (varies)","controller":"Silicon Motion SM2263XT / Phison E13T (varies)","seqReadMBs":1800,"seqWriteMBs":1500,"randRead4KIOPS":220000,"randWrite4KIOPS":200000,"tbwRating":600,"warrantyYears":3,"priceUSD":85,"pricePerTB":85,"priceHistory":[{"date":"2026-09","priceUSD":85,"source":"Amazon"}],"heatsinkOption":false,"notes":"Very cheap Gen3 x4; controller varies by batch. Price estimated.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/ssd/TEAMGROUP/mp33-m2-pcie-ssd/","label":"Team Group"}},{"name":"Samsung 970 EVO Plus 1TB","brand":"Samsung","family":"970 EVO Plus","capacityGB":1000,"capacityRangeGB":"250-2000","formFactor":"M.2 2280","interface":"PCIe 3.0 x4 NVMe","pcieGen":3,"dram":"DRAM (1 GB LPDDR4)","nand":"Samsung 128L TLC (V6, post-2021 revision)","controller":"Samsung Elpis (post-2021 revision; orig. Phoenix)","seqReadMBs":3500,"seqWriteMBs":3300,"randRead4KIOPS":600000,"randWrite4KIOPS":550000,"tbwRating":600,"warrantyYears":5,"priceUSD":140,"pricePerTB":140,"priceHistory":[{"date":"2026-09","priceUSD":140,"source":"Amazon"}],"heatsinkOption":false,"notes":"Legacy Gen3 with DRAM; silently revised in 2021 to Elpis + V6 NAND. Price estimated.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/ssd-970-evo-plus-nvme-m-2-1tb-mz-v7s1t0b-am/","label":"Samsung"}},{"name":"SK hynix Gold P31 1TB","brand":"SK hynix","family":"Gold P31","capacityGB":1000,"capacityRangeGB":"500-2000","formFactor":"M.2 2280","interface":"PCIe 3.0 x4 NVMe","pcieGen":3,"dram":"DRAM (1 GB DDR4)","nand":"SK hynix 128L TLC","controller":"SK hynix Cepheus","seqReadMBs":3500,"seqWriteMBs":3200,"randRead4KIOPS":570000,"randWrite4KIOPS":600000,"tbwRating":750,"warrantyYears":5,"priceUSD":130,"pricePerTB":130,"priceHistory":[{"date":"2026-09","priceUSD":130,"source":"Amazon"}],"heatsinkOption":false,"notes":"Listed by request under Gen4 but is PCIe 3.0. Still the efficiency king for laptops. Price estimated.","source":{"url":"https://ssd.skhynix.com/p31/","label":"SK hynix"}},{"name":"Samsung 870 EVO 1TB","brand":"Samsung","family":"870 EVO","capacityGB":1000,"capacityRangeGB":"250-4000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"DRAM (1 GB LPDDR4)","nand":"Samsung 128L TLC (V6)","controller":"Samsung MKX","seqReadMBs":560,"seqWriteMBs":530,"randRead4KIOPS":98000,"randWrite4KIOPS":88000,"tbwRating":600,"warrantyYears":5,"priceUSD":250,"pricePerTB":250,"priceHistory":[{"date":"2026-09","priceUSD":250,"source":"Amazon"}],"heatsinkOption":false,"notes":"Tom's 2026 'best remaining SATA'. $250 Amazon (Aug 20, 2026, down from $519 May peak). SATA now costs more per TB than Gen4 NVMe.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/870-evo-sata-2-5-ssd-1tb-mz-77e1t0b-am/","label":"Samsung"}},{"name":"Samsung 870 EVO 2TB","brand":"Samsung","family":"870 EVO","capacityGB":2000,"capacityRangeGB":"250-4000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"DRAM (2 GB LPDDR4)","nand":"Samsung 128L TLC (V6)","controller":"Samsung MKX","seqReadMBs":560,"seqWriteMBs":530,"randRead4KIOPS":98000,"randWrite4KIOPS":88000,"tbwRating":1200,"warrantyYears":5,"priceUSD":400,"pricePerTB":200,"priceHistory":[{"date":"2026-09","priceUSD":400,"source":"Amazon"}],"heatsinkOption":false,"notes":"Price estimated at ~2x the 1TB (Feb 2025 it was $150).","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/870-evo-sata-2-5-ssd-2tb-mz-77e2t0b-am/","label":"Samsung"}},{"name":"Samsung 870 QVO 2TB","brand":"Samsung","family":"870 QVO","capacityGB":2000,"capacityRangeGB":"1000-8000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"DRAM (2 GB LPDDR4)","nand":"Samsung 4-bit QLC (V4 92L)","controller":"Samsung MKX","seqReadMBs":560,"seqWriteMBs":530,"randRead4KIOPS":98000,"randWrite4KIOPS":88000,"tbwRating":720,"warrantyYears":3,"priceUSD":380,"pricePerTB":190,"priceHistory":[{"date":"2026-09","priceUSD":380,"source":"Newegg"}],"heatsinkOption":false,"notes":"QLC bulk-storage SATA; 3-yr warranty. Newegg $379.99 (2026).","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/870-qvo-sata-iii-2-5-ssd-2tb-mz-77q2t0b-am/","label":"Samsung"}},{"name":"Samsung 870 QVO 4TB","brand":"Samsung","family":"870 QVO","capacityGB":4000,"capacityRangeGB":"1000-8000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"DRAM (4 GB LPDDR4)","nand":"Samsung 4-bit QLC (V4 92L)","controller":"Samsung MKX","seqReadMBs":560,"seqWriteMBs":530,"randRead4KIOPS":98000,"randWrite4KIOPS":88000,"tbwRating":1440,"warrantyYears":3,"priceUSD":700,"pricePerTB":175,"priceHistory":[{"date":"2026-09","priceUSD":700,"source":"Newegg"}],"heatsinkOption":false,"notes":"Newegg $699.89 (2026). Was $228-340 in 2023-24.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/870-qvo-sata-iii-2-5-ssd-4tb-mz-77q4t0b-am/","label":"Samsung"}},{"name":"Samsung 870 QVO 8TB","brand":"Samsung","family":"870 QVO","capacityGB":8000,"capacityRangeGB":"1000-8000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"DRAM (8 GB LPDDR4)","nand":"Samsung 4-bit QLC (V4 92L)","controller":"Samsung MKX","seqReadMBs":560,"seqWriteMBs":530,"randRead4KIOPS":98000,"randWrite4KIOPS":88000,"tbwRating":2880,"warrantyYears":3,"priceUSD":1100,"pricePerTB":138,"priceHistory":[{"date":"2026-09","priceUSD":1100,"source":"Amazon"}],"heatsinkOption":false,"notes":"Only mainstream 8TB 2.5\" consumer SSD. Was $560 in 2023; 2026 estimated ~$1100.","source":{"url":"https://www.samsung.com/us/computing/memory-storage/solid-state-drives/870-qvo-sata-iii-2-5-ssd-8tb-mz-77q8t0b-am/","label":"Samsung"}},{"name":"Crucial MX500 1TB","brand":"Crucial","family":"MX500","capacityGB":1000,"capacityRangeGB":"250-4000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"DRAM (1 GB DDR3)","nand":"Micron 176L TLC (late revision)","controller":"Silicon Motion SM2259H","seqReadMBs":560,"seqWriteMBs":510,"randRead4KIOPS":95000,"randWrite4KIOPS":90000,"tbwRating":360,"warrantyYears":5,"priceUSD":170,"pricePerTB":170,"priceHistory":[{"date":"2026-09","priceUSD":170,"source":"Amazon"}],"heatsinkOption":false,"notes":"Tom's Hardware reports Crucial has discontinued the MX500 (2026); remaining stock still sold. Price estimated.","source":{"url":"https://www.crucial.com/products/ssd/crucial-mx500-ssd","label":"Crucial"}},{"name":"Crucial BX500 1TB","brand":"Crucial","family":"BX500","capacityGB":1000,"capacityRangeGB":"240-4000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"none","nand":"Micron 3D TLC or QLC (varies by batch/capacity)","controller":"Silicon Motion SM2259XT","seqReadMBs":540,"seqWriteMBs":500,"randRead4KIOPS":null,"randWrite4KIOPS":null,"tbwRating":360,"warrantyYears":3,"priceUSD":130,"pricePerTB":130,"priceHistory":[{"date":"2026-09","priceUSD":130,"source":"Amazon"}],"heatsinkOption":false,"notes":"DRAM-less SATA; NAND type varies (2TB/4TB commonly QLC). No published IOPS. Price estimated.","source":{"url":"https://www.crucial.com/products/ssd/crucial-bx500-ssd","label":"Crucial"}},{"name":"Crucial BX500 4TB","brand":"Crucial","family":"BX500","capacityGB":4000,"capacityRangeGB":"240-4000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"none","nand":"Micron QLC","controller":"Silicon Motion SM2259XT","seqReadMBs":540,"seqWriteMBs":500,"randRead4KIOPS":null,"randWrite4KIOPS":null,"tbwRating":1000,"warrantyYears":3,"priceUSD":377,"pricePerTB":94,"priceHistory":[{"date":"2026-09","priceUSD":377,"source":"Amazon"}],"heatsinkOption":false,"notes":"Cheapest tracked 4TB SSD of any kind on 2026-09-03 ($376.85, $94/TB). QLC + DRAM-less.","source":{"url":"https://www.crucial.com/products/ssd/crucial-bx500-ssd","label":"Crucial"}},{"name":"WD Blue SA510 1TB","brand":"WD (Sandisk)","family":"Blue SA510","capacityGB":1000,"capacityRangeGB":"250-4000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"none","nand":"Kioxia BiCS5 112L TLC","controller":"Sandisk in-house","seqReadMBs":560,"seqWriteMBs":520,"randRead4KIOPS":90000,"randWrite4KIOPS":82000,"tbwRating":400,"warrantyYears":5,"priceUSD":150,"pricePerTB":150,"priceHistory":[{"date":"2026-09","priceUSD":150,"source":"Amazon"}],"heatsinkOption":false,"notes":"Current replacement for the 'WD Blue 3D NAND' (WDS100T2B0A, Marvell + DRAM); SA510 is DRAM-less. Price estimated.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-blue-sa510-sata-2-5-ssd","label":"Western Digital"}},{"name":"WD Red SA500 1TB","brand":"WD (Sandisk)","family":"Red SA500","capacityGB":1000,"capacityRangeGB":"500-4000","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"DRAM (1 GB DDR3)","nand":"Kioxia BiCS TLC","controller":"Marvell 88SS1074","seqReadMBs":560,"seqWriteMBs":530,"randRead4KIOPS":95000,"randWrite4KIOPS":85000,"tbwRating":600,"warrantyYears":5,"priceUSD":170,"pricePerTB":170,"priceHistory":[{"date":"2026-09","priceUSD":170,"source":"Amazon"}],"heatsinkOption":false,"notes":"NAS-rated SATA with DRAM and 600 TBW; one of few DRAM SATA drives still made. Price estimated.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-red-sata-2-5-ssd","label":"Western Digital"}},{"name":"Kingston A400 960GB","brand":"Kingston","family":"A400","capacityGB":960,"capacityRangeGB":"120-960","formFactor":"2.5\" 7mm","interface":"SATA III 6Gb/s","pcieGen":0,"dram":"none","nand":"3D TLC (varies)","controller":"Phison S11 / SM2258XT (varies)","seqReadMBs":500,"seqWriteMBs":450,"randRead4KIOPS":null,"randWrite4KIOPS":null,"tbwRating":300,"warrantyYears":3,"priceUSD":155,"pricePerTB":161,"priceHistory":[{"date":"2026-09","priceUSD":155,"source":"Amazon"}],"heatsinkOption":false,"notes":"Entry SATA; components vary. cheapestssd tracker $155 (2026-09-05) = $161/TB, worse than most Gen4 NVMe.","source":{"url":"https://www.kingston.com/en/ssd/consumer/sa400s37","label":"Kingston"}}];
+const DB={"name":"SSD DB","compiled":"Sep 2026","noun":"drives"};
+const GEN={5:['PCIe 5.0','t-yes'],4:['PCIe 4.0','t-part'],3:['PCIe 3.0','t-neutral'],0:['SATA','t-neutral']};
+const isQLC=d=>/QLC/i.test(d.nand||'');
+const hasDram=d=>/^DRAM/i.test(d.dram||'');
+const cap=d=>d.capacityGB>=1000?(d.capacityGB/1000)+' TB':d.capacityGB+' GB';
+const k=n=>n==null?'?':n>=1e6?(n/1e6).toFixed(2).replace(/\.?0+$/,'')+'M':n>=1000?Math.round(n/1000)+'K':String(n);
+
+const COLUMNS=[
+ {id:'name',hideable:false,label:'SSD',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${esc(d.family)} &middot; ${esc(d.capacityRangeGB)} GB range</span>`},
+ {id:'price',label:'Price (trend)',sort:d=>d.priceUSD,cell:d=>sparkline(d.priceHistory)+`<span class="sub">$${d.pricePerTB}/TB</span>`},
+ {id:'ppt',label:'$/TB',sort:d=>d.pricePerTB,cell:d=>`<span class="price">$${d.pricePerTB}</span>`},
+ {id:'cap',label:'Capacity',sort:d=>d.capacityGB,cell:d=>`<span class="price">${cap(d)}</span><span class="sub">${esc(d.formFactor)}</span>`},
+ {id:'iface',label:'Interface',sort:d=>-(d.pcieGen||0),cell:d=>{const g=GEN[d.pcieGen]||['?','t-neutral'];return tag(g[0],g[1])+`<span class="sub">${esc(d.interface)}</span>`;}},
+ {id:'dram',label:'DRAM',sort:d=>hasDram(d)?0:1,cell:d=>hasDram(d)?tag('DRAM','t-yes'):tag('DRAM-less','t-part')+`<span class="sub">${esc(d.dram)}</span>`},
+ {id:'nand',label:'NAND',sort:d=>isQLC(d)?1:0,cell:d=>(isQLC(d)?tag('QLC','t-no'):/TLC/i.test(d.nand||'')?tag('TLC','t-yes'):tag('varies','t-part'))+`<span class="sub">${esc(d.nand)}</span>`},
+ {id:'ctrl',label:'Controller',cell:d=>`<span style="font-size:12px">${esc(d.controller)}</span>`},
+ {id:'seq',label:'Seq read / write',sort:d=>d.seqReadMBs,cell:d=>`<span class="price">${d.seqReadMBs?d.seqReadMBs.toLocaleString():'?'}</span><span class="sub">${d.seqWriteMBs?d.seqWriteMBs.toLocaleString():'?'} MB/s write</span>`},
+ {id:'rand',label:'4K random IOPS',sort:d=>d.randRead4KIOPS,cell:d=>d.randRead4KIOPS?`<span class="price">${k(d.randRead4KIOPS)}</span><span class="sub">${k(d.randWrite4KIOPS)} write</span>`:'<span style="color:var(--ink-soft)">n/p</span>'},
+ {id:'tbw',label:'Endurance',sort:d=>d.tbwRating,cell:d=>`<span class="price">${d.tbwRating?d.tbwRating.toLocaleString()+' TBW':'?'}</span><span class="sub">${d.warrantyYears} yr warranty</span>`},
+ {id:'hs',label:'Heatsink SKU',cell:d=>yn(d.heatsinkOption,'Available','No')},
+ {id:'source',label:'Source',cell:d=>srcLink(d.source)}
+];
+
+const FILTERS=[
+ {id:'g5',label:'PCIe 5.0',test:d=>d.pcieGen===5},
+ {id:'g4',label:'PCIe 4.0',test:d=>d.pcieGen===4},
+ {id:'g3',label:'PCIe 3.0',test:d=>d.pcieGen===3},
+ {id:'sata',label:'SATA',test:d=>d.pcieGen===0},
+ {id:'dram',label:'Has DRAM',test:hasDram},
+ {id:'tlc',label:'TLC only',test:d=>/TLC/i.test(d.nand||'')&&!isQLC(d)},
+ {id:'noqlc',label:'Hide QLC',test:d=>!isQLC(d)},
+ {id:'c2',label:'≥ 2 TB',test:d=>d.capacityGB>=2000},
+ {id:'c4',label:'≥ 4 TB',test:d=>d.capacityGB>=4000},
+ {id:'cheap',label:'≤ $120 / TB',test:d=>d.pricePerTB!=null&&d.pricePerTB<=120},
+ {id:'w5',label:'5-yr warranty',test:d=>d.warrantyYears>=5},
+ {id:'down',label:'Price falling',test:d=>priceTrend(d.priceHistory)==='down'}
+];
+
+const SORTS=[
+ {id:'ppt',label:'$/TB ↑',cmp:(a,b)=>(a.pricePerTB??1e9)-(b.pricePerTB??1e9)},
+ {id:'price',label:'Price ↑',cmp:(a,b)=>(a.priceUSD??1e9)-(b.priceUSD??1e9)},
+ {id:'seq',label:'Seq read ↓',cmp:(a,b)=>(b.seqReadMBs??0)-(a.seqReadMBs??0)},
+ {id:'tbw',label:'Endurance ↓',cmp:(a,b)=>(b.tbwRating??0)-(a.tbwRating??0)},
+ {id:'cap',label:'Capacity ↓',cmp:(a,b)=>(b.capacityGB??0)-(a.capacityGB??0)},
+ {id:'name',label:'Name A–Z',cmp:(a,b)=>a.name.localeCompare(b.name)}
+];
+
+const EXPAND=[
+ {label:'Price history',html:d=>priceChart(d.priceHistory)},
+ {label:'Notes',html:d=>esc(d.notes)},
+ {label:'Spec',html:d=>`<dl class="kv">
+   <dt>Capacity</dt><dd>${cap(d)} (family: ${esc(d.capacityRangeGB)} GB) &middot; ${esc(d.formFactor)}</dd>
+   <dt>Interface</dt><dd>${esc(d.interface)}</dd>
+   <dt>DRAM</dt><dd>${esc(d.dram)}</dd>
+   <dt>NAND</dt><dd>${esc(d.nand)}</dd>
+   <dt>Controller</dt><dd>${esc(d.controller)}</dd>
+   <dt>Sequential</dt><dd>${d.seqReadMBs?.toLocaleString()} / ${d.seqWriteMBs?.toLocaleString()} MB/s</dd>
+   <dt>4K random</dt><dd>${d.randRead4KIOPS?k(d.randRead4KIOPS)+' / '+k(d.randWrite4KIOPS)+' IOPS':'not published'}</dd>
+   <dt>Endurance</dt><dd>${d.tbwRating?.toLocaleString()} TBW &middot; ${d.warrantyYears}-year warranty</dd>
+   <dt>Heatsink SKU</dt><dd>${d.heatsinkOption?'available':'no'}</dd>
+ </dl>`}
+];
+
+/* Generic OG-DB table engine.
+   Expects, defined earlier in the page:
+     DATA      - array of row objects
+     DB        - { name, compiled, noun }         (noun e.g. "keyboards")
+     COLUMNS   - [ { id, label, cell(d)->html, hideable? (default true) } ]   // first column = name, not hideable
+     FILTERS   - [ { id, label, test(d)->bool } ]
+     SORTS     - [ { id, label, cmp(a,b) } ]      // first = default
+     EXPAND    - [ { label, html(d)->html } ]
+*/
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  window.tag=(t,c)=>`<span class="tag ${c||'t-neutral'}">${esc(t)}</span>`;
+  window.esc=esc;
+  window.srcLink=s=>s&&s.url?`<a class="srclink" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label||'source')} &#8599;</a>`:'<span style="color:var(--ink-soft)">&mdash;</span>';
+  window.yn=(v,yes,no)=>v===true?tag(yes||'Yes','t-yes'):v===false?tag(no||'No','t-no'):tag(String(v),'t-part');
+
+  // --- price history rendering (no library, theme-aware via currentColor) ---
+  window.priceTrend=h=>{ // 'down' | 'up' | 'flat' | null
+    if(!h||h.length<2) return null;
+    const a=h[0].priceUSD, b=h[h.length-1].priceUSD;
+    if(a==null||b==null) return null;
+    const d=(b-a)/a;
+    return d<-0.02?'down':d>0.02?'up':'flat';
+  };
+  window.sparkline=h=>{
+    if(!h||!h.length) return '<span style="color:var(--ink-soft)">&mdash;</span>';
+    const pts=h.map(p=>p.priceUSD).filter(v=>v!=null);
+    if(pts.length<2) return `<span class="price">$${pts[0]??'?'}</span>`;
+    const w=76,ht=20,mn=Math.min(...pts),mx=Math.max(...pts),rng=mx-mn||1;
+    const step=w/(pts.length-1);
+    const d=pts.map((v,i)=>`${(i*step).toFixed(1)},${(ht-1-((v-mn)/rng)*(ht-2)).toFixed(1)}`).join(' ');
+    const tr=priceTrend(h);
+    const col=tr==='down'?'var(--yes)':tr==='up'?'var(--no)':'var(--ink-soft)';
+    const last=pts[pts.length-1], lx=w, ly=(ht-1-((last-mn)/rng)*(ht-2)).toFixed(1);
+    return `<span style="display:inline-flex;align-items:center;gap:7px">`
+      +`<svg width="${w}" height="${ht}" viewBox="0 0 ${w+4} ${ht}" style="overflow:visible">`
+      +`<polyline points="${d}" fill="none" stroke="${col}" stroke-width="1.5"/>`
+      +`<circle cx="${lx}" cy="${ly}" r="2" fill="${col}"/></svg>`
+      +`<span class="price" style="font-size:12px">$${last}</span></span>`;
+  };
+  window.priceChart=h=>{
+    if(!h||h.length<2) return h&&h.length?`Only one recorded price: $${h[0].priceUSD} (${h[0].date}).`:'No price history yet.';
+    const pts=h.filter(p=>p.priceUSD!=null);
+    const W=440,H=150,pad={l:44,r:12,t:12,b:24};
+    const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+    const vs=pts.map(p=>p.priceUSD), mn=Math.min(...vs), mx=Math.max(...vs), rng=mx-mn||1;
+    const x=i=>pad.l+(i/(pts.length-1))*iw;
+    const y=v=>pad.t+ih-((v-mn)/rng)*ih;
+    const line=pts.map((p,i)=>`${x(i).toFixed(1)},${y(p.priceUSD).toFixed(1)}`).join(' ');
+    const area=`${pad.l},${pad.t+ih} ${line} ${pad.l+iw},${pad.t+ih}`;
+    const cur=pts[pts.length-1].priceUSD;
+    const tr=priceTrend(h), col=tr==='down'?'var(--yes)':tr==='up'?'var(--no)':'var(--accent)';
+    const g='var(--line)';
+    return `<svg width="100%" viewBox="0 0 ${W} ${H}" style="max-width:${W}px;font-family:IBM Plex Mono,monospace">`
+      +`<polygon points="${area}" fill="${col}" opacity="0.10"/>`
+      +`<line x1="${pad.l}" y1="${y(mx)}" x2="${pad.l+iw}" y2="${y(mx)}" stroke="${g}" stroke-width="1"/>`
+      +`<line x1="${pad.l}" y1="${y(mn)}" x2="${pad.l+iw}" y2="${y(mn)}" stroke="${g}" stroke-width="1"/>`
+      +`<text x="${pad.l-6}" y="${y(mx)+3}" text-anchor="end" font-size="10" fill="var(--ink-soft)">$${Math.round(mx)}</text>`
+      +`<text x="${pad.l-6}" y="${y(mn)+3}" text-anchor="end" font-size="10" fill="var(--ink-soft)">$${Math.round(mn)}</text>`
+      +`<polyline points="${line}" fill="none" stroke="${col}" stroke-width="2"/>`
+      +`<circle cx="${x(pts.length-1)}" cy="${y(cur)}" r="3.2" fill="${col}"/>`
+      +`<text x="${pad.l}" y="${H-8}" font-size="10" fill="var(--ink-soft)">${esc(pts[0].date)}</text>`
+      +`<text x="${pad.l+iw}" y="${H-8}" text-anchor="end" font-size="10" fill="var(--ink-soft)">${esc(pts[pts.length-1].date)}</text>`
+      +`</svg>`
+      +`<div style="font-size:11.5px;color:var(--ink-soft);margin-top:4px">now <b style="color:var(--ink)">$${cur}</b> &middot; low $${Math.round(mn)} &middot; high $${Math.round(mx)} &middot; ${pts.length} points</div>`;
+  };
+
+  const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
+  const active=new Set();
+  let query='';
+  const blob=new WeakMap();
+  const rowText=d=>{let t=blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase();blob.set(d,t);}return t;};
+  let sortMode=SORTS[0].id;
+
+  // header (click to sort)
+  const htr=$('#tbl thead tr');
+  htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
+    COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
+  let colSort=null; // {id, dir:1|-1}
+  const scratch=document.createElement('div');
+  function sortVal(c,d){
+    if(c.sort) return c.sort(d);
+    scratch.innerHTML=c.cell(d);
+    const t=(scratch.textContent||'').replace(/↑|↓|↗/g,'').trim();
+    const n=parseFloat(t.replace(/[$,]/g,''));
+    return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
+  }
+  function colCmp(a,b){
+    const c=COLUMNS.find(x=>x.id===colSort.id);
+    let va=sortVal(c,a), vb=sortVal(c,b);
+    const ea=(va===''||va==null), eb=(vb===''||vb==null);
+    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
+    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
+    return r*colSort.dir;
+  }
+  function markHeaders(){
+    htr.querySelectorAll('th.sortable').forEach(th=>{
+      const on=colSort&&colSort.id===th.dataset.col;
+      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+    });
+    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+  }
+  htr.querySelectorAll('th.sortable').forEach(th=>{
+    const go=()=>{
+      const id=th.dataset.col;
+      if(colSort&&colSort.id===id) colSort = colSort.dir===1 ? {id,dir:-1} : null; // asc -> desc -> off
+      else colSort = {id,dir:1};
+      markHeaders(); render();
+    };
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+
+  // column hide CSS
+  const st=document.createElement('style');
+  st.textContent=COLUMNS.filter(c=>c.hideable!==false).map(c=>
+    `#tbl[data-hide~="${c.id}"] [data-col="${c.id}"]{display:none}`).join('\n');
+  document.head.appendChild(st);
+
+  // min-width so it stays legible; ~150px per visible col
+  function setMin(){
+    const vis=COLUMNS.filter(c=>!hidden.has(c.id)).length+1;
+    tbl.style.minWidth=Math.min(2300,Math.max(760,vis*155))+'px';
+  }
+
+  // filters
+  const fwrap=$('#filters');
+  FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='chip';b.dataset.filter=f.id;b.setAttribute('aria-pressed','false');b.textContent=f.label;
+    b.addEventListener('click',()=>{
+      if(active.has(f.id)){active.delete(f.id);b.setAttribute('aria-pressed','false');}
+      else{active.add(f.id);b.setAttribute('aria-pressed','true');}
+      render();
+    });
+    fwrap.appendChild(b);
+  });
+
+  // sorts
+  const sel=$('#sort');
+  sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
+  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
+
+  // column panel
+  const panel=$('#colpanel'), colbtn=$('#colbtn');
+  panel.querySelector('.colhead').insertAdjacentHTML('afterend',
+    COLUMNS.filter(c=>c.hideable!==false).map(c=>
+      `<label><input type="checkbox" data-col="${c.id}" checked> ${esc(c.label)}</label>`).join(''));
+  const HIDE_KEY='ogdb.'+DB.noun+'.hidden';
+  let hidden=new Set();
+  try{const s=localStorage.getItem(HIDE_KEY);if(s)hidden=new Set(JSON.parse(s));}catch(e){}
+  const ALL=COLUMNS.filter(c=>c.hideable!==false).map(c=>c.id);
+  function applyCols(){
+    tbl.setAttribute('data-hide',[...hidden].join(' '));
+    panel.querySelectorAll('input[data-col]').forEach(cb=>cb.checked=!hidden.has(cb.dataset.col));
+    colbtn.textContent=hidden.size?`Columns · ${ALL.length-hidden.size}/${ALL.length} ▾`:'Columns ▾';
+    try{localStorage.setItem(HIDE_KEY,JSON.stringify([...hidden]));}catch(e){}
+    setMin();
+  }
+  colbtn.addEventListener('click',e=>{e.stopPropagation();const o=panel.hidden;panel.hidden=!o;colbtn.setAttribute('aria-expanded',String(o));});
+  panel.addEventListener('click',e=>e.stopPropagation());
+  panel.addEventListener('change',e=>{const cb=e.target;if(!cb.dataset.col)return;
+    cb.checked?hidden.delete(cb.dataset.col):hidden.add(cb.dataset.col);applyCols();});
+  panel.querySelectorAll('.colactions button').forEach(b=>b.addEventListener('click',()=>{
+    hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
+  document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
+
+  function passes(d){
+    if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
+    for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}
+    return true;
+  }
+  const rowq=$('#rowq');
+  if(rowq){
+    rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
+    document.addEventListener('keydown',ev=>{
+      if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
+      if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
+    });
+  }
+
+  function render(){
+    let rows=DATA.filter(passes);
+    if(colSort){rows.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
+    tbody.innerHTML='';
+    const frag=document.createDocumentFragment();
+    rows.forEach(d=>{
+      const tr=document.createElement('tr');
+      tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
+      tr.innerHTML='<td><span class="chev">▶</span></td>'+
+        COLUMNS.map(c=>`<td data-col="${c.id}">${c.cell(d)}</td>`).join('');
+      const ex=document.createElement('tr');
+      ex.className='expand';ex.hidden=true;
+      ex.innerHTML=`<td colspan="${COLUMNS.length+1}"><div class="inner">`+
+        EXPAND.map(e=>{const h=e.html(d);return h?`<div><h4>${esc(e.label)}</h4><p>${h}</p></div>`:'';}).join('')+
+        `</div></td>`;
+      const toggle=()=>{const o=tr.getAttribute('aria-expanded')==='true';tr.setAttribute('aria-expanded',String(!o));ex.hidden=o;};
+      tr.addEventListener('click',toggle);
+      tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+      frag.appendChild(tr);frag.appendChild(ex);
+    });
+    tbody.appendChild(frag);
+    countEl.textContent=`${rows.length} of ${DATA.length} ${DB.noun} shown`;
+  }
+
+  applyCols();
+  markHeaders();
+  render();
+})();
+
+</script>
+</body>
+</html>

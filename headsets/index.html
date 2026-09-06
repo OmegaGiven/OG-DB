@@ -127,6 +127,10 @@
     font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:5px 8px;
     background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:6px
   }
+  .searchwrap{flex:1 1 220px;min-width:180px}
+  .rowsearch{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:6px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;outline:0}
+  .rowsearch:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .rowsearch::-webkit-search-cancel-button{-webkit-appearance:none}
   .count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
 
   .colwrap{position:relative}
@@ -245,6 +249,7 @@
   </div>
 
   <div class="controls" id="controls">
+    <div class="grp searchwrap"><input id="rowq" class="rowsearch" type="search" placeholder="Search rows… ( / )" autocomplete="off" aria-label="Search rows"></div>
     <div class="grp">
       <span class="glabel">Filter</span>
       <button class="chip" data-filter="simul" aria-pressed="false">Simultaneous BT + 2.4</button>
@@ -961,7 +966,10 @@ function standaloneCell(d){
   return tag(t[0],t[1])+`<div style="margin-top:3px;font-size:11px;color:var(--ink-soft)">${s[1]}</div>`;
 }
 
+let query='';const _blob=new WeakMap();
+const rowText=d=>{let t=_blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase()+' '+String(KIND[d.name]||'gaming');_blob.set(d,t);}return t;};
 function passes(d){
+  if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
   for(const f of active){
     if(f==='simul' && !d.btSimul) return false;
     if(f==='optical' && !d.optical) return false;
@@ -1094,6 +1102,12 @@ colpanel.querySelectorAll('.colactions button').forEach(b=>{
 document.addEventListener('click',()=>{if(!colpanel.hidden){colpanel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
 
 applyCols();
+(function(){const rowq=document.getElementById('rowq');if(!rowq)return;
+  rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
+  document.addEventListener('keydown',ev=>{
+    if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
+    if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
+  });})();
 render();
 </script>
 </body>

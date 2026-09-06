@@ -1,0 +1,11 @@
+{
+  "slug": "ssds",
+  "title": "SSD DB",
+  "dbName": "SSD DB",
+  "description": "NVMe and SATA SSDs with tracked price history - capacity, PCIe gen, DRAM, NAND type, controller, speed, endurance, $/TB.",
+  "compiled": "Sep 2026",
+  "noun": "drives",
+  "dataFile": "ssds/ssds.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>Price (trend)</strong> is a sparkline of every recorded price point, newest on the right &mdash; green line = falling, red = rising. Expand a row for the full chart with low / high. Snapshots are appended weekly and on request; most rows start with a single Sept-2026 point, so trends fill in over time.</li><li><strong>2026 is a NAND-shortage year.</strong> Street prices roughly doubled vs 2025 and SATA has inverted &mdash; an 870 EVO now costs more per TB than a 990 PRO. Treat every price as a snapshot; the <em>$/TB</em> column is the honest comparison.</li><li><strong>DRAM vs DRAM-less (HMB)</strong> &mdash; DRAM-less drives are fine as game / bulk storage, weaker as an OS drive under sustained mixed load. <strong>QLC</strong> is cheaper per TB with lower endurance and slow post-cache writes; the TLC-only / Hide-QLC filters remove it.</li><li>Speeds and TBW are the manufacturer rating for the listed capacity. Some budget drives are a <em>component lottery</em> (NAND / controller change under the same part number) &mdash; flagged in NAND as <em>varies</em>.</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> Roughly a third of prices are exact-SKU retailer quotes; the rest are estimated from tracked siblings and 2025 baselines &mdash; per-SKU confidence lives in the repo's notes file. Random IOPS shown as <em>n/p</em> where the vendor doesn't publish them. Per-row <strong>Source</strong> is TechPowerUp or the vendor page. Compiled Sep 2026.</p></footer>"
+}

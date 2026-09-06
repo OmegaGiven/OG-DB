@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAM DB</title>
+<meta name="description" content="Desktop DDR4 and DDR5 memory kits with tracked price history - capacity, speed, latency, EXPO/XMP, rank, IC die, height, $/GB.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}
+:root{
+  --bg:#f2f3f5;--surface:#fff;--surface-2:#e9ebee;--ink:#191c22;--ink-soft:#59606d;
+  --line:#d7dbe1;--line-strong:#bfc5cd;--accent:#c0740f;--accent-ink:#8a5300;--accent-wash:#f6ecdd;
+  --yes:#2f7d55;--yes-bg:#e0efe6;--no:#a23f57;--no-bg:#f3e2e6;--partial:#8a6d1f;--partial-bg:#f1e9d4;
+  --shadow:0 1px 2px rgba(20,22,27,.05),0 10px 30px -14px rgba(20,22,27,.16);
+  --grid:rgba(25,28,34,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
+}
+.wrap{max-width:min(2600px,99vw);margin:0 auto;padding:clamp(16px,2.5vw,28px) clamp(8px,1.5vw,16px) 64px}
+
+header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
+h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
+  line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1 .crumb{color:var(--ink-soft);text-decoration:none}
+h1 .crumb:hover,h1 .crumb:focus-visible{color:var(--accent)}
+h1 .sep{color:var(--line-strong);margin:0 .35em;font-weight:400}
+.compiled{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+  color:var(--ink-soft);font-weight:400;white-space:nowrap;margin-left:12px;vertical-align:middle}
+
+.primer{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px;padding:15px 18px;margin:20px 0 24px;box-shadow:var(--shadow);max-width:92ch}
+.primer h2{font-family:"Chivo",sans-serif;font-weight:700;font-size:13px;margin:0 0 8px;
+  text-transform:uppercase;letter-spacing:.08em}
+.primer ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink-soft)}
+.primer li{margin:5px 0}
+.primer strong{color:var(--ink)}
+.primer em{color:var(--ink);font-style:normal;font-weight:500}
+
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.controls .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.glabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+button.chip{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:500;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;cursor:pointer;transition:.12s}
+button.chip:hover{border-color:var(--accent)}
+button.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1d23}
+button.chip:focus-visible,select:focus-visible,tr.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:5px 8px;background:var(--surface);
+  color:var(--ink);border:1px solid var(--line-strong);border-radius:6px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
+
+.colwrap{position:relative}
+.colpanel{position:absolute;top:calc(100% + 6px);right:0;z-index:20;background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:8px;box-shadow:var(--shadow);padding:12px 14px;
+  width:260px;max-height:70vh;overflow:auto;display:flex;flex-direction:column;gap:7px}
+.colpanel .colhead{margin:0 0 2px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.colpanel label{display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer}
+.colpanel input{accent-color:var(--accent)}
+.colactions{display:flex;gap:8px;margin-top:6px;border-top:1px solid var(--line);padding-top:9px}
+.colactions button{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;
+  background:var(--surface-2);color:var(--ink);border:1px solid var(--line-strong);border-radius:6px;padding:4px 10px}
+.colactions button:hover{border-color:var(--accent)}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
+  font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
+  padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--accent)}
+thead th.sortable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+thead th[aria-sort="ascending"],thead th[aria-sort="descending"]{color:var(--accent);background:var(--accent-wash)}
+thead th .arrow{color:var(--accent);font-size:10px}
+tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
+tbody tr.row:hover{background:var(--surface-2)}
+td{padding:10px 12px;font-size:13px;vertical-align:top}
+.name{font-family:"Chivo",sans-serif;font-weight:700;font-size:13.5px}
+.sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-soft);
+  font-weight:400;margin-top:2px;letter-spacing:.02em}
+.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+.price small{display:block;color:var(--ink-soft);font-weight:400;font-size:10.5px;white-space:normal;max-width:22ch}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;
+  padding:2px 6px;border-radius:4px;margin:1px 3px 1px 0;white-space:nowrap}
+.t-yes{background:var(--yes-bg);color:var(--yes)}
+.t-no{background:var(--no-bg);color:var(--no)}
+.t-part{background:var(--partial-bg);color:var(--partial)}
+.t-neutral{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+a.srclink{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);text-decoration:none;white-space:nowrap}
+a.srclink:hover,a.srclink:focus-visible{text-decoration:underline}
+
+.expand{background:var(--bg)}
+.expand td{padding:0}
+.expand .inner{padding:16px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 26px}
+.expand h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.expand p{margin:0;font-size:12.5px;color:var(--ink-soft)}
+.expand p strong{color:var(--ink);font-weight:600}
+dl.kv{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;font-size:12.5px;color:var(--ink-soft);max-width:120ch}
+dl.kv dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-top:1px}
+dl.kv dd{margin:0}
+.chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
+tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
+
+footer{margin-top:30px;font-size:12px;color:var(--ink-soft);max-width:70ch}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.searchwrap{flex:1 1 220px;min-width:180px}
+.rowsearch{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:6px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;outline:0}
+.rowsearch:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.rowsearch::-webkit-search-cancel-button{-webkit-appearance:none}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1><a class="crumb" href="../">OG-DB</a><span class="sep">/</span>RAM DB <span class="compiled">compiled Sep 2026</span></h1>
+  </header>
+  <div class="primer"><h2>How to read the table</h2><ul><li><strong>Price (trend)</strong> is a sparkline of recorded prices, newest on the right &mdash; green falling, red rising. Expand a row for the full chart. Snapshots are appended weekly and on request; most rows currently have a single Sept-2026 point.</li><li><strong>Sept 2026 is a DRAM-shortage peak.</strong> A 32 GB DDR5-6000 CL30 kit that was ~$105 in late 2024 is $400&ndash;$580 now, and prices move 2&ndash;20% a month. <em>$/GB</em> is the comparison that survives that.</li><li><strong>Profile</strong> &mdash; <em>EXPO</em> is AMD's one-click overclock profile, <em>XMP</em> Intel's; most modern kits carry both. <em>JEDEC only</em> kits run at the stock standard speed. The AM5 sweet spot is DDR5-6000 CL30; Intel tolerates faster.</li><li><strong>IC / die</strong> matters to tuners (SK hynix A-die / M-die overclock best). Filled only where the vendor documents it; Corsair / Kingston / Patriot rotate dies under one part number, so those read <em>unknown</em>.</li><li><strong>Height</strong> &mdash; check against your CPU cooler; low-profile (&le; 35 mm) kits clear almost any air cooler.</li></ul></div>
+  <div class="controls">
+    <div class="grp searchwrap"><input id="rowq" class="rowsearch" type="search" placeholder="Search rows… ( / )" autocomplete="off" aria-label="Search rows"></div>
+    <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
+    <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
+    <div class="grp colwrap">
+      <button class="chip" id="colbtn" aria-expanded="false" aria-controls="colpanel">Columns ▾</button>
+      <div class="colpanel" id="colpanel" hidden>
+        <p class="colhead">Show columns</p>
+        <div class="colactions"><button type="button" data-all="1">All</button><button type="button" data-all="0">Minimal</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="tablewrap"><table id="tbl"><thead><tr></tr></thead><tbody id="tbody"></tbody></table></div>
+  <footer><p><strong>Notes.</strong> About a third of prices are exact-SKU quotes from the last two weeks; the rest are tier floors plus brand premium (&plusmn;20%). CUDIMM 8200+ kits are left out as a separate compatibility story. Per-row <strong>Source</strong> is the vendor product page. Compiled Sep 2026.</p></footer>
+</div>
+<script>
+const DATA=[{"name":"G.Skill Trident Z5 Neo RGB 32GB DDR5-6000 CL30","brand":"G.Skill","family":"Trident Z5 Neo RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-38-38-96","voltage":1.35,"profile":"EXPO","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":549,"pricePerGB":17.16,"priceHistory":[{"date":"2026-09","priceUSD":549,"source":"Newegg"}],"notes":"The default AM5 kit — 6000 CL30 is the Ryzen sweet spot. Model F5-6000J3038F16GX2-TZ5NR. Sept-2026 pricing is ~5x the $105 seen in late 2024.","source":{"url":"https://www.gskill.com/products/1/165/390/Trident-Z5-Neo-RGB-DDR5-AMD-EXPO","label":"G.Skill"}},{"name":"G.Skill Trident Z5 Neo RGB 32GB DDR5-6000 CL28","brand":"G.Skill","family":"Trident Z5 Neo RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":28,"timings":"28-36-36-96","voltage":1.4,"profile":"EXPO","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":599,"pricePerGB":18.72,"priceHistory":[{"date":"2026-09","priceUSD":599,"source":"Newegg"}],"notes":"Binned-tighter version of the 6000 CL30 kit (F5-6000J2836G16GX2-TZ5NR). Small real-world gain over CL30 for a ~10% premium.","source":{"url":"https://www.gskill.com/products/1/165/390/Trident-Z5-Neo-RGB-DDR5-AMD-EXPO","label":"G.Skill"}},{"name":"G.Skill Trident Z5 Neo RGB 64GB DDR5-6000 CL30","brand":"G.Skill","family":"Trident Z5 Neo RGB","ddrGen":"DDR5","kitLayout":"2x32GB","totalGB":64,"speedMTs":6000,"casLatency":30,"timings":"30-40-40-96","voltage":1.4,"profile":"EXPO","rankPerModule":"dual","icDie":"SK hynix M-die","rgb":true,"heightMm":44,"priceUSD":1149,"pricePerGB":17.95,"priceHistory":[{"date":"2026-09","priceUSD":1149,"source":"Newegg"}],"notes":"Dual-rank 2x32 kit (F5-6000J3040G32GX2-TZ5NR); slightly looser tRCD/tRP than the 2x16. Price went from ~$200 (Jan 2025) to over $1,000 in 2026.","source":{"url":"https://www.gskill.com/products/1/165/390/Trident-Z5-Neo-RGB-DDR5-AMD-EXPO","label":"G.Skill"}},{"name":"G.Skill Trident Z5 Royal Neo RGB 32GB DDR5-6000 CL26","brand":"G.Skill","family":"Trident Z5 Royal Neo","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":26,"timings":"26-36-36-96","voltage":1.4,"profile":"EXPO","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":699,"pricePerGB":21.84,"priceHistory":[{"date":"2026-09","priceUSD":699,"source":"Amazon"}],"notes":"Halo AM5 kit with crystalline light bar and electroplated heatspreader (F5-6000J2636G16GX2-TR5NG/TR5NS). Lowest CAS you can buy at 6000.","source":{"url":"https://www.gskill.com/products/1/165/1727770016/Trident-Z5-Royal-Neo-DDR5-AMD-EXPO","label":"G.Skill"}},{"name":"G.Skill Trident Z5 RGB 32GB DDR5-6400 CL32","brand":"G.Skill","family":"Trident Z5 RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6400,"casLatency":32,"timings":"32-39-39-102","voltage":1.4,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":479,"pricePerGB":14.97,"priceHistory":[{"date":"2026-09","priceUSD":479,"source":"Newegg"}],"notes":"Intel-oriented sibling (F5-6400J3239G16GX2-TZ5RK). Runs fine on AM5 via XMP but 6400 is above the safe 1:1 FCLK ratio for many Ryzen 7000 chips.","source":{"url":"https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP","label":"G.Skill"}},{"name":"G.Skill Trident Z5 RGB 32GB DDR5-7200 CL34","brand":"G.Skill","family":"Trident Z5 RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":7200,"casLatency":34,"timings":"34-45-45-115","voltage":1.4,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":649,"pricePerGB":20.28,"priceHistory":[{"date":"2026-09","priceUSD":649,"source":"Newegg"}],"notes":"Mainstream high-speed Intel kit (F5-7200J3445G16GX2-TZ5RK). Needs a 2-DIMM or good 4-DIMM board on Raptor Lake / Arrow Lake.","source":{"url":"https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP","label":"G.Skill"}},{"name":"G.Skill Trident Z5 RGB 32GB DDR5-8000 CL38","brand":"G.Skill","family":"Trident Z5 RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":8000,"casLatency":38,"timings":"38-48-48-128","voltage":1.45,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":599,"pricePerGB":18.72,"priceHistory":[{"date":"2026-09","priceUSD":599,"source":"Newegg"}],"notes":"One of the first retail 8000 kits (F5-8000J3848H16GX2-TZ5RK). Launched at $530 in Dec 2022; the 2026 crunch put it back above launch price.","source":{"url":"https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP","label":"G.Skill"}},{"name":"G.Skill Trident Z5 RGB 48GB DDR5-8000 CL40","brand":"G.Skill","family":"Trident Z5 RGB","ddrGen":"DDR5","kitLayout":"2x24GB","totalGB":48,"speedMTs":8000,"casLatency":40,"timings":"40-48-48-128","voltage":1.35,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix M-die (24Gb)","rgb":true,"heightMm":44,"priceUSD":849,"pricePerGB":17.69,"priceHistory":[{"date":"2026-09","priceUSD":849,"source":"Newegg"}],"notes":"Non-binary 24GB-per-stick kit (F5-8000J4048F24GX2-TZ5RK). 8000 at 1.35V because 24Gb M-die scales well on voltage.","source":{"url":"https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP","label":"G.Skill"}},{"name":"G.Skill Trident Z5 RGB 96GB DDR5-6400 CL32","brand":"G.Skill","family":"Trident Z5 RGB","ddrGen":"DDR5","kitLayout":"2x48GB","totalGB":96,"speedMTs":6400,"casLatency":32,"timings":"32-39-39-102","voltage":1.4,"profile":"XMP 3.0","rankPerModule":"dual","icDie":"SK hynix M-die (24Gb)","rgb":true,"heightMm":44,"priceUSD":1549,"pricePerGB":16.14,"priceHistory":[{"date":"2026-09","priceUSD":1549,"source":"Amazon"}],"notes":"Highest-capacity two-DIMM enthusiast kit (F5-6400J3239F48GX2-TZ5RK). Popular for local-AI / workstation builds; ~$16/GB in Sept 2026.","source":{"url":"https://www.gskill.com/products/1/165/374/Trident-Z5-RGB-DDR5-Intel-XMP","label":"G.Skill"}},{"name":"G.Skill Flare X5 32GB DDR5-6000 CL30","brand":"G.Skill","family":"Flare X5","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-38-38-96","voltage":1.35,"profile":"EXPO","rankPerModule":"single","icDie":"SK hynix A-die","rgb":false,"heightMm":33,"priceUSD":465,"pricePerGB":14.53,"priceHistory":[{"date":"2026-09","priceUSD":465,"source":"Amazon"}],"notes":"Same bin as the Trident Z5 Neo 6000 CL30 without RGB and in a 33mm low-profile heatsink (F5-6000J3038F16GX2-FX5). Best G.Skill value on AM5.","source":{"url":"https://www.gskill.com/products/1/165/391/Flare-X5-DDR5-AMD-EXPO","label":"G.Skill"}},{"name":"G.Skill Ripjaws S5 32GB DDR5-6000 CL30","brand":"G.Skill","family":"Ripjaws S5","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-40-40-96","voltage":1.35,"profile":"XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":33,"priceUSD":449,"pricePerGB":14.03,"priceHistory":[{"date":"2026-09","priceUSD":449,"source":"Newegg"}],"notes":"Low-profile Intel-leaning budget line (F5-6000J3040F16GX2-RS5K). Later production runs added EXPO on some SKUs; check the exact part number.","source":{"url":"https://www.gskill.com/products/1/165/396/Ripjaws-S5-DDR5","label":"G.Skill"}},{"name":"G.Skill Ripjaws V 16GB DDR4-3600 CL16","brand":"G.Skill","family":"Ripjaws V","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3600,"casLatency":16,"timings":"16-19-19-39","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":42,"priceUSD":139,"pricePerGB":8.69,"priceHistory":[{"date":"2026-09","priceUSD":139,"source":"Amazon"}],"notes":"The classic AM4 / 12th-gen value kit (F4-3600C16D-16GVKC). DDR4 more than doubled in 2026 as fabs shifted to DDR5/HBM.","source":{"url":"https://www.gskill.com/products/1/165/1532071883/Ripjaws-V","label":"G.Skill"}},{"name":"G.Skill Ripjaws V 32GB DDR4-3600 CL16","brand":"G.Skill","family":"Ripjaws V","ddrGen":"DDR4","kitLayout":"2x16GB","totalGB":32,"speedMTs":3600,"casLatency":16,"timings":"16-19-19-39","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"dual","icDie":"unknown","rgb":false,"heightMm":42,"priceUSD":279,"pricePerGB":8.72,"priceHistory":[{"date":"2026-09","priceUSD":279,"source":"Amazon"}],"notes":"F4-3600C16D-32GVKC. Dual-rank 16GB sticks; the most common 32GB DDR4 upgrade for Ryzen 5000.","source":{"url":"https://www.gskill.com/products/1/165/1532071883/Ripjaws-V","label":"G.Skill"}},{"name":"G.Skill Ripjaws V 16GB DDR4-3200 CL16","brand":"G.Skill","family":"Ripjaws V","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3200,"casLatency":16,"timings":"16-18-18-38","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":42,"priceUSD":119,"pricePerGB":7.44,"priceHistory":[{"date":"2026-09","priceUSD":119,"source":"Newegg"}],"notes":"F4-3200C16D-16GVKB. Cheapest still-in-production G.Skill DDR4 kit.","source":{"url":"https://www.gskill.com/products/1/165/1532071883/Ripjaws-V","label":"G.Skill"}},{"name":"G.Skill Trident Z Neo 32GB DDR4-3600 CL16","brand":"G.Skill","family":"Trident Z Neo","ddrGen":"DDR4","kitLayout":"2x16GB","totalGB":32,"speedMTs":3600,"casLatency":16,"timings":"16-19-19-39","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"dual","icDie":"unknown","rgb":true,"heightMm":44,"priceUSD":319,"pricePerGB":9.97,"priceHistory":[{"date":"2026-09","priceUSD":319,"source":"Newegg"}],"notes":"F4-3600C16D-32GTZNC. RGB AMD-tuned DDR4; still listed at Best Buy / Micro Center in 2026.","source":{"url":"https://www.gskill.com/products/1/165/326/Trident-Z-Neo-For-AMD","label":"G.Skill"}},{"name":"G.Skill Trident Z Neo 16GB DDR4-3600 CL16","brand":"G.Skill","family":"Trident Z Neo","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3600,"casLatency":16,"timings":"16-16-16-36","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"single","icDie":"Samsung B-die","rgb":true,"heightMm":44,"priceUSD":169,"pricePerGB":10.56,"priceHistory":[{"date":"2026-09","priceUSD":169,"source":"Newegg"}],"notes":"F4-3600C16D-16GTZNC uses the 16-16-16-36 bin, which historically meant Samsung B-die. Availability is thinning.","source":{"url":"https://www.gskill.com/products/1/165/326/Trident-Z-Neo-For-AMD","label":"G.Skill"}},{"name":"Corsair Vengeance 32GB DDR5-6000 CL30","brand":"Corsair","family":"Vengeance","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-36-36-76","voltage":1.4,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":479,"pricePerGB":14.97,"priceHistory":[{"date":"2026-09","priceUSD":479,"source":"Newegg"}],"notes":"CMK32GX5M2B6000Z30 (grey, EXPO) / CMK32GX5M2B6000C30 (black, XMP). Low-profile 35mm heatsink; Corsair does not disclose the die.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmk32gx5m2b6000c30/vengeance-32gb-2x16gb-ddr5-dram-6000mt-s-c30-memory-kit-black-cmk32gx5m2b6000c30","label":"Corsair"}},{"name":"Corsair Vengeance RGB 32GB DDR5-6000 CL30","brand":"Corsair","family":"Vengeance RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-36-36-76","voltage":1.4,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":44,"priceUSD":549,"pricePerGB":17.16,"priceHistory":[{"date":"2026-09","priceUSD":549,"source":"Amazon"}],"notes":"CMH32GX5M2B6000Z30K. Corsair's best seller; ten-zone RGB via iCUE. Listed $550 on Amazon and Newegg in early Sept 2026.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmh32gx5m2b6000z30k/vengeance-rgb-32gb-2x16gb-ddr5-dram-6000mt-s-cl30-amd-expo-memory-kit-grey-cmh32gx5m2b6000z30k","label":"Corsair"}},{"name":"Corsair Vengeance RGB 32GB DDR5-6000 CL36","brand":"Corsair","family":"Vengeance RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":36,"timings":"36-36-36-76","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":44,"priceUSD":479,"pricePerGB":14.97,"priceHistory":[{"date":"2026-09","priceUSD":479,"source":"Newegg"}],"notes":"CMH32GX5M2E6000C36. The looser-timing budget RGB kit; Newegg's July-2026 buying guide pick at $480.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmh32gx5m2e6000c36/vengeance-rgb-32gb-2x16gb-ddr5-dram-6000mt-s-cl36-memory-kit-black-cmh32gx5m2e6000c36","label":"Corsair"}},{"name":"Corsair Vengeance 64GB DDR5-6000 CL30","brand":"Corsair","family":"Vengeance","ddrGen":"DDR5","kitLayout":"2x32GB","totalGB":64,"speedMTs":6000,"casLatency":30,"timings":"30-36-36-76","voltage":1.4,"profile":"EXPO + XMP 3.0","rankPerModule":"dual","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":1159,"pricePerGB":18.11,"priceHistory":[{"date":"2026-09","priceUSD":1159,"source":"Newegg"}],"notes":"CMK64GX5M2B6000Z30. Dual-rank 2x32; Tom's index cites 64GB DDR5-6000 up 470%+ year over year.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmk64gx5m2b6000z30/vengeance-64gb-2x32gb-ddr5-dram-6000mt-s-cl30-amd-expo-memory-kit-cmk64gx5m2b6000z30","label":"Corsair"}},{"name":"Corsair Vengeance 96GB DDR5-6000 CL30","brand":"Corsair","family":"Vengeance","ddrGen":"DDR5","kitLayout":"2x48GB","totalGB":96,"speedMTs":6000,"casLatency":30,"timings":"30-36-36-76","voltage":1.4,"profile":"EXPO + XMP 3.0","rankPerModule":"dual","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":1499,"pricePerGB":15.61,"priceHistory":[{"date":"2026-09","priceUSD":1499,"source":"Amazon"}],"notes":"CMK96GX5M2B6000Z30. 2x48 non-binary kit for workstation / local-AI use. Price roughly tracks the DDR5 median of ~$16-17/GB.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmk96gx5m2b6000z30/vengeance-96gb-2x48gb-ddr5-dram-6000mts-cl30-amd-expo-intel-xmp-memory-kit-cmk96gx5m2b6000z30","label":"Corsair"}},{"name":"Corsair Vengeance RGB 32GB DDR5-6400 CL32","brand":"Corsair","family":"Vengeance RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6400,"casLatency":32,"timings":"32-40-40-84","voltage":1.4,"profile":"XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":44,"priceUSD":459,"pricePerGB":14.34,"priceHistory":[{"date":"2026-09","priceUSD":459,"source":"Corsair"}],"notes":"CMH32GX5M2B6400C32. Intel-tuned 6400; Corsair.com direct price in late Aug 2026 was $459.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmh32gx5m2b6400c32/vengeance-rgb-32gb-2x16gb-ddr5-dram-6400mt-s-cl32-memory-kit-black-cmh32gx5m2b6400c32","label":"Corsair"}},{"name":"Corsair Vengeance RGB 32GB DDR5-7200 CL34","brand":"Corsair","family":"Vengeance RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":7200,"casLatency":34,"timings":"34-44-44-96","voltage":1.45,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":649,"pricePerGB":20.28,"priceHistory":[{"date":"2026-09","priceUSD":649,"source":"Newegg"}],"notes":"CMH32GX5M2B7200C34. 7200 CL34 tier tracked at ~$630 minimum in Sept 2026.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmh32gx5m2b7200c34/vengeance-rgb-32gb-2x16gb-ddr5-dram-7200mt-s-cl34-memory-kit-black-cmh32gx5m2b7200c34","label":"Corsair"}},{"name":"Corsair Dominator Titanium RGB 32GB DDR5-6000 CL30","brand":"Corsair","family":"Dominator Titanium RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-36-36-76","voltage":1.4,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":57,"priceUSD":649,"pricePerGB":20.28,"priceHistory":[{"date":"2026-09","priceUSD":649,"source":"Newegg"}],"notes":"CMP32GX5M2B6000Z30. Corsair's flagship with swappable top bars; 57mm tall so check cooler clearance.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmp32gx5m2b6000z30/dominator-titanium-rgb-2x16gb-ddr5-dram-6000mt-s-cl30-amd-memory-kit-white-cmp32gx5m2b6000z30","label":"Corsair"}},{"name":"Corsair Dominator Titanium RGB 64GB DDR5-6000 CL30","brand":"Corsair","family":"Dominator Titanium RGB","ddrGen":"DDR5","kitLayout":"2x32GB","totalGB":64,"speedMTs":6000,"casLatency":30,"timings":"30-36-36-76","voltage":1.4,"profile":"EXPO + XMP 3.0","rankPerModule":"dual","icDie":"unknown","rgb":true,"heightMm":57,"priceUSD":1299,"pricePerGB":20.3,"priceHistory":[{"date":"2026-09","priceUSD":1299,"source":"Newegg"}],"notes":"CMP64GX5M2B6000Z30. Premium 64GB; roughly $20/GB in Sept 2026.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmp64gx5m2b6000z30/dominator-titanium-rgb-64gb-2x32gb-ddr5-dram-6000mt-s-cl30-amd-expo-intel-xmp-memory-kit-grey-cmp64gx5m2b6000z30","label":"Corsair"}},{"name":"Corsair Dominator Titanium RGB 48GB DDR5-7200 CL36","brand":"Corsair","family":"Dominator Titanium RGB","ddrGen":"DDR5","kitLayout":"2x24GB","totalGB":48,"speedMTs":7200,"casLatency":36,"timings":"36-46-46-116","voltage":1.4,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix M-die (24Gb)","rgb":true,"heightMm":57,"priceUSD":899,"pricePerGB":18.73,"priceHistory":[{"date":"2026-09","priceUSD":899,"source":"Newegg"}],"notes":"CMP48GX5M2B7200C36. Intel-only 2x24 kit; Arrow Lake / Raptor Lake target.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmp48gx5m2b7200c36/dominator-titanium-rgb-48gb-2x24gb-ddr5-dram-7200mt-s-cl36-memory-kit-black-cmp48gx5m2b7200c36","label":"Corsair"}},{"name":"Corsair Vengeance LPX 16GB DDR4-3200 CL16","brand":"Corsair","family":"Vengeance LPX","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3200,"casLatency":16,"timings":"16-20-20-38","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":34,"priceUSD":119,"pricePerGB":7.44,"priceHistory":[{"date":"2026-09","priceUSD":119,"source":"Newegg"}],"notes":"CMK16GX4M2E3200C16. The best-selling DDR4 kit of all time; Corsair now also markets EXPO support on the E-suffix revision.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmk16gx4m2e3200c16/vengeance-lpx-16gb-2-x-8gb-ddr4-dram-3200mhz-c16-memory-kit-black-cmk16gx4m2e3200c16","label":"Corsair"}},{"name":"Corsair Vengeance LPX 32GB DDR4-3200 CL16","brand":"Corsair","family":"Vengeance LPX","ddrGen":"DDR4","kitLayout":"2x16GB","totalGB":32,"speedMTs":3200,"casLatency":16,"timings":"16-20-20-38","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"dual","icDie":"unknown","rgb":false,"heightMm":34,"priceUSD":249,"pricePerGB":7.78,"priceHistory":[{"date":"2026-09","priceUSD":249,"source":"Corsair"}],"notes":"CMK32GX4M2E3200C16. Corsair.com listed $249.99 (from $296.99) in early Sept 2026; was $60-90 in Oct 2025.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmk32gx4m2e3200c16/vengeancea-lpx-32gb-2-x-16gb-ddr4-dram-3200mhz-c16-memory-kit-black-cmk32gx4m2e3200c16","label":"Corsair"}},{"name":"Corsair Vengeance RGB Pro 32GB DDR4-3600 CL18","brand":"Corsair","family":"Vengeance RGB Pro","ddrGen":"DDR4","kitLayout":"2x16GB","totalGB":32,"speedMTs":3600,"casLatency":18,"timings":"18-22-22-42","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"dual","icDie":"unknown","rgb":true,"heightMm":51,"priceUSD":299,"pricePerGB":9.34,"priceHistory":[{"date":"2026-09","priceUSD":299,"source":"Amazon"}],"notes":"CMW32GX4M2D3600C18. Still-sold RGB DDR4; CL18 bin is what remains in stock in 2026.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmw32gx4m2d3600c18/vengeance-rgb-pro-32gb-2-x-16gb-ddr4-dram-3600mhz-c18-memory-kit-black-cmw32gx4m2d3600c18","label":"Corsair"}},{"name":"Corsair Vengeance RGB Pro 16GB DDR4-3200 CL16","brand":"Corsair","family":"Vengeance RGB Pro","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3200,"casLatency":16,"timings":"16-18-18-36","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":51,"priceUSD":149,"pricePerGB":9.31,"priceHistory":[{"date":"2026-09","priceUSD":149,"source":"Amazon"}],"notes":"CMW16GX4M2C3200C16. Entry RGB DDR4 kit.","source":{"url":"https://www.corsair.com/us/en/p/memory/cmw16gx4m2c3200c16/vengeance-rgb-pro-16gb-2-x-8gb-ddr4-dram-3200mhz-c16-memory-kit-black-cmw16gx4m2c3200c16","label":"Corsair"}},{"name":"Kingston Fury Beast 32GB DDR5-6000 CL30","brand":"Kingston","family":"Fury Beast","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-36-36","voltage":1.4,"profile":"EXPO","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":549,"pricePerGB":17.16,"priceHistory":[{"date":"2026-09","priceUSD":549,"source":"Newegg"}],"notes":"KF560C30BBEK2-32. EXPO-certified, 34.9mm tall. Price tracker showed $512 (Amazon) to $590 (Newegg) in late Aug 2026; was $113 in Mar 2025.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-memory?speed=6000mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"Kingston Fury Beast RGB 32GB DDR5-6000 CL30","brand":"Kingston","family":"Fury Beast RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-36-36","voltage":1.4,"profile":"EXPO","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":42,"priceUSD":579,"pricePerGB":18.09,"priceHistory":[{"date":"2026-09","priceUSD":579,"source":"Amazon"}],"notes":"KF560C30BBEAK2-32. RGB version with Kingston's IR sync; 42.2mm tall.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-rgb-memory?speed=6000mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"Kingston Fury Beast 32GB DDR5-6000 CL36","brand":"Kingston","family":"Fury Beast","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":36,"timings":"36-38-38","voltage":1.35,"profile":"EXPO","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":499,"pricePerGB":15.59,"priceHistory":[{"date":"2026-09","priceUSD":499,"source":"Amazon"}],"notes":"KF560C36BBEK2-32. The CL36 bin was $116-150 on Slickdeals in 2025; ~$500 in 2026.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-memory?speed=6000mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"Kingston Fury Beast 32GB DDR5-5200 CL40","brand":"Kingston","family":"Fury Beast","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":5200,"casLatency":40,"timings":"40-40-40","voltage":1.25,"profile":"XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":429,"pricePerGB":13.41,"priceHistory":[{"date":"2026-09","priceUSD":429,"source":"Amazon"}],"notes":"KF552C40BBK2-32. Original 2021 Fury Beast DDR5 bin; still sold as an entry kit. CompSource listed $573 in Aug 2026, Amazon lower.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-memory?speed=5200mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"Kingston Fury Beast 64GB DDR5-6000 CL30","brand":"Kingston","family":"Fury Beast","ddrGen":"DDR5","kitLayout":"2x32GB","totalGB":64,"speedMTs":6000,"casLatency":30,"timings":"30-36-36","voltage":1.4,"profile":"EXPO","rankPerModule":"dual","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":1149,"pricePerGB":17.95,"priceHistory":[{"date":"2026-09","priceUSD":1149,"source":"Newegg"}],"notes":"KF560C30BBEK2-64. Dual-rank 64GB EXPO kit.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr5-memory?speed=6000mt%2Fs&total%20(kit)%20capacity=64gb","label":"Kingston"}},{"name":"Kingston Fury Renegade 32GB DDR5-7200 CL38","brand":"Kingston","family":"Fury Renegade","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":7200,"casLatency":38,"timings":"38-44-44","voltage":1.45,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":false,"heightMm":39,"priceUSD":679,"pricePerGB":21.22,"priceHistory":[{"date":"2026-09","priceUSD":679,"source":"Amazon"}],"notes":"KF572C38RSK2-32. Kingston's top Intel bin; 39.2mm tall, silver/black heatsink.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-renegade-ddr5-memory?speed=7200mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"Kingston Fury Renegade RGB 32GB DDR5-6400 CL32","brand":"Kingston","family":"Fury Renegade RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6400,"casLatency":32,"timings":"32-39-39","voltage":1.4,"profile":"XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":44,"priceUSD":549,"pricePerGB":17.16,"priceHistory":[{"date":"2026-09","priceUSD":549,"source":"Newegg"}],"notes":"KF564C32RSAK2-32. 6400 CL32 RGB Renegade.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-renegade-ddr5-rgb-memory?speed=6400mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"Kingston Fury Renegade 96GB DDR5-6000 CL32","brand":"Kingston","family":"Fury Renegade","ddrGen":"DDR5","kitLayout":"2x48GB","totalGB":96,"speedMTs":6000,"casLatency":32,"timings":"32-38-38","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"dual","icDie":"SK hynix M-die (24Gb)","rgb":false,"heightMm":39,"priceUSD":1599,"pricePerGB":16.66,"priceHistory":[{"date":"2026-09","priceUSD":1599,"source":"Newegg"}],"notes":"KF560C32RSK2-96. 2x48 workstation kit. eBay listings reached $2,600 in Sept 2026; retail closer to $1,600.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-renegade-ddr5-memory?speed=6000mt%2Fs&total%20(kit)%20capacity=96gb","label":"Kingston"}},{"name":"Kingston Fury Beast 16GB DDR4-3200 CL16","brand":"Kingston","family":"Fury Beast","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3200,"casLatency":16,"timings":"16-18-18","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":34,"priceUSD":109,"pricePerGB":6.81,"priceHistory":[{"date":"2026-09","priceUSD":109,"source":"Newegg"}],"notes":"KF432C16BBK2/16. MSRP was $41; the 2026 DDR4 spot-price spike (DDR4 chips at a record ~$42 each) pushed kit prices to ~$110.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-memory?speed=3200mt%2Fs&total%20(kit)%20capacity=16gb","label":"Kingston"}},{"name":"Kingston Fury Beast 32GB DDR4-3200 CL16","brand":"Kingston","family":"Fury Beast","ddrGen":"DDR4","kitLayout":"2x16GB","totalGB":32,"speedMTs":3200,"casLatency":16,"timings":"16-20-20","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"dual","icDie":"unknown","rgb":false,"heightMm":34,"priceUSD":229,"pricePerGB":7.16,"priceHistory":[{"date":"2026-09","priceUSD":229,"source":"Amazon"}],"notes":"KF432C16BBK2/32 (also sold as KF432C16BB1K2/32 revision).","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-memory?speed=3200mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"Kingston Fury Beast 32GB DDR4-3600 CL18","brand":"Kingston","family":"Fury Beast","ddrGen":"DDR4","kitLayout":"2x16GB","totalGB":32,"speedMTs":3600,"casLatency":18,"timings":"18-22-22","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"dual","icDie":"unknown","rgb":false,"heightMm":34,"priceUSD":259,"pricePerGB":8.09,"priceHistory":[{"date":"2026-09","priceUSD":259,"source":"Amazon"}],"notes":"KF436C18BBK2/32. Kingston's 3600 DDR4 bin is CL18, not CL16.","source":{"url":"https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-memory?speed=3600mt%2Fs&total%20(kit)%20capacity=32gb","label":"Kingston"}},{"name":"TeamGroup T-Force Delta RGB 32GB DDR5-6000 CL30","brand":"TeamGroup","family":"T-Force Delta RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-38-38-78","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":47,"priceUSD":559,"pricePerGB":17.47,"priceHistory":[{"date":"2026-09","priceUSD":559,"source":"Amazon"}],"notes":"FF3D532G6000HC30DC01. MemRadar: $559.99 on Amazon and Newegg 5 Sept 2026, up 14% in 30 days; all-time low $85 (Jul 2023).","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/delta-rgb-ddr5-black/delta-rgb-ddr5-black-FF3D532G6000HC30DC01/","label":"TeamGroup"}},{"name":"TeamGroup T-Force Delta RGB 32GB DDR5-6400 CL32","brand":"TeamGroup","family":"T-Force Delta RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6400,"casLatency":32,"timings":"32-39-39-84","voltage":1.4,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":true,"heightMm":47,"priceUSD":499,"pricePerGB":15.59,"priceHistory":[{"date":"2026-09","priceUSD":499,"source":"Newegg"}],"notes":"FF3D532G6400HC32ADC01. Same heatsink as the 6000 kit.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/delta-rgb-ddr5-black/","label":"TeamGroup"}},{"name":"TeamGroup T-Force Vulcan 32GB DDR5-6000 CL30","brand":"TeamGroup","family":"T-Force Vulcan","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-36-36-76","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":33,"priceUSD":459,"pricePerGB":14.34,"priceHistory":[{"date":"2026-09","priceUSD":459,"source":"Amazon"}],"notes":"FLBD532G6000HC30DC01. Non-RGB low-profile Vulcan; one of the cheaper name-brand 6000 CL30 kits.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/vulcan-ddr5-black/","label":"TeamGroup"}},{"name":"TeamGroup T-Force Xtreem 32GB DDR5-8000 CL38","brand":"TeamGroup","family":"T-Force Xtreem","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":8000,"casLatency":38,"timings":"38-48-48-84","voltage":1.45,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"SK hynix A-die","rgb":false,"heightMm":44,"priceUSD":649,"pricePerGB":20.28,"priceHistory":[{"date":"2026-09","priceUSD":649,"source":"Amazon"}],"notes":"FFXD532G8000HC38DDC01. TeamGroup explicitly markets this as A-die. Non-RGB; an ARGB variant (FF9D) exists.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/xtreem-ddr5-black/xtreem-ddr5-black-FFXD532G8000HC38DDC01/","label":"TeamGroup"}},{"name":"TeamGroup T-Force Xtreem 48GB DDR5-8000 CL38","brand":"TeamGroup","family":"T-Force Xtreem","ddrGen":"DDR5","kitLayout":"2x24GB","totalGB":48,"speedMTs":8000,"casLatency":38,"timings":"38-48-48-84","voltage":1.45,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"SK hynix M-die (24Gb)","rgb":false,"heightMm":44,"priceUSD":799,"pricePerGB":16.65,"priceHistory":[{"date":"2026-09","priceUSD":799,"source":"Amazon"}],"notes":"FFXD548G8000HC38EDC01. 24Gb M-die 2x24 kit; ~$16/GB in Sept 2026.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/xtreem-ddr5-black/","label":"TeamGroup"}},{"name":"TeamGroup Elite 32GB DDR5-5600 CL46","brand":"TeamGroup","family":"Elite","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":5600,"casLatency":46,"timings":"46-45-45","voltage":1.1,"profile":"JEDEC only","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":32,"priceUSD":389,"pricePerGB":12.16,"priceHistory":[{"date":"2026-09","priceUSD":389,"source":"Amazon"}],"notes":"TED532G5600C46DC01. Bare green-PCB JEDEC kit with no XMP/EXPO; cheapest way into DDR5.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/TEAMGROUP/elite-u-dimm-ddr5/","label":"TeamGroup"}},{"name":"TeamGroup T-Force Vulcan Z 16GB DDR4-3200 CL16","brand":"TeamGroup","family":"T-Force Vulcan Z","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3200,"casLatency":16,"timings":"16-18-18-38","voltage":1.35,"profile":"XMP 2.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":32,"priceUSD":109,"pricePerGB":6.81,"priceHistory":[{"date":"2026-09","priceUSD":109,"source":"Amazon"}],"notes":"TLZGD416G3200HC16CDC01. Long-running budget DDR4 kit.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/vulcan-z-ddr4-gray/","label":"TeamGroup"}},{"name":"TeamGroup T-Force Xtreem ARGB 16GB DDR4-3600 CL14","brand":"TeamGroup","family":"T-Force Xtreem ARGB","ddrGen":"DDR4","kitLayout":"2x8GB","totalGB":16,"speedMTs":3600,"casLatency":14,"timings":"14-15-15-35","voltage":1.45,"profile":"XMP 2.0","rankPerModule":"single","icDie":"Samsung B-die","rgb":true,"heightMm":49,"priceUSD":170,"pricePerGB":10.62,"priceHistory":[{"date":"2026-09","priceUSD":170,"source":"Newegg"}],"notes":"TF10D416G3600HC14CDC01. Tom's Hardware's cheapest DDR4-3600 C14 pick at $169.99 (Newegg only). B-die bin.","source":{"url":"https://www.teamgroupinc.com/en/product-detail/memory/T-FORCE/xtreem-argb-ddr4-white/","label":"TeamGroup"}},{"name":"Crucial Pro 32GB DDR5-6000 CL36","brand":"Crucial","family":"Crucial Pro","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":36,"timings":"36-38-38-80","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"Micron","rgb":false,"heightMm":32,"priceUSD":429,"pricePerGB":13.41,"priceHistory":[{"date":"2026-09","priceUSD":429,"source":"Newegg"}],"notes":"CP2K16G60C36U5B. Micron's own die in a 31.5mm low-profile heatsink. $83 on Amazon in 2025; ~$400-440 in 2026.","source":{"url":"https://www.crucial.com/memory/ddr5/cp2k16g60c36u5b","label":"Crucial"}},{"name":"Crucial Pro 64GB DDR5-6000 CL40","brand":"Crucial","family":"Crucial Pro","ddrGen":"DDR5","kitLayout":"2x32GB","totalGB":64,"speedMTs":6000,"casLatency":40,"timings":"40-40-40-80","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"dual","icDie":"Micron","rgb":false,"heightMm":32,"priceUSD":1099,"pricePerGB":17.17,"priceHistory":[{"date":"2026-09","priceUSD":1099,"source":"Newegg"}],"notes":"CP2K32G60C40U5B. 64GB Crucial Pro OC bin is CL40, not CL36.","source":{"url":"https://www.crucial.com/memory/ddr5/cp2k32g60c40u5b","label":"Crucial"}},{"name":"Crucial 32GB DDR5-5600 CL46","brand":"Crucial","family":"Crucial (standard)","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":5600,"casLatency":46,"timings":"46-45-45","voltage":1.1,"profile":"JEDEC only","rankPerModule":"single","icDie":"Micron","rgb":false,"heightMm":32,"priceUSD":439,"pricePerGB":13.72,"priceHistory":[{"date":"2026-09","priceUSD":439,"source":"Amazon"}],"notes":"CT2K16G56C46U5. Plain JEDEC 5600 kit. $65 in Aug 2023; $439 in Sept 2026 (peak $679 in Mar 2026).","source":{"url":"https://www.crucial.com/memory/ddr5/ct2k16g56c46u5","label":"Crucial"}},{"name":"Crucial 32GB DDR5-5200 CL42","brand":"Crucial","family":"Crucial (standard)","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":5200,"casLatency":42,"timings":"42-42-42","voltage":1.1,"profile":"JEDEC only","rankPerModule":"single","icDie":"Micron","rgb":false,"heightMm":32,"priceUSD":409,"pricePerGB":12.78,"priceHistory":[{"date":"2026-09","priceUSD":409,"source":"Amazon"}],"notes":"CT2K16G52C42U5. Older JEDEC bin; the 5600 kit downclocks to 5200 on older boards so this is only worth it if cheaper.","source":{"url":"https://www.crucial.com/memory/ddr5/ct2k16g52c42u5","label":"Crucial"}},{"name":"XPG Lancer Blade 32GB DDR5-6000 CL30","brand":"ADATA","family":"XPG Lancer Blade","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-40-40","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":33,"priceUSD":429,"pricePerGB":13.41,"priceHistory":[{"date":"2026-09","priceUSD":429,"source":"Newegg"}],"notes":"AX5U6000C3016G-DTLABBK. Low-profile; Newegg's July-2026 value pick at $405, ~$430 by Sept.","source":{"url":"https://www.xpg.com/us/xpg/803","label":"ADATA"}},{"name":"XPG Lancer RGB 32GB DDR5-6000 CL30","brand":"ADATA","family":"XPG Lancer RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-40-40","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":40,"priceUSD":459,"pricePerGB":14.34,"priceHistory":[{"date":"2026-09","priceUSD":459,"source":"Amazon"}],"notes":"AX5U6000C3016G-DCLARBK. Taller RGB Lancer.","source":{"url":"https://www.xpg.com/us/xpg/697","label":"ADATA"}},{"name":"Patriot Viper Venom 32GB DDR5-6000 CL30","brand":"Patriot","family":"Viper Venom","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-40-40-76","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":false,"heightMm":35,"priceUSD":399,"pricePerGB":12.47,"priceHistory":[{"date":"2026-09","priceUSD":399,"source":"Newegg"}],"notes":"PVV532G600C30K. Cheapest 6000 CL30 kit tracked in Sept 2026 ($390-400). Newegg flags it as not validated on Arrow Lake.","source":{"url":"https://www.patriotmemory.com/products/viper-venom-ddr5-performance-memory","label":"Patriot"}},{"name":"Patriot Viper Venom RGB 32GB DDR5-6000 CL30","brand":"Patriot","family":"Viper Venom RGB","ddrGen":"DDR5","kitLayout":"2x16GB","totalGB":32,"speedMTs":6000,"casLatency":30,"timings":"30-40-40-76","voltage":1.35,"profile":"EXPO + XMP 3.0","rankPerModule":"single","icDie":"unknown","rgb":true,"heightMm":44,"priceUSD":419,"pricePerGB":13.09,"priceHistory":[{"date":"2026-09","priceUSD":419,"source":"Newegg"}],"notes":"PVVR532G600C30K. RGB version; $390 on Newegg late Aug 2026, ~$420 typical.","source":{"url":"https://www.patriotmemory.com/products/viper-venom-rgb-ddr5-performance-memory","label":"Patriot"}}];
+const DB={"name":"RAM DB","compiled":"Sep 2026","noun":"kits"};
+const PROF={'EXPO':['EXPO','t-yes'],'XMP 3.0':['XMP 3.0','t-part'],'XMP 2.0':['XMP 2.0','t-part'],'EXPO + XMP 3.0':['EXPO + XMP','t-yes'],'JEDEC only':['JEDEC only','t-neutral']};
+
+const COLUMNS=[
+ {id:'name',hideable:false,label:'Kit',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${esc(d.family)}</span>`},
+ {id:'price',label:'Price (trend)',sort:d=>d.priceUSD,cell:d=>sparkline(d.priceHistory)+`<span class="sub">$${d.pricePerGB}/GB</span>`},
+ {id:'ppg',label:'$/GB',sort:d=>d.pricePerGB,cell:d=>`<span class="price">$${d.pricePerGB}</span>`},
+ {id:'gen',label:'Type',sort:d=>d.ddrGen==='DDR5'?0:1,cell:d=>tag(d.ddrGen,d.ddrGen==='DDR5'?'t-yes':'t-neutral')},
+ {id:'kit',label:'Kit',sort:d=>d.totalGB,cell:d=>`<span class="price">${d.totalGB} GB</span><span class="sub">${esc(d.kitLayout)}</span>`},
+ {id:'speed',label:'Speed',sort:d=>d.speedMTs,cell:d=>`<span class="price">${d.speedMTs}</span><span class="sub">MT/s</span>`},
+ {id:'cl',label:'Latency',sort:d=>d.casLatency,cell:d=>`<span class="price">CL${d.casLatency}</span><span class="sub">${esc(d.timings)} &middot; ${d.voltage} V</span>`},
+ {id:'prof',label:'Profile',sort:d=>({'EXPO + XMP 3.0':0,'EXPO':1,'XMP 3.0':2,'XMP 2.0':3,'JEDEC only':4}[d.profile]??5),cell:d=>{const p=PROF[d.profile]||[d.profile,'t-neutral'];return tag(p[0],p[1]);}},
+ {id:'rank',label:'Rank',cell:d=>tag(d.rankPerModule+'-rank','t-neutral')},
+ {id:'die',label:'IC / die',sort:d=>d.icDie==='unknown'?1:0,cell:d=>d.icDie&&d.icDie!=='unknown'?`<span style="font-size:12px">${esc(d.icDie)}</span>`:'<span style="color:var(--ink-soft)">unknown</span>'},
+ {id:'rgb',label:'RGB',cell:d=>yn(d.rgb,'RGB','No RGB')},
+ {id:'h',label:'Height',sort:d=>d.heightMm,cell:d=>d.heightMm?`<span class="price">${d.heightMm} mm</span>`:'&mdash;'},
+ {id:'source',label:'Source',cell:d=>srcLink(d.source)}
+];
+
+const FILTERS=[
+ {id:'d5',label:'DDR5',test:d=>d.ddrGen==='DDR5'},
+ {id:'d4',label:'DDR4',test:d=>d.ddrGen==='DDR4'},
+ {id:'expo',label:'EXPO (AMD)',test:d=>/EXPO/.test(d.profile||'')},
+ {id:'xmp',label:'XMP (Intel)',test:d=>/XMP/.test(d.profile||'')},
+ {id:'g32',label:'32 GB',test:d=>d.totalGB===32},
+ {id:'g64',label:'64 GB +',test:d=>d.totalGB>=64},
+ {id:'s6k',label:'6000+ MT/s',test:d=>d.speedMTs>=6000},
+ {id:'s72',label:'7200+ MT/s',test:d=>d.speedMTs>=7200},
+ {id:'cl30',label:'CL30 or tighter',test:d=>d.ddrGen==='DDR5'&&d.casLatency<=30},
+ {id:'lp',label:'Low profile (≤ 35 mm)',test:d=>d.heightMm!=null&&d.heightMm<=35},
+ {id:'norgb',label:'No RGB',test:d=>d.rgb===false},
+ {id:'die',label:'Known IC die',test:d=>d.icDie&&d.icDie!=='unknown'},
+ {id:'down',label:'Price falling',test:d=>priceTrend(d.priceHistory)==='down'}
+];
+
+const SORTS=[
+ {id:'ppg',label:'$/GB ↑',cmp:(a,b)=>(a.pricePerGB??1e9)-(b.pricePerGB??1e9)},
+ {id:'price',label:'Price ↑',cmp:(a,b)=>(a.priceUSD??1e9)-(b.priceUSD??1e9)},
+ {id:'speed',label:'Speed ↓',cmp:(a,b)=>(b.speedMTs??0)-(a.speedMTs??0)||(a.casLatency??99)-(b.casLatency??99)},
+ {id:'cl',label:'Latency ↑',cmp:(a,b)=>(a.casLatency??99)-(b.casLatency??99)},
+ {id:'cap',label:'Capacity ↓',cmp:(a,b)=>(b.totalGB??0)-(a.totalGB??0)},
+ {id:'name',label:'Name A–Z',cmp:(a,b)=>a.name.localeCompare(b.name)}
+];
+
+const EXPAND=[
+ {label:'Price history',html:d=>priceChart(d.priceHistory)},
+ {label:'Notes',html:d=>esc(d.notes)},
+ {label:'Spec',html:d=>`<dl class="kv">
+   <dt>Kit</dt><dd>${esc(d.kitLayout)} = ${d.totalGB} GB ${esc(d.ddrGen)}</dd>
+   <dt>Speed / timings</dt><dd>${d.speedMTs} MT/s &middot; ${esc(d.timings)} &middot; ${d.voltage} V</dd>
+   <dt>Profile</dt><dd>${esc(d.profile)}</dd>
+   <dt>Rank</dt><dd>${esc(d.rankPerModule)}-rank per module</dd>
+   <dt>IC / die</dt><dd>${esc(d.icDie)}</dd>
+   <dt>Physical</dt><dd>${d.heightMm?d.heightMm+' mm tall':'?'} &middot; ${d.rgb?'RGB':'no RGB'}</dd>
+ </dl>`}
+];
+
+/* Generic OG-DB table engine.
+   Expects, defined earlier in the page:
+     DATA      - array of row objects
+     DB        - { name, compiled, noun }         (noun e.g. "keyboards")
+     COLUMNS   - [ { id, label, cell(d)->html, hideable? (default true) } ]   // first column = name, not hideable
+     FILTERS   - [ { id, label, test(d)->bool } ]
+     SORTS     - [ { id, label, cmp(a,b) } ]      // first = default
+     EXPAND    - [ { label, html(d)->html } ]
+*/
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  window.tag=(t,c)=>`<span class="tag ${c||'t-neutral'}">${esc(t)}</span>`;
+  window.esc=esc;
+  window.srcLink=s=>s&&s.url?`<a class="srclink" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label||'source')} &#8599;</a>`:'<span style="color:var(--ink-soft)">&mdash;</span>';
+  window.yn=(v,yes,no)=>v===true?tag(yes||'Yes','t-yes'):v===false?tag(no||'No','t-no'):tag(String(v),'t-part');
+
+  // --- price history rendering (no library, theme-aware via currentColor) ---
+  window.priceTrend=h=>{ // 'down' | 'up' | 'flat' | null
+    if(!h||h.length<2) return null;
+    const a=h[0].priceUSD, b=h[h.length-1].priceUSD;
+    if(a==null||b==null) return null;
+    const d=(b-a)/a;
+    return d<-0.02?'down':d>0.02?'up':'flat';
+  };
+  window.sparkline=h=>{
+    if(!h||!h.length) return '<span style="color:var(--ink-soft)">&mdash;</span>';
+    const pts=h.map(p=>p.priceUSD).filter(v=>v!=null);
+    if(pts.length<2) return `<span class="price">$${pts[0]??'?'}</span>`;
+    const w=76,ht=20,mn=Math.min(...pts),mx=Math.max(...pts),rng=mx-mn||1;
+    const step=w/(pts.length-1);
+    const d=pts.map((v,i)=>`${(i*step).toFixed(1)},${(ht-1-((v-mn)/rng)*(ht-2)).toFixed(1)}`).join(' ');
+    const tr=priceTrend(h);
+    const col=tr==='down'?'var(--yes)':tr==='up'?'var(--no)':'var(--ink-soft)';
+    const last=pts[pts.length-1], lx=w, ly=(ht-1-((last-mn)/rng)*(ht-2)).toFixed(1);
+    return `<span style="display:inline-flex;align-items:center;gap:7px">`
+      +`<svg width="${w}" height="${ht}" viewBox="0 0 ${w+4} ${ht}" style="overflow:visible">`
+      +`<polyline points="${d}" fill="none" stroke="${col}" stroke-width="1.5"/>`
+      +`<circle cx="${lx}" cy="${ly}" r="2" fill="${col}"/></svg>`
+      +`<span class="price" style="font-size:12px">$${last}</span></span>`;
+  };
+  window.priceChart=h=>{
+    if(!h||h.length<2) return h&&h.length?`Only one recorded price: $${h[0].priceUSD} (${h[0].date}).`:'No price history yet.';
+    const pts=h.filter(p=>p.priceUSD!=null);
+    const W=440,H=150,pad={l:44,r:12,t:12,b:24};
+    const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+    const vs=pts.map(p=>p.priceUSD), mn=Math.min(...vs), mx=Math.max(...vs), rng=mx-mn||1;
+    const x=i=>pad.l+(i/(pts.length-1))*iw;
+    const y=v=>pad.t+ih-((v-mn)/rng)*ih;
+    const line=pts.map((p,i)=>`${x(i).toFixed(1)},${y(p.priceUSD).toFixed(1)}`).join(' ');
+    const area=`${pad.l},${pad.t+ih} ${line} ${pad.l+iw},${pad.t+ih}`;
+    const cur=pts[pts.length-1].priceUSD;
+    const tr=priceTrend(h), col=tr==='down'?'var(--yes)':tr==='up'?'var(--no)':'var(--accent)';
+    const g='var(--line)';
+    return `<svg width="100%" viewBox="0 0 ${W} ${H}" style="max-width:${W}px;font-family:IBM Plex Mono,monospace">`
+      +`<polygon points="${area}" fill="${col}" opacity="0.10"/>`
+      +`<line x1="${pad.l}" y1="${y(mx)}" x2="${pad.l+iw}" y2="${y(mx)}" stroke="${g}" stroke-width="1"/>`
+      +`<line x1="${pad.l}" y1="${y(mn)}" x2="${pad.l+iw}" y2="${y(mn)}" stroke="${g}" stroke-width="1"/>`
+      +`<text x="${pad.l-6}" y="${y(mx)+3}" text-anchor="end" font-size="10" fill="var(--ink-soft)">$${Math.round(mx)}</text>`
+      +`<text x="${pad.l-6}" y="${y(mn)+3}" text-anchor="end" font-size="10" fill="var(--ink-soft)">$${Math.round(mn)}</text>`
+      +`<polyline points="${line}" fill="none" stroke="${col}" stroke-width="2"/>`
+      +`<circle cx="${x(pts.length-1)}" cy="${y(cur)}" r="3.2" fill="${col}"/>`
+      +`<text x="${pad.l}" y="${H-8}" font-size="10" fill="var(--ink-soft)">${esc(pts[0].date)}</text>`
+      +`<text x="${pad.l+iw}" y="${H-8}" text-anchor="end" font-size="10" fill="var(--ink-soft)">${esc(pts[pts.length-1].date)}</text>`
+      +`</svg>`
+      +`<div style="font-size:11.5px;color:var(--ink-soft);margin-top:4px">now <b style="color:var(--ink)">$${cur}</b> &middot; low $${Math.round(mn)} &middot; high $${Math.round(mx)} &middot; ${pts.length} points</div>`;
+  };
+
+  const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
+  const active=new Set();
+  let query='';
+  const blob=new WeakMap();
+  const rowText=d=>{let t=blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase();blob.set(d,t);}return t;};
+  let sortMode=SORTS[0].id;
+
+  // header (click to sort)
+  const htr=$('#tbl thead tr');
+  htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
+    COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
+  let colSort=null; // {id, dir:1|-1}
+  const scratch=document.createElement('div');
+  function sortVal(c,d){
+    if(c.sort) return c.sort(d);
+    scratch.innerHTML=c.cell(d);
+    const t=(scratch.textContent||'').replace(/↑|↓|↗/g,'').trim();
+    const n=parseFloat(t.replace(/[$,]/g,''));
+    return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
+  }
+  function colCmp(a,b){
+    const c=COLUMNS.find(x=>x.id===colSort.id);
+    let va=sortVal(c,a), vb=sortVal(c,b);
+    const ea=(va===''||va==null), eb=(vb===''||vb==null);
+    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
+    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
+    return r*colSort.dir;
+  }
+  function markHeaders(){
+    htr.querySelectorAll('th.sortable').forEach(th=>{
+      const on=colSort&&colSort.id===th.dataset.col;
+      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+    });
+    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+  }
+  htr.querySelectorAll('th.sortable').forEach(th=>{
+    const go=()=>{
+      const id=th.dataset.col;
+      if(colSort&&colSort.id===id) colSort = colSort.dir===1 ? {id,dir:-1} : null; // asc -> desc -> off
+      else colSort = {id,dir:1};
+      markHeaders(); render();
+    };
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+
+  // column hide CSS
+  const st=document.createElement('style');
+  st.textContent=COLUMNS.filter(c=>c.hideable!==false).map(c=>
+    `#tbl[data-hide~="${c.id}"] [data-col="${c.id}"]{display:none}`).join('\n');
+  document.head.appendChild(st);
+
+  // min-width so it stays legible; ~150px per visible col
+  function setMin(){
+    const vis=COLUMNS.filter(c=>!hidden.has(c.id)).length+1;
+    tbl.style.minWidth=Math.min(2300,Math.max(760,vis*155))+'px';
+  }
+
+  // filters
+  const fwrap=$('#filters');
+  FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='chip';b.dataset.filter=f.id;b.setAttribute('aria-pressed','false');b.textContent=f.label;
+    b.addEventListener('click',()=>{
+      if(active.has(f.id)){active.delete(f.id);b.setAttribute('aria-pressed','false');}
+      else{active.add(f.id);b.setAttribute('aria-pressed','true');}
+      render();
+    });
+    fwrap.appendChild(b);
+  });
+
+  // sorts
+  const sel=$('#sort');
+  sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
+  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
+
+  // column panel
+  const panel=$('#colpanel'), colbtn=$('#colbtn');
+  panel.querySelector('.colhead').insertAdjacentHTML('afterend',
+    COLUMNS.filter(c=>c.hideable!==false).map(c=>
+      `<label><input type="checkbox" data-col="${c.id}" checked> ${esc(c.label)}</label>`).join(''));
+  const HIDE_KEY='ogdb.'+DB.noun+'.hidden';
+  let hidden=new Set();
+  try{const s=localStorage.getItem(HIDE_KEY);if(s)hidden=new Set(JSON.parse(s));}catch(e){}
+  const ALL=COLUMNS.filter(c=>c.hideable!==false).map(c=>c.id);
+  function applyCols(){
+    tbl.setAttribute('data-hide',[...hidden].join(' '));
+    panel.querySelectorAll('input[data-col]').forEach(cb=>cb.checked=!hidden.has(cb.dataset.col));
+    colbtn.textContent=hidden.size?`Columns · ${ALL.length-hidden.size}/${ALL.length} ▾`:'Columns ▾';
+    try{localStorage.setItem(HIDE_KEY,JSON.stringify([...hidden]));}catch(e){}
+    setMin();
+  }
+  colbtn.addEventListener('click',e=>{e.stopPropagation();const o=panel.hidden;panel.hidden=!o;colbtn.setAttribute('aria-expanded',String(o));});
+  panel.addEventListener('click',e=>e.stopPropagation());
+  panel.addEventListener('change',e=>{const cb=e.target;if(!cb.dataset.col)return;
+    cb.checked?hidden.delete(cb.dataset.col):hidden.add(cb.dataset.col);applyCols();});
+  panel.querySelectorAll('.colactions button').forEach(b=>b.addEventListener('click',()=>{
+    hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
+  document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
+
+  function passes(d){
+    if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
+    for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}
+    return true;
+  }
+  const rowq=$('#rowq');
+  if(rowq){
+    rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
+    document.addEventListener('keydown',ev=>{
+      if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
+      if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
+    });
+  }
+
+  function render(){
+    let rows=DATA.filter(passes);
+    if(colSort){rows.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
+    tbody.innerHTML='';
+    const frag=document.createDocumentFragment();
+    rows.forEach(d=>{
+      const tr=document.createElement('tr');
+      tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
+      tr.innerHTML='<td><span class="chev">▶</span></td>'+
+        COLUMNS.map(c=>`<td data-col="${c.id}">${c.cell(d)}</td>`).join('');
+      const ex=document.createElement('tr');
+      ex.className='expand';ex.hidden=true;
+      ex.innerHTML=`<td colspan="${COLUMNS.length+1}"><div class="inner">`+
+        EXPAND.map(e=>{const h=e.html(d);return h?`<div><h4>${esc(e.label)}</h4><p>${h}</p></div>`:'';}).join('')+
+        `</div></td>`;
+      const toggle=()=>{const o=tr.getAttribute('aria-expanded')==='true';tr.setAttribute('aria-expanded',String(!o));ex.hidden=o;};
+      tr.addEventListener('click',toggle);
+      tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+      frag.appendChild(tr);frag.appendChild(ex);
+    });
+    tbody.appendChild(frag);
+    countEl.textContent=`${rows.length} of ${DATA.length} ${DB.noun} shown`;
+  }
+
+  applyCols();
+  markHeaders();
+  render();
+})();
+
+</script>
+</body>
+</html>

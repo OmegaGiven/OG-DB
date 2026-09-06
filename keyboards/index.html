@@ -124,6 +124,11 @@ footer{margin-top:30px;font-size:12px;color:var(--ink-soft);max-width:70ch}
 footer a{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+.searchwrap{flex:1 1 220px;min-width:180px}
+.rowsearch{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:6px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;outline:0}
+.rowsearch:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.rowsearch::-webkit-search-cancel-button{-webkit-appearance:none}
+
 </style>
 </head>
 <body>
@@ -133,6 +138,7 @@ footer a{color:var(--accent)}
   </header>
   <div class="primer"><h2>How to read the table</h2><ul><li><strong>Split type</strong> &mdash; <em>Fully separate</em> = two independent halves you place anywhere; <em>Unibody split</em> = one piece with a fixed angled gap (Kinesis Advantage, MD600); <em>Adjustable bridge</em> = halves on an articulating mount (Naya).</li><li><strong>Layout</strong> &mdash; <em>Column-stagger</em> (ortho columns offset per finger length) is the ergonomic-keyboard norm; <em>Row-stagger</em> keeps a normal typewriter grid, gentler relearn (Keychron Q11, MD770).</li><li><strong>Firmware</strong> &mdash; QMK / VIA / Vial / ZMK are open and fully remappable; Oryx and Bazecor are vendor GUIs on top of QMK; a few are closed.</li><li><strong>Assembly</strong> &mdash; <em>Prebuilt</em> ships ready; <em>kit</em> ranges from solderless hot-swap to full soldering; <em>PCB / files only</em> means you source parts yourself. Kit prices in the Price column are the base kit &mdash; expand a row for what's included.</li><li>Kit prices are not apples-to-apples (bare PCB pair vs full solderless kit vs vendor-assembled). Don't sort on price naively.</li></ul></div>
   <div class="controls">
+    <div class="grp searchwrap"><input id="rowq" class="rowsearch" type="search" placeholder="Search rows… ( / )" autocomplete="off" aria-label="Search rows"></div>
     <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
     <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
     <div class="grp colwrap">
@@ -288,6 +294,9 @@ const EXPAND=[
 
   const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
   const active=new Set();
+  let query='';
+  const blob=new WeakMap();
+  const rowText=d=>{let t=blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase();blob.set(d,t);}return t;};
   let sortMode=SORTS[0].id;
 
   // header (click to sort)
@@ -384,7 +393,19 @@ const EXPAND=[
     hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
   document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
 
-  function passes(d){for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}return true;}
+  function passes(d){
+    if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
+    for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}
+    return true;
+  }
+  const rowq=$('#rowq');
+  if(rowq){
+    rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
+    document.addEventListener('keydown',ev=>{
+      if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
+      if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
+    });
+  }
 
   function render(){
     let rows=DATA.filter(passes);

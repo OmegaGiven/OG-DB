@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HDD DB</title>
+<meta name="description" content="Hard drives with tracked price history - capacity, CMR/SMR, use case, RPM, workload rating, warranty, idle power, $/TB.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+body{margin:0;font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}
+:root{
+  --bg:#f2f3f5;--surface:#fff;--surface-2:#e9ebee;--ink:#191c22;--ink-soft:#59606d;
+  --line:#d7dbe1;--line-strong:#bfc5cd;--accent:#c0740f;--accent-ink:#8a5300;--accent-wash:#f6ecdd;
+  --yes:#2f7d55;--yes-bg:#e0efe6;--no:#a23f57;--no-bg:#f3e2e6;--partial:#8a6d1f;--partial-bg:#f1e9d4;
+  --shadow:0 1px 2px rgba(20,22,27,.05),0 10px 30px -14px rgba(20,22,27,.16);
+  --grid:rgba(25,28,34,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1f232b;--ink:#e9ebef;--ink-soft:#98a0ae;
+  --line:#2a2f38;--line-strong:#3a414d;--accent:#e8a33d;--accent-ink:#f0b968;--accent-wash:#2c2113;
+  --yes:#6fc394;--yes-bg:#183328;--no:#e08aa0;--no-bg:#3a2029;--partial:#d9b968;--partial-bg:#332c15;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 16px 40px -18px rgba(0,0,0,.6);--grid:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;color:var(--ink);
+  background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,var(--bg);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
+}
+.wrap{max-width:min(2600px,99vw);margin:0 auto;padding:clamp(16px,2.5vw,28px) clamp(8px,1.5vw,16px) 64px}
+
+header.masthead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:24px}
+h1{font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(26px,4.6vw,44px);
+  line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h1 .crumb{color:var(--ink-soft);text-decoration:none}
+h1 .crumb:hover,h1 .crumb:focus-visible{color:var(--accent)}
+h1 .sep{color:var(--line-strong);margin:0 .35em;font-weight:400}
+.compiled{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+  color:var(--ink-soft);font-weight:400;white-space:nowrap;margin-left:12px;vertical-align:middle}
+
+.primer{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px;padding:15px 18px;margin:20px 0 24px;box-shadow:var(--shadow);max-width:92ch}
+.primer h2{font-family:"Chivo",sans-serif;font-weight:700;font-size:13px;margin:0 0 8px;
+  text-transform:uppercase;letter-spacing:.08em}
+.primer ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink-soft)}
+.primer li{margin:5px 0}
+.primer strong{color:var(--ink)}
+.primer em{color:var(--ink);font-style:normal;font-weight:500}
+
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.controls .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.glabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+button.chip{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:500;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;cursor:pointer;transition:.12s}
+button.chip:hover{border-color:var(--accent)}
+button.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1d23}
+button.chip:focus-visible,select:focus-visible,tr.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+select{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:5px 8px;background:var(--surface);
+  color:var(--ink);border:1px solid var(--line-strong);border-radius:6px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
+
+.colwrap{position:relative}
+.colpanel{position:absolute;top:calc(100% + 6px);right:0;z-index:20;background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:8px;box-shadow:var(--shadow);padding:12px 14px;
+  width:260px;max-height:70vh;overflow:auto;display:flex;flex-direction:column;gap:7px}
+.colpanel .colhead{margin:0 0 2px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.colpanel label{display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer}
+.colpanel input{accent-color:var(--accent)}
+.colactions{display:flex;gap:8px;margin-top:6px;border-top:1px solid var(--line);padding-top:9px}
+.colactions button{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;
+  background:var(--surface-2);color:var(--ink);border:1px solid var(--line-strong);border-radius:6px;padding:4px 10px}
+.colactions button:hover{border-color:var(--accent)}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;background:var(--surface)}
+thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-family:"Chivo",sans-serif;
+  font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;text-align:left;
+  padding:11px 12px;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--accent)}
+thead th.sortable:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+thead th[aria-sort="ascending"],thead th[aria-sort="descending"]{color:var(--accent);background:var(--accent-wash)}
+thead th .arrow{color:var(--accent);font-size:10px}
+tbody tr.row{border-top:1px solid var(--line);cursor:pointer}
+tbody tr.row:hover{background:var(--surface-2)}
+td{padding:10px 12px;font-size:13px;vertical-align:top}
+.name{font-family:"Chivo",sans-serif;font-weight:700;font-size:13.5px}
+.sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-soft);
+  font-weight:400;margin-top:2px;letter-spacing:.02em}
+.price{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap}
+.price small{display:block;color:var(--ink-soft);font-weight:400;font-size:10.5px;white-space:normal;max-width:22ch}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:500;
+  padding:2px 6px;border-radius:4px;margin:1px 3px 1px 0;white-space:nowrap}
+.t-yes{background:var(--yes-bg);color:var(--yes)}
+.t-no{background:var(--no-bg);color:var(--no)}
+.t-part{background:var(--partial-bg);color:var(--partial)}
+.t-neutral{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line)}
+a.srclink{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);text-decoration:none;white-space:nowrap}
+a.srclink:hover,a.srclink:focus-visible{text-decoration:underline}
+
+.expand{background:var(--bg)}
+.expand td{padding:0}
+.expand .inner{padding:16px 18px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 26px}
+.expand h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.expand p{margin:0;font-size:12.5px;color:var(--ink-soft)}
+.expand p strong{color:var(--ink);font-weight:600}
+dl.kv{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;font-size:12.5px;color:var(--ink-soft);max-width:120ch}
+dl.kv dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-top:1px}
+dl.kv dd{margin:0}
+.chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
+tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
+
+footer{margin-top:30px;font-size:12px;color:var(--ink-soft);max-width:70ch}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.searchwrap{flex:1 1 220px;min-width:180px}
+.rowsearch{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:6px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;outline:0}
+.rowsearch:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.rowsearch::-webkit-search-cancel-button{-webkit-appearance:none}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1><a class="crumb" href="../">OG-DB</a><span class="sep">/</span>HDD DB <span class="compiled">compiled Sep 2026</span></h1>
+  </header>
+  <div class="primer"><h2>How to read the table</h2><ul><li><strong>Price (trend)</strong> is a sparkline of recorded prices, newest on the right &mdash; green falling, red rising. Expand a row for the full chart with low / high. Some rows carry reconstructed 2024&ndash;25 points from that era's $/TB bands; new snapshots are appended weekly and on request.</li><li><strong>CMR vs SMR is the trap.</strong> Shingled (SMR) drives collapse under sustained writes and RAID / ZFS rebuilds. Every 3.5" BarraCuda 2&ndash;8 TB, current SkyHawk 2&ndash;8 TB, WD Blue EZAZ 4/6 TB, Toshiba P300 4/6 TB and all consumer 2.5" drives are SMR &mdash; and the box doesn't say. <em>CMR only</em> filter on by habit for NAS.</li><li><strong>Best $/TB</strong> is usually shucking an external (Expansion / Elements / My Book) or an enterprise Exos / Ultrastar / MG-series &mdash; the 8 TB NAS and surveillance tier is the worst value.</li><li><strong>Workload rating</strong> (TB/yr) and MTBF are vendor figures; consumer lines that publish nothing show placeholders (55 TB/yr, 1M h).</li></ul></div>
+  <div class="controls">
+    <div class="grp searchwrap"><input id="rowq" class="rowsearch" type="search" placeholder="Search rows… ( / )" autocomplete="off" aria-label="Search rows"></div>
+    <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
+    <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
+    <div class="grp colwrap">
+      <button class="chip" id="colbtn" aria-expanded="false" aria-controls="colpanel">Columns ▾</button>
+      <div class="colpanel" id="colpanel" hidden>
+        <p class="colhead">Show columns</p>
+        <div class="colactions"><button type="button" data-all="1">All</button><button type="button" data-all="0">Minimal</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="tablewrap"><table id="tbl"><thead><tr></tr></thead><tbody id="tbody"></tbody></table></div>
+  <footer><p><strong>Notes.</strong> 2026 prices sit ~50% above 2025 and ~2&times; the 2024 lows; same-SKU spread between retailers is often 40&ndash;60%, so <em>priceUSD</em> is the lowest reputable retailer, not a median (&plusmn;20%). Per-row <strong>Source</strong> is the vendor or ServerPartDeals page. Compiled Sep 2026.</p></footer>
+</div>
+<script>
+const DATA=[{"name":"Seagate Exos X16 16TB","brand":"Seagate","family":"Exos X16","capacityTB":16,"capacityRangeTB":"10-16","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":5,"priceUSD":430,"pricePerTB":26.88,"priceHistory":[{"date":"2024-05","priceUSD":190,"source":"ServerPartDeals (new)"},{"date":"2025-06","priceUSD":260,"source":"Newegg"},{"date":"2026-09","priceUSD":430,"source":"ServerPartDeals"}],"notes":"ST16000NM001G. End-of-line; mostly sold as manufacturer-recertified now (~$230-260 recert). Still a solid $/TB anchor for 16TB.","source":{"url":"https://www.seagate.com/products/enterprise-drives/exos-x/x16/","label":"Seagate"}},{"name":"Seagate Exos X18 16TB","brand":"Seagate","family":"Exos X18","capacityTB":16,"capacityRangeTB":"10-18","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":5.3,"priceUSD":480,"pricePerTB":30,"priceHistory":[{"date":"2024-05","priceUSD":215,"source":"ServerPartDeals"},{"date":"2025-09","priceUSD":290,"source":"Newegg"},{"date":"2026-09","priceUSD":480,"source":"Newegg / ServerPartDeals"}],"notes":"ST16000NM000J. Amazon marketplace listing ~$711 on 2026-09-06 (diskdojo); Newegg/SPD well under that. 18TB sibling ST18000NM000J ~$540.","source":{"url":"https://www.seagate.com/products/enterprise-drives/exos-x/x18/","label":"Seagate"}},{"name":"Seagate Exos X20 20TB","brand":"Seagate","family":"Exos X20","capacityTB":20,"capacityRangeTB":"18-20","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":5.5,"priceUSD":560,"pricePerTB":28,"priceHistory":[{"date":"2023-09","priceUSD":210,"source":"ServerPartDeals (recert)"},{"date":"2024-06","priceUSD":260,"source":"ServerPartDeals"},{"date":"2025-10","priceUSD":340,"source":"Newegg"},{"date":"2026-03","priceUSD":410,"source":"diskdojo/Amazon"},{"date":"2026-09","priceUSD":560,"source":"ServerPartDeals / Newegg"}],"notes":"ST20000NM007D. SPD listed new at $500 but out of stock on 2026-09-06; Amazon $849, Newegg $880 same day. Recert ~$500. Loud under load; enterprise workhorse.","source":{"url":"https://www.seagate.com/products/enterprise-drives/exos-x/x20/","label":"Seagate"}},{"name":"Seagate Exos X22 22TB","brand":"Seagate","family":"Exos X22","capacityTB":22,"capacityRangeTB":"20-22","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":5.7,"priceUSD":640,"pricePerTB":29.09,"priceHistory":[{"date":"2024-07","priceUSD":330,"source":"ServerPartDeals"},{"date":"2025-08","priceUSD":400,"source":"Newegg"},{"date":"2026-09","priceUSD":640,"source":"Newegg"}],"notes":"ST22000NM001E. 512MB cache. Used/recert listings ~$29/TB (DatacenterDisk, Sept 2026).","source":{"url":"https://www.seagate.com/products/enterprise-drives/exos-x/x22/","label":"Seagate"}},{"name":"Seagate Exos X24 24TB","brand":"Seagate","family":"Exos X24","capacityTB":24,"capacityRangeTB":"12-24","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":6,"priceUSD":660,"pricePerTB":27.5,"priceHistory":[{"date":"2024-09","priceUSD":400,"source":"Newegg"},{"date":"2025-08","priceUSD":430,"source":"Newegg"},{"date":"2026-09","priceUSD":660,"source":"Newegg / diskdojo (renewed $620)"}],"notes":"ST24000NM002H. Last conventional-PMR Exos before HAMR. Renewed units $620 (diskdojo 2026-09-06). Also sold in 12/16/20TB X24 SKUs.","source":{"url":"https://www.seagate.com/products/enterprise-drives/exos-x/x24/","label":"Seagate"}},{"name":"Seagate Exos M 30TB (Mozaic 3+)","brand":"Seagate","family":"Exos M","capacityTB":30,"capacityRangeTB":"30-36","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":6.3,"priceUSD":950,"pricePerTB":31.67,"priceHistory":[{"date":"2025-07","priceUSD":600,"source":"Seagate.com launch MSRP"},{"date":"2026-03","priceUSD":720,"source":"Newegg"},{"date":"2026-09","priceUSD":950,"source":"Newegg / Amazon"}],"notes":"ST30000NM004K. HAMR / Mozaic 3+ platform - first mass-market HAMR drive. 32TB SKU ~$1,900 on Amazon (inflated). Long-term HAMR reliability data still thin.","source":{"url":"https://www.seagate.com/products/enterprise-drives/exos-m/","label":"Seagate"}},{"name":"WD Ultrastar DC HC550 16TB","brand":"Western Digital","family":"Ultrastar DC HC550","capacityTB":16,"capacityRangeTB":"16-18","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":5.6,"priceUSD":560,"pricePerTB":35,"priceHistory":[{"date":"2024-05","priceUSD":200,"source":"ServerPartDeals"},{"date":"2025-06","priceUSD":280,"source":"Newegg"},{"date":"2026-09","priceUSD":560,"source":"Newegg"}],"notes":"WUH721816ALE6L4. Amazon $754 on 2026-09-06 (diskdojo). Same platform lives inside many WD Elements shuckables (white-label).","source":{"url":"https://www.westerndigital.com/products/internal-drives/data-center-drives/ultrastar-dc-hc550-hdd","label":"Western Digital"}},{"name":"WD Ultrastar DC HC560 20TB","brand":"Western Digital","family":"Ultrastar DC HC560","capacityTB":20,"capacityRangeTB":"20","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":5.7,"priceUSD":650,"pricePerTB":32.5,"priceHistory":[{"date":"2024-06","priceUSD":280,"source":"ServerPartDeals"},{"date":"2025-09","priceUSD":360,"source":"Newegg"},{"date":"2026-09","priceUSD":650,"source":"Newegg"}],"notes":"WUH722020ALE6L4. Recert $599 at ServerPartDeals 2026-09-06 (60 in stock) - recert premium vs Seagate is unusual this year.","source":{"url":"https://www.westerndigital.com/products/internal-drives/data-center-drives/ultrastar-dc-hc560-hdd","label":"Western Digital"}},{"name":"WD Ultrastar DC HC570 22TB","brand":"Western Digital","family":"Ultrastar DC HC570","capacityTB":22,"capacityRangeTB":"22","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":5.7,"priceUSD":700,"pricePerTB":31.82,"priceHistory":[{"date":"2024-07","priceUSD":330,"source":"ServerPartDeals"},{"date":"2025-09","priceUSD":400,"source":"Newegg"},{"date":"2026-09","priceUSD":700,"source":"Newegg"}],"notes":"WUH722222ALE6L4. Believed to be the drive inside 20/22TB WD Elements with reduced-speed firmware.","source":{"url":"https://www.westerndigital.com/products/internal-drives/data-center-drives/ultrastar-dc-hc570-hdd","label":"Western Digital"}},{"name":"WD Ultrastar DC HC580 24TB","brand":"Western Digital","family":"Ultrastar DC HC580","capacityTB":24,"capacityRangeTB":"20-24","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":6.1,"priceUSD":689,"pricePerTB":28.71,"priceHistory":[{"date":"2024-09","priceUSD":420,"source":"Newegg"},{"date":"2025-09","priceUSD":450,"source":"Newegg"},{"date":"2026-07","priceUSD":679,"source":"diskdojo/Newegg"},{"date":"2026-08","priceUSD":1118,"source":"diskdojo/Amazon"},{"date":"2026-09","priceUSD":689,"source":"Newegg (diskdojo 2026-09-06)"}],"notes":"WUH722424ALE6L4. Retail swung $679-$1,118 in Aug 2026 alone; Newegg is the sane price. Renewed ~$430 ($17.92/TB, DatacenterDisk).","source":{"url":"https://www.westerndigital.com/products/internal-drives/data-center-drives/ultrastar-dc-hc580-hdd","label":"Western Digital"}},{"name":"WD Ultrastar DC HC590 26TB","brand":"Western Digital","family":"Ultrastar DC HC590","capacityTB":26,"capacityRangeTB":"24-26","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":6.2,"priceUSD":780,"pricePerTB":30,"priceHistory":[{"date":"2025-10","priceUSD":470,"source":"Slickdeals (24TB SKU)"},{"date":"2026-09","priceUSD":780,"source":"Newegg"}],"notes":"WUH722626ALE6L4. ePMR + OptiNAND; 11-platter. 24TB SKU was $469.99 in late 2025. Top of WD's conventional line before HAMR.","source":{"url":"https://www.westerndigital.com/products/internal-drives/data-center-drives/ultrastar-dc-hc590-hdd","label":"Western Digital"}},{"name":"Toshiba MG09 18TB","brand":"Toshiba","family":"MG09","capacityTB":18,"capacityRangeTB":"16-18","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":4.2,"priceUSD":520,"pricePerTB":28.89,"priceHistory":[{"date":"2024-06","priceUSD":240,"source":"ServerPartDeals"},{"date":"2025-09","priceUSD":320,"source":"Newegg"},{"date":"2026-09","priceUSD":520,"source":"Newegg"}],"notes":"MG09ACA18TE. 9-platter helium; low idle power for its class. Amazon $659 on 2026-09-06. Used listings ~$35/TB.","source":{"url":"https://storage.toshiba.com/enterprise-hdd/capacity/mg09","label":"Toshiba"}},{"name":"Toshiba MG10 20TB","brand":"Toshiba","family":"MG10","capacityTB":20,"capacityRangeTB":"20-22","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":4.4,"priceUSD":480,"pricePerTB":24,"priceHistory":[{"date":"2023-09","priceUSD":278,"source":"ServerPartDeals"},{"date":"2024-08","priceUSD":290,"source":"ServerPartDeals"},{"date":"2025-09","priceUSD":350,"source":"Newegg"},{"date":"2026-09","priceUSD":480,"source":"ServerPartDeals / Newegg"}],"notes":"MG10ACA20TE. FC-MAMR, 10-platter helium. Often the cheapest new 20TB from a US retailer; MG10F 22TB sibling. Recert/refurb ~$380 at SPD.","source":{"url":"https://storage.toshiba.com/enterprise-hdd/capacity/mg10","label":"Toshiba"}},{"name":"Toshiba MG11 24TB","brand":"Toshiba","family":"MG11","capacityTB":24,"capacityRangeTB":"22-24","formFactor":"3.5\"","rpm":7200,"cacheMB":1024,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"enterprise / NAS","warrantyYears":5,"avgIdleWatts":4.7,"priceUSD":720,"pricePerTB":30,"priceHistory":[{"date":"2025-06","priceUSD":480,"source":"Newegg"},{"date":"2026-08","priceUSD":949,"source":"diskdojo/eBay (22TB)"},{"date":"2026-09","priceUSD":720,"source":"Amazon / Newegg"}],"notes":"MG11ACA24TE. 1GB cache, MAMR. 22TB sibling $695 on Amazon 2026-09-06 ($31.58/TB) vs $1,096 Newegg - retailer spread is huge right now.","source":{"url":"https://storage.toshiba.com/enterprise-hdd/capacity/mg11","label":"Toshiba"}},{"name":"WD Red Plus 4TB","brand":"Western Digital","family":"Red Plus","capacityTB":4,"capacityRangeTB":"1-14","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":3,"avgIdleWatts":3,"priceUSD":130,"pricePerTB":32.5,"priceHistory":[{"date":"2024-06","priceUSD":85,"source":"Amazon"},{"date":"2025-09","priceUSD":100,"source":"Amazon"},{"date":"2026-09","priceUSD":130,"source":"Amazon"}],"notes":"WD40EFPX. All Red Plus are CMR (the SMR ones were rebranded plain 'WD Red' after the 2020 scandal - avoid WD40EFAX).","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-red-plus-sata-3-5-hdd","label":"Western Digital"}},{"name":"WD Red Plus 8TB","brand":"Western Digital","family":"Red Plus","capacityTB":8,"capacityRangeTB":"1-14","formFactor":"3.5\"","rpm":5640,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":3,"avgIdleWatts":3.4,"priceUSD":355,"pricePerTB":44.38,"priceHistory":[{"date":"2024-05","priceUSD":140,"source":"Amazon"},{"date":"2025-09","priceUSD":165,"source":"Amazon"},{"date":"2026-03","priceUSD":374,"source":"diskdojo"},{"date":"2026-05","priceUSD":180,"source":"diskdojo"},{"date":"2026-09","priceUSD":355,"source":"Amazon / Newegg (diskdojo 2026-09-06)"}],"notes":"WD80EFPX. 2026 price whiplash: $180 in May, $355 by Jul-Sep. Used ~$215. Quiet, cool; 3-yr warranty is the weak spot vs Pro.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-red-plus-sata-3-5-hdd","label":"Western Digital"}},{"name":"WD Red Plus 12TB","brand":"Western Digital","family":"Red Plus","capacityTB":12,"capacityRangeTB":"1-14","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":180,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":3,"avgIdleWatts":4.8,"priceUSD":460,"pricePerTB":38.33,"priceHistory":[{"date":"2024-06","priceUSD":200,"source":"Amazon"},{"date":"2025-09","priceUSD":240,"source":"Amazon"},{"date":"2026-09","priceUSD":460,"source":"Amazon (diskdojo 2026-09-06)"}],"notes":"WD120EFBX. 12TB+ Red Plus are helium 7200 class despite the 'Plus' badge.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-red-plus-sata-3-5-hdd","label":"Western Digital"}},{"name":"WD Red Pro 16TB","brand":"Western Digital","family":"Red Pro","capacityTB":16,"capacityRangeTB":"2-26","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":5,"avgIdleWatts":5,"priceUSD":550,"pricePerTB":34.38,"priceHistory":[{"date":"2024-06","priceUSD":260,"source":"Amazon"},{"date":"2025-09","priceUSD":300,"source":"Amazon"},{"date":"2026-03","priceUSD":600,"source":"diskdojo"},{"date":"2026-06","priceUSD":425,"source":"diskdojo"},{"date":"2026-09","priceUSD":550,"source":"eBay-new / Amazon $705 (diskdojo 2026-09-06)"}],"notes":"WD161KFGX. Essentially an Ultrastar with NAS firmware and a 5-yr warranty; you pay ~$100-150 over HC550 for the badge.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-red-pro-sata-hdd","label":"Western Digital"}},{"name":"WD Red Pro 22TB","brand":"Western Digital","family":"Red Pro","capacityTB":22,"capacityRangeTB":"2-26","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":5,"avgIdleWatts":5.6,"priceUSD":799,"pricePerTB":36.32,"priceHistory":[{"date":"2024-09","priceUSD":400,"source":"Amazon"},{"date":"2025-09","priceUSD":450,"source":"Amazon"},{"date":"2026-09","priceUSD":799,"source":"Amazon (diskdojo 2026-09-06)"}],"notes":"WD221KFGX. OptiNAND. 24TB $1,000 and 26TB $1,145 on the same day - little $/TB advantage at the top.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-red-pro-sata-hdd","label":"Western Digital"}},{"name":"Seagate IronWolf 4TB","brand":"Seagate","family":"IronWolf","capacityTB":4,"capacityRangeTB":"1-12","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":3,"avgIdleWatts":3.5,"priceUSD":135,"pricePerTB":33.75,"priceHistory":[{"date":"2024-06","priceUSD":90,"source":"Amazon"},{"date":"2025-09","priceUSD":105,"source":"Amazon"},{"date":"2026-09","priceUSD":135,"source":"Amazon"}],"notes":"ST4000VN006. All IronWolf are CMR. Includes 3 yrs Rescue data recovery.","source":{"url":"https://www.seagate.com/products/nas-drives/ironwolf-hard-drive/","label":"Seagate"}},{"name":"Seagate IronWolf 8TB","brand":"Seagate","family":"IronWolf","capacityTB":8,"capacityRangeTB":"1-12","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":3,"avgIdleWatts":5.3,"priceUSD":330,"pricePerTB":41.25,"priceHistory":[{"date":"2024-05","priceUSD":150,"source":"Amazon"},{"date":"2025-09","priceUSD":180,"source":"Amazon"},{"date":"2026-08","priceUSD":330,"source":"harddrivebenchmark.net"},{"date":"2026-09","priceUSD":330,"source":"Amazon / Newegg"}],"notes":"ST8000VN004 / ST8000VNZ04. 7200 rpm air drive - hotter and louder than Red Plus 8TB, and now priced about the same.","source":{"url":"https://www.seagate.com/products/nas-drives/ironwolf-hard-drive/","label":"Seagate"}},{"name":"Seagate IronWolf Pro 16TB","brand":"Seagate","family":"IronWolf Pro","capacityTB":16,"capacityRangeTB":"2-30","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":1200000,"useCase":"NAS","warrantyYears":5,"avgIdleWatts":5.5,"priceUSD":600,"pricePerTB":37.5,"priceHistory":[{"date":"2024-06","priceUSD":270,"source":"Amazon"},{"date":"2025-09","priceUSD":265,"source":"Newegg (OEM sale)"},{"date":"2026-08","priceUSD":464,"source":"diskdojo"},{"date":"2026-09","priceUSD":600,"source":"Newegg / Amazon $640 (diskdojo 2026-09-06)"}],"notes":"ST16000NT001. Exos X18 platform with NAS firmware + 3 yr Rescue. Newegg had OEM units at $265 in Sept 2025.","source":{"url":"https://www.seagate.com/products/nas-drives/ironwolf-pro-hard-drive/","label":"Seagate"}},{"name":"Seagate IronWolf Pro 24TB","brand":"Seagate","family":"IronWolf Pro","capacityTB":24,"capacityRangeTB":"2-30","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"NAS","warrantyYears":5,"avgIdleWatts":6,"priceUSD":780,"pricePerTB":32.5,"priceHistory":[{"date":"2024-09","priceUSD":450,"source":"Amazon"},{"date":"2025-08","priceUSD":460,"source":"Amazon"},{"date":"2026-09","priceUSD":780,"source":"Amazon / Newegg"}],"notes":"ST24000NT002. Exos X24 platform. 22TB sibling $895 on Amazon 2026-09-06 (diskdojo) - 24TB is the better buy.","source":{"url":"https://www.seagate.com/products/nas-drives/ironwolf-pro-hard-drive/","label":"Seagate"}},{"name":"Seagate IronWolf Pro 30TB (Mozaic 3+)","brand":"Seagate","family":"IronWolf Pro","capacityTB":30,"capacityRangeTB":"2-30","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"NAS","warrantyYears":5,"avgIdleWatts":6.3,"priceUSD":899,"pricePerTB":29.97,"priceHistory":[{"date":"2025-07","priceUSD":600,"source":"Seagate.com launch MSRP"},{"date":"2025-10","priceUSD":480,"source":"Best Buy (28TB SKU)"},{"date":"2026-09","priceUSD":899,"source":"Newegg / Amazon"}],"notes":"ST30000NT011. HAMR for NAS. 28TB was $479.99 at Best Buy Oct 2025 ($17/TB) - that price is gone.","source":{"url":"https://www.seagate.com/products/nas-drives/ironwolf-pro-hard-drive/","label":"Seagate"}},{"name":"Toshiba N300 8TB","brand":"Toshiba","family":"N300","capacityTB":8,"capacityRangeTB":"4-18","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"NAS","warrantyYears":3,"avgIdleWatts":5,"priceUSD":300,"pricePerTB":37.5,"priceHistory":[{"date":"2024-06","priceUSD":150,"source":"Amazon"},{"date":"2025-09","priceUSD":175,"source":"Amazon"},{"date":"2026-09","priceUSD":300,"source":"Amazon / Newegg"}],"notes":"HDWG480. All N300 are CMR. 7200 rpm air drive; Toshiba's NAS drives are consistently cheaper than WD/Seagate equivalents when in stock.","source":{"url":"https://storage.toshiba.com/consumer-hdd/internal/n300","label":"Toshiba"}},{"name":"Toshiba N300 Pro 16TB","brand":"Toshiba","family":"N300 Pro","capacityTB":16,"capacityRangeTB":"4-22","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":300,"mtbfHours":1200000,"useCase":"NAS","warrantyYears":5,"avgIdleWatts":4.2,"priceUSD":560,"pricePerTB":35,"priceHistory":[{"date":"2024-06","priceUSD":250,"source":"Amazon"},{"date":"2025-09","priceUSD":300,"source":"Amazon"},{"date":"2026-09","priceUSD":560,"source":"Newegg / Best Buy"}],"notes":"HDWG51GXZSTB. MG09 platform. Rated 300 TB/yr (not 550) - Toshiba's Pro is 'up to 24 bays', a notch below Red Pro/IronWolf Pro.","source":{"url":"https://storage.toshiba.com/consumer-hdd/internal/n300-pro","label":"Toshiba"}},{"name":"Toshiba N300 Pro 20TB","brand":"Toshiba","family":"N300 Pro","capacityTB":20,"capacityRangeTB":"4-22","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":300,"mtbfHours":1200000,"useCase":"NAS","warrantyYears":5,"avgIdleWatts":4.4,"priceUSD":650,"pricePerTB":32.5,"priceHistory":[{"date":"2025-12","priceUSD":379,"source":"Pangoly low"},{"date":"2026-05","priceUSD":1048,"source":"Pangoly high"},{"date":"2026-09","priceUSD":650,"source":"Newegg"}],"notes":"HDWG62AXZSTB. MG10 platform. Tracked range $379 (Dec 2025) to $1,048 (May 2026) - most volatile line in this dataset.","source":{"url":"https://storage.toshiba.com/consumer-hdd/internal/n300-pro","label":"Toshiba"}},{"name":"WD Purple 4TB","brand":"Western Digital","family":"Purple","capacityTB":4,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"surveillance","warrantyYears":3,"avgIdleWatts":3,"priceUSD":130,"pricePerTB":32.5,"priceHistory":[{"date":"2024-06","priceUSD":85,"source":"Amazon"},{"date":"2025-09","priceUSD":100,"source":"Amazon"},{"date":"2026-09","priceUSD":130,"source":"Amazon"}],"notes":"WD43PURZ. AllFrame AI firmware, up to 64 cameras. Same mechanics as Red Plus 4TB; buy whichever is cheaper.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-purple-sata-hdd","label":"Western Digital"}},{"name":"WD Purple 8TB","brand":"Western Digital","family":"Purple","capacityTB":8,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5640,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"surveillance","warrantyYears":3,"avgIdleWatts":3.4,"priceUSD":360,"pricePerTB":45,"priceHistory":[{"date":"2024-06","priceUSD":150,"source":"Amazon"},{"date":"2025-09","priceUSD":180,"source":"Amazon"},{"date":"2026-09","priceUSD":360,"source":"Best Buy / Amazon"}],"notes":"WD85PURZ. Top of the non-Pro Purple line; above 8TB you must go Purple Pro.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-purple-sata-hdd","label":"Western Digital"}},{"name":"WD Purple Pro 12TB","brand":"Western Digital","family":"Purple Pro","capacityTB":12,"capacityRangeTB":"8-24","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"surveillance","warrantyYears":5,"avgIdleWatts":5,"priceUSD":340,"pricePerTB":28.33,"priceHistory":[{"date":"2024-06","priceUSD":220,"source":"Amazon"},{"date":"2025-09","priceUSD":250,"source":"Amazon"},{"date":"2026-09","priceUSD":340,"source":"Best Buy $299.99 / Amazon"}],"notes":"WD122PURP (older WD121PURP has 256MB). Best Buy $299.99 in Sept 2026 makes this an odd bargain: an Ultrastar-class helium drive cheaper per TB than Red Pro.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-purple-pro-sata-hdd","label":"Western Digital"}},{"name":"WD Purple Pro 18TB","brand":"Western Digital","family":"Purple Pro","capacityTB":18,"capacityRangeTB":"8-24","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"surveillance","warrantyYears":5,"avgIdleWatts":5.6,"priceUSD":560,"pricePerTB":31.11,"priceHistory":[{"date":"2024-06","priceUSD":320,"source":"Amazon"},{"date":"2025-09","priceUSD":360,"source":"Amazon"},{"date":"2026-09","priceUSD":560,"source":"Amazon / Newegg"}],"notes":"WD181PURP. 550 TB/yr, 2.5M MTBF - enterprise spec with surveillance firmware; fine in a NAS.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-purple-pro-sata-hdd","label":"Western Digital"}},{"name":"Seagate SkyHawk 4TB","brand":"Seagate","family":"SkyHawk","capacityTB":4,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"surveillance","warrantyYears":3,"avgIdleWatts":3.2,"priceUSD":135,"pricePerTB":33.75,"priceHistory":[{"date":"2024-06","priceUSD":85,"source":"Amazon"},{"date":"2025-09","priceUSD":100,"source":"Amazon"},{"date":"2026-09","priceUSD":135,"source":"Amazon"}],"notes":"ST4000VX016. Current-gen SkyHawk 2-8TB (VX017/VX016/VX009/VX010) are SMR per Seagate's product manual - fine for sequential DVR writes, bad for NAS/RAID.","source":{"url":"https://www.seagate.com/products/video-analytics/skyhawk/","label":"Seagate"}},{"name":"Seagate SkyHawk 8TB","brand":"Seagate","family":"SkyHawk","capacityTB":8,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":180,"mtbfHours":1000000,"useCase":"surveillance","warrantyYears":3,"avgIdleWatts":3.6,"priceUSD":300,"pricePerTB":37.5,"priceHistory":[{"date":"2024-06","priceUSD":150,"source":"Amazon"},{"date":"2025-09","priceUSD":175,"source":"Amazon"},{"date":"2026-09","priceUSD":300,"source":"Best Buy / Amazon"}],"notes":"ST8000VX010. SMR (the older ST8000VX0022 was CMR - watch the model number). Do not use in RAID/ZFS.","source":{"url":"https://www.seagate.com/products/video-analytics/skyhawk/","label":"Seagate"}},{"name":"Seagate SkyHawk AI 12TB","brand":"Seagate","family":"SkyHawk AI","capacityTB":12,"capacityRangeTB":"8-24","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2000000,"useCase":"surveillance","warrantyYears":5,"avgIdleWatts":5,"priceUSD":360,"pricePerTB":30,"priceHistory":[{"date":"2024-06","priceUSD":220,"source":"Amazon"},{"date":"2025-09","priceUSD":250,"source":"Amazon"},{"date":"2026-09","priceUSD":360,"source":"Amazon / Newegg"}],"notes":"ST12000VE001. Exos-based helium CMR, 550 TB/yr, 3 yr Rescue. Like Purple Pro, often priced below the NAS-branded equivalent.","source":{"url":"https://www.seagate.com/products/video-analytics/skyhawk-ai/","label":"Seagate"}},{"name":"Seagate SkyHawk AI 20TB","brand":"Seagate","family":"SkyHawk AI","capacityTB":20,"capacityRangeTB":"8-24","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2000000,"useCase":"surveillance","warrantyYears":5,"avgIdleWatts":5.5,"priceUSD":600,"pricePerTB":30,"priceHistory":[{"date":"2024-09","priceUSD":340,"source":"Amazon"},{"date":"2025-09","priceUSD":380,"source":"Amazon"},{"date":"2026-09","priceUSD":600,"source":"Amazon / Newegg"}],"notes":"ST20000VE002. Exos X20 platform.","source":{"url":"https://www.seagate.com/products/video-analytics/skyhawk-ai/","label":"Seagate"}},{"name":"WD Blue 4TB (WD40EZAX)","brand":"Western Digital","family":"Blue","capacityTB":4,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"desktop","warrantyYears":2,"avgIdleWatts":2.8,"priceUSD":110,"pricePerTB":27.5,"priceHistory":[{"date":"2024-06","priceUSD":75,"source":"Amazon"},{"date":"2025-09","priceUSD":85,"source":"Amazon"},{"date":"2026-09","priceUSD":110,"source":"Amazon / Best Buy"}],"notes":"CMR. The sneaky sibling WD40EZAZ (same name, same shelf) is SMR - check the last letter. 2-yr warranty. Workload rating is WD's 55 TB/yr consumer figure.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-blue-desktop-sata-hdd","label":"Western Digital"}},{"name":"WD Blue 8TB (WD80EAAZ)","brand":"Western Digital","family":"Blue","capacityTB":8,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5640,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"desktop","warrantyYears":2,"avgIdleWatts":3.4,"priceUSD":230,"pricePerTB":28.75,"priceHistory":[{"date":"2024-06","priceUSD":130,"source":"Amazon"},{"date":"2025-09","priceUSD":150,"source":"Amazon"},{"date":"2026-09","priceUSD":230,"source":"Amazon"}],"notes":"CMR, helium-free 5640 rpm. Cheapest CMR 8TB most months; effectively a Red Plus 8TB with a 2-yr warranty.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-blue-desktop-sata-hdd","label":"Western Digital"}},{"name":"Seagate BarraCuda 4TB (3.5\")","brand":"Seagate","family":"BarraCuda","capacityTB":4,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"desktop","warrantyYears":2,"avgIdleWatts":2.5,"priceUSD":120,"pricePerTB":30,"priceHistory":[{"date":"2024-06","priceUSD":70,"source":"Amazon"},{"date":"2025-09","priceUSD":80,"source":"Amazon"},{"date":"2026-05","priceUSD":255,"source":"Pangoly high"},{"date":"2026-09","priceUSD":120,"source":"eBay-new / Office Depot $145 / Best Buy $159"}],"notes":"ST4000DM004. Every 3.5\" BarraCuda 2TB+ is drive-managed SMR. Fine as a bulk media drive; miserable for RAID rebuilds or random writes.","source":{"url":"https://www.seagate.com/products/hard-drives/barracuda-hard-drive/","label":"Seagate"}},{"name":"Seagate BarraCuda 8TB (3.5\")","brand":"Seagate","family":"BarraCuda","capacityTB":8,"capacityRangeTB":"1-8","formFactor":"3.5\"","rpm":5400,"cacheMB":256,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"desktop","warrantyYears":2,"avgIdleWatts":3,"priceUSD":220,"pricePerTB":27.5,"priceHistory":[{"date":"2024-06","priceUSD":120,"source":"Amazon"},{"date":"2025-09","priceUSD":140,"source":"Amazon"},{"date":"2026-09","priceUSD":220,"source":"Amazon / Newegg"}],"notes":"ST8000DM004. SMR. Note: 20-24TB 'BarraCuda' (ST24000DM001) is a different, CMR Exos-derived drive found in Expansion externals.","source":{"url":"https://www.seagate.com/products/hard-drives/barracuda-hard-drive/","label":"Seagate"}},{"name":"Toshiba P300 4TB","brand":"Toshiba","family":"P300","capacityTB":4,"capacityRangeTB":"1-6","formFactor":"3.5\"","rpm":5400,"cacheMB":128,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"desktop","warrantyYears":2,"avgIdleWatts":2.6,"priceUSD":130,"pricePerTB":32.5,"priceHistory":[{"date":"2024-06","priceUSD":80,"source":"Amazon"},{"date":"2025-09","priceUSD":95,"source":"Amazon"},{"date":"2026-07","priceUSD":130,"source":"BuyPerUnit tracker"},{"date":"2026-09","priceUSD":130,"source":"Amazon"}],"notes":"HDWD240. 4TB and 6TB P300 are 5400 rpm SMR; 1-3TB P300 are 7200 rpm CMR.","source":{"url":"https://storage.toshiba.com/consumer-hdd/internal/p300","label":"Toshiba"}},{"name":"Toshiba P300 3TB","brand":"Toshiba","family":"P300","capacityTB":3,"capacityRangeTB":"1-6","formFactor":"3.5\"","rpm":7200,"cacheMB":64,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"desktop","warrantyYears":2,"avgIdleWatts":3.1,"priceUSD":95,"pricePerTB":31.67,"priceHistory":[{"date":"2024-06","priceUSD":60,"source":"Amazon"},{"date":"2025-09","priceUSD":70,"source":"Amazon"},{"date":"2026-09","priceUSD":95,"source":"Amazon"}],"notes":"HDWD130. Last CMR 7200 rpm desktop drive in Toshiba's consumer line; 64MB cache.","source":{"url":"https://storage.toshiba.com/consumer-hdd/internal/p300","label":"Toshiba"}},{"name":"WD Elements Desktop 20TB","brand":"Western Digital","family":"Elements Desktop","capacityTB":20,"capacityRangeTB":"4-24","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"external","warrantyYears":2,"avgIdleWatts":5.7,"priceUSD":450,"pricePerTB":22.5,"priceHistory":[{"date":"2024-11","priceUSD":270,"source":"Newegg"},{"date":"2025-11","priceUSD":365,"source":"Black Friday"},{"date":"2026-04","priceUSD":440,"source":"Amazon / Newegg"},{"date":"2026-09","priceUSD":450,"source":"Amazon"}],"notes":"WDBWLG0200HBK. Shucks to a white-label Ultrastar (HC550/HC570 class, WD200EDGZ) with speed-limited firmware; may need the 3.3V pin tape trick. 2-yr warranty; WD generally honors by serial. Best $/TB new-in-box play in 2026.","source":{"url":"https://www.westerndigital.com/products/external-drives/wd-elements-desktop-usb-3-0-hdd","label":"Western Digital"}},{"name":"WD My Book 22TB","brand":"Western Digital","family":"My Book","capacityTB":22,"capacityRangeTB":"4-24","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"external","warrantyYears":3,"avgIdleWatts":5.7,"priceUSD":500,"pricePerTB":22.73,"priceHistory":[{"date":"2024-11","priceUSD":300,"source":"Amazon"},{"date":"2025-11","priceUSD":380,"source":"Amazon"},{"date":"2026-09","priceUSD":500,"source":"Amazon"}],"notes":"WDBBGB0220HBK. Same internals as Elements but 3-yr warranty and hardware encryption in the bridge (irrelevant once shucked).","source":{"url":"https://www.westerndigital.com/products/external-drives/wd-my-book-desktop-usb-3-0-hdd","label":"Western Digital"}},{"name":"Seagate Expansion Desktop 16TB","brand":"Seagate","family":"Expansion Desktop","capacityTB":16,"capacityRangeTB":"4-28","formFactor":"3.5\"","rpm":7200,"cacheMB":256,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"external","warrantyYears":2,"avgIdleWatts":5.3,"priceUSD":350,"pricePerTB":21.88,"priceHistory":[{"date":"2024-11","priceUSD":200,"source":"Amazon"},{"date":"2025-11","priceUSD":220,"source":"Best Buy"},{"date":"2026-09","priceUSD":350,"source":"Amazon"}],"notes":"STKP16000400. Shucks to a BarraCuda-labelled Exos (ST16000DM001-class). 2-yr warranty (some regions 1-yr).","source":{"url":"https://www.seagate.com/products/external-hard-drives/expansion-desktop/","label":"Seagate"}},{"name":"Seagate Expansion Desktop 24TB","brand":"Seagate","family":"Expansion Desktop","capacityTB":24,"capacityRangeTB":"4-28","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"external","warrantyYears":2,"avgIdleWatts":6,"priceUSD":470,"pricePerTB":19.58,"priceHistory":[{"date":"2025-05","priceUSD":279,"source":"Best Buy"},{"date":"2025-10","priceUSD":260,"source":"Seagate.com"},{"date":"2025-11","priceUSD":240,"source":"Best Buy (Black Friday)"},{"date":"2026-09","priceUSD":470,"source":"Amazon / Best Buy"}],"notes":"STKP24000400. Contains ST24000DM001 (Exos X24 mechanics). Was $240 ($10/TB) in Nov 2025 - nearly doubled since. Still the cheapest way to buy a 24TB CMR drive.","source":{"url":"https://www.seagate.com/products/external-hard-drives/expansion-desktop/","label":"Seagate"}},{"name":"Seagate Expansion Desktop 28TB","brand":"Seagate","family":"Expansion Desktop","capacityTB":28,"capacityRangeTB":"4-28","formFactor":"3.5\"","rpm":7200,"cacheMB":512,"recording":"CMR","interface":"SATA 6 Gb/s","heliumSealed":true,"workloadTByr":550,"mtbfHours":2500000,"useCase":"external","warrantyYears":2,"avgIdleWatts":6.2,"priceUSD":560,"pricePerTB":20,"priceHistory":[{"date":"2025-10","priceUSD":350,"source":"Seagate.com sale"},{"date":"2026-09","priceUSD":560,"source":"Amazon"}],"notes":"STKP28000400. Believed to contain a HAMR (Mozaic 3+) BarraCuda-labelled Exos M - first shuckable HAMR drive; long-term data thin.","source":{"url":"https://www.seagate.com/products/external-hard-drives/expansion-desktop/","label":"Seagate"}},{"name":"Seagate BarraCuda 2TB (2.5\")","brand":"Seagate","family":"BarraCuda 2.5","capacityTB":2,"capacityRangeTB":"0.5-5","formFactor":"2.5\"","rpm":5400,"cacheMB":128,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"mobile","warrantyYears":2,"avgIdleWatts":0.5,"priceUSD":85,"pricePerTB":42.5,"priceHistory":[{"date":"2024-06","priceUSD":60,"source":"Amazon"},{"date":"2025-09","priceUSD":65,"source":"Amazon"},{"date":"2026-09","priceUSD":85,"source":"Amazon"}],"notes":"ST2000LM015, 7mm. SMR (all 2.5\" BarraCuda 1TB+ are). The 5TB ST5000LM000 is 15mm thick and won't fit most laptops.","source":{"url":"https://www.seagate.com/products/hard-drives/barracuda-hard-drive/","label":"Seagate"}},{"name":"Seagate BarraCuda 5TB (2.5\")","brand":"Seagate","family":"BarraCuda 2.5","capacityTB":5,"capacityRangeTB":"0.5-5","formFactor":"2.5\"","rpm":5400,"cacheMB":128,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"mobile","warrantyYears":2,"avgIdleWatts":0.6,"priceUSD":150,"pricePerTB":30,"priceHistory":[{"date":"2024-06","priceUSD":110,"source":"Amazon"},{"date":"2025-09","priceUSD":120,"source":"Amazon"},{"date":"2026-09","priceUSD":150,"source":"Amazon"}],"notes":"ST5000LM000, 15mm z-height. SMR. Highest capacity 2.5\" HDD you can buy; same drive lives in Seagate 5TB portables.","source":{"url":"https://www.seagate.com/products/hard-drives/barracuda-hard-drive/","label":"Seagate"}},{"name":"WD Blue Mobile 2TB","brand":"Western Digital","family":"Blue Mobile","capacityTB":2,"capacityRangeTB":"0.5-2","formFactor":"2.5\"","rpm":5400,"cacheMB":128,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"mobile","warrantyYears":2,"avgIdleWatts":0.5,"priceUSD":80,"pricePerTB":40,"priceHistory":[{"date":"2024-06","priceUSD":55,"source":"Amazon"},{"date":"2025-09","priceUSD":60,"source":"Amazon"},{"date":"2026-09","priceUSD":80,"source":"Amazon"}],"notes":"WD20SPZX, 7mm. SMR. 1TB WD10SPZX is also SMR; only the old 9.5mm WD10JPVX is CMR.","source":{"url":"https://www.westerndigital.com/products/internal-drives/wd-blue-mobile-sata-hdd","label":"Western Digital"}},{"name":"Toshiba L200 2TB","brand":"Toshiba","family":"L200","capacityTB":2,"capacityRangeTB":"0.5-2","formFactor":"2.5\"","rpm":5400,"cacheMB":128,"recording":"SMR","interface":"SATA 6 Gb/s","heliumSealed":false,"workloadTByr":55,"mtbfHours":1000000,"useCase":"mobile","warrantyYears":2,"avgIdleWatts":0.5,"priceUSD":75,"pricePerTB":37.5,"priceHistory":[{"date":"2024-06","priceUSD":55,"source":"Amazon"},{"date":"2025-09","priceUSD":60,"source":"Amazon"},{"date":"2026-09","priceUSD":75,"source":"Amazon"}],"notes":"HDWL120, 9.5mm. SMR. The 1TB HDWL110 (7mm) is CMR - the only current CMR 2.5\" consumer HDD.","source":{"url":"https://storage.toshiba.com/consumer-hdd/internal/l200","label":"Toshiba"}}];
+const DB={"name":"HDD DB","compiled":"Sep 2026","noun":"drives"};
+const USE={'enterprise / NAS':'t-yes','NAS':'t-yes','surveillance':'t-part','desktop':'t-neutral','external':'t-part','mobile':'t-neutral'};
+const isSMR=d=>/SMR/i.test(d.recording||'');
+const mtbf=n=>n==null?'?':n>=1e6?(n/1e6).toFixed(n%1e6?1:0)+'M h':n.toLocaleString()+' h';
+
+const COLUMNS=[
+ {id:'name',hideable:false,label:'Drive',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.brand)} &middot; ${esc(d.family)} &middot; ${esc(d.capacityRangeTB)} TB range</span>`},
+ {id:'price',label:'Price (trend)',sort:d=>d.priceUSD,cell:d=>sparkline(d.priceHistory)+`<span class="sub">$${d.pricePerTB}/TB</span>`},
+ {id:'ppt',label:'$/TB',sort:d=>d.pricePerTB,cell:d=>`<span class="price">$${d.pricePerTB}</span>`},
+ {id:'cap',label:'Capacity',sort:d=>d.capacityTB,cell:d=>`<span class="price">${d.capacityTB} TB</span><span class="sub">${esc(d.formFactor)}</span>`},
+ {id:'rec',label:'Recording',sort:d=>isSMR(d)?1:0,cell:d=>isSMR(d)?tag('SMR','t-no'):tag('CMR','t-yes')},
+ {id:'use',label:'Use case',cell:d=>tag(d.useCase,USE[d.useCase]||'t-neutral')},
+ {id:'rpm',label:'RPM / cache',sort:d=>d.rpm,cell:d=>`<span class="price">${d.rpm}</span><span class="sub">${d.cacheMB} MB cache</span>`},
+ {id:'iface',label:'Interface',cell:d=>tag(d.interface,/SAS/i.test(d.interface)?'t-part':'t-neutral')+(d.heliumSealed?tag('Helium','t-yes'):'')},
+ {id:'wl',label:'Workload',sort:d=>d.workloadTByr,cell:d=>`<span class="price">${d.workloadTByr?d.workloadTByr+' TB/yr':'?'}</span><span class="sub">MTBF ${mtbf(d.mtbfHours)}</span>`},
+ {id:'warr',label:'Warranty',sort:d=>d.warrantyYears,cell:d=>tag(d.warrantyYears+' yr',d.warrantyYears>=5?'t-yes':d.warrantyYears>=3?'t-part':'t-no')},
+ {id:'pw',label:'Idle power',sort:d=>d.avgIdleWatts,cell:d=>d.avgIdleWatts!=null?`<span class="price">${d.avgIdleWatts} W</span>`:'&mdash;'},
+ {id:'source',label:'Source',cell:d=>srcLink(d.source)}
+];
+
+const FILTERS=[
+ {id:'cmr',label:'CMR only',test:d=>!isSMR(d)},
+ {id:'smr',label:'Show SMR (avoid for NAS)',test:isSMR},
+ {id:'nas',label:'NAS',test:d=>/NAS/i.test(d.useCase)},
+ {id:'ent',label:'Enterprise',test:d=>/enterprise/i.test(d.useCase)},
+ {id:'surv',label:'Surveillance',test:d=>d.useCase==='surveillance'},
+ {id:'ext',label:'External / shuckable',test:d=>d.useCase==='external'},
+ {id:'c12',label:'≥ 12 TB',test:d=>d.capacityTB>=12},
+ {id:'c20',label:'≥ 20 TB',test:d=>d.capacityTB>=20},
+ {id:'cheap',label:'≤ $25 / TB',test:d=>d.pricePerTB!=null&&d.pricePerTB<=25},
+ {id:'w5',label:'5-yr warranty',test:d=>d.warrantyYears>=5},
+ {id:'he',label:'Helium',test:d=>d.heliumSealed===true},
+ {id:'down',label:'Price falling',test:d=>priceTrend(d.priceHistory)==='down'}
+];
+
+const SORTS=[
+ {id:'ppt',label:'$/TB ↑',cmp:(a,b)=>(a.pricePerTB??1e9)-(b.pricePerTB??1e9)},
+ {id:'price',label:'Price ↑',cmp:(a,b)=>(a.priceUSD??1e9)-(b.priceUSD??1e9)},
+ {id:'cap',label:'Capacity ↓',cmp:(a,b)=>(b.capacityTB??0)-(a.capacityTB??0)},
+ {id:'wl',label:'Workload rating ↓',cmp:(a,b)=>(b.workloadTByr??0)-(a.workloadTByr??0)},
+ {id:'name',label:'Name A–Z',cmp:(a,b)=>a.name.localeCompare(b.name)}
+];
+
+const EXPAND=[
+ {label:'Price history',html:d=>priceChart(d.priceHistory)},
+ {label:'Notes',html:d=>esc(d.notes)},
+ {label:'Spec',html:d=>`<dl class="kv">
+   <dt>Capacity</dt><dd>${d.capacityTB} TB (family ${esc(d.capacityRangeTB)} TB) &middot; ${esc(d.formFactor)}</dd>
+   <dt>Recording</dt><dd>${esc(d.recording)}${isSMR(d)?' &mdash; avoid for ZFS / RAID rebuilds and NAS write loads':''}</dd>
+   <dt>Mechanics</dt><dd>${d.rpm} rpm &middot; ${d.cacheMB} MB cache &middot; ${d.heliumSealed?'helium-sealed':'air'}</dd>
+   <dt>Interface</dt><dd>${esc(d.interface)}</dd>
+   <dt>Reliability</dt><dd>${d.workloadTByr?d.workloadTByr+' TB/yr workload':'?'} &middot; MTBF ${mtbf(d.mtbfHours)} &middot; ${d.warrantyYears}-year warranty</dd>
+   <dt>Idle power</dt><dd>${d.avgIdleWatts!=null?d.avgIdleWatts+' W':'?'}</dd>
+ </dl>`}
+];
+
+/* Generic OG-DB table engine.
+   Expects, defined earlier in the page:
+     DATA      - array of row objects
+     DB        - { name, compiled, noun }         (noun e.g. "keyboards")
+     COLUMNS   - [ { id, label, cell(d)->html, hideable? (default true) } ]   // first column = name, not hideable
+     FILTERS   - [ { id, label, test(d)->bool } ]
+     SORTS     - [ { id, label, cmp(a,b) } ]      // first = default
+     EXPAND    - [ { label, html(d)->html } ]
+*/
+(function(){
+  const $=s=>document.querySelector(s);
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  window.tag=(t,c)=>`<span class="tag ${c||'t-neutral'}">${esc(t)}</span>`;
+  window.esc=esc;
+  window.srcLink=s=>s&&s.url?`<a class="srclink" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label||'source')} &#8599;</a>`:'<span style="color:var(--ink-soft)">&mdash;</span>';
+  window.yn=(v,yes,no)=>v===true?tag(yes||'Yes','t-yes'):v===false?tag(no||'No','t-no'):tag(String(v),'t-part');
+
+  // --- price history rendering (no library, theme-aware via currentColor) ---
+  window.priceTrend=h=>{ // 'down' | 'up' | 'flat' | null
+    if(!h||h.length<2) return null;
+    const a=h[0].priceUSD, b=h[h.length-1].priceUSD;
+    if(a==null||b==null) return null;
+    const d=(b-a)/a;
+    return d<-0.02?'down':d>0.02?'up':'flat';
+  };
+  window.sparkline=h=>{
+    if(!h||!h.length) return '<span style="color:var(--ink-soft)">&mdash;</span>';
+    const pts=h.map(p=>p.priceUSD).filter(v=>v!=null);
+    if(pts.length<2) return `<span class="price">$${pts[0]??'?'}</span>`;
+    const w=76,ht=20,mn=Math.min(...pts),mx=Math.max(...pts),rng=mx-mn||1;
+    const step=w/(pts.length-1);
+    const d=pts.map((v,i)=>`${(i*step).toFixed(1)},${(ht-1-((v-mn)/rng)*(ht-2)).toFixed(1)}`).join(' ');
+    const tr=priceTrend(h);
+    const col=tr==='down'?'var(--yes)':tr==='up'?'var(--no)':'var(--ink-soft)';
+    const last=pts[pts.length-1], lx=w, ly=(ht-1-((last-mn)/rng)*(ht-2)).toFixed(1);
+    return `<span style="display:inline-flex;align-items:center;gap:7px">`
+      +`<svg width="${w}" height="${ht}" viewBox="0 0 ${w+4} ${ht}" style="overflow:visible">`
+      +`<polyline points="${d}" fill="none" stroke="${col}" stroke-width="1.5"/>`
+      +`<circle cx="${lx}" cy="${ly}" r="2" fill="${col}"/></svg>`
+      +`<span class="price" style="font-size:12px">$${last}</span></span>`;
+  };
+  window.priceChart=h=>{
+    if(!h||h.length<2) return h&&h.length?`Only one recorded price: $${h[0].priceUSD} (${h[0].date}).`:'No price history yet.';
+    const pts=h.filter(p=>p.priceUSD!=null);
+    const W=440,H=150,pad={l:44,r:12,t:12,b:24};
+    const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+    const vs=pts.map(p=>p.priceUSD), mn=Math.min(...vs), mx=Math.max(...vs), rng=mx-mn||1;
+    const x=i=>pad.l+(i/(pts.length-1))*iw;
+    const y=v=>pad.t+ih-((v-mn)/rng)*ih;
+    const line=pts.map((p,i)=>`${x(i).toFixed(1)},${y(p.priceUSD).toFixed(1)}`).join(' ');
+    const area=`${pad.l},${pad.t+ih} ${line} ${pad.l+iw},${pad.t+ih}`;
+    const cur=pts[pts.length-1].priceUSD;
+    const tr=priceTrend(h), col=tr==='down'?'var(--yes)':tr==='up'?'var(--no)':'var(--accent)';
+    const g='var(--line)';
+    return `<svg width="100%" viewBox="0 0 ${W} ${H}" style="max-width:${W}px;font-family:IBM Plex Mono,monospace">`
+      +`<polygon points="${area}" fill="${col}" opacity="0.10"/>`
+      +`<line x1="${pad.l}" y1="${y(mx)}" x2="${pad.l+iw}" y2="${y(mx)}" stroke="${g}" stroke-width="1"/>`
+      +`<line x1="${pad.l}" y1="${y(mn)}" x2="${pad.l+iw}" y2="${y(mn)}" stroke="${g}" stroke-width="1"/>`
+      +`<text x="${pad.l-6}" y="${y(mx)+3}" text-anchor="end" font-size="10" fill="var(--ink-soft)">$${Math.round(mx)}</text>`
+      +`<text x="${pad.l-6}" y="${y(mn)+3}" text-anchor="end" font-size="10" fill="var(--ink-soft)">$${Math.round(mn)}</text>`
+      +`<polyline points="${line}" fill="none" stroke="${col}" stroke-width="2"/>`
+      +`<circle cx="${x(pts.length-1)}" cy="${y(cur)}" r="3.2" fill="${col}"/>`
+      +`<text x="${pad.l}" y="${H-8}" font-size="10" fill="var(--ink-soft)">${esc(pts[0].date)}</text>`
+      +`<text x="${pad.l+iw}" y="${H-8}" text-anchor="end" font-size="10" fill="var(--ink-soft)">${esc(pts[pts.length-1].date)}</text>`
+      +`</svg>`
+      +`<div style="font-size:11.5px;color:var(--ink-soft);margin-top:4px">now <b style="color:var(--ink)">$${cur}</b> &middot; low $${Math.round(mn)} &middot; high $${Math.round(mx)} &middot; ${pts.length} points</div>`;
+  };
+
+  const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
+  const active=new Set();
+  let query='';
+  const blob=new WeakMap();
+  const rowText=d=>{let t=blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase();blob.set(d,t);}return t;};
+  let sortMode=SORTS[0].id;
+
+  // header (click to sort)
+  const htr=$('#tbl thead tr');
+  htr.innerHTML='<th style="width:32px" aria-label="expand"></th>'+
+    COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
+  let colSort=null; // {id, dir:1|-1}
+  const scratch=document.createElement('div');
+  function sortVal(c,d){
+    if(c.sort) return c.sort(d);
+    scratch.innerHTML=c.cell(d);
+    const t=(scratch.textContent||'').replace(/↑|↓|↗/g,'').trim();
+    const n=parseFloat(t.replace(/[$,]/g,''));
+    return (t!=='' && !isNaN(n) && /^[-$]?[\d,]*\.?\d/.test(t))?n:t.toLowerCase();
+  }
+  function colCmp(a,b){
+    const c=COLUMNS.find(x=>x.id===colSort.id);
+    let va=sortVal(c,a), vb=sortVal(c,b);
+    const ea=(va===''||va==null), eb=(vb===''||vb==null);
+    if(ea&&eb) return 0; if(ea) return 1; if(eb) return -1;   // blanks always last
+    let r = (typeof va==='number'&&typeof vb==='number') ? va-vb : String(va).localeCompare(String(vb));
+    return r*colSort.dir;
+  }
+  function markHeaders(){
+    htr.querySelectorAll('th.sortable').forEach(th=>{
+      const on=colSort&&colSort.id===th.dataset.col;
+      th.setAttribute('aria-sort',on?(colSort.dir===1?'ascending':'descending'):'none');
+      th.querySelector('.arrow').textContent=on?(colSort.dir===1?' ▲':' ▼'):'';
+    });
+    try{sel.selectedIndex=colSort?-1:SORTS.findIndex(x=>x.id===sortMode);}catch(e){}
+  }
+  htr.querySelectorAll('th.sortable').forEach(th=>{
+    const go=()=>{
+      const id=th.dataset.col;
+      if(colSort&&colSort.id===id) colSort = colSort.dir===1 ? {id,dir:-1} : null; // asc -> desc -> off
+      else colSort = {id,dir:1};
+      markHeaders(); render();
+    };
+    th.addEventListener('click',go);
+    th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+
+  // column hide CSS
+  const st=document.createElement('style');
+  st.textContent=COLUMNS.filter(c=>c.hideable!==false).map(c=>
+    `#tbl[data-hide~="${c.id}"] [data-col="${c.id}"]{display:none}`).join('\n');
+  document.head.appendChild(st);
+
+  // min-width so it stays legible; ~150px per visible col
+  function setMin(){
+    const vis=COLUMNS.filter(c=>!hidden.has(c.id)).length+1;
+    tbl.style.minWidth=Math.min(2300,Math.max(760,vis*155))+'px';
+  }
+
+  // filters
+  const fwrap=$('#filters');
+  FILTERS.forEach(f=>{
+    const b=document.createElement('button');
+    b.className='chip';b.dataset.filter=f.id;b.setAttribute('aria-pressed','false');b.textContent=f.label;
+    b.addEventListener('click',()=>{
+      if(active.has(f.id)){active.delete(f.id);b.setAttribute('aria-pressed','false');}
+      else{active.add(f.id);b.setAttribute('aria-pressed','true');}
+      render();
+    });
+    fwrap.appendChild(b);
+  });
+
+  // sorts
+  const sel=$('#sort');
+  sel.innerHTML=SORTS.map(s=>`<option value="${s.id}">${esc(s.label)}</option>`).join('');
+  sel.addEventListener('change',e=>{sortMode=e.target.value;colSort=null;markHeaders();render();});
+
+  // column panel
+  const panel=$('#colpanel'), colbtn=$('#colbtn');
+  panel.querySelector('.colhead').insertAdjacentHTML('afterend',
+    COLUMNS.filter(c=>c.hideable!==false).map(c=>
+      `<label><input type="checkbox" data-col="${c.id}" checked> ${esc(c.label)}</label>`).join(''));
+  const HIDE_KEY='ogdb.'+DB.noun+'.hidden';
+  let hidden=new Set();
+  try{const s=localStorage.getItem(HIDE_KEY);if(s)hidden=new Set(JSON.parse(s));}catch(e){}
+  const ALL=COLUMNS.filter(c=>c.hideable!==false).map(c=>c.id);
+  function applyCols(){
+    tbl.setAttribute('data-hide',[...hidden].join(' '));
+    panel.querySelectorAll('input[data-col]').forEach(cb=>cb.checked=!hidden.has(cb.dataset.col));
+    colbtn.textContent=hidden.size?`Columns · ${ALL.length-hidden.size}/${ALL.length} ▾`:'Columns ▾';
+    try{localStorage.setItem(HIDE_KEY,JSON.stringify([...hidden]));}catch(e){}
+    setMin();
+  }
+  colbtn.addEventListener('click',e=>{e.stopPropagation();const o=panel.hidden;panel.hidden=!o;colbtn.setAttribute('aria-expanded',String(o));});
+  panel.addEventListener('click',e=>e.stopPropagation());
+  panel.addEventListener('change',e=>{const cb=e.target;if(!cb.dataset.col)return;
+    cb.checked?hidden.delete(cb.dataset.col):hidden.add(cb.dataset.col);applyCols();});
+  panel.querySelectorAll('.colactions button').forEach(b=>b.addEventListener('click',()=>{
+    hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
+  document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
+
+  function passes(d){
+    if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
+    for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}
+    return true;
+  }
+  const rowq=$('#rowq');
+  if(rowq){
+    rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
+    document.addEventListener('keydown',ev=>{
+      if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
+      if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
+    });
+  }
+
+  function render(){
+    let rows=DATA.filter(passes);
+    if(colSort){rows.sort(colCmp);}
+    else{const s=SORTS.find(x=>x.id===sortMode)||SORTS[0];rows.sort(s.cmp);}
+    tbody.innerHTML='';
+    const frag=document.createDocumentFragment();
+    rows.forEach(d=>{
+      const tr=document.createElement('tr');
+      tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
+      tr.innerHTML='<td><span class="chev">▶</span></td>'+
+        COLUMNS.map(c=>`<td data-col="${c.id}">${c.cell(d)}</td>`).join('');
+      const ex=document.createElement('tr');
+      ex.className='expand';ex.hidden=true;
+      ex.innerHTML=`<td colspan="${COLUMNS.length+1}"><div class="inner">`+
+        EXPAND.map(e=>{const h=e.html(d);return h?`<div><h4>${esc(e.label)}</h4><p>${h}</p></div>`:'';}).join('')+
+        `</div></td>`;
+      const toggle=()=>{const o=tr.getAttribute('aria-expanded')==='true';tr.setAttribute('aria-expanded',String(!o));ex.hidden=o;};
+      tr.addEventListener('click',toggle);
+      tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+      frag.appendChild(tr);frag.appendChild(ex);
+    });
+    tbody.appendChild(frag);
+    countEl.textContent=`${rows.length} of ${DATA.length} ${DB.noun} shown`;
+  }
+
+  applyCols();
+  markHeaders();
+  render();
+})();
+
+</script>
+</body>
+</html>

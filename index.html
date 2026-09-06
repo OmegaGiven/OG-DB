@@ -183,8 +183,8 @@
   <header class="hero">
     <h1 class="wordmark">OG<span class="dot">-</span>DB</h1>
     <div class="meta">
-      <span><b>6</b> databases</span>
-      <span><b>354</b> entries tracked</span>
+      <span><b>10</b> databases</span>
+      <span><b>583</b> entries tracked</span>
       <span>updated <b>2026-09-06</b></span>
     </div>
   </header>
@@ -274,6 +274,62 @@
         <span>compiled <b>Sep 2026</b></span>
       </div>
       <div class="schema"><span>laptops</span> ( name · price_band · start_price · category · build_quality · touchscreen · cpu · gpu · ram · storage · display · weight · battery · ports · charge · os · linux · repairability · source )</div>
+    </a>
+    <a class="card" href="gpus/">
+      <div class="card-top">
+        <h2>GPU DB</h2>
+        <span class="go">open &rarr;</span>
+      </div>
+      <p>GPUs for local AI and gaming, price-tracked — VRAM and the largest model that fits at Q4, tensor compute, power draw and connector, graphics level at 1080p / 1440p / 4K / 4K+RT.</p>
+      <div class="stats">
+        <span><b>64</b> entries</span>
+        <span><b>17</b> columns</span>
+        <span>compiled <b>Sep 2026</b></span>
+        <span><b>price tracked</b></span>
+      </div>
+      <div class="schema"><span>gpus</span> ( name · price_trend · segment · vram · max_model_q4 · ai_compute · power · res_target · raster · rt · 1080p · 1440p · 4k · 4k_rt · upscaling · size · source )</div>
+    </a>
+    <a class="card" href="ssds/">
+      <div class="card-top">
+        <h2>SSD DB</h2>
+        <span class="go">open &rarr;</span>
+      </div>
+      <p>NVMe and SATA SSDs, price-tracked — capacity, PCIe gen, DRAM vs DRAM-less, TLC / QLC, controller, sequential and random speed, endurance, $/TB.</p>
+      <div class="stats">
+        <span><b>58</b> entries</span>
+        <span><b>13</b> columns</span>
+        <span>compiled <b>Sep 2026</b></span>
+        <span><b>price tracked</b></span>
+      </div>
+      <div class="schema"><span>ssds</span> ( name · price_trend · $/tb · capacity · interface · dram · nand · controller · seq · random_iops · endurance · heatsink · source )</div>
+    </a>
+    <a class="card" href="ram/">
+      <div class="card-top">
+        <h2>RAM DB</h2>
+        <span class="go">open &rarr;</span>
+      </div>
+      <p>Desktop DDR4 / DDR5 kits, price-tracked — capacity, speed, latency and timings, EXPO / XMP, rank, IC die, height, $/GB.</p>
+      <div class="stats">
+        <span><b>57</b> entries</span>
+        <span><b>13</b> columns</span>
+        <span>compiled <b>Sep 2026</b></span>
+        <span><b>price tracked</b></span>
+      </div>
+      <div class="schema"><span>ram</span> ( name · price_trend · $/gb · type · kit · speed · latency · profile · rank · ic_die · rgb · height · source )</div>
+    </a>
+    <a class="card" href="hdds/">
+      <div class="card-top">
+        <h2>HDD DB</h2>
+        <span class="go">open &rarr;</span>
+      </div>
+      <p>Hard drives, price-tracked — capacity, CMR vs SMR, use case, RPM / cache, interface, workload rating, warranty, idle power, $/TB.</p>
+      <div class="stats">
+        <span><b>50</b> entries</span>
+        <span><b>12</b> columns</span>
+        <span>compiled <b>Sep 2026</b></span>
+        <span><b>price tracked</b></span>
+      </div>
+      <div class="schema"><span>hdds</span> ( name · price_trend · $/tb · capacity · recording · use_case · rpm · interface · workload · warranty · idle_power · source )</div>
     </a>
   </div>
 

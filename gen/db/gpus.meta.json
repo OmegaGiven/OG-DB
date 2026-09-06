@@ -1,0 +1,11 @@
+{
+  "slug": "gpus",
+  "title": "GPU DB",
+  "dbName": "GPU DB",
+  "description": "GPUs for local AI and gaming with tracked price history - VRAM and largest model that fits, tensor compute, power draw, and graphics level at 1080p / 1440p / 4K / 4K+RT.",
+  "compiled": "Sep 2026",
+  "noun": "GPUs",
+  "dataFile": "gpus/gpus.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>Price (trend)</strong> is a sparkline of recorded prices, newest on the right &mdash; green falling, red rising. Expand a row for the full chart. Current prices are Sept-2026 street figures for new stock where sold new, else typical used; snapshots are appended weekly and on request.</li><li><strong>Max model @ Q4</strong> is the largest <em>dense</em> model (billions of params) that loads at ~Q4_K_M with ~2 GB headroom and a modest context: 12 GB &rarr; ~14B, 16 GB &rarr; ~22B, 24 GB &rarr; ~32B, 48 GB &rarr; ~70B, 96 GB &rarr; ~140B. Longer context eats VRAM fast; MoE and multi-GPU change the math. Pair with the <a href=\"../localai/\">Local AI DB</a>.</li><li><strong>AI compute</strong> is dense FP16 tensor throughput. Cards without tensor / matrix cores (RDNA2, older Arc, Tesla P40) still run models off raw VRAM but prompt processing is slow and needs ROCm / Vulkan &mdash; see the AI note.</li><li><strong>Gaming by resolution</strong> &mdash; <em>Res target</em> is the highest resolution the card drives comfortably at high/ultra <em>without</em> upscaling. The four resolution columns give Cyberpunk 2077 FPS (native, then with DLSS / FSR / Frame Gen) as review composites, &plusmn;10&ndash;15%. Raster / RT tiers are S (4090 / 5090 class) to D.</li><li><strong>Power</strong> &mdash; TDP, the connector (8-pin vs 12VHPWR / 12V-2x6) and the vendor-recommended PSU. The <em>8-pin only</em> filter avoids the 16-pin adapter story.</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> Datacenter cards (P40 / P100 / V100 / A100) have no display outputs &mdash; gaming fields read n/a. Apple rows price the whole machine and treat unified memory minus ~6 GB as VRAM. Workstation cards map gaming numbers from their GeForce twin. Prices for the newest cards (5090, RTX PRO 6000, B60) are the least certain. Per-row <strong>Source</strong> is the TechPowerUp GPU database. Compiled Sep 2026.</p></footer>"
+}

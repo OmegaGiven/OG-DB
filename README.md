@@ -13,6 +13,10 @@ Live: **https://omegagiven.github.io/OG-DB/**
 | Phone DB | Smartphones 2022&ndash;2026, mainstream + enthusiast &mdash; SoC, memory, display, battery/charging, USB spec, headphone jack, microSD, IR blaster, water resistance, full camera set, OS update years, bootloader / custom-ROM support, launch price. | [`/phones/`](https://omegagiven.github.io/OG-DB/phones/) | [`phones.json`](phones/phones.json) |
 | Local AI DB | Open-weight / locally-runnable models &mdash; VRAM by quant (Q4/Q8/FP16), max context + real-world context note, KV-cache cost, image recognition, audio recognition, reasoning &amp; coding tier, tool use, runner support, license. | [`/localai/`](https://omegagiven.github.io/OG-DB/localai/) | [`localai.json`](localai/localai.json) |
 | Laptop DB | Laptops 2023&ndash;2026 in five price bands (&lt;$500 &rarr; $2000+) &mdash; MacBooks, Framework, Dell, HP, Lenovo, ASUS, Razer, MSI. CPU/GPU options, RAM &amp; storage upgradeability, display, weight, battery, ports, Linux support, repairability, start price. | [`/laptops/`](https://omegagiven.github.io/OG-DB/laptops/) | [`laptops.json`](laptops/laptops.json) |
+| GPU DB | GPUs for local AI + gaming, price-tracked &mdash; VRAM, largest model at Q4 / FP16, tensor compute, TDP + connector, res target, Cyberpunk FPS at 1080p / 1440p / 4K / 4K+RT. | [`/gpus/`](https://omegagiven.github.io/OG-DB/gpus/) | [`gpus.json`](gpus/gpus.json) |
+| SSD DB | NVMe + SATA SSDs, price-tracked &mdash; capacity, PCIe gen, DRAM, NAND, controller, speeds, endurance, $/TB. | [`/ssds/`](https://omegagiven.github.io/OG-DB/ssds/) | [`ssds.json`](ssds/ssds.json) |
+| RAM DB | DDR4 / DDR5 kits, price-tracked &mdash; capacity, speed, CL, EXPO/XMP, rank, IC die, height, $/GB. | [`/ram/`](https://omegagiven.github.io/OG-DB/ram/) | [`ram.json`](ram/ram.json) |
+| HDD DB | Hard drives, price-tracked &mdash; capacity, CMR/SMR, use case, RPM, workload, warranty, idle power, $/TB. | [`/hdds/`](https://omegagiven.github.io/OG-DB/hdds/) | [`hdds.json`](hdds/hdds.json) |
 | Mouse DB | PC & gaming mice — side-button count, multi-device switching, scroll-wheel type (ratchet / free-spin / toggle), tilt, sensor, DPI/polling, weight, onboard memory, software, price. | [`/mice/`](https://omegagiven.github.io/OG-DB/mice/) | [`mice.json`](mice/mice.json) |
 
 ## Requests
@@ -20,6 +24,10 @@ Live: **https://omegagiven.github.io/OG-DB/**
 Want a row added, a value corrected, a database refreshed, or a whole new
 database for another product line? [Open an issue](https://github.com/OmegaGiven/OG-DB/issues/new/choose)
 — there are templates for each. Existing requests: [issues](https://github.com/OmegaGiven/OG-DB/issues).
+
+## Price tracking
+
+GPU, SSD, RAM and HDD rows carry `priceHistory: [{date, priceUSD, source}]`. Pages render a sparkline in the price column and a full chart in the expanded row. Append a snapshot with `node gen/snapshot.js <slug> prices.json` (a `{name: price}` map or `[{name, priceUSD, source}]`); it updates `priceUSD`, `$/TB` or `$/GB`, and rebuilds the page. A weekly routine appends new points; ad-hoc refreshes on request.
 
 ## Conventions
 

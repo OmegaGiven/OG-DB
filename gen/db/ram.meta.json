@@ -1,0 +1,11 @@
+{
+  "slug": "ram",
+  "title": "RAM DB",
+  "dbName": "RAM DB",
+  "description": "Desktop DDR4 and DDR5 memory kits with tracked price history - capacity, speed, latency, EXPO/XMP, rank, IC die, height, $/GB.",
+  "compiled": "Sep 2026",
+  "noun": "kits",
+  "dataFile": "ram/ram.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>Price (trend)</strong> is a sparkline of recorded prices, newest on the right &mdash; green falling, red rising. Expand a row for the full chart. Snapshots are appended weekly and on request; most rows currently have a single Sept-2026 point.</li><li><strong>Sept 2026 is a DRAM-shortage peak.</strong> A 32 GB DDR5-6000 CL30 kit that was ~$105 in late 2024 is $400&ndash;$580 now, and prices move 2&ndash;20% a month. <em>$/GB</em> is the comparison that survives that.</li><li><strong>Profile</strong> &mdash; <em>EXPO</em> is AMD's one-click overclock profile, <em>XMP</em> Intel's; most modern kits carry both. <em>JEDEC only</em> kits run at the stock standard speed. The AM5 sweet spot is DDR5-6000 CL30; Intel tolerates faster.</li><li><strong>IC / die</strong> matters to tuners (SK hynix A-die / M-die overclock best). Filled only where the vendor documents it; Corsair / Kingston / Patriot rotate dies under one part number, so those read <em>unknown</em>.</li><li><strong>Height</strong> &mdash; check against your CPU cooler; low-profile (&le; 35 mm) kits clear almost any air cooler.</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> About a third of prices are exact-SKU quotes from the last two weeks; the rest are tier floors plus brand premium (&plusmn;20%). CUDIMM 8200+ kits are left out as a separate compatibility story. Per-row <strong>Source</strong> is the vendor product page. Compiled Sep 2026.</p></footer>"
+}

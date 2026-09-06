@@ -68,6 +68,9 @@
 
   const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
   const active=new Set();
+  let query='';
+  const blob=new WeakMap();
+  const rowText=d=>{let t=blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase();blob.set(d,t);}return t;};
   let sortMode=SORTS[0].id;
 
   // header (click to sort)
@@ -164,7 +167,19 @@
     hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
   document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
 
-  function passes(d){for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}return true;}
+  function passes(d){
+    if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
+    for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}
+    return true;
+  }
+  const rowq=$('#rowq');
+  if(rowq){
+    rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
+    document.addEventListener('keydown',ev=>{
+      if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
+      if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
+    });
+  }
 
   function render(){
     let rows=DATA.filter(passes);

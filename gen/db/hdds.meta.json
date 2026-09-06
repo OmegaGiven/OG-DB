@@ -1,0 +1,11 @@
+{
+  "slug": "hdds",
+  "title": "HDD DB",
+  "dbName": "HDD DB",
+  "description": "Hard drives with tracked price history - capacity, CMR/SMR, use case, RPM, workload rating, warranty, idle power, $/TB.",
+  "compiled": "Sep 2026",
+  "noun": "drives",
+  "dataFile": "hdds/hdds.json",
+  "primerHTML": "<div class=\"primer\"><h2>How to read the table</h2><ul><li><strong>Price (trend)</strong> is a sparkline of recorded prices, newest on the right &mdash; green falling, red rising. Expand a row for the full chart with low / high. Some rows carry reconstructed 2024&ndash;25 points from that era's $/TB bands; new snapshots are appended weekly and on request.</li><li><strong>CMR vs SMR is the trap.</strong> Shingled (SMR) drives collapse under sustained writes and RAID / ZFS rebuilds. Every 3.5\" BarraCuda 2&ndash;8 TB, current SkyHawk 2&ndash;8 TB, WD Blue EZAZ 4/6 TB, Toshiba P300 4/6 TB and all consumer 2.5\" drives are SMR &mdash; and the box doesn't say. <em>CMR only</em> filter on by habit for NAS.</li><li><strong>Best $/TB</strong> is usually shucking an external (Expansion / Elements / My Book) or an enterprise Exos / Ultrastar / MG-series &mdash; the 8 TB NAS and surveillance tier is the worst value.</li><li><strong>Workload rating</strong> (TB/yr) and MTBF are vendor figures; consumer lines that publish nothing show placeholders (55 TB/yr, 1M h).</li></ul></div>",
+  "footerHTML": "<footer><p><strong>Notes.</strong> 2026 prices sit ~50% above 2025 and ~2&times; the 2024 lows; same-SKU spread between retailers is often 40&ndash;60%, so <em>priceUSD</em> is the lowest reputable retailer, not a median (&plusmn;20%). Per-row <strong>Source</strong> is the vendor or ServerPartDeals page. Compiled Sep 2026.</p></footer>"
+}

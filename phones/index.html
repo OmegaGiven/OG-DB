@@ -124,6 +124,11 @@ footer{margin-top:30px;font-size:12px;color:var(--ink-soft);max-width:70ch}
 footer a{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+.searchwrap{flex:1 1 220px;min-width:180px}
+.rowsearch{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;padding:6px 10px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;outline:0}
+.rowsearch:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.rowsearch::-webkit-search-cancel-button{-webkit-appearance:none}
+
 </style>
 </head>
 <body>
@@ -133,6 +138,7 @@ footer a{color:var(--accent)}
   </header>
   <div class="primer"><h2>How to read the table</h2><ul><li><strong>OS &amp; support</strong> &mdash; promised <em>major OS versions</em> then <em>security years</em>, both counted from launch. Apple makes no public number; those are estimates from history + regulatory filings.</li><li><strong>Bootloader / ROM</strong> &mdash; <em>Yes</em> means officially unlockable; <em>carrier-locked varies</em> covers Samsung (global units unlock, US Snapdragon never does). Custom-ROM cell says whether LineageOS / GrapheneOS / etc. is <em>official</em> or community.</li><li><strong>USB</strong> &mdash; most phones are USB-C 2.0 (480 Mbps, no video); green = USB 3.x and/or DisplayPort out; red = Lightning.</li><li><strong>Non-US prices</strong> (Xiaomi, OnePlus China, Honor, Oppo, Vivo, Realme, Zenfone) are converted from EUR/CNY launch RRP &mdash; see the Price detail; many aren't officially US-sold.</li><li><strong>Peak-nits</strong> isn't normalised &mdash; Chinese-brand 4500-6500 figures are tiny-window marketing peaks, not full-screen brightness.</li></ul></div>
   <div class="controls">
+    <div class="grp searchwrap"><input id="rowq" class="rowsearch" type="search" placeholder="Search rows… ( / )" autocomplete="off" aria-label="Search rows"></div>
     <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
     <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
     <div class="grp colwrap">
@@ -302,6 +308,9 @@ const EXPAND=[
 
   const tbl=$('#tbl'), tbody=$('#tbody'), countEl=$('#count');
   const active=new Set();
+  let query='';
+  const blob=new WeakMap();
+  const rowText=d=>{let t=blob.get(d);if(!t){t=JSON.stringify(d).toLowerCase();blob.set(d,t);}return t;};
   let sortMode=SORTS[0].id;
 
   // header (click to sort)
@@ -398,7 +407,19 @@ const EXPAND=[
     hidden=b.dataset.all==='1'?new Set():new Set(ALL);applyCols();}));
   document.addEventListener('click',()=>{if(!panel.hidden){panel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
 
-  function passes(d){for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}return true;}
+  function passes(d){
+    if(query){const t=rowText(d);for(const term of query.split(/\s+/)){if(term&&!t.includes(term))return false;}}
+    for(const id of active){const f=FILTERS.find(x=>x.id===id);if(f&&!f.test(d))return false;}
+    return true;
+  }
+  const rowq=$('#rowq');
+  if(rowq){
+    rowq.addEventListener('input',()=>{query=rowq.value.trim().toLowerCase();render();});
+    document.addEventListener('keydown',ev=>{
+      if(ev.key==='/'&&document.activeElement!==rowq&&!/input|textarea|select/i.test(document.activeElement.tagName)){ev.preventDefault();rowq.focus();}
+      if(ev.key==='Escape'&&document.activeElement===rowq){rowq.value='';query='';render();rowq.blur();}
+    });
+  }
 
   function render(){
     let rows=DATA.filter(passes);

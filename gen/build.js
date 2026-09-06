@@ -37,6 +37,7 @@ ${css}
   </header>
   ${meta.primerHTML||''}
   <div class="controls">
+    <div class="grp searchwrap"><input id="rowq" class="rowsearch" type="search" placeholder="Search rows… ( / )" autocomplete="off" aria-label="Search rows"></div>
     <div class="grp"><span class="glabel">Filter</span><span id="filters" style="display:contents"></span></div>
     <div class="grp"><span class="glabel">Sort</span><select id="sort"></select></div>
     <div class="grp colwrap">
