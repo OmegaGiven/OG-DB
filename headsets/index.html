@@ -77,13 +77,21 @@
   .prose{max-width:70ch}
 
   header.masthead{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:26px}
-  .kicker{
-    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 10px
+  .homebtn{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+    color:var(--ink-soft);border:1px solid var(--line-strong);border-radius:999px;
+    padding:5px 12px;margin:0 0 16px;transition:.12s
+  }
+  .homebtn:hover,.homebtn:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+  .compiled{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+    text-transform:none;color:var(--ink-soft);font-weight:400;white-space:nowrap;
+    margin-left:12px;vertical-align:middle
   }
   h1{
     font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(28px,5vw,46px);
-    line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance;max-width:16ch
+    line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance
   }
   .standfirst{
     margin:14px 0 0;max-width:65ch;color:var(--ink-soft);font-size:15px
@@ -168,8 +176,8 @@
 <body>
 <div class="wrap">
   <header class="masthead">
-    <p class="kicker">Headset comparison database · compiled Sep 2026</p>
-    <h1>Headset DB</h1>
+    <a class="homebtn" href="../">&larr; OG-DB</a>
+    <h1>Headset DB <span class="compiled">compiled Sep 2026</span></h1>
     <p class="standfirst">Headsets compared on the things that actually decide a purchase: <strong>how</strong> you connect, <strong>power</strong>, spatial-audio support and <strong>where</strong> its DSP runs, mic type and quality, sidetone, the <strong>software</strong> you're tied to, and price. Wireless and wired, gaming and general-purpose. Click any row for the detail.</p>
   </header>
 
