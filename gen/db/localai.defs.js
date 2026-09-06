@@ -7,6 +7,30 @@ const AUD={none:['None','t-no'],'ASR only':['ASR','t-part'],'ASR + understanding
 const TYPE={LLM:'t-neutral',coder:'t-neutral','VLM':'t-part','ASR':'t-part'};
 const gb=v=>v==null?'&mdash;':`<span class="price">${v} GB</span>`;
 
+// Alignment / censorship of the DEFAULT released weights. "light" = ships with
+// minimal guardrails; "moderate" = standard safety RLHF, jailbreakable;
+// "strict" = refusal-prone; "prc" = also hard-refuses PRC-political topics.
+// ASR / transcription models have no refusal behaviour -> n/a.
+const ALIGN={strict:['Heavily filtered','t-no'],moderate:['Standard guardrails','t-part'],light:['Light guardrails','t-yes'],na:['n/a (transcription)','t-neutral']};
+const ALORD={light:0,moderate:1,prc:2,strict:3,na:4};
+function alignOf(d){
+  const n=(d.name||'').toLowerCase(), dev=(d.developer||'').toLowerCase(), t=d.type||'';
+  if(t==='ASR') return ['na',null];
+  if(/gemma/.test(n)) return ['strict','Among the most refusal-prone open models; heavy safety RLHF. Community "abliterated" builds exist.'];
+  if(/phi-/.test(n)) return ['strict','Microsoft’s heavy synthetic-data curation makes it very filtered; refuses readily.'];
+  if(/granite/.test(n)) return ['strict','IBM enterprise safety tuning; conservative on anything edgy.'];
+  if(/qwen/.test(n)) return ['prc','General safety refusals, plus hard refusal of PRC-sensitive political topics. Strong community abliterated / RP fine-tunes.'];
+  if(/deepseek/.test(n)) return ['prc','Light general guardrails but deflects Tiananmen / PRC-political queries; R1 distills inherit the base tuning.'];
+  if(/internvl|minicpm|glm-/.test(n)) return ['prc','Chinese lab model — standard safety plus PRC-political refusals.'];
+  if(/command r|aya/.test(n)) return ['moderate','Cohere enterprise tuning — compliant for business use, standard safety refusals.'];
+  if(/jamba/.test(n)) return ['moderate','Standard commercial safety tuning.'];
+  if(/llama|nemotron|ultravox/.test(n)) return ['moderate','Standard Meta safety RLHF; jailbreakable, and abliterated / Dolphin / Hermes tunes are everywhere.'];
+  if(/mistral|mixtral|pixtral|ministral|devstral|voxtral|codestral/.test(n)) return ['light','Mistral ships minimal guardrails by design; Nemo and 7B are among the most permissive instruct models.'];
+  if(/molmo|olmo/.test(n)) return ['light','Ai2 fully-open research model; light instruct tuning, base weights released.'];
+  if(/smollm|falcon/.test(n)) return ['light','Small research model with minimal alignment tuning.'];
+  return ['moderate',null];
+}
+
 const COLUMNS=[
  {id:'name',hideable:false,label:'Model',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.developer)}</span>`},
  {id:'type',label:'Type',cell:d=>tag(d.type,TYPE[d.type]||(/omni/.test(d.type)?'t-yes':'t-neutral'))},
@@ -21,6 +45,7 @@ const COLUMNS=[
  {id:'reason',label:'Reasoning',sort:d=>({S:0,A:1,B:2,C:3}[d.reasoningTier]??9),cell:d=>tierTag(d.reasoningTier)},
  {id:'code',label:'Coding',sort:d=>({S:0,A:1,B:2,C:3}[d.codingTier]??9),cell:d=>tierTag(d.codingTier)},
  {id:'tools',label:'Tool use',cell:d=>d.toolUse==='native'?tag('Native','t-yes'):d.toolUse==='prompted'?tag('Prompted','t-part'):tag('Weak','t-no')},
+ {id:'align',label:'Alignment',sort:d=>ALORD[alignOf(d)[0]]??5,cell:d=>{const[k,note]=alignOf(d);const m=k==='prc'?['PRC-topic + guardrails','t-no']:ALIGN[k]||['?','t-neutral'];return tag(m[0],m[1])+(note?`<span class="sub">${esc(note)}</span>`:'');}},
  {id:'runners',label:'Runners',cell:d=>`<span style="font-size:11.5px">${esc(d.runners||'')}</span>`},
  {id:'license',label:'License',cell:d=>`<span style="font-size:11.5px">${esc(d.license||'')}</span>`},
  {id:'source',label:'Source',cell:d=>srcLink(d.source)}
@@ -41,7 +66,10 @@ const FILTERS=[
  {id:'top',label:'Reasoning S / A',test:d=>d.reasoningTier==='S'||d.reasoningTier==='A'},
  {id:'cod',label:'Coding S / A',test:d=>d.codingTier==='S'||d.codingTier==='A'},
  {id:'ctx',label:'128k+ context',test:d=>d.contextMaxTokens!=null&&d.contextMaxTokens>=128000},
- {id:'perm',label:'Apache / MIT',test:d=>/apache|mit/i.test(d.license||'')}
+ {id:'perm',label:'Apache / MIT',test:d=>/apache|mit/i.test(d.license||'')},
+ {id:'lgd',label:'Light guardrails',test:d=>alignOf(d)[0]==='light'},
+ {id:'noprc',label:'No PRC-topic refusals',test:d=>{const k=alignOf(d)[0];return k==='light'||k==='moderate';}},
+ {id:'strict',label:'Heavily filtered',test:d=>alignOf(d)[0]==='strict'}
 ];
 
 const SORTS=[
@@ -70,6 +98,7 @@ const EXPAND=[
    <dt>Reasoning</dt><dd>tier ${esc(d.reasoningTier||'n/a')}</dd>
    <dt>Coding</dt><dd>tier ${esc(d.codingTier||'n/a')}</dd>
    <dt>Tool use</dt><dd>${esc(d.toolUse)}</dd>
+   <dt>Alignment</dt><dd>${(()=>{const[k,n]=alignOf(d);return (k==='prc'?'standard guardrails + PRC-political refusals':k==='na'?'n/a (transcription)':k+' guardrails')+(n?' — '+esc(n):'');})()}</dd>
  </dl>`},
  {label:'Meta',html:d=>`<dl class="kv">
    <dt>Developer</dt><dd>${esc(d.developer)}</dd>
