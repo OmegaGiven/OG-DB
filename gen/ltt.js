@@ -15,6 +15,7 @@
  * Writes <slug>/ltt.json ; gen/build.js merges it onto matching rows as row.ltt.
  */
 const fs = require('fs'), path = require('path'), crypto = require('crypto');
+const { spawnSync } = require('child_process');
 const ROOT = path.resolve(__dirname, '..');
 const slug = process.argv[2];
 const MAP = { gpus: 'graphics-cards', mice: 'mice', keyboards: 'keyboards' };
@@ -49,10 +50,18 @@ async function get(url, referer) {
   const file = path.join(CACHE, key + '.html');
   if (!opt.refetch && fs.existsSync(file)) return { html: fs.readFileSync(file, 'utf8'), cached: true };
   await sleep(GAP_MS);
-  const r = await fetch(url, { headers: { ...HEADERS, Referer: referer || 'https://www.lttlabs.com/categories/' + cat }, signal: AbortSignal.timeout(30000) });
-  if (r.status === 403) { throw new Error('403 from ' + url + ' -- Cloudflare is blocking this IP; stopping. Re-run later.'); }
-  if (!r.ok) return { html: null, status: r.status };
-  const html = await r.text();
+  // Cloudflare fingerprints Node's HTTP client; curl passes. Shell out.
+  const args = ['-sS', '--compressed', '--max-time', '30', '-w', '\n__HTTP_%{http_code}__', '-A', UA];
+  for (const [k, v] of Object.entries({ ...HEADERS, Referer: referer || 'https://www.lttlabs.com/categories/' + cat })) args.push('-H', k + ': ' + v);
+  args.push(url);
+  const res = spawnSync('curl', args, { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
+  if (res.error) throw res.error;
+  const body = res.stdout || '';
+  const mm = body.match(/\n__HTTP_(\d+)__\s*$/);
+  const code = mm ? +mm[1] : 0;
+  const html = mm ? body.slice(0, mm.index) : body;
+  if (code === 403) throw new Error('403 from ' + url + ' -- Cloudflare is blocking this IP; stopping. Re-run later.');
+  if (code !== 200) return { html: null, status: code };
   fs.writeFileSync(file, html);
   return { html, cached: false };
 }
