@@ -93,6 +93,26 @@
   }
   .lbl::after{content:"";flex:1;height:1px;background:var(--line)}
 
+  /* search */
+  .search{
+    display:flex;align-items:center;gap:10px;margin:0 0 18px;padding:0 14px;
+    background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;
+    color:var(--ink-soft);transition:border-color .14s
+  }
+  .search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+  .search input{
+    flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);
+    font:inherit;font-size:14.5px;padding:12px 0
+  }
+  .search input::placeholder{color:var(--ink-soft);opacity:.8}
+  .search input::-webkit-search-cancel-button{-webkit-appearance:none}
+  .search kbd{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-soft);
+    border:1px solid var(--line-strong);border-radius:4px;padding:1px 6px;line-height:1.5
+  }
+  .nomatch{margin:0 0 18px;font-size:13.5px;color:var(--ink-soft)}
+  .card[hidden]{display:none}
+
   /* database cards */
   .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
   .card{
@@ -169,7 +189,14 @@
     </div>
   </header>
 
-  <div class="grid">
+  <div class="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Search databases — e.g. gpu, ssd, split keyboard, linux…" autocomplete="off" aria-label="Search databases">
+    <kbd>/</kbd>
+  </div>
+  <p class="nomatch" id="nomatch" hidden>No database matches. <a href="https://github.com/OmegaGiven/OG-DB/issues/new/choose">Request one &rarr;</a></p>
+
+  <div class="grid" id="grid">
     <a class="card" href="headsets/">
       <div class="card-top">
         <h2>Headset DB</h2>
@@ -264,5 +291,22 @@
   </footer>
 
 </div>
+<script>
+(function(){
+  const q=document.getElementById('q'), grid=document.getElementById('grid'), nomatch=document.getElementById('nomatch');
+  const cards=[...grid.querySelectorAll('.card')].map(el=>({el,text:el.textContent.replace(/\s+/g,' ').toLowerCase()}));
+  function run(){
+    const terms=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    let shown=0;
+    cards.forEach(c=>{const ok=terms.every(t=>c.text.includes(t));c.el.hidden=!ok;if(ok)shown++;});
+    nomatch.hidden=shown>0;
+  }
+  q.addEventListener('input',run);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='/'&&document.activeElement!==q&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();q.focus();}
+    if(e.key==='Escape'&&document.activeElement===q){q.value='';run();q.blur();}
+  });
+})();
+</script>
 </body>
 </html>
