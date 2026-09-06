@@ -16,8 +16,8 @@
     "useCase": "enterprise / NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5,
-    "priceUSD": 430,
-    "pricePerTB": 26.88,
+    "priceUSD": 550,
+    "pricePerTB": 34,
     "priceHistory": [
       {
         "date": "2024-05",
@@ -33,6 +33,11 @@
         "date": "2026-09",
         "priceUSD": 430,
         "source": "ServerPartDeals"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 550,
+        "source": "Newegg"
       }
     ],
     "notes": "ST16000NM001G. End-of-line; mostly sold as manufacturer-recertified now (~$230-260 recert). Still a solid $/TB anchor for 16TB.",
@@ -58,8 +63,8 @@
     "useCase": "enterprise / NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5.3,
-    "priceUSD": 480,
-    "pricePerTB": 30,
+    "priceUSD": 672.1,
+    "pricePerTB": 42,
     "priceHistory": [
       {
         "date": "2024-05",
@@ -75,6 +80,11 @@
         "date": "2026-09",
         "priceUSD": 480,
         "source": "Newegg / ServerPartDeals"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 672.1,
+        "source": "Newegg"
       }
     ],
     "notes": "ST16000NM000J. Amazon marketplace listing ~$711 on 2026-09-06 (diskdojo); Newegg/SPD well under that. 18TB sibling ST18000NM000J ~$540.",
@@ -100,8 +110,8 @@
     "useCase": "enterprise / NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5.5,
-    "priceUSD": 560,
-    "pricePerTB": 28,
+    "priceUSD": 879.99,
+    "pricePerTB": 44,
     "priceHistory": [
       {
         "date": "2023-09",
@@ -127,6 +137,11 @@
         "date": "2026-09",
         "priceUSD": 560,
         "source": "ServerPartDeals / Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 879.99,
+        "source": "Newegg"
       }
     ],
     "notes": "ST20000NM007D. SPD listed new at $500 but out of stock on 2026-09-06; Amazon $849, Newegg $880 same day. Recert ~$500. Loud under load; enterprise workhorse.",
@@ -194,8 +209,8 @@
     "useCase": "enterprise / NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 6,
-    "priceUSD": 660,
-    "pricePerTB": 27.5,
+    "priceUSD": 959.99,
+    "pricePerTB": 40,
     "priceHistory": [
       {
         "date": "2024-09",
@@ -211,6 +226,11 @@
         "date": "2026-09",
         "priceUSD": 660,
         "source": "Newegg / diskdojo (renewed $620)"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 959.99,
+        "source": "Newegg"
       }
     ],
     "notes": "ST24000NM002H. Last conventional-PMR Exos before HAMR. Renewed units $620 (diskdojo 2026-09-06). Also sold in 12/16/20TB X24 SKUs.",
@@ -666,8 +686,8 @@
     "useCase": "NAS",
     "warrantyYears": 3,
     "avgIdleWatts": 3.4,
-    "priceUSD": 355,
-    "pricePerTB": 44.38,
+    "priceUSD": 437.99,
+    "pricePerTB": 55,
     "priceHistory": [
       {
         "date": "2024-05",
@@ -693,6 +713,11 @@
         "date": "2026-09",
         "priceUSD": 355,
         "source": "Amazon / Newegg (diskdojo 2026-09-06)"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 437.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD80EFPX. 2026 price whiplash: $180 in May, $355 by Jul-Sep. Used ~$215. Quiet, cool; 3-yr warranty is the weak spot vs Pro.",
@@ -718,8 +743,8 @@
     "useCase": "NAS",
     "warrantyYears": 3,
     "avgIdleWatts": 4.8,
-    "priceUSD": 460,
-    "pricePerTB": 38.33,
+    "priceUSD": 459.99,
+    "pricePerTB": 38,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -735,6 +760,11 @@
         "date": "2026-09",
         "priceUSD": 460,
         "source": "Amazon (diskdojo 2026-09-06)"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 459.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD120EFBX. 12TB+ Red Plus are helium 7200 class despite the 'Plus' badge.",
@@ -760,8 +790,8 @@
     "useCase": "NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5,
-    "priceUSD": 550,
-    "pricePerTB": 34.38,
+    "priceUSD": 704.99,
+    "pricePerTB": 44,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -787,6 +817,11 @@
         "date": "2026-09",
         "priceUSD": 550,
         "source": "eBay-new / Amazon $705 (diskdojo 2026-09-06)"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 704.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD161KFGX. Essentially an Ultrastar with NAS firmware and a 5-yr warranty; you pay ~$100-150 over HC550 for the badge.",
@@ -812,8 +847,8 @@
     "useCase": "NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5.6,
-    "priceUSD": 799,
-    "pricePerTB": 36.32,
+    "priceUSD": 959.99,
+    "pricePerTB": 44,
     "priceHistory": [
       {
         "date": "2024-09",
@@ -829,6 +864,11 @@
         "date": "2026-09",
         "priceUSD": 799,
         "source": "Amazon (diskdojo 2026-09-06)"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 959.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD221KFGX. OptiNAND. 24TB $1,000 and 26TB $1,145 on the same day - little $/TB advantage at the top.",
@@ -896,8 +936,8 @@
     "useCase": "NAS",
     "warrantyYears": 3,
     "avgIdleWatts": 5.3,
-    "priceUSD": 330,
-    "pricePerTB": 41.25,
+    "priceUSD": 329.99,
+    "pricePerTB": 41,
     "priceHistory": [
       {
         "date": "2024-05",
@@ -918,6 +958,11 @@
         "date": "2026-09",
         "priceUSD": 330,
         "source": "Amazon / Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 329.99,
+        "source": "Newegg"
       }
     ],
     "notes": "ST8000VN004 / ST8000VNZ04. 7200 rpm air drive - hotter and louder than Red Plus 8TB, and now priced about the same.",
@@ -943,8 +988,8 @@
     "useCase": "NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5.5,
-    "priceUSD": 600,
-    "pricePerTB": 37.5,
+    "priceUSD": 539.99,
+    "pricePerTB": 34,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -965,6 +1010,11 @@
         "date": "2026-09",
         "priceUSD": 600,
         "source": "Newegg / Amazon $640 (diskdojo 2026-09-06)"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 539.99,
+        "source": "Newegg"
       }
     ],
     "notes": "ST16000NT001. Exos X18 platform with NAS firmware + 3 yr Rescue. Newegg had OEM units at $265 in Sept 2025.",
@@ -990,8 +1040,8 @@
     "useCase": "NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 6,
-    "priceUSD": 780,
-    "pricePerTB": 32.5,
+    "priceUSD": 945.1,
+    "pricePerTB": 39,
     "priceHistory": [
       {
         "date": "2024-09",
@@ -1007,6 +1057,11 @@
         "date": "2026-09",
         "priceUSD": 780,
         "source": "Amazon / Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 945.1,
+        "source": "Newegg"
       }
     ],
     "notes": "ST24000NT002. Exos X24 platform. 22TB sibling $895 on Amazon 2026-09-06 (diskdojo) - 24TB is the better buy.",
@@ -1200,8 +1255,8 @@
     "useCase": "surveillance",
     "warrantyYears": 3,
     "avgIdleWatts": 3,
-    "priceUSD": 130,
-    "pricePerTB": 32.5,
+    "priceUSD": 206.95,
+    "pricePerTB": 52,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1217,6 +1272,11 @@
         "date": "2026-09",
         "priceUSD": 130,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 206.95,
+        "source": "Newegg"
       }
     ],
     "notes": "WD43PURZ. AllFrame AI firmware, up to 64 cameras. Same mechanics as Red Plus 4TB; buy whichever is cheaper.",
@@ -1242,8 +1302,8 @@
     "useCase": "surveillance",
     "warrantyYears": 3,
     "avgIdleWatts": 3.4,
-    "priceUSD": 360,
-    "pricePerTB": 45,
+    "priceUSD": 454.45,
+    "pricePerTB": 57,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1259,6 +1319,11 @@
         "date": "2026-09",
         "priceUSD": 360,
         "source": "Best Buy / Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 454.45,
+        "source": "Newegg"
       }
     ],
     "notes": "WD85PURZ. Top of the non-Pro Purple line; above 8TB you must go Purple Pro.",
@@ -1284,8 +1349,8 @@
     "useCase": "surveillance",
     "warrantyYears": 5,
     "avgIdleWatts": 5,
-    "priceUSD": 340,
-    "pricePerTB": 28.33,
+    "priceUSD": 636.99,
+    "pricePerTB": 53,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1301,6 +1366,11 @@
         "date": "2026-09",
         "priceUSD": 340,
         "source": "Best Buy $299.99 / Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 636.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD122PURP (older WD121PURP has 256MB). Best Buy $299.99 in Sept 2026 makes this an odd bargain: an Ultrastar-class helium drive cheaper per TB than Red Pro.",
@@ -1326,8 +1396,8 @@
     "useCase": "surveillance",
     "warrantyYears": 5,
     "avgIdleWatts": 5.6,
-    "priceUSD": 560,
-    "pricePerTB": 31.11,
+    "priceUSD": 794.99,
+    "pricePerTB": 44,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1343,6 +1413,11 @@
         "date": "2026-09",
         "priceUSD": 560,
         "source": "Amazon / Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 794.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD181PURP. 550 TB/yr, 2.5M MTBF - enterprise spec with surveillance firmware; fine in a NAS.",
@@ -1368,8 +1443,8 @@
     "useCase": "surveillance",
     "warrantyYears": 3,
     "avgIdleWatts": 3.2,
-    "priceUSD": 135,
-    "pricePerTB": 33.75,
+    "priceUSD": 199.99,
+    "pricePerTB": 50,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1385,6 +1460,11 @@
         "date": "2026-09",
         "priceUSD": 135,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 199.99,
+        "source": "Newegg"
       }
     ],
     "notes": "ST4000VX016. Current-gen SkyHawk 2-8TB (VX017/VX016/VX009/VX010) are SMR per Seagate's product manual - fine for sequential DVR writes, bad for NAS/RAID.",
@@ -1410,8 +1490,8 @@
     "useCase": "surveillance",
     "warrantyYears": 3,
     "avgIdleWatts": 3.6,
-    "priceUSD": 300,
-    "pricePerTB": 37.5,
+    "priceUSD": 379.99,
+    "pricePerTB": 47,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1427,6 +1507,11 @@
         "date": "2026-09",
         "priceUSD": 300,
         "source": "Best Buy / Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 379.99,
+        "source": "Newegg"
       }
     ],
     "notes": "ST8000VX010. SMR (the older ST8000VX0022 was CMR - watch the model number). Do not use in RAID/ZFS.",
@@ -1452,8 +1537,8 @@
     "useCase": "surveillance",
     "warrantyYears": 5,
     "avgIdleWatts": 5,
-    "priceUSD": 360,
-    "pricePerTB": 30,
+    "priceUSD": 519.99,
+    "pricePerTB": 43,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1469,6 +1554,11 @@
         "date": "2026-09",
         "priceUSD": 360,
         "source": "Amazon / Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 519.99,
+        "source": "Newegg"
       }
     ],
     "notes": "ST12000VE001. Exos-based helium CMR, 550 TB/yr, 3 yr Rescue. Like Purple Pro, often priced below the NAS-branded equivalent.",
@@ -1578,8 +1668,8 @@
     "useCase": "desktop",
     "warrantyYears": 2,
     "avgIdleWatts": 3.4,
-    "priceUSD": 230,
-    "pricePerTB": 28.75,
+    "priceUSD": 324.99,
+    "pricePerTB": 41,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1595,6 +1685,11 @@
         "date": "2026-09",
         "priceUSD": 230,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 324.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMR, helium-free 5640 rpm. Cheapest CMR 8TB most months; effectively a Red Plus 8TB with a 2-yr warranty.",
@@ -1620,8 +1715,8 @@
     "useCase": "desktop",
     "warrantyYears": 2,
     "avgIdleWatts": 2.5,
-    "priceUSD": 120,
-    "pricePerTB": 30,
+    "priceUSD": 195,
+    "pricePerTB": 49,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1642,6 +1737,11 @@
         "date": "2026-09",
         "priceUSD": 120,
         "source": "eBay-new / Office Depot $145 / Best Buy $159"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 195,
+        "source": "Newegg"
       }
     ],
     "notes": "ST4000DM004. Every 3.5\" BarraCuda 2TB+ is drive-managed SMR. Fine as a bulk media drive; miserable for RAID rebuilds or random writes.",
@@ -1667,8 +1767,8 @@
     "useCase": "desktop",
     "warrantyYears": 2,
     "avgIdleWatts": 3,
-    "priceUSD": 220,
-    "pricePerTB": 27.5,
+    "priceUSD": 338.65,
+    "pricePerTB": 42,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1684,6 +1784,11 @@
         "date": "2026-09",
         "priceUSD": 220,
         "source": "Amazon / Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 338.65,
+        "source": "Newegg"
       }
     ],
     "notes": "ST8000DM004. SMR. Note: 20-24TB 'BarraCuda' (ST24000DM001) is a different, CMR Exos-derived drive found in Expansion externals.",
@@ -1798,8 +1903,8 @@
     "useCase": "external",
     "warrantyYears": 2,
     "avgIdleWatts": 5.7,
-    "priceUSD": 450,
-    "pricePerTB": 22.5,
+    "priceUSD": 831.86,
+    "pricePerTB": 42,
     "priceHistory": [
       {
         "date": "2024-11",
@@ -1820,6 +1925,11 @@
         "date": "2026-09",
         "priceUSD": 450,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 831.86,
+        "source": "Newegg"
       }
     ],
     "notes": "WDBWLG0200HBK. Shucks to a white-label Ultrastar (HC550/HC570 class, WD200EDGZ) with speed-limited firmware; may need the 3.3V pin tape trick. 2-yr warranty; WD generally honors by serial. Best $/TB new-in-box play in 2026.",
@@ -1845,8 +1955,8 @@
     "useCase": "external",
     "warrantyYears": 3,
     "avgIdleWatts": 5.7,
-    "priceUSD": 500,
-    "pricePerTB": 22.73,
+    "priceUSD": 999.99,
+    "pricePerTB": 45,
     "priceHistory": [
       {
         "date": "2024-11",
@@ -1862,6 +1972,11 @@
         "date": "2026-09",
         "priceUSD": 500,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 999.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WDBBGB0220HBK. Same internals as Elements but 3-yr warranty and hardware encryption in the bridge (irrelevant once shucked).",

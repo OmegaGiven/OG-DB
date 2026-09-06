@@ -15,12 +15,17 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 549,
-    "pricePerGB": 17.16,
+    "priceUSD": 619.99,
+    "pricePerGB": 19.37,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 549,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 619.99,
         "source": "Newegg"
       }
     ],
@@ -46,12 +51,17 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 599,
-    "pricePerGB": 18.72,
+    "priceUSD": 688.99,
+    "pricePerGB": 21.53,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 599,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 688.99,
         "source": "Newegg"
       }
     ],
@@ -139,12 +149,17 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 479,
-    "pricePerGB": 14.97,
+    "priceUSD": 519.99,
+    "pricePerGB": 16.25,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 479,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 519.99,
         "source": "Newegg"
       }
     ],
@@ -170,12 +185,17 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 649,
-    "pricePerGB": 20.28,
+    "priceUSD": 720.76,
+    "pricePerGB": 22.52,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 649,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 720.76,
         "source": "Newegg"
       }
     ],
@@ -201,12 +221,17 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 599,
-    "pricePerGB": 18.72,
+    "priceUSD": 1049.99,
+    "pricePerGB": 32.81,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 599,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 1049.99,
         "source": "Newegg"
       }
     ],
@@ -356,13 +381,18 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 42,
-    "priceUSD": 139,
-    "pricePerGB": 8.69,
+    "priceUSD": 239.99,
+    "pricePerGB": 15,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 139,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 239.99,
+        "source": "Newegg"
       }
     ],
     "notes": "The classic AM4 / 12th-gen value kit (F4-3600C16D-16GVKC). DDR4 more than doubled in 2026 as fabs shifted to DDR5/HBM.",
@@ -418,12 +448,17 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 42,
-    "priceUSD": 119,
-    "pricePerGB": 7.44,
+    "priceUSD": 119.99,
+    "pricePerGB": 7.5,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 119,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 119.99,
         "source": "Newegg"
       }
     ],
@@ -511,12 +546,17 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 479,
-    "pricePerGB": 14.97,
+    "priceUSD": 539.99,
+    "pricePerGB": 16.87,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 479,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 539.99,
         "source": "Newegg"
       }
     ],
@@ -542,13 +582,18 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 549,
-    "pricePerGB": 17.16,
+    "priceUSD": 549.99,
+    "pricePerGB": 17.19,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 549,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 549.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMH32GX5M2B6000Z30K. Corsair's best seller; ten-zone RGB via iCUE. Listed $550 on Amazon and Newegg in early Sept 2026.",
@@ -573,12 +618,17 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 479,
-    "pricePerGB": 14.97,
+    "priceUSD": 449.99,
+    "pricePerGB": 14.06,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 479,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 449.99,
         "source": "Newegg"
       }
     ],
@@ -604,12 +654,17 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 1159,
-    "pricePerGB": 18.11,
+    "priceUSD": 1199.99,
+    "pricePerGB": 18.75,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 1159,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 1199.99,
         "source": "Newegg"
       }
     ],
@@ -666,13 +721,18 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 459,
-    "pricePerGB": 14.34,
+    "priceUSD": 559.99,
+    "pricePerGB": 17.5,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 459,
         "source": "Corsair"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 559.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMH32GX5M2B6400C32. Intel-tuned 6400; Corsair.com direct price in late Aug 2026 was $459.",
@@ -697,12 +757,17 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 649,
-    "pricePerGB": 20.28,
+    "priceUSD": 649.99,
+    "pricePerGB": 20.31,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 649,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 649.99,
         "source": "Newegg"
       }
     ],
@@ -821,12 +886,17 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 119,
-    "pricePerGB": 7.44,
+    "priceUSD": 109,
+    "pricePerGB": 6.81,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 119,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 109,
         "source": "Newegg"
       }
     ],
@@ -852,13 +922,18 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 249,
-    "pricePerGB": 7.78,
+    "priceUSD": 207.6,
+    "pricePerGB": 6.49,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 249,
         "source": "Corsair"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 207.6,
+        "source": "Newegg"
       }
     ],
     "notes": "CMK32GX4M2E3200C16. Corsair.com listed $249.99 (from $296.99) in early Sept 2026; was $60-90 in Oct 2025.",
@@ -883,13 +958,18 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 51,
-    "priceUSD": 299,
-    "pricePerGB": 9.34,
+    "priceUSD": 249,
+    "pricePerGB": 7.78,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 299,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 249,
+        "source": "Newegg"
       }
     ],
     "notes": "CMW32GX4M2D3600C18. Still-sold RGB DDR4; CL18 bin is what remains in stock in 2026.",
@@ -914,13 +994,18 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 51,
-    "priceUSD": 149,
-    "pricePerGB": 9.31,
+    "priceUSD": 169.99,
+    "pricePerGB": 10.62,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 149,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 169.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMW16GX4M2C3200C16. Entry RGB DDR4 kit.",
@@ -945,12 +1030,17 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 549,
-    "pricePerGB": 17.16,
+    "priceUSD": 649.99,
+    "pricePerGB": 20.31,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 549,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 649.99,
         "source": "Newegg"
       }
     ],
@@ -1007,13 +1097,18 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 499,
-    "pricePerGB": 15.59,
+    "priceUSD": 499.99,
+    "pricePerGB": 15.62,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 499,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 499.99,
+        "source": "Newegg"
       }
     ],
     "notes": "KF560C36BBEK2-32. The CL36 bin was $116-150 on Slickdeals in 2025; ~$500 in 2026.",
@@ -1038,13 +1133,18 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 429,
-    "pricePerGB": 13.41,
+    "priceUSD": 1149.99,
+    "pricePerGB": 35.94,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 429,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 1149.99,
+        "source": "Newegg"
       }
     ],
     "notes": "KF552C40BBK2-32. Original 2021 Fury Beast DDR5 bin; still sold as an entry kit. CompSource listed $573 in Aug 2026, Amazon lower.",
@@ -1069,12 +1169,17 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 1149,
-    "pricePerGB": 17.95,
+    "priceUSD": 1179.99,
+    "pricePerGB": 18.44,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 1149,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 1179.99,
         "source": "Newegg"
       }
     ],
@@ -1131,12 +1236,17 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 549,
-    "pricePerGB": 17.16,
+    "priceUSD": 622.47,
+    "pricePerGB": 19.45,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 549,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 622.47,
         "source": "Newegg"
       }
     ],
@@ -1162,12 +1272,17 @@
     "icDie": "SK hynix M-die (24Gb)",
     "rgb": false,
     "heightMm": 39,
-    "priceUSD": 1599,
-    "pricePerGB": 16.66,
+    "priceUSD": 2499.69,
+    "pricePerGB": 26.04,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 1599,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 2499.69,
         "source": "Newegg"
       }
     ],
@@ -1193,12 +1308,17 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 109,
-    "pricePerGB": 6.81,
+    "priceUSD": 239.99,
+    "pricePerGB": 15,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 109,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 239.99,
         "source": "Newegg"
       }
     ],
@@ -1224,13 +1344,18 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 229,
-    "pricePerGB": 7.16,
+    "priceUSD": 249.99,
+    "pricePerGB": 7.81,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 229,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 249.99,
+        "source": "Newegg"
       }
     ],
     "notes": "KF432C16BBK2/32 (also sold as KF432C16BB1K2/32 revision).",
@@ -1565,12 +1690,17 @@
     "icDie": "Micron",
     "rgb": false,
     "heightMm": 32,
-    "priceUSD": 1099,
-    "pricePerGB": 17.17,
+    "priceUSD": 949.99,
+    "pricePerGB": 14.84,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 1099,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-06",
+        "priceUSD": 949.99,
         "source": "Newegg"
       }
     ],
