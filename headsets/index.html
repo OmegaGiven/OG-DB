@@ -86,6 +86,9 @@
     font-family:"Chivo",sans-serif;font-weight:900;font-size:clamp(28px,5vw,46px);
     line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance
   }
+  h1 .crumb{color:var(--ink-soft);text-decoration:none}
+  h1 .crumb:hover,h1 .crumb:focus-visible{color:var(--accent)}
+  h1 .sep{color:var(--line-strong);margin:0 .35em;font-weight:400}
   .standfirst{
     margin:14px 0 0;max-width:65ch;color:var(--ink-soft);font-size:15px
   }
@@ -123,8 +126,38 @@
   }
   .count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);margin:10px 2px 14px}
 
+  .colwrap{position:relative}
+  .colpanel{
+    position:absolute;top:calc(100% + 6px);right:0;z-index:20;
+    background:var(--surface);border:1px solid var(--line-strong);border-radius:8px;
+    box-shadow:var(--shadow);padding:12px 14px;width:250px;
+    display:flex;flex-direction:column;gap:7px
+  }
+  .colpanel .colhead{
+    margin:0 0 2px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)
+  }
+  .colpanel label{display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer}
+  .colpanel input{accent-color:var(--accent)}
+  .colactions{display:flex;gap:8px;margin-top:6px;border-top:1px solid var(--line);padding-top:9px}
+  .colactions button{
+    font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;
+    background:var(--surface-2);color:var(--ink);border:1px solid var(--line-strong);
+    border-radius:6px;padding:4px 10px
+  }
+  .colactions button:hover{border-color:var(--accent)}
   .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
-  table{border-collapse:collapse;width:100%;min-width:1360px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:1100px;background:var(--surface)}
+  #tbl[data-hide~="price"] [data-col="price"],
+  #tbl[data-hide~="w24"] [data-col="w24"],
+  #tbl[data-hide~="bt"] [data-col="bt"],
+  #tbl[data-hide~="wired"] [data-col="wired"],
+  #tbl[data-hide~="pwr"] [data-col="pwr"],
+  #tbl[data-hide~="spatial"] [data-col="spatial"],
+  #tbl[data-hide~="mic"] [data-col="mic"],
+  #tbl[data-hide~="sidetone"] [data-col="sidetone"],
+  #tbl[data-hide~="sw"] [data-col="sw"],
+  #tbl[data-hide~="source"] [data-col="source"]{display:none}
   thead th{
     position:sticky;top:0;z-index:2;background:var(--surface-2);
     font-family:"Chivo",sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;
@@ -157,6 +190,15 @@
   }
   .expand p{margin:0;font-size:12.5px;color:var(--ink-soft)}
   .expand p strong{color:var(--ink);font-weight:600}
+  dl.osdl{
+    margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;
+    font-size:12.5px;color:var(--ink-soft);max-width:120ch
+  }
+  dl.osdl dt{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink);padding-top:1px
+  }
+  dl.osdl dd{margin:0}
   .chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
   tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
 
@@ -172,7 +214,7 @@
 <body>
 <div class="wrap">
   <header class="masthead">
-    <h1>Headset DB <span class="compiled">compiled Sep 2026</span></h1>
+    <h1><a class="crumb" href="../">OG-DB</a><span class="sep">/</span>Headset DB <span class="compiled">compiled Sep 2026</span></h1>
   </header>
 
   <div class="primer">
@@ -183,6 +225,7 @@
       <li><strong>"Simultaneous BT + 2.4 GHz"</strong> means game audio on the low-latency link and phone/Discord on Bluetooth <em>at the same time</em>, mixed in your ears. Most headsets only <em>switch</em> between the two.</li>
       <li><strong>Power.</strong> Wired-only entries read "Wired" here; everything else shows rated battery hours. Wireless models still play over USB/3.5mm while charging <em>except</em> dongle-only ones (HyperX Cloud III / Alpha, Logitech G733), which go silent when flat. "2× … swap" = hot-swap batteries, effectively unlimited runtime.</li>
       <li><strong>Sidetone</strong> = hearing your own voice in the cups so you don't shout. The split is whether the <em>level</em> is on a hardware dial (headset or base station) or buried in the app / console menu. Matters more on sealed ANC headsets.</li>
+      <li><strong>Software by OS.</strong> The column shows quick per-OS badges; expand a row for what each platform actually loses. Pattern: the full tuning app (EQ, spatial, mic DSP) is <em>Windows-first</em>. Only Logitech / Astro (G HUB) and Audeze (HQ) ship a full <em>macOS</em> app; Corsair's is cut-down; everyone else gives Mac plug-and-play stereo with no EQ or spatial. <em>Linux</em> gets generic USB audio from all of them — no vendor app exists. <em>Console</em> usually means on-headset controls plus the console's own EQ; PS5 adds Tempest / Sony 360 in the system itself.</li>
       <li><strong>Mic quality</strong> is a 4-step read from review consensus — <em>Excellent</em> (broadcast-grade, stream on it) · <em>Very good</em> · <em>Good</em> (clear for chat/calls, a bit compressed) · <em>Average</em> (party chat only). Every model here has a mic; the ones marked <em>Integrated / fixed</em> can't be removed or swapped. Any headset mic still loses to a $60 standalone USB mic.</li>
       <li><strong>Street prices</strong> below are rough Sep-2026 US figures and move constantly — treat MSRP as the anchor.</li>
     </ul>
@@ -201,6 +244,8 @@
       <button class="chip" data-filter="micgood" aria-pressed="false">Mic: very good / excellent</button>
       <button class="chip" data-filter="sthw" aria-pressed="false">Hardware sidetone dial</button>
       <button class="chip" data-filter="batt60" aria-pressed="false">Battery ≥ 60 h</button>
+      <button class="chip" data-filter="macfull" aria-pressed="false">Full macOS app</button>
+      <button class="chip" data-filter="mobileapp" aria-pressed="false">Has mobile app</button>
     </div>
     <div class="grp">
       <span class="glabel">Sort</span>
@@ -211,25 +256,45 @@
         <option value="name">Name A–Z</option>
       </select>
     </div>
+    <div class="grp colwrap">
+      <button class="chip" id="colbtn" aria-expanded="false" aria-controls="colpanel">Columns ▾</button>
+      <div class="colpanel" id="colpanel" hidden>
+        <p class="colhead">Show columns</p>
+        <label><input type="checkbox" data-col="price" checked> MSRP / street</label>
+        <label><input type="checkbox" data-col="w24" checked> 2.4 GHz link</label>
+        <label><input type="checkbox" data-col="bt" checked> Bluetooth</label>
+        <label><input type="checkbox" data-col="wired" checked> Wired</label>
+        <label><input type="checkbox" data-col="pwr" checked> Power</label>
+        <label><input type="checkbox" data-col="spatial" checked> Spatial / surround engine</label>
+        <label><input type="checkbox" data-col="mic" checked> Microphone</label>
+        <label><input type="checkbox" data-col="sidetone" checked> Sidetone</label>
+        <label><input type="checkbox" data-col="sw" checked> Software</label>
+        <label><input type="checkbox" data-col="source" checked> Source</label>
+        <div class="colactions">
+          <button type="button" data-all="1">All</button>
+          <button type="button" data-all="0">Minimal</button>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="count" id="count"></div>
 
   <div class="tablewrap">
-    <table>
+    <table id="tbl">
       <thead>
         <tr>
           <th style="width:32px" aria-label="expand"></th>
-          <th>Model</th>
-          <th>MSRP / street</th>
-          <th>2.4 GHz link</th>
-          <th>Bluetooth</th>
-          <th>Wired</th>
-          <th>Power</th>
-          <th>Spatial / surround engine</th>
-          <th>Microphone</th>
-          <th>Sidetone</th>
-          <th>Software</th>
-          <th>Source</th>
+          <th data-col="model">Model</th>
+          <th data-col="price">MSRP / street</th>
+          <th data-col="w24">2.4 GHz link</th>
+          <th data-col="bt">Bluetooth</th>
+          <th data-col="wired">Wired</th>
+          <th data-col="pwr">Power</th>
+          <th data-col="spatial">Spatial / surround engine</th>
+          <th data-col="mic">Microphone</th>
+          <th data-col="sidetone">Sidetone</th>
+          <th data-col="sw">Software</th>
+          <th data-col="source">Source</th>
         </tr>
       </thead>
       <tbody id="tbody"></tbody>
@@ -510,6 +575,86 @@ const SOURCE={
  "EPOS H3Pro Hybrid":["https://www.pcgamesn.com/best-gaming-headset","PCGamesN"]
 };
 
+// Which software family a headset uses, then that family's support + limits per OS.
+const SW_FAMILY={
+ "SteelSeries Arctis Nova Pro Wireless":"steelseries","SteelSeries Arctis Nova Pro Omni":"steelseries",
+ "SteelSeries Arctis Nova 7 Gen 2":"steelseries","Audeze Maxwell":"audeze",
+ "Corsair Virtuoso Max Wireless":"corsair","Razer BlackShark V3 Pro":"razer","Razer Barracuda Pro":"razer",
+ "Logitech G Pro X 2 Lightspeed":"logitech","Logitech G733 Lightspeed":"logitech","Logitech G Astro A50 X":"astro",
+ "Sony INZONE H9 II":"inzone","Sony INZONE H5":"inzone","Sony PlayStation Pulse Elite":"playstation",
+ "HyperX Cloud III Wireless":"hyperx","HyperX Cloud Alpha Wireless":"hyperx",
+ "Turtle Beach Stealth Pro II":"turtlebeach","Turtle Beach Stealth 700 Gen 3":"turtlebeach",
+ "EPOS H3Pro Hybrid":"epos"
+};
+const SW_OS={
+ steelseries:{app:"SteelSeries GG + Sonar",macFull:"none",
+  win:"Full: SteelSeries GG + Sonar — parametric EQ, virtual 7.1 / 360 Spatial, AI noise-cancel mic, ChatMix.",
+  mac:"GG runs, but Sonar (EQ, spatial, AI mic) is Windows-only — Mac gets device settings + firmware only.",
+  linux:"No app. Generic USB audio; on the Nova Pro the base station still does 7.1 + source-switch in hardware.",
+  mobile:"No app.",
+  console:"No app — on-headset controls plus the console's own EQ. Nova Pro base station ChatMix dial still works."},
+ razer:{app:"Razer Synapse + THX Spatial",macFull:"none",
+  win:"Full: Razer Synapse + THX Spatial Audio app — EQ, THX 7.1.4, mic tuning, ANC.",
+  mac:"No Synapse for macOS — plug-and-play stereo only, no EQ or spatial.",
+  linux:"No app; generic USB audio, stereo.",
+  mobile:"Razer Audio app (iOS / Android) — EQ, ANC and toggles over Bluetooth.",
+  console:"PlayStation: THX Spatial 7.1 baked into the dongle. Xbox: needs the Xbox-licensed model. No EQ app either way."},
+ logitech:{app:"Logitech G HUB",macFull:"full",
+  win:"Full: Logitech G HUB — EQ, DTS Headphone:X 2.0 toggle, sidetone, mic (Blue VO!CE on the G Pro X 2).",
+  mac:"G HUB for macOS — same core EQ and DTS toggle.",
+  linux:"No app; generic USB audio, stereo.",
+  mobile:"No app.",
+  console:"Plain headset — no EQ app; DTS on PS5 comes via the dongle; other settings via the console menu."},
+ astro:{app:"Logitech G HUB (Astro)",macFull:"full",
+  win:"Full: G HUB (Astro) — EQ presets, Dolby Atmos + DTS Headphone:X (Dolby licence auto-applies), mic.",
+  mac:"G HUB for macOS — core settings; the spatial licence still applies.",
+  linux:"No app, but the base station routes HDMI / optical and does spatial in hardware regardless.",
+  mobile:"No app.",
+  console:"Base station handles PS5 / Xbox / PC switching (PLAYSYNC) and spatial in hardware; EQ presets live on the station — no app needed."},
+ corsair:{app:"Corsair iCUE",macFull:"limited",
+  win:"Full: Corsair iCUE — EQ, Dolby Atmos, Sonarworks SoundID personalisation, ANC / transparency, mic.",
+  mac:"iCUE for macOS is limited — basic settings; SoundID and full EQ are effectively Windows-only.",
+  linux:"No app; generic USB audio, stereo.",
+  mobile:"No app.",
+  console:"Plain headset — no iCUE; EQ via the console menu."},
+ inzone:{app:"Sony INZONE Hub",macFull:"none",
+  win:"Full: INZONE Hub — EQ, 360 Spatial Sound for Gaming, ANC, mic, game / chat balance.",
+  mac:"No INZONE Hub for macOS — stereo, no EQ or spatial.",
+  linux:"No app; generic USB audio.",
+  mobile:"INZONE Hub mobile app — captures the ear photo that builds the personalised 360 profile.",
+  console:"PS5: 360 Spatial is handled by the console, EQ in the PS5 audio menu. No Windows-style tuning."},
+ playstation:{app:"None (PS5 system UI)",macFull:"none",
+  win:"No app. The PS Link dongle works on PC / Mac but you lose Tempest 3D (PS5-only).",
+  mac:"Same — PS Link audio only, no Tempest, no EQ.",
+  linux:"Not supported.",
+  mobile:"No app.",
+  console:"PS5: Tempest 3D AudioTech plus EQ presets in the PS5 system UI. This is the headset's home platform."},
+ audeze:{app:"Audeze HQ",macFull:"full",
+  win:"Full: Audeze HQ — 10-band parametric EQ, mic EQ / noise gate, sidetone, presets.",
+  mac:"Audeze HQ for macOS — identical feature set.",
+  linux:"No app; generic USB audio (stereo), but EQ presets saved to the headset persist.",
+  mobile:"Audeze HQ for iOS / Android — full EQ over Bluetooth.",
+  console:"PS5 / Xbox: no app, but presets saved from desktop / mobile persist on the headset. Xbox model has Dolby Atmos baked in."},
+ turtlebeach:{app:"Turtle Beach Swarm II",macFull:"none",
+  win:"Full: Swarm II — EQ, Superhuman Hearing, Dolby Atmos (Stealth Pro II), ANC, mic monitoring.",
+  mac:"No Swarm for macOS — stereo, no EQ.",
+  linux:"No app; generic USB audio.",
+  mobile:"Swarm II mobile app (iOS / Android) — EQ and settings over Bluetooth.",
+  console:"Platform-specific SKUs; on-headset dials plus limited settings, no full app."},
+ hyperx:{app:"HyperX NGENUITY",macFull:"none",
+  win:"Full: HyperX NGENUITY — EQ, DTS Headphone:X toggle, mic monitoring.",
+  mac:"No NGENUITY for macOS — plug-and-play stereo, works fine but no EQ or spatial.",
+  linux:"No app; generic USB audio, stereo.",
+  mobile:"No app.",
+  console:"Xbox: NGENUITY app available. PS5: plain headset, EQ via the console menu."},
+ epos:{app:"EPOS Gaming Suite",macFull:"none",
+  win:"Full: EPOS Gaming Suite — 7.1 surround, EQ, Smart Button config, ANC, sidetone, mic.",
+  mac:"No Gaming Suite for macOS — stereo, no EQ or surround.",
+  linux:"No app; generic USB audio.",
+  mobile:"No app.",
+  console:"Plain headset — on-headset Smart Button plus console EQ, no app."}
+};
+
 const tbody=document.getElementById('tbody');
 const countEl=document.getElementById('count');
 const active=new Set();
@@ -550,6 +695,33 @@ function srcCell(d){
   if(!s) return '<span style="color:var(--ink-soft)">—</span>';
   return `<a class="srclink" href="${s[0]}" target="_blank" rel="noopener">${s[1]} &#8599;</a>`;
 }
+function osBlock(d){
+  const o=SW_OS[SW_FAMILY[d.name]];
+  if(!o) return '';
+  const row=(k,v)=>`<dt>${k}</dt><dd>${v}</dd>`;
+  return `<div style="grid-column:1/-1">
+    <h4>Software by platform</h4>
+    <dl class="osdl">
+      ${row('Windows',o.win)}
+      ${row('macOS',o.mac)}
+      ${row('Linux',o.linux)}
+      ${row('Mobile',o.mobile)}
+      ${row('Console',o.console)}
+    </dl>
+  </div>`;
+}
+const MAC_TAG={full:['macOS ✓','t-yes'],limited:['macOS ~','t-part'],none:['macOS ✗','t-no']};
+function swCell(d){
+  const o=SW_OS[SW_FAMILY[d.name]];
+  const base=`<div style="font-size:12px">${d.soft}</div>`+
+    (d.nosoft?tag('Works w/o app','t-yes'):tag('App recommended','t-neutral'));
+  if(!o) return base;
+  const m=MAC_TAG[o.macFull]||MAC_TAG.none;
+  const mob=/^no app/i.test(o.mobile)?tag('mobile ✗','t-no'):tag('mobile ✓','t-yes');
+  return base+`<div style="margin-top:3px">${tag('Win ✓','t-yes')}${m2(m)}${mob}${tag('Linux ✗','t-no')}</div>`+
+    `<div style="margin-top:3px;font-size:10.5px;color:var(--ink-soft)">expand row for per-OS limits</div>`;
+}
+function m2(m){return tag(m[0],m[1]);}
 
 function passes(d){
   for(const f of active){
@@ -563,6 +735,8 @@ function passes(d){
     if(f==='micgood' && !(d.micTier==='Excellent'||d.micTier==='Very good')) return false;
     if(f==='sthw' && SIDETONE[d.name]!=='hw') return false;
     if(f==='batt60' && d.pwrNum<60) return false;
+    if(f==='macfull'){const o=SW_OS[SW_FAMILY[d.name]];if(!o||o.macFull!=='full')return false;}
+    if(f==='mobileapp'){const o=SW_OS[SW_FAMILY[d.name]];if(!o||/^no app/i.test(o.mobile))return false;}
   }
   return true;
 }
@@ -581,17 +755,17 @@ function render(){
     tr.className='row';tr.tabIndex=0;tr.setAttribute('aria-expanded','false');
     tr.innerHTML=`
       <td><span class="chev">▶</span></td>
-      <td><span class="model">${d.name}</span><span class="form">${d.form}</span></td>
-      <td class="price">$${d.msrp}<small>~$${d.street} street</small></td>
-      <td>${w24Cell(d)}</td>
-      <td>${btCell(d)}</td>
-      <td>${wiredCell(d)}</td>
-      <td>${pwrCell(d)}</td>
-      <td style="font-size:12px">${d.spatial}</td>
-      <td>${micCell(d)}</td>
-      <td>${sidetoneCell(d)}</td>
-      <td>${softCell(d)}</td>
-      <td>${srcCell(d)}</td>`;
+      <td data-col="model"><span class="model">${d.name}</span><span class="form">${d.form}</span></td>
+      <td data-col="price" class="price">$${d.msrp}<small>~$${d.street} street</small></td>
+      <td data-col="w24">${w24Cell(d)}</td>
+      <td data-col="bt">${btCell(d)}</td>
+      <td data-col="wired">${wiredCell(d)}</td>
+      <td data-col="pwr">${pwrCell(d)}</td>
+      <td data-col="spatial" style="font-size:12px">${d.spatial}</td>
+      <td data-col="mic">${micCell(d)}</td>
+      <td data-col="sidetone">${sidetoneCell(d)}</td>
+      <td data-col="sw">${swCell(d)}</td>
+      <td data-col="source">${srcCell(d)}</td>`;
     const ex=document.createElement('tr');
     ex.className='expand';ex.hidden=true;
     ex.innerHTML=`<td colspan="12"><div class="inner">
@@ -599,6 +773,7 @@ function render(){
       <div><h4>Microphone — ${d.micTier}</h4><p>${d.micNote}</p></div>
       <div><h4>Power</h4><p>${d.battery}${SIDETONE[d.name]==='hw'?' · sidetone adjustable on a hardware dial':' · sidetone level set in the app / console menu'}</p></div>
       <div><h4>Watch out</h4><p>${d.extra}</p></div>
+      ${osBlock(d)}
     </div></td>`;
     const toggle=()=>{
       const open=tr.getAttribute('aria-expanded')==='true';
@@ -612,7 +787,7 @@ function render(){
   countEl.textContent=`${rows.length} of ${DATA.length} headsets shown`;
 }
 
-document.querySelectorAll('button.chip').forEach(b=>{
+document.querySelectorAll('button.chip[data-filter]').forEach(b=>{
   b.addEventListener('click',()=>{
     const f=b.dataset.filter;
     if(active.has(f)){active.delete(f);b.setAttribute('aria-pressed','false');}
@@ -621,6 +796,42 @@ document.querySelectorAll('button.chip').forEach(b=>{
   });
 });
 document.getElementById('sort').addEventListener('change',e=>{sortMode=e.target.value;render();});
+
+/* Column show/hide */
+const tbl=document.getElementById('tbl');
+const colbtn=document.getElementById('colbtn');
+const colpanel=document.getElementById('colpanel');
+const COL_KEY='headsetdb.hiddencols';
+const ALL_COLS=[...colpanel.querySelectorAll('input[data-col]')].map(c=>c.dataset.col);
+let hiddenCols=new Set();
+try{const s=localStorage.getItem(COL_KEY);if(s)hiddenCols=new Set(JSON.parse(s).filter(c=>ALL_COLS.includes(c)));}catch(e){}
+function applyCols(){
+  tbl.setAttribute('data-hide',[...hiddenCols].join(' '));
+  colpanel.querySelectorAll('input[data-col]').forEach(cb=>{cb.checked=!hiddenCols.has(cb.dataset.col);});
+  const n=ALL_COLS.length-hiddenCols.size;
+  colbtn.textContent=(hiddenCols.size?`Columns · ${n}/${ALL_COLS.length} ▾`:'Columns ▾');
+  try{localStorage.setItem(COL_KEY,JSON.stringify([...hiddenCols]));}catch(e){}
+}
+colbtn.addEventListener('click',e=>{
+  e.stopPropagation();
+  const open=colpanel.hidden;
+  colpanel.hidden=!open;colbtn.setAttribute('aria-expanded',String(open));
+});
+colpanel.addEventListener('click',e=>e.stopPropagation());
+colpanel.addEventListener('change',e=>{
+  const cb=e.target;if(!cb.dataset.col)return;
+  if(cb.checked)hiddenCols.delete(cb.dataset.col);else hiddenCols.add(cb.dataset.col);
+  applyCols();
+});
+colpanel.querySelectorAll('.colactions button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    hiddenCols = b.dataset.all==='1' ? new Set() : new Set(ALL_COLS);
+    applyCols();
+  });
+});
+document.addEventListener('click',()=>{if(!colpanel.hidden){colpanel.hidden=true;colbtn.setAttribute('aria-expanded','false');}});
+
+applyCols();
 render();
 </script>
 </body>
