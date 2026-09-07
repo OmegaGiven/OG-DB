@@ -38,6 +38,11 @@
         "date": "2026-09-06",
         "priceUSD": 550,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-07",
+        "priceUSD": 550,
+        "source": "Newegg"
       }
     ],
     "notes": "ST16000NM001G. End-of-line; mostly sold as manufacturer-recertified now (~$230-260 recert). Still a solid $/TB anchor for 16TB.",
@@ -83,6 +88,11 @@
       },
       {
         "date": "2026-09-06",
+        "priceUSD": 672.1,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-07",
         "priceUSD": 672.1,
         "source": "Newegg"
       }
@@ -140,6 +150,11 @@
       },
       {
         "date": "2026-09-06",
+        "priceUSD": 879.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-07",
         "priceUSD": 879.99,
         "source": "Newegg"
       }
@@ -229,6 +244,11 @@
       },
       {
         "date": "2026-09-06",
+        "priceUSD": 959.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-07",
         "priceUSD": 959.99,
         "source": "Newegg"
       }
@@ -644,8 +664,8 @@
     "useCase": "NAS",
     "warrantyYears": 3,
     "avgIdleWatts": 3,
-    "priceUSD": 130,
-    "pricePerTB": 32.5,
+    "priceUSD": 245.99,
+    "pricePerTB": 61,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -661,6 +681,11 @@
         "date": "2026-09",
         "priceUSD": 130,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-07",
+        "priceUSD": 245.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD40EFPX. All Red Plus are CMR (the SMR ones were rebranded plain 'WD Red' after the 2020 scandal - avoid WD40EFAX).",
@@ -869,6 +894,11 @@
         "date": "2026-09-06",
         "priceUSD": 959.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-07",
+        "priceUSD": 959.99,
+        "source": "Newegg"
       }
     ],
     "notes": "WD221KFGX. OptiNAND. 24TB $1,000 and 26TB $1,145 on the same day - little $/TB advantage at the top.",
@@ -988,8 +1018,8 @@
     "useCase": "NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5.5,
-    "priceUSD": 539.99,
-    "pricePerTB": 34,
+    "priceUSD": 570.99,
+    "pricePerTB": 36,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1014,6 +1044,11 @@
       {
         "date": "2026-09-06",
         "priceUSD": 539.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-07",
+        "priceUSD": 570.99,
         "source": "Newegg"
       }
     ],
@@ -1129,8 +1164,8 @@
     "useCase": "NAS",
     "warrantyYears": 3,
     "avgIdleWatts": 5,
-    "priceUSD": 300,
-    "pricePerTB": 37.5,
+    "priceUSD": 498.5,
+    "pricePerTB": 62,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1146,6 +1181,11 @@
         "date": "2026-09",
         "priceUSD": 300,
         "source": "Amazon / Newegg"
+      },
+      {
+        "date": "2026-09-07",
+        "priceUSD": 498.5,
+        "source": "Newegg"
       }
     ],
     "notes": "HDWG480. All N300 are CMR. 7200 rpm air drive; Toshiba's NAS drives are consistently cheaper than WD/Seagate equivalents when in stock.",
@@ -1975,6 +2015,11 @@
       },
       {
         "date": "2026-09-06",
+        "priceUSD": 999.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-07",
         "priceUSD": 999.99,
         "source": "Newegg"
       }
