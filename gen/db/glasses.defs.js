@@ -10,6 +10,7 @@ const COLUMNS=[
  {id:'cat',label:'Category',sort:d=>({'audio glasses':0,'camera AI glasses':1,'HUD glasses (mono)':2,'HUD glasses (colour)':3,'AR display glasses':4,'enterprise AR':5}[d.category]??9),cell:d=>tag(d.category,CAT[d.category]||'t-neutral')},
  {id:'disp',label:'Display',sort:d=>{const x=(d.display||'none').toLowerCase();return x==='none'?9:(/binocular/.test(x)?0:2)+(/colour|color/.test(x)?0:1);},cell:d=>{const k=dispKind(d);return tag(k[0],k[1])+(d.display!=='none'?`<span class="sub">${esc(d.displayTech)}${d.fovDeg?` &middot; ${d.fovDeg}° FOV`:''}${d.brightnessNits?` &middot; ${d.brightnessNits} nits`:''}</span>`:'');}},
  {id:'ui',label:'Graphic UI',sort:d=>d.graphicInterface?0:1,cell:d=>yn(d.graphicInterface,'App UI / nav','Audio + capture only')},
+ {id:'mem',label:'People / recall',sort:d=>/^none$/.test(d.personalMemory||'none')?1:0,cell:d=>{const m=d.personalMemory||'none';return /^none/.test(m)?tag('None','t-neutral')+(m!=='none'?`<span class="sub">${esc(m.replace(/^none\s*/,''))}</span>`:''):tag('Recalls people','t-yes')+`<span class="sub">${esc(m)}</span>`;}},
  {id:'audio',label:'Audio',sort:d=>{const a=(d.audio||'none').toLowerCase();return a==='none'?2:/bone/.test(a)?1:0;},cell:d=>{const k=audKind(d);return tag(k[0],k[1])+(d.audioNote?`<span class="sub">${esc(d.audioNote)}</span>`:'');}},
  {id:'cam',label:'Camera',sort:d=>d.cameraMP??-1,cell:d=>{if(!d.camera||d.camera==='none')return tag('No camera','t-yes');return tag((d.cameraMP?d.cameraMP+' MP':'camera'),'t-part')+`<span class="sub">${esc(d.videoMax||'')}${d.micArray?` &middot; ${esc(d.micArray)} mic`:''}</span>`;}},
  {id:'sub',label:'Subscription',sort:d=>d.subscriptionRequired?1:0,cell:d=>(d.subscriptionRequired?tag('Required','t-no'):tag('Not required','t-yes'))+(d.subscriptionNote?`<span class="sub">${esc(d.subscriptionNote)}</span>`:'')},
@@ -24,6 +25,7 @@ const COLUMNS=[
 ];
 
 const FILTERS=[
+ {id:'mem',label:'Remembers people / conversations',test:d=>d.personalMemory&&!/^none/.test(d.personalMemory)},
  {id:'disp',label:'Has a graphic display',test:d=>d.graphicInterface===true},
  {id:'colour',label:'Colour display',test:d=>/colour|color/i.test(d.display||'')},
  {id:'mono',label:'Monochrome HUD',test:d=>/none/i.test(d.display||'')?false:!/colour|color/i.test(d.display||'')},

@@ -33,7 +33,8 @@
     "source": {
       "url": "https://www.meta.com/ai-glasses/",
       "label": "Meta"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Ray-Ban Meta Skyler (Gen 2)",
@@ -69,7 +70,8 @@
     "source": {
       "url": "https://www.meta.com/ai-glasses/compare/",
       "label": "Meta"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Ray-Ban Meta (Gen 1)",
@@ -105,7 +107,8 @@
     "source": {
       "url": "https://www.meta.com/ai-glasses/",
       "label": "Meta"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Oakley Meta HSTN",
@@ -141,7 +144,8 @@
     "source": {
       "url": "https://www.meta.com/oakley/",
       "label": "Meta / Oakley"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Oakley Meta Vanguard",
@@ -177,7 +181,8 @@
     "source": {
       "url": "https://www.meta.com/oakley/",
       "label": "Meta / Oakley"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Amazon Echo Frames (3rd gen)",
@@ -213,7 +218,8 @@
     "source": {
       "url": "https://www.amazon.com/dp/B0C1WhateverEchoFrames",
       "label": "Amazon Echo Frames"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Solos AirGo 3",
@@ -249,7 +255,8 @@
     "source": {
       "url": "https://solosglasses.com/",
       "label": "Solos"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Solos AirGo Vision (AirGo V)",
@@ -285,7 +292,8 @@
     "source": {
       "url": "https://solosglasses.com/",
       "label": "Solos"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Lucyd Lyte (2025)",
@@ -321,7 +329,8 @@
     "source": {
       "url": "https://lucyd.co/",
       "label": "Lucyd"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Chamelo Music Shield",
@@ -357,7 +366,8 @@
     "source": {
       "url": "https://chamelo.com/",
       "label": "Chamelo"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "MserSee Audio Glasses",
@@ -393,7 +403,8 @@
     "source": {
       "url": "https://www.amazon.com/s?k=mersee+audio+glasses",
       "label": "Amazon (MserSee)"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Bose Frames (Tempo / Tenor / Soprano)",
@@ -429,7 +440,8 @@
     "source": {
       "url": "https://www.bose.com/",
       "label": "Bose"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Razer Anzu",
@@ -465,7 +477,8 @@
     "source": {
       "url": "https://www.razer.com/",
       "label": "Razer"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Meta Ray-Ban Display",
@@ -497,11 +510,12 @@
     "weightG": 69,
     "prescriptionSupport": "yes, limited (Rx -4.00 to +4.00 total power)",
     "standout": "The first mainstream consumer HUD glasses with a colour display, sold with a neural wristband controller.",
-    "notes": "600x600 px, 42 PPD, 90 Hz panel / 30 Hz content. 20 deg FOV is small - notifications/nav/viewfinder, not immersive AR. Separate product from the display-less Ray-Ban Meta.",
+    "notes": "600x600 px, 42 PPD, 90 Hz panel / 30 Hz content. 20 deg FOV is small - notifications/nav/viewfinder, not immersive AR. Separate product from the display-less Ray-Ban Meta. Meta is reported to be developing \"Name Tag\" — opt-in facial recognition that would identify people and surface info via Meta AI — but it is not shipping and would reverse Meta's long-standing no-face-recognition policy.",
     "source": {
       "url": "https://about.fb.com/news/2025/09/meta-ray-ban-display-ai-glasses-emg-wristband/",
       "label": "Meta Newsroom"
-    }
+    },
+    "personalMemory": "none (reported: \"Name Tag\" facial recognition in development)"
   },
   {
     "name": "Even Realities G1",
@@ -537,7 +551,8 @@
     "source": {
       "url": "https://www.evenrealities.com/g1",
       "label": "Even Realities"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Even Realities G2",
@@ -573,7 +588,8 @@
     "source": {
       "url": "https://www.evenrealities.com/g2",
       "label": "Even Realities"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Halliday Smart Glasses (G1)",
@@ -609,7 +625,8 @@
     "source": {
       "url": "https://www.halliday.xyz/",
       "label": "Halliday"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Halliday G2",
@@ -645,7 +662,8 @@
     "source": {
       "url": "https://www.halliday.xyz/",
       "label": "Halliday"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Brilliant Labs Frame",
@@ -681,43 +699,45 @@
     "source": {
       "url": "https://brilliant.xyz/products/frame",
       "label": "Brilliant Labs"
-    }
+    },
+    "personalMemory": "none"
   },
   {
-    "name": "Brilliant Labs Halo",
+    "name": "Brilliant Labs Halo (Halo X)",
     "brand": "Brilliant Labs",
     "releaseYear": 2026,
     "category": "HUD glasses (mono)",
-    "priceUSD": 349,
-    "priceNote": "$349; successor to Frame with a more conventional glasses look",
+    "priceUSD": 299,
+    "priceNote": "$299 pre-order (some listings $349); ships ~Q1 2026; successor to Frame",
     "display": "monocular colour",
-    "displayTech": "microOLED birdbath",
+    "displayTech": "0.2\" microOLED, retro/arcade-style UI, +2 to -6 diopter adjust",
     "fovDeg": null,
     "brightnessNits": null,
     "graphicInterface": true,
-    "audio": "open-ear speakers",
-    "audioNote": "adds open-ear speakers (Frame had none) plus mic array for the Noa assistant",
-    "camera": "camera for AI vision / capture (modest resolution)",
+    "audio": "bone conduction",
+    "audioNote": "bone-conduction speakers + dual mics for the Noa assistant (not open-ear)",
+    "camera": "AI-inference only (no photo/video capture, no capture LED)",
     "cameraMP": null,
-    "videoMax": "unknown",
-    "micArray": "multi-mic",
+    "videoMax": "n/a (AI vision only)",
+    "micArray": "dual-mic",
     "subscriptionRequired": false,
     "subscriptionNote": "Noa AI free tier + optional paid plan, same model as Frame",
-    "battery": "built-in all-day claim; USB-C / charging accessory",
+    "battery": "built-in, up to ~14 h; USB-C",
     "batteryType": "built-in",
     "openSource": true,
     "platform": "Open source (firmware + app on GitHub); designed to run agents and to be retargetable to other AI backends",
     "dataStorage": "default cloud AI via Brilliant's Noa service; open enough to self-host or run against local models",
     "privacyRisk": "medium",
-    "privacyNote": "Camera + mic + speakers with default cloud AI, but open source and self-hostable - the openness is the mitigation.",
+    "privacyNote": "Always-on camera + mic feeding a persistent personal knowledge base. Mitigations: camera cannot save media, an on-device Alif B1 NPU does some inference, and the stack is open source / self-hostable. Recording others into your memory graph is still an ethical/legal question in workplaces.",
     "weightG": null,
     "prescriptionSupport": "yes",
-    "standout": "Open-source AI glasses with a display, speakers and camera at $349 - undercuts every closed competitor with a screen.",
-    "notes": "Newer product, limited independent testing as of late 2026; specs partly from vendor.",
+    "standout": "The only shipping product built around remembering people and conversations: the \"Narrative\" agentic-memory system recalls names, prior conversations and context on the HUD. Audio/vision based, not facial recognition.",
+    "notes": "Narrative is patent-pending; Noa builds a private personalised knowledge base from what you see and hear over time (\"decades-long memory\"). Alif B1 (Cortex-M55 + NPU) does light on-device AI; heavier queries go to Noa cloud (self-hostable because open source). Independent testing thin as of late 2026.",
     "source": {
       "url": "https://brilliant.xyz/",
       "label": "Brilliant Labs"
-    }
+    },
+    "personalMemory": "audio + vision (Narrative)"
   },
   {
     "name": "Vuzix Z100",
@@ -753,7 +773,8 @@
     "source": {
       "url": "https://www.vuzix.com/products/vuzix-z100-smart-glasses",
       "label": "Vuzix"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Rokid Glasses",
@@ -789,7 +810,8 @@
     "source": {
       "url": "https://global.rokid.com/products/rokid-glasses",
       "label": "Rokid"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "INMO GO2",
@@ -825,7 +847,8 @@
     "source": {
       "url": "https://www.inmoxr.com/",
       "label": "INMO"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "INMO Air 3",
@@ -861,7 +884,8 @@
     "source": {
       "url": "https://www.inmoxr.com/",
       "label": "INMO"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "RayNeo X3 Pro",
@@ -897,7 +921,8 @@
     "source": {
       "url": "https://www.rayneo.com/",
       "label": "RayNeo"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "RayNeo X2",
@@ -933,7 +958,8 @@
     "source": {
       "url": "https://www.rayneo.com/",
       "label": "RayNeo"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Vuzix M400",
@@ -969,7 +995,8 @@
     "source": {
       "url": "https://www.vuzix.com/products/m400-smart-glasses",
       "label": "Vuzix"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Vuzix Blade 2",
@@ -1005,7 +1032,8 @@
     "source": {
       "url": "https://www.vuzix.com/products/vuzix-blade-2-smart-glasses",
       "label": "Vuzix"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "RealWear Navigator 520",
@@ -1041,7 +1069,8 @@
     "source": {
       "url": "https://www.realwear.com/navigator-520/",
       "label": "RealWear"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Rokid X-Craft",
@@ -1077,7 +1106,8 @@
     "source": {
       "url": "https://www.rokid.com/",
       "label": "Rokid"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Magic Leap 2",
@@ -1113,7 +1143,8 @@
     "source": {
       "url": "https://www.magicleap.com/magic-leap-2",
       "label": "Magic Leap"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "XREAL One",
@@ -1149,7 +1180,8 @@
     "source": {
       "url": "https://www.xreal.com/one/",
       "label": "XREAL"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "XREAL One Pro",
@@ -1185,7 +1217,8 @@
     "source": {
       "url": "https://www.xreal.com/one-pro/",
       "label": "XREAL"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "XREAL Air 2 Ultra",
@@ -1221,7 +1254,8 @@
     "source": {
       "url": "https://www.xreal.com/",
       "label": "XREAL"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "XREAL Air 2 Pro",
@@ -1257,7 +1291,8 @@
     "source": {
       "url": "https://www.xreal.com/",
       "label": "XREAL"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Viture Pro",
@@ -1293,7 +1328,8 @@
     "source": {
       "url": "https://www.viture.com/",
       "label": "Viture"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Viture Luma",
@@ -1329,7 +1365,8 @@
     "source": {
       "url": "https://www.viture.com/",
       "label": "Viture"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Viture Luma Pro",
@@ -1365,7 +1402,8 @@
     "source": {
       "url": "https://www.viture.com/",
       "label": "Viture"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Viture Beast",
@@ -1401,7 +1439,8 @@
     "source": {
       "url": "https://www.viture.com/",
       "label": "Viture"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "RayNeo Air 3s",
@@ -1437,7 +1476,8 @@
     "source": {
       "url": "https://www.rayneo.com/",
       "label": "RayNeo"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "RayNeo Air 4 Pro",
@@ -1473,7 +1513,8 @@
     "source": {
       "url": "https://www.rayneo.com/",
       "label": "RayNeo"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Rokid Max 2",
@@ -1509,7 +1550,8 @@
     "source": {
       "url": "https://global.rokid.com/",
       "label": "Rokid"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Rokid AR Lite",
@@ -1545,7 +1587,8 @@
     "source": {
       "url": "https://global.rokid.com/",
       "label": "Rokid"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Sightful Spacetop (for Windows)",
@@ -1581,7 +1624,8 @@
     "source": {
       "url": "https://www.sightful.com/product",
       "label": "Sightful"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Google / Samsung Android XR Glasses ('Haean')",
@@ -1617,7 +1661,8 @@
     "source": {
       "url": "https://blog.google/products/android/android-xr/",
       "label": "Google (Android XR)"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Samsung Galaxy Glasses (screen-free, 'Jinju')",
@@ -1653,7 +1698,8 @@
     "source": {
       "url": "https://news.samsung.com/global/",
       "label": "Samsung Newsroom"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "TCL RayNeo V3 / RayNeo AI Glasses",
@@ -1689,7 +1735,8 @@
     "source": {
       "url": "https://www.rayneo.com/",
       "label": "RayNeo"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Vuzix M400C / Blade (enterprise, prior gen)",
@@ -1725,7 +1772,8 @@
     "source": {
       "url": "https://www.vuzix.com/",
       "label": "Vuzix"
-    }
+    },
+    "personalMemory": "none"
   },
   {
     "name": "Monocle (Brilliant Labs)",
@@ -1761,6 +1809,7 @@
     "source": {
       "url": "https://github.com/brilliantlabsAR/monocle-hardware",
       "label": "Brilliant Labs (GitHub)"
-    }
+    },
+    "personalMemory": "none"
   }
 ]
