@@ -4,7 +4,7 @@ const TIER={S:['S','t-yes'],A:['A','t-yes'],B:['B','t-part'],C:['C','t-neutral']
 const tierTag=v=>v==null?'<span style="color:var(--ink-soft)">&mdash;</span>':(t=>tag(t[0],t[1]))(TIER[v]||['?','t-neutral']);
 const IMG={none:['None','t-no'],'basic (OCR / captions)':['Basic','t-part'],good:['Good','t-part'],excellent:['Excellent','t-yes']};
 const AUD={none:['None','t-no'],'ASR only':['ASR','t-part'],'ASR + understanding':['ASR + understanding','t-yes']};
-const TYPE={LLM:'t-neutral',coder:'t-neutral','VLM':'t-part','ASR':'t-part'};
+const TYPE={LLM:'t-neutral',coder:'t-neutral','VLM':'t-part','ASR':'t-part','video-gen':'t-yes','audio-gen':'t-yes','TTS':'t-part'};
 const gb=v=>v==null?'&mdash;':`<span class="price">${v} GB</span>`;
 
 // Alignment / censorship of the DEFAULT released weights. "light" = ships with
@@ -34,6 +34,7 @@ function alignOf(d){
 const COLUMNS=[
  {id:'name',hideable:false,label:'Model',sort:d=>d.name.toLowerCase(),cell:d=>`<span class="name">${esc(d.name)}</span><span class="sub">${esc(d.developer)}</span>`},
  {id:'type',label:'Type',cell:d=>tag(d.type,TYPE[d.type]||(/omni/.test(d.type)?'t-yes':'t-neutral'))},
+ {id:'gen',label:'Generates',sort:d=>(d.generates||[]).join(','),cell:d=>{const g=d.generates||[];return g.length?g.map(x=>tag(x,'t-yes')).join(''):'<span style="color:var(--ink-soft)">&mdash;</span>';}},
  {id:'params',label:'Params',sort:d=>pnum(d.paramsB),cell:d=>`<span class="price">${esc(d.paramsB)}B</span><span class="sub">${esc((d.modality||[]).join(' + '))}</span>`},
  {id:'ctx',label:'Max context',sort:d=>d.contextMaxTokens,cell:d=>`<span class="price">${ctx(d.contextMaxTokens)}</span><span class="sub">${esc(d.contextNote||'')}</span>`},
  {id:'q4',label:'VRAM · Q4',sort:d=>d.vramQ4GB,cell:d=>gb(d.vramQ4GB)+`<span class="sub">min: ${esc(d.minPracticalGPU||'?')}</span>`},
@@ -41,10 +42,11 @@ const COLUMNS=[
  {id:'fp16',label:'VRAM · FP16',sort:d=>d.vramFP16GB,cell:d=>gb(d.vramFP16GB)},
  {id:'kv',label:'KV cache',cell:d=>`<span style="font-size:11.5px">${esc(d.kvCacheNote||'?')}</span>`},
  {id:'img',label:'Image',sort:d=>({none:0,'basic (OCR / captions)':1,good:2,excellent:3}[d.imageRecognition]??-1),cell:d=>{const m=IMG[d.imageRecognition]||['?','t-neutral'];return tag(m[0],m[1])+(d.imageNote?`<span class="sub">${esc(d.imageNote)}</span>`:'');}},
+ {id:'vidin',label:'Video in',sort:d=>d.videoIn?1:0,cell:d=>d.videoIn?tag('Video','t-yes'):'<span style="color:var(--ink-soft)">&mdash;</span>'},
  {id:'aud',label:'Audio',sort:d=>({none:0,'ASR only':1,'ASR + understanding':2}[d.audioRecognition]??-1),cell:d=>{const m=AUD[d.audioRecognition]||['?','t-neutral'];return tag(m[0],m[1])+(d.audioNote?`<span class="sub">${esc(d.audioNote)}</span>`:'');}},
  {id:'reason',label:'Reasoning',sort:d=>({S:0,A:1,B:2,C:3}[d.reasoningTier]??9),cell:d=>tierTag(d.reasoningTier)},
  {id:'code',label:'Coding',sort:d=>({S:0,A:1,B:2,C:3}[d.codingTier]??9),cell:d=>tierTag(d.codingTier)},
- {id:'tools',label:'Tool use',cell:d=>d.toolUse==='native'?tag('Native','t-yes'):d.toolUse==='prompted'?tag('Prompted','t-part'):tag('Weak','t-no')},
+ {id:'tools',label:'Tool use',cell:d=>d.toolUse==null?'<span style="color:var(--ink-soft)">&mdash;</span>':d.toolUse==='native'?tag('Native','t-yes'):d.toolUse==='prompted'?tag('Prompted','t-part'):tag('Weak','t-no')},
  {id:'align',label:'Alignment',sort:d=>ALORD[alignOf(d)[0]]??5,cell:d=>{const[k,note]=alignOf(d);const m=k==='prc'?['PRC-topic + guardrails','t-no']:ALIGN[k]||['?','t-neutral'];return tag(m[0],m[1])+(note?`<span class="sub">${esc(note)}</span>`:'');}},
  {id:'runners',label:'Runners',cell:d=>`<span style="font-size:11.5px">${esc(d.runners||'')}</span>`},
  {id:'license',label:'License',cell:d=>`<span style="font-size:11.5px">${esc(d.license||'')}</span>`},
@@ -62,6 +64,9 @@ const FILTERS=[
  {id:'visx',label:'Excellent vision',test:d=>d.imageRecognition==='excellent'},
  {id:'aud',label:'Audio / ASR',test:hasAudio},
  {id:'omni',label:'Omni (vision + audio)',test:d=>/omni/.test(d.type)},
+ {id:'vidgen',label:'Video generation',test:d=>(d.generates||[]).includes('video')},
+ {id:'audgen',label:'Audio / music / speech generation',test:d=>(d.generates||[]).some(x=>['music','vocals','speech','SFX','music-loops','dialogue','audio','cloning'].includes(x))},
+ {id:'vidin',label:'Video-in understanding',test:d=>!!d.videoIn},
  {id:'nat',label:'Native tool use',test:d=>d.toolUse==='native'},
  {id:'top',label:'Reasoning S / A',test:d=>d.reasoningTier==='S'||d.reasoningTier==='A'},
  {id:'cod',label:'Coding S / A',test:d=>d.codingTier==='S'||d.codingTier==='A'},
@@ -93,6 +98,8 @@ const EXPAND=[
  </dl>`},
  {label:'Capabilities',html:d=>`<dl class="kv">
    <dt>Modality</dt><dd>${esc((d.modality||[]).join(', '))}</dd>
+   <dt>Generates</dt><dd>${(d.generates||[]).length?esc((d.generates||[]).join(', ')):'&mdash;'}</dd>
+   <dt>Video in</dt><dd>${d.videoIn?'yes (clip / frame understanding)':'&mdash;'}</dd>
    <dt>Image</dt><dd>${esc(d.imageRecognition)}${d.imageNote?' &mdash; '+esc(d.imageNote):''}</dd>
    <dt>Audio</dt><dd>${esc(d.audioRecognition)}${d.audioNote?' &mdash; '+esc(d.audioNote):''}</dd>
    <dt>Reasoning</dt><dd>tier ${esc(d.reasoningTier||'n/a')}</dd>

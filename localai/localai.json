@@ -29,7 +29,8 @@
     "source": {
       "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Llama 3.1 70B Instruct",
@@ -61,7 +62,8 @@
     "source": {
       "url": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Llama 3.2 3B Instruct",
@@ -93,7 +95,8 @@
     "source": {
       "url": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Llama 3.2 11B Vision Instruct",
@@ -126,7 +129,8 @@
     "source": {
       "url": "https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Llama 3.3 70B Instruct",
@@ -158,7 +162,8 @@
     "source": {
       "url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Llama 4 Scout 17B-16E",
@@ -191,7 +196,8 @@
     "source": {
       "url": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "Llama 4 Maverick 17B-128E",
@@ -224,7 +230,8 @@
     "source": {
       "url": "https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "Qwen2.5 0.5B Instruct",
@@ -256,7 +263,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen2.5 7B Instruct",
@@ -288,7 +296,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen2.5 32B Instruct",
@@ -320,7 +329,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-32B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen2.5 72B Instruct",
@@ -352,7 +362,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen2.5-Coder 7B Instruct",
@@ -384,7 +395,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen2.5-Coder 32B Instruct",
@@ -416,7 +428,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen2.5-VL 7B Instruct",
@@ -449,7 +462,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "Qwen2.5-VL 72B Instruct",
@@ -482,7 +496,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "Qwen3 8B",
@@ -514,7 +529,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen3-8B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen3 32B",
@@ -546,7 +562,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen3-32B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen3 30B-A3B",
@@ -578,7 +595,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen3 235B-A22B",
@@ -610,7 +628,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen3-235B-A22B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Qwen3-VL 8B Instruct",
@@ -643,7 +662,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "Qwen2-Audio 7B Instruct",
@@ -676,7 +696,8 @@
     "source": {
       "url": "https://huggingface.co/Qwen/Qwen2-Audio-7B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Mistral Nemo 12B Instruct 2407",
@@ -708,7 +729,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Mistral Small 3.2 24B Instruct 2506",
@@ -741,7 +763,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Mixtral 8x22B Instruct v0.1",
@@ -773,7 +796,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Mixtral-8x22B-Instruct-v0.1",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Pixtral 12B (2409)",
@@ -806,7 +830,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Pixtral-12B-2409",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Ministral 8B Instruct 2410",
@@ -838,7 +863,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Ministral-8B-Instruct-2410",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Voxtral Mini 3B 2507",
@@ -871,7 +897,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Voxtral-Mini-3B-2507",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Voxtral Small 24B 2507",
@@ -904,7 +931,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Voxtral-Small-24B-2507",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Devstral Small 1.1 (24B)",
@@ -936,7 +964,8 @@
     "source": {
       "url": "https://huggingface.co/mistralai/Devstral-Small-2507",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Gemma 2 9B Instruction-Tuned",
@@ -968,7 +997,8 @@
     "source": {
       "url": "https://huggingface.co/google/gemma-2-9b-it",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Gemma 3 4B Instruction-Tuned",
@@ -1001,7 +1031,8 @@
     "source": {
       "url": "https://huggingface.co/google/gemma-3-4b-it",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Gemma 3 12B Instruction-Tuned",
@@ -1034,7 +1065,8 @@
     "source": {
       "url": "https://huggingface.co/google/gemma-3-12b-it",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Gemma 3 27B Instruction-Tuned",
@@ -1067,7 +1099,8 @@
     "source": {
       "url": "https://huggingface.co/google/gemma-3-27b-it",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Gemma 3n E4B Instruction-Tuned",
@@ -1101,7 +1134,8 @@
     "source": {
       "url": "https://huggingface.co/google/gemma-3n-E4B-it",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "DeepSeek-V3-0324",
@@ -1133,7 +1167,8 @@
     "source": {
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "DeepSeek-R1-0528",
@@ -1165,7 +1200,8 @@
     "source": {
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "DeepSeek-R1-Distill-Qwen-1.5B",
@@ -1197,7 +1233,8 @@
     "source": {
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "DeepSeek-R1-Distill-Qwen-32B",
@@ -1229,7 +1266,8 @@
     "source": {
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "DeepSeek-R1-Distill-Llama-70B",
@@ -1261,7 +1299,8 @@
     "source": {
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Phi-3.5-mini Instruct",
@@ -1293,7 +1332,8 @@
     "source": {
       "url": "https://huggingface.co/microsoft/Phi-3.5-mini-instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Phi-4 (14B)",
@@ -1325,7 +1365,8 @@
     "source": {
       "url": "https://huggingface.co/microsoft/phi-4",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Phi-4-multimodal Instruct",
@@ -1359,7 +1400,8 @@
     "source": {
       "url": "https://huggingface.co/microsoft/Phi-4-multimodal-instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Command R (35B) 08-2024",
@@ -1391,7 +1433,8 @@
     "source": {
       "url": "https://huggingface.co/CohereForAI/c4ai-command-r-08-2024",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Command R+ (104B) 08-2024",
@@ -1423,7 +1466,8 @@
     "source": {
       "url": "https://huggingface.co/CohereForAI/c4ai-command-r-plus-08-2024",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Command R7B (12-2024)",
@@ -1455,7 +1499,8 @@
     "source": {
       "url": "https://huggingface.co/CohereForAI/c4ai-command-r7b-12-2024",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Aya Expanse 32B",
@@ -1487,7 +1532,8 @@
     "source": {
       "url": "https://huggingface.co/CohereForAI/aya-expanse-32b",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "InternVL3 14B",
@@ -1520,7 +1566,8 @@
     "source": {
       "url": "https://huggingface.co/OpenGVLab/InternVL3-14B",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "MiniCPM-V 2.6 (8B)",
@@ -1553,7 +1600,8 @@
     "source": {
       "url": "https://huggingface.co/openbmb/MiniCPM-V-2_6",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "MiniCPM-o 2.6 (8B)",
@@ -1587,7 +1635,8 @@
     "source": {
       "url": "https://huggingface.co/openbmb/MiniCPM-o-2_6",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "GLM-4.1V-9B-Thinking",
@@ -1620,7 +1669,8 @@
     "source": {
       "url": "https://huggingface.co/THUDM/GLM-4.1V-9B-Thinking",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": true
   },
   {
     "name": "Molmo 7B-D",
@@ -1653,7 +1703,8 @@
     "source": {
       "url": "https://huggingface.co/allenai/Molmo-7B-D-0924",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Llama-3.1-Nemotron-70B-Instruct",
@@ -1685,7 +1736,8 @@
     "source": {
       "url": "https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Granite 3.1 8B Instruct",
@@ -1717,7 +1769,8 @@
     "source": {
       "url": "https://huggingface.co/ibm-granite/granite-3.1-8b-instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "OLMo 2 13B Instruct",
@@ -1749,7 +1802,8 @@
     "source": {
       "url": "https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "SmolLM2 1.7B Instruct",
@@ -1781,7 +1835,8 @@
     "source": {
       "url": "https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Falcon-Mamba 7B Instruct",
@@ -1813,7 +1868,8 @@
     "source": {
       "url": "https://huggingface.co/tiiuae/falcon-mamba-7b-instruct",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Jamba 1.5 Mini",
@@ -1845,7 +1901,8 @@
     "source": {
       "url": "https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Whisper large-v3",
@@ -1877,7 +1934,8 @@
     "source": {
       "url": "https://huggingface.co/openai/whisper-large-v3",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Whisper large-v3-turbo",
@@ -1909,7 +1967,8 @@
     "source": {
       "url": "https://huggingface.co/openai/whisper-large-v3-turbo",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Distil-Whisper large-v3.5",
@@ -1941,7 +2000,8 @@
     "source": {
       "url": "https://huggingface.co/distil-whisper/distil-large-v3.5",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "NVIDIA Parakeet TDT 0.6B v2",
@@ -1973,7 +2033,8 @@
     "source": {
       "url": "https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "NVIDIA Canary 1B v2",
@@ -2005,7 +2066,8 @@
     "source": {
       "url": "https://huggingface.co/nvidia/canary-1b-v2",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Moonshine Base",
@@ -2037,7 +2099,8 @@
     "source": {
       "url": "https://huggingface.co/UsefulSensors/moonshine-base",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Ultravox v0.5 (Llama 3.1 8B)",
@@ -2070,7 +2133,8 @@
     "source": {
       "url": "https://huggingface.co/fixie-ai/ultravox-v0_5-llama-3_1-8b",
       "label": "Hugging Face"
-    }
+    },
+    "videoIn": false
   },
   {
     "name": "Kyutai STT 2.6B (English)",
@@ -2101,6 +2165,672 @@
     "notes": "The 1B en/fr model needs even less VRAM. Batching allows hundreds of real-time streams on one GPU.",
     "source": {
       "url": "https://huggingface.co/kyutai/stt-2.6b-en",
+      "label": "Hugging Face"
+    },
+    "videoIn": false
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Wan 2.2 T2V-A14B",
+    "developer": "Alibaba (Wan-AI)",
+    "type": "video-gen",
+    "paramsB": "14",
+    "releaseDate": "2025-07",
+    "license": "Apache-2.0",
+    "modality": [
+      "text",
+      "image"
+    ],
+    "generates": [
+      "video"
+    ],
+    "vramQ4GB": 16,
+    "vramQ8GB": 24,
+    "vramFP16GB": 40,
+    "minPracticalGPU": "16 GB (GGUF Q4 + block-swap); 24 GB comfortable",
+    "runners": "ComfyUI, DiffSynth-Studio, Wan2GP",
+    "goodFor": "Best open photoreal video, esp. humans/faces. 5s 720p clips; T2V + I2V.",
+    "notes": "Quality leader among open models Sep 2026. MoE-style dual expert (high/low noise). Also 14B I2V, S2V, Animate variants.",
+    "source": {
+      "url": "https://huggingface.co/Wan-AI/Wan2.2-T2V-A14B",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Wan 2.2 TI2V-5B",
+    "developer": "Alibaba (Wan-AI)",
+    "type": "video-gen",
+    "paramsB": "5",
+    "releaseDate": "2025-07",
+    "license": "Apache-2.0",
+    "modality": [
+      "text",
+      "image"
+    ],
+    "generates": [
+      "video"
+    ],
+    "vramQ4GB": 8,
+    "vramQ8GB": 11,
+    "vramFP16GB": 16,
+    "minPracticalGPU": "8 GB (GGUF + offload); 12 GB comfortable",
+    "runners": "ComfyUI, DiffSynth-Studio, Wan2GP",
+    "goodFor": "The one that actually fits a 12 GB card. T2V + I2V, 720p ~5s.",
+    "notes": "Same family as the 14B, big quality drop but genuinely consumer-runnable.",
+    "source": {
+      "url": "https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "HunyuanVideo 1.5",
+    "developer": "Tencent",
+    "type": "video-gen",
+    "paramsB": "8.3",
+    "releaseDate": "2025-11",
+    "license": "Tencent Hunyuan Community",
+    "modality": [
+      "text",
+      "image"
+    ],
+    "generates": [
+      "video"
+    ],
+    "vramQ4GB": 14,
+    "vramQ8GB": 24,
+    "vramFP16GB": 45,
+    "minPracticalGPU": "14 GB (FP8 + CPU offload, RTX 4090)",
+    "runners": "ComfyUI, official repo, diffusers",
+    "goodFor": "Cinematic motion + prompt adherence; beats Gen-3 in blind tests.",
+    "notes": "v1.5 cut VRAM hard vs the original 13B. Non-commercial-ish community license (regional restrictions).",
+    "source": {
+      "url": "https://huggingface.co/tencent/HunyuanVideo-1.5",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "LTX-2.3",
+    "developer": "Lightricks",
+    "type": "video-gen",
+    "paramsB": "13",
+    "releaseDate": "2026-01",
+    "license": "LTX Open Weights License",
+    "modality": [
+      "text",
+      "image"
+    ],
+    "generates": [
+      "video",
+      "audio"
+    ],
+    "vramQ4GB": 32,
+    "vramQ8GB": 48,
+    "vramFP16GB": 80,
+    "minPracticalGPU": "32 GB (distilled); 80 GB full precision",
+    "runners": "ComfyUI, LTX-Video repo",
+    "goodFor": "Only open model with NATIVE synced audio + video in one diffusion pass. 4K @ 50 fps.",
+    "notes": "The audio comes out of the same model — no separate step. Heavy: distilled build needs a 5090/A6000.",
+    "source": {
+      "url": "https://huggingface.co/Lightricks/LTX-Video",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "LTX-Video 0.9.8 (2B)",
+    "developer": "Lightricks",
+    "type": "video-gen",
+    "paramsB": "2",
+    "releaseDate": "2025-05",
+    "license": "LTX Open Weights License",
+    "modality": [
+      "text",
+      "image"
+    ],
+    "generates": [
+      "video"
+    ],
+    "vramQ4GB": 6,
+    "vramQ8GB": 8,
+    "vramFP16GB": 12,
+    "minPracticalGPU": "6-8 GB",
+    "runners": "ComfyUI, LTX-Video repo",
+    "goodFor": "Fastest open video — near real-time on a 4090. Lower fidelity than Wan/Hunyuan.",
+    "notes": "The small predecessor to LTX-2. Great for iteration / previz on modest hardware. No native audio.",
+    "source": {
+      "url": "https://huggingface.co/Lightricks/LTX-Video",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "CogVideoX-5B",
+    "developer": "Zhipu AI (THUDM)",
+    "type": "video-gen",
+    "paramsB": "5",
+    "releaseDate": "2024-08",
+    "license": "CogVideoX License (research/commercial tiers)",
+    "modality": [
+      "text",
+      "image"
+    ],
+    "generates": [
+      "video"
+    ],
+    "vramQ4GB": 5,
+    "vramQ8GB": 10,
+    "vramFP16GB": 18,
+    "minPracticalGPU": "5 GB (INT8 + tiling); 12 GB comfortable",
+    "runners": "diffusers, ComfyUI, CogVideo repo",
+    "goodFor": "6s 720p; the low-VRAM baseline before Wan 2.2 5B. I2V variant available.",
+    "notes": "Aging but very lightweight and well-supported in diffusers. 2B variant is Apache-2.0.",
+    "source": {
+      "url": "https://huggingface.co/THUDM/CogVideoX-5b",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Mochi 1",
+    "developer": "Genmo",
+    "type": "video-gen",
+    "paramsB": "10",
+    "releaseDate": "2024-10",
+    "license": "Apache-2.0",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "video"
+    ],
+    "vramQ4GB": 20,
+    "vramQ8GB": 32,
+    "vramFP16GB": 44,
+    "minPracticalGPU": "24 GB (with offload); multi-GPU for full",
+    "runners": "ComfyUI, diffusers, Mochi repo",
+    "goodFor": "Strong motion realism, permissive Apache license. T2V only.",
+    "notes": "One of the first genuinely good Apache-2.0 video models. Heavy; largely superseded by Wan 2.2.",
+    "source": {
+      "url": "https://huggingface.co/genmo/mochi-1-preview",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Open-Sora 2.0",
+    "developer": "HPC-AI Tech",
+    "type": "video-gen",
+    "paramsB": "11",
+    "releaseDate": "2025-03",
+    "license": "Apache-2.0",
+    "modality": [
+      "text",
+      "image"
+    ],
+    "generates": [
+      "video"
+    ],
+    "vramQ4GB": 24,
+    "vramQ8GB": 36,
+    "vramFP16GB": 48,
+    "minPracticalGPU": "24 GB",
+    "runners": "Open-Sora repo",
+    "goodFor": "Fully open (weights + training code + data recipe). Research / fine-tuning base.",
+    "notes": "Trained for ~$200k and open about it. Quality below Wan/Hunyuan but the most reproducible.",
+    "source": {
+      "url": "https://huggingface.co/hpcai-tech/Open-Sora-v2",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "ACE-Step",
+    "developer": "ACE Studio + StepFun",
+    "type": "audio-gen",
+    "paramsB": "3.5",
+    "releaseDate": "2025-05",
+    "license": "Apache-2.0",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "music",
+      "vocals"
+    ],
+    "vramQ4GB": 8,
+    "vramQ8GB": 10,
+    "vramFP16GB": 14,
+    "minPracticalGPU": "8 GB",
+    "runners": "ComfyUI, ACE-Step repo, Gradio",
+    "goodFor": "Full songs with vocals + instrumental, up to ~4 min. Fast on consumer GPUs.",
+    "notes": "Diffusion music foundation model. Lyric + style prompt -> song. The go-to open Suno alternative that fits 12 GB.",
+    "source": {
+      "url": "https://huggingface.co/ACE-Step/ACE-Step-v1-3.5B",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "YuE 7B",
+    "developer": "HKUST + M-A-P",
+    "type": "audio-gen",
+    "paramsB": "7",
+    "releaseDate": "2025-01",
+    "license": "Apache-2.0",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "music",
+      "vocals"
+    ],
+    "vramQ4GB": 16,
+    "vramQ8GB": 20,
+    "vramFP16GB": 28,
+    "minPracticalGPU": "24 GB (patience required)",
+    "runners": "YuE repo, exllamav2 fork",
+    "goodFor": "Closest open thing to Suno for full vocal tracks; better vocals than ACE-Step, much slower.",
+    "notes": "Autoregressive (LLaMA-based) two-stage. Minutes of generation time per song on a 4090.",
+    "source": {
+      "url": "https://huggingface.co/m-a-p/YuE-s1-7B-anneal-en-cot",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "MusicGen Large",
+    "developer": "Meta",
+    "type": "audio-gen",
+    "paramsB": "3.3",
+    "releaseDate": "2023-06",
+    "license": "CC-BY-NC-4.0 (weights)",
+    "modality": [
+      "text",
+      "audio"
+    ],
+    "generates": [
+      "music"
+    ],
+    "vramQ4GB": 8,
+    "vramQ8GB": 12,
+    "vramFP16GB": 16,
+    "minPracticalGPU": "8 GB",
+    "runners": "audiocraft, transformers, ComfyUI",
+    "goodFor": "Instrumental loops / beds up to ~30 s; melody-conditioning variant.",
+    "notes": "Old but rock-solid and tiny. No vocals. Non-commercial license on the weights.",
+    "source": {
+      "url": "https://huggingface.co/facebook/musicgen-large",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Stable Audio Open 1.0",
+    "developer": "Stability AI",
+    "type": "audio-gen",
+    "paramsB": "1.1",
+    "releaseDate": "2024-06",
+    "license": "Stability AI Community License",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "SFX",
+      "music-loops"
+    ],
+    "vramQ4GB": 5,
+    "vramQ8GB": 7,
+    "vramFP16GB": 9,
+    "minPracticalGPU": "6 GB",
+    "runners": "stable-audio-tools, ComfyUI, diffusers",
+    "goodFor": "Sound effects, foley, drum loops, short samples (up to 47 s).",
+    "notes": "Trained only on licensed audio (Freesound / FMA). Not for full songs — samples and SFX.",
+    "source": {
+      "url": "https://huggingface.co/stabilityai/stable-audio-open-1.0",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Kokoro-82M",
+    "developer": "hexgrad",
+    "type": "TTS",
+    "paramsB": "0.082",
+    "releaseDate": "2025-01",
+    "license": "Apache-2.0",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "speech"
+    ],
+    "vramQ4GB": 1,
+    "vramQ8GB": 1,
+    "vramFP16GB": 1,
+    "minPracticalGPU": "CPU / any GPU (<1 GB)",
+    "runners": "kokoro-onnx, kokoro (pip), ComfyUI",
+    "goodFor": "Best quality-per-size TTS. Runs real-time on CPU. Preset voices, several languages.",
+    "notes": "No voice cloning (fixed voice bank). The default for local narration / AudioComic-style pipelines.",
+    "source": {
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Orpheus TTS 3B",
+    "developer": "Canopy Labs",
+    "type": "TTS",
+    "paramsB": "3",
+    "releaseDate": "2025-03",
+    "license": "Apache-2.0",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "speech",
+      "cloning"
+    ],
+    "vramQ4GB": 4,
+    "vramQ8GB": 6,
+    "vramFP16GB": 8,
+    "minPracticalGPU": "6-8 GB",
+    "runners": "vLLM, llama.cpp, Orpheus repo",
+    "goodFor": "Zero-shot voice cloning + guided emotion tags (<laugh>, <sigh>). Low latency, streamable.",
+    "notes": "A Llama-3.2-3B backbone speech LLM — runs on the same stacks as a normal LLM.",
+    "source": {
+      "url": "https://huggingface.co/canopylabs/orpheus-3b-0.1-ft",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Chatterbox",
+    "developer": "Resemble AI",
+    "type": "TTS",
+    "paramsB": "0.5",
+    "releaseDate": "2025-05",
+    "license": "MIT",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "speech",
+      "cloning"
+    ],
+    "vramQ4GB": 3,
+    "vramQ8GB": 4,
+    "vramFP16GB": 5,
+    "minPracticalGPU": "4 GB",
+    "runners": "chatterbox (pip), ComfyUI, Gradio",
+    "goodFor": "Voice clone from ~5 s of audio + an \"emotion exaggeration\" dial. MIT licensed.",
+    "notes": "Resemble claims 63% preference vs ElevenLabs in their own test. English only.",
+    "source": {
+      "url": "https://huggingface.co/ResembleAI/chatterbox",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "Dia 1.6B",
+    "developer": "Nari Labs",
+    "type": "TTS",
+    "paramsB": "1.6",
+    "releaseDate": "2025-04",
+    "license": "Apache-2.0",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "speech",
+      "dialogue"
+    ],
+    "vramQ4GB": 6,
+    "vramQ8GB": 8,
+    "vramFP16GB": 10,
+    "minPracticalGPU": "8-10 GB",
+    "runners": "dia (pip), ComfyUI, Gradio",
+    "goodFor": "Multi-speaker dialogue in one pass, with laughs/coughs/nonverbals. [S1]/[S2] tags.",
+    "notes": "Purpose-built for podcast / conversation synthesis rather than single-voice narration.",
+    "source": {
+      "url": "https://huggingface.co/nari-labs/Dia-1.6B",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "CSM-1B",
+    "developer": "Sesame",
+    "type": "TTS",
+    "paramsB": "1",
+    "releaseDate": "2025-03",
+    "license": "Apache-2.0",
+    "modality": [
+      "text",
+      "audio"
+    ],
+    "generates": [
+      "speech"
+    ],
+    "vramQ4GB": 4,
+    "vramQ8GB": 6,
+    "vramFP16GB": 8,
+    "minPracticalGPU": "6 GB",
+    "runners": "csm repo, transformers",
+    "goodFor": "Conversational speech with context (prior turns condition prosody). ~4.7 MOS.",
+    "notes": "Backbone of Sesame’s voice demo. Needs conversation context to sound its best; bare single-shot is plainer.",
+    "source": {
+      "url": "https://huggingface.co/sesame/csm-1b",
+      "label": "Hugging Face"
+    }
+  },
+  {
+    "contextMaxTokens": null,
+    "contextNote": null,
+    "kvCacheNote": null,
+    "imageRecognition": "none",
+    "imageNote": null,
+    "audioRecognition": "none",
+    "audioNote": null,
+    "reasoningTier": null,
+    "codingTier": null,
+    "toolUse": null,
+    "videoIn": false,
+    "name": "F5-TTS",
+    "developer": "SWivid",
+    "type": "TTS",
+    "paramsB": "0.34",
+    "releaseDate": "2024-10",
+    "license": "CC-BY-4.0 (weights), MIT (code)",
+    "modality": [
+      "text"
+    ],
+    "generates": [
+      "speech",
+      "cloning"
+    ],
+    "vramQ4GB": 2,
+    "vramQ8GB": 3,
+    "vramFP16GB": 4,
+    "minPracticalGPU": "4 GB",
+    "runners": "f5-tts (pip), ComfyUI, Gradio",
+    "goodFor": "Fast flow-matching voice clone from a short reference. English + Chinese.",
+    "notes": "Very light, widely integrated. Good default when Chatterbox’s license or Orpheus’s size are a problem.",
+    "source": {
+      "url": "https://huggingface.co/SWivid/F5-TTS",
       "label": "Hugging Face"
     }
   }
