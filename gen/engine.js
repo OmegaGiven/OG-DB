@@ -72,7 +72,7 @@
 
   // header (click to sort)
   const htr=$('#tbl thead tr');
-  htr.innerHTML='<th style="width:46px" aria-label="lock / expand"></th>'+
+  htr.innerHTML='<th style="width:46px" aria-label="lock / expand" title="Click the pin on a row to keep it visible through filters"><span style="opacity:.45;font-size:11px" aria-hidden="true">&#128204;</span></th>'+
     COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
   let sorts=[]; // [{id,dir}] primary first; click adds a secondary, re-click flips, third click removes
   const scratch=document.createElement('div');

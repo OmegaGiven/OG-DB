@@ -120,9 +120,9 @@ dl.kv dd{margin:0}
 .chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
 tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
 td.lead{white-space:nowrap;padding-right:4px}
-.pin{border:0;background:none;cursor:pointer;font-size:12px;line-height:1;padding:2px 3px;
-  filter:grayscale(1) opacity(.28);transition:filter .12s}
-tr.row:hover .pin,.pin:focus-visible{filter:grayscale(.3) opacity(.7)}
+.pin{border:0;background:none;cursor:pointer;font-size:13px;line-height:1;padding:2px 3px;
+  filter:grayscale(.35) opacity(.55);transition:filter .12s}
+tr.row:hover .pin,.pin:focus-visible{filter:none;opacity:1}
 .pin.on{filter:none}
 .pin:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 tr.row.pinned{background:var(--accent-wash)}
@@ -303,7 +303,7 @@ const EXPAND=[
 
   // header (click to sort)
   const htr=$('#tbl thead tr');
-  htr.innerHTML='<th style="width:46px" aria-label="lock / expand"></th>'+
+  htr.innerHTML='<th style="width:46px" aria-label="lock / expand" title="Click the pin on a row to keep it visible through filters"><span style="opacity:.45;font-size:11px" aria-hidden="true">&#128204;</span></th>'+
     COLUMNS.map(c=>`<th data-col="${c.id}" class="sortable" role="button" tabindex="0" aria-sort="none"><span class="hlabel">${esc(c.label)}</span><span class="arrow"></span></th>`).join('');
   let sorts=[]; // [{id,dir}] primary first; click adds a secondary, re-click flips, third click removes
   const scratch=document.createElement('div');
