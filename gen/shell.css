@@ -108,9 +108,9 @@ dl.kv dd{margin:0}
 .chev{display:inline-block;width:14px;color:var(--ink-soft);transition:transform .15s}
 tr.row[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
 td.lead{white-space:nowrap;padding-right:4px}
-.pin{border:0;background:none;cursor:pointer;font-size:13px;line-height:1;padding:2px 3px;
-  filter:grayscale(.35) opacity(.55);transition:filter .12s}
-tr.row:hover .pin,.pin:focus-visible{filter:none;opacity:1}
+.pin{border:0;background:none;cursor:pointer;font-size:14px;line-height:1;padding:2px 3px;
+  opacity:.7;filter:none;transition:opacity .12s,transform .12s}
+tr.row:hover .pin,.pin:focus-visible{opacity:1;transform:scale(1.15)}
 .pin.on{filter:none}
 .pin:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 tr.row.pinned{background:var(--accent-wash)}
