@@ -2766,7 +2766,7 @@
     "priceUSD": 500,
     "priceNote": "MSRP $649; $400-540 street (D30 Pro Ultra adds hot-water wash)",
     "tier": "mid",
-    "suctionPa": 7000,
+    "suctionPa": 25000,
     "mop": "twin spinning pads, MopExtend edge reach, ~10.5 mm auto-lift over carpet",
     "mopType": "spinning pads",
     "navigation": "LiDAR, multi-floor mapping, no-go zones",
@@ -2793,7 +2793,7 @@
     "privacyNote": "No front camera on the base D30 Ultra (structured light only). Dreame cloud app; strong community HA integration gives near-local control.",
     "voiceAssistant": "Alexa, Google",
     "warrantyYears": 2,
-    "notes": "Dreame’s value omni: the whole self-wash/empty/refill dock experience of the L-series for less, minus the camera obstacle AI and hot-water wash (that is the D30 Pro Ultra). 25,000 Pa is a marketing figure.",
+    "notes": "Dreame’s value omni: the whole self-wash/empty/refill dock experience of the L-series for less, minus the camera obstacle AI and hot-water wash (that is the D30 Pro Ultra).",
     "source": {
       "url": "https://www.dreametech.com/products/dreame-d30-ultra-robot-vacuum-and-mop",
       "label": "Dreame"
