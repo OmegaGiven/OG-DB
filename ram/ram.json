@@ -32,6 +32,11 @@
         "date": "2026-09-07",
         "priceUSD": 619.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 619.99,
+        "source": "Newegg"
       }
     ],
     "notes": "The default AM5 kit — 6000 CL30 is the Ryzen sweet spot. Model F5-6000J3038F16GX2-TZ5NR. Sept-2026 pricing is ~5x the $105 seen in late 2024.",
@@ -73,6 +78,11 @@
         "date": "2026-09-07",
         "priceUSD": 688.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 688.99,
+        "source": "Newegg"
       }
     ],
     "notes": "Binned-tighter version of the 6000 CL30 kit (F5-6000J2836G16GX2-TZ5NR). Small real-world gain over CL30 for a ~10% premium.",
@@ -97,8 +107,8 @@
     "icDie": "SK hynix M-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 1299,
-    "pricePerGB": 20.3,
+    "priceUSD": 1495,
+    "pricePerGB": 23.36,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -108,6 +118,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 1299,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 1495,
         "source": "Newegg"
       }
     ],
@@ -164,8 +179,8 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 519.99,
-    "pricePerGB": 16.25,
+    "priceUSD": 619.99,
+    "pricePerGB": 19.37,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -180,6 +195,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 519.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 619.99,
         "source": "Newegg"
       }
     ],
@@ -205,8 +225,8 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 720.76,
-    "pricePerGB": 22.52,
+    "priceUSD": 720.83,
+    "pricePerGB": 22.53,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -221,6 +241,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 720.76,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 720.83,
         "source": "Newegg"
       }
     ],
@@ -261,6 +286,11 @@
       },
       {
         "date": "2026-09-07",
+        "priceUSD": 1049.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
         "priceUSD": 1049.99,
         "source": "Newegg"
       }
@@ -318,13 +348,18 @@
     "icDie": "SK hynix M-die (24Gb)",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 1549,
-    "pricePerGB": 16.14,
+    "priceUSD": 1985,
+    "pricePerGB": 20.68,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 1549,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 1985,
+        "source": "Newegg"
       }
     ],
     "notes": "Highest-capacity two-DIMM enthusiast kit (F5-6400J3239F48GX2-TZ5RK). Popular for local-AI / workstation builds; ~$16/GB in Sept 2026.",
@@ -349,8 +384,8 @@
     "icDie": "SK hynix A-die",
     "rgb": false,
     "heightMm": 33,
-    "priceUSD": 595.99,
-    "pricePerGB": 18.62,
+    "priceUSD": 604.99,
+    "pricePerGB": 18.91,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -360,6 +395,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 595.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 604.99,
         "source": "Newegg"
       }
     ],
@@ -385,8 +425,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 33,
-    "priceUSD": 595.99,
-    "pricePerGB": 18.62,
+    "priceUSD": 607.99,
+    "pricePerGB": 19,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -396,6 +436,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 595.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 607.99,
         "source": "Newegg"
       }
     ],
@@ -421,8 +466,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 42,
-    "priceUSD": 239.99,
-    "pricePerGB": 15,
+    "priceUSD": 259.99,
+    "pricePerGB": 16.25,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -437,6 +482,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 239.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 259.99,
         "source": "Newegg"
       }
     ],
@@ -462,13 +512,18 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 42,
-    "priceUSD": 279,
-    "pricePerGB": 8.72,
+    "priceUSD": 259.99,
+    "pricePerGB": 8.12,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 279,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 259.99,
+        "source": "Newegg"
       }
     ],
     "notes": "F4-3600C16D-32GVKC. Dual-rank 16GB sticks; the most common 32GB DDR4 upgrade for Ryzen 5000.",
@@ -493,8 +548,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 42,
-    "priceUSD": 119.99,
-    "pricePerGB": 7.5,
+    "priceUSD": 129.99,
+    "pricePerGB": 8.12,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -509,6 +564,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 119.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 129.99,
         "source": "Newegg"
       }
     ],
@@ -534,8 +594,8 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 239.99,
-    "pricePerGB": 7.5,
+    "priceUSD": 269.99,
+    "pricePerGB": 8.44,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -545,6 +605,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 239.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 269.99,
         "source": "Newegg"
       }
     ],
@@ -570,8 +635,8 @@
     "icDie": "Samsung B-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 223.9,
-    "pricePerGB": 13.99,
+    "priceUSD": 226.99,
+    "pricePerGB": 14.19,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -581,6 +646,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 223.9,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 226.99,
         "source": "Newegg"
       }
     ],
@@ -606,8 +676,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 539.99,
-    "pricePerGB": 16.87,
+    "priceUSD": 604.99,
+    "pricePerGB": 18.91,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -622,6 +692,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 539.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 604.99,
         "source": "Newegg"
       }
     ],
@@ -647,8 +722,8 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 549.99,
-    "pricePerGB": 17.19,
+    "priceUSD": 639.99,
+    "pricePerGB": 20,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -663,6 +738,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 549.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 639.99,
         "source": "Newegg"
       }
     ],
@@ -688,8 +768,8 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 449.99,
-    "pricePerGB": 14.06,
+    "priceUSD": 429.99,
+    "pricePerGB": 13.44,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -704,6 +784,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 449.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 429.99,
         "source": "Newegg"
       }
     ],
@@ -729,8 +814,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 1199.99,
-    "pricePerGB": 18.75,
+    "priceUSD": 1239.99,
+    "pricePerGB": 19.37,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -745,6 +830,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 1199.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 1239.99,
         "source": "Newegg"
       }
     ],
@@ -818,6 +908,11 @@
         "date": "2026-09-07",
         "priceUSD": 559.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 559.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMH32GX5M2B6400C32. Intel-tuned 6400; Corsair.com direct price in late Aug 2026 was $459.",
@@ -842,8 +937,8 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 649.99,
-    "pricePerGB": 20.31,
+    "priceUSD": 669.99,
+    "pricePerGB": 20.94,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -858,6 +953,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 649.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 669.99,
         "source": "Newegg"
       }
     ],
@@ -993,6 +1093,11 @@
         "date": "2026-09-07",
         "priceUSD": 109,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 109,
+        "source": "Newegg"
       }
     ],
     "notes": "CMK16GX4M2E3200C16. The best-selling DDR4 kit of all time; Corsair now also markets EXPO support on the E-suffix revision.",
@@ -1032,6 +1137,11 @@
       },
       {
         "date": "2026-09-07",
+        "priceUSD": 219,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
         "priceUSD": 219,
         "source": "Newegg"
       }
@@ -1075,6 +1185,11 @@
         "date": "2026-09-07",
         "priceUSD": 249,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 249,
+        "source": "Newegg"
       }
     ],
     "notes": "CMW32GX4M2D3600C18. Still-sold RGB DDR4; CL18 bin is what remains in stock in 2026.",
@@ -1099,8 +1214,8 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 51,
-    "priceUSD": 169.99,
-    "pricePerGB": 10.62,
+    "priceUSD": 179.99,
+    "pricePerGB": 11.25,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1115,6 +1230,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 169.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 179.99,
         "source": "Newegg"
       }
     ],
@@ -1140,8 +1260,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 649.99,
-    "pricePerGB": 20.31,
+    "priceUSD": 639,
+    "pricePerGB": 19.97,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1156,6 +1276,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 649.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 639,
         "source": "Newegg"
       }
     ],
@@ -1212,8 +1337,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 499.99,
-    "pricePerGB": 15.62,
+    "priceUSD": 549.99,
+    "pricePerGB": 17.19,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1228,6 +1353,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 499.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 549.99,
         "source": "Newegg"
       }
     ],
@@ -1306,6 +1436,11 @@
         "date": "2026-09-07",
         "priceUSD": 1179.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 1179.99,
+        "source": "Newegg"
       }
     ],
     "notes": "KF560C30BBEK2-64. Dual-rank 64GB EXPO kit.",
@@ -1378,6 +1513,11 @@
         "date": "2026-09-07",
         "priceUSD": 622.47,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 622.47,
+        "source": "Newegg"
       }
     ],
     "notes": "KF564C32RSAK2-32. 6400 CL32 RGB Renegade.",
@@ -1402,8 +1542,8 @@
     "icDie": "SK hynix M-die (24Gb)",
     "rgb": false,
     "heightMm": 39,
-    "priceUSD": 2499.69,
-    "pricePerGB": 26.04,
+    "priceUSD": 1699.99,
+    "pricePerGB": 17.71,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1418,6 +1558,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 2499.69,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 1699.99,
         "source": "Newegg"
       }
     ],
@@ -1443,8 +1588,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 239.99,
-    "pricePerGB": 15,
+    "priceUSD": 229.99,
+    "pricePerGB": 14.37,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1459,6 +1604,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 239.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 229.99,
         "source": "Newegg"
       }
     ],
@@ -1484,8 +1634,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 249.99,
-    "pricePerGB": 7.81,
+    "priceUSD": 299.99,
+    "pricePerGB": 9.37,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1500,6 +1650,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 249.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 299.99,
         "source": "Newegg"
       }
     ],
@@ -1804,8 +1959,8 @@
     "icDie": "Micron",
     "rgb": false,
     "heightMm": 32,
-    "priceUSD": 545,
-    "pricePerGB": 17.03,
+    "priceUSD": 555.99,
+    "pricePerGB": 17.37,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1815,6 +1970,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 545,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 555.99,
         "source": "Newegg"
       }
     ],
@@ -1881,8 +2041,8 @@
     "icDie": "Micron",
     "rgb": false,
     "heightMm": 32,
-    "priceUSD": 1099.95,
-    "pricePerGB": 34.37,
+    "priceUSD": 501.29,
+    "pricePerGB": 15.67,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1892,6 +2052,11 @@
       {
         "date": "2026-09-07",
         "priceUSD": 1099.95,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-14",
+        "priceUSD": 501.29,
         "source": "Newegg"
       }
     ],
