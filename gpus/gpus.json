@@ -6,7 +6,7 @@
     "architecture": "Ampere",
     "releaseYear": 2021,
     "msrpUSD": 329,
-    "priceUSD": 454.62,
+    "priceUSD": 459.99,
     "priceNote": "MSRP $329; still sold new ~$270-300; used ~$200-230. Cheapest 12GB NVIDIA card.",
     "priceHistory": [
       {
@@ -22,6 +22,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 454.62,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 459.99,
         "source": "Newegg"
       }
     ],
@@ -83,7 +88,7 @@
     "architecture": "Ampere",
     "releaseYear": 2020,
     "msrpUSD": 399,
-    "priceUSD": 545,
+    "priceUSD": 549,
     "priceNote": "MSRP $399; EOL, used ~$180-220 (eBay sold).",
     "priceHistory": [
       {
@@ -104,6 +109,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 545,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 549,
         "source": "Newegg"
       }
     ],
@@ -185,6 +195,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 555.84,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 555.84,
         "source": "Newegg"
       }
@@ -269,6 +284,11 @@
         "date": "2026-09-14",
         "priceUSD": 706.56,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 706.56,
+        "source": "Newegg"
       }
     ],
     "vramGB": 10,
@@ -351,6 +371,11 @@
         "date": "2026-09-14",
         "priceUSD": 1039,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1039,
+        "source": "Newegg"
       }
     ],
     "vramGB": 12,
@@ -411,7 +436,7 @@
     "architecture": "Ampere",
     "releaseYear": 2020,
     "msrpUSD": 1499,
-    "priceUSD": 1999,
+    "priceUSD": 2180,
     "priceNote": "MSRP $1499; EOL. Used ~$700-900, propped up by AI demand for 24GB (eBay sold).",
     "priceHistory": [
       {
@@ -432,6 +457,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 1999,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 2180,
         "source": "Newegg"
       }
     ],
@@ -493,7 +523,7 @@
     "architecture": "Ampere",
     "releaseYear": 2022,
     "msrpUSD": 1999,
-    "priceUSD": 2095,
+    "priceUSD": 2449,
     "priceNote": "MSRP $1999; EOL, rare; used ~$800-950.",
     "priceHistory": [
       {
@@ -514,6 +544,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 2095,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 2449,
         "source": "Newegg"
       }
     ],
@@ -679,6 +714,11 @@
         "date": "2026-09-14",
         "priceUSD": 499,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 499,
+        "source": "Newegg"
       }
     ],
     "vramGB": 8,
@@ -736,6 +776,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 799,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 799,
         "source": "Newegg"
       }
@@ -820,6 +865,11 @@
         "date": "2026-09-14",
         "priceUSD": 771,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 771,
+        "source": "Newegg"
       }
     ],
     "vramGB": 12,
@@ -857,7 +907,7 @@
     "architecture": "Ada Lovelace",
     "releaseYear": 2024,
     "msrpUSD": 599,
-    "priceUSD": 896,
+    "priceUSD": 918,
     "priceNote": "MSRP $599; EOL; used ~$480-550.",
     "priceHistory": [
       {
@@ -878,6 +928,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 896,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 918,
         "source": "Newegg"
       }
     ],
@@ -939,7 +994,7 @@
     "architecture": "Ada Lovelace",
     "releaseYear": 2023,
     "msrpUSD": 799,
-    "priceUSD": 1059.99,
+    "priceUSD": 1075.63,
     "priceNote": "MSRP $799; EOL (replaced by Ti Super); used ~$450-550.",
     "priceHistory": [
       {
@@ -960,6 +1015,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 1059.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1075.63,
         "source": "Newegg"
       }
     ],
@@ -998,7 +1058,7 @@
     "architecture": "Ada Lovelace",
     "releaseYear": 2024,
     "msrpUSD": 799,
-    "priceUSD": 1260,
+    "priceUSD": 1299,
     "priceNote": "MSRP $799; new remnants ~$700-780; used ~$600-650.",
     "priceHistory": [
       {
@@ -1019,6 +1079,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 1260,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1299,
         "source": "Newegg"
       }
     ],
@@ -1102,6 +1167,11 @@
         "date": "2026-09-14",
         "priceUSD": 1499,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1499,
+        "source": "Newegg"
       }
     ],
     "vramGB": 16,
@@ -1159,6 +1229,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 1519,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 1519,
         "source": "Newegg"
       }
@@ -1221,7 +1296,7 @@
     "architecture": "Ada Lovelace",
     "releaseYear": 2022,
     "msrpUSD": 1599,
-    "priceUSD": 3583,
+    "priceUSD": 4395,
     "priceNote": "MSRP $1599; EOL. Remaining new stock ~$2000+; used ~$1500-1800 (AI demand keeps it above MSRP).",
     "priceHistory": [
       {
@@ -1242,6 +1317,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 3583,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 4395,
         "source": "Newegg"
       }
     ],
@@ -1300,6 +1380,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 459.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 459.99,
         "source": "Newegg"
       }
@@ -1383,6 +1468,11 @@
         "date": "2026-09-14",
         "priceUSD": 501.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 501.99,
+        "source": "Newegg"
       }
     ],
     "vramGB": 8,
@@ -1440,6 +1530,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 799.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 799.99,
         "source": "Newegg"
       }
@@ -1631,7 +1726,7 @@
     "architecture": "Blackwell",
     "releaseYear": 2025,
     "msrpUSD": 999,
-    "priceUSD": 1449.99,
+    "priceUSD": 1579.99,
     "priceNote": "MSRP $999; street ~$1100-1250.",
     "priceHistory": [
       {
@@ -1652,6 +1747,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 1449.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1579.99,
         "source": "Newegg"
       }
     ],
@@ -1713,7 +1813,7 @@
     "architecture": "Blackwell",
     "releaseYear": 2025,
     "msrpUSD": 1999,
-    "priceUSD": 4399.99,
+    "priceUSD": 4829.99,
     "priceNote": "MSRP $1999; street ~$2500-3000 (never stabilized near MSRP; AI demand).",
     "priceHistory": [
       {
@@ -1734,6 +1834,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 4399.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 4829.99,
         "source": "Newegg"
       }
     ],
@@ -1795,7 +1900,7 @@
     "architecture": "Ampere",
     "releaseYear": 2021,
     "msrpUSD": 1000,
-    "priceUSD": 1259,
+    "priceUSD": 1256,
     "priceNote": "MSRP ~$1000; new ~$850-950; used ~$500-600.",
     "priceHistory": [
       {
@@ -1816,6 +1921,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 1259,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1256,
         "source": "Newegg"
       }
     ],
@@ -1854,7 +1964,7 @@
     "architecture": "Ampere",
     "releaseYear": 2021,
     "msrpUSD": 2250,
-    "priceUSD": 2849,
+    "priceUSD": 3199,
     "priceNote": "MSRP ~$2250; new ~$1800; used ~$1100-1300.",
     "priceHistory": [
       {
@@ -1875,6 +1985,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 2849,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 3199,
         "source": "Newegg"
       }
     ],
@@ -1935,6 +2050,11 @@
         "date": "2026-09-14",
         "priceUSD": 5975.06,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 5975.06,
+        "source": "Newegg"
       }
     ],
     "vramGB": 48,
@@ -1972,7 +2092,7 @@
     "architecture": "Ada Lovelace",
     "releaseYear": 2023,
     "msrpUSD": 1250,
-    "priceUSD": 2299,
+    "priceUSD": 2285,
     "priceNote": "MSRP ~$1250; street ~$1200-1350 new; used ~$950.",
     "priceHistory": [
       {
@@ -1993,6 +2113,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 2299,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 2285,
         "source": "Newegg"
       }
     ],
@@ -2053,6 +2178,11 @@
         "date": "2026-09-14",
         "priceUSD": 4580,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 4580,
+        "source": "Newegg"
       }
     ],
     "vramGB": 32,
@@ -2090,7 +2220,7 @@
     "architecture": "Ada Lovelace",
     "releaseYear": 2022,
     "msrpUSD": 6800,
-    "priceUSD": 7899,
+    "priceUSD": 8999,
     "priceNote": "MSRP $6800; street ~$5500-6500; used ~$5000. Falling as RTX PRO 6000 Blackwell ships.",
     "priceHistory": [
       {
@@ -2111,6 +2241,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 7899,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 8999,
         "source": "Newegg"
       }
     ],
@@ -2149,7 +2284,7 @@
     "architecture": "Blackwell",
     "releaseYear": 2025,
     "msrpUSD": 8400,
-    "priceUSD": 17999.99,
+    "priceUSD": 23969,
     "priceNote": "Launched ~$8300-8600; street ~$8000-9500 (Workstation edition; Max-Q 300W and Server editions same price class).",
     "priceHistory": [
       {
@@ -2170,6 +2305,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 17999.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 23969,
         "source": "Newegg"
       }
     ],
@@ -2249,6 +2389,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 397.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 397.99,
         "source": "Newegg"
       }
@@ -2337,7 +2482,7 @@
     "architecture": "Volta",
     "releaseYear": 2017,
     "msrpUSD": 8999,
-    "priceUSD": 577,
+    "priceUSD": 576.72,
     "priceNote": "Used ~$500-700 (eBay sold).",
     "priceHistory": [
       {
@@ -2358,6 +2503,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 577,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 576.72,
         "source": "Newegg"
       }
     ],
@@ -2418,6 +2568,11 @@
         "date": "2026-09-14",
         "priceUSD": 1089,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1089,
+        "source": "Newegg"
       }
     ],
     "vramGB": 32,
@@ -2475,6 +2630,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 5599,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 5599,
         "source": "Newegg"
       }
@@ -2580,6 +2740,11 @@
         "date": "2026-09-14",
         "priceUSD": 399,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 399,
+        "source": "Newegg"
       }
     ],
     "vramGB": 8,
@@ -2640,7 +2805,7 @@
     "architecture": "RDNA 2",
     "releaseYear": 2022,
     "msrpUSD": 399,
-    "priceUSD": 94.99,
+    "priceUSD": 33.98,
     "priceNote": "MSRP $399; new ~$220; used ~$150-190.",
     "priceHistory": [
       {
@@ -2651,6 +2816,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 94.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 33.98,
         "source": "Newegg"
       }
     ],
@@ -2809,6 +2979,11 @@
         "date": "2026-09-14",
         "priceUSD": 790,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 790,
+        "source": "Newegg"
       }
     ],
     "vramGB": 16,
@@ -2846,7 +3021,7 @@
     "architecture": "RDNA 2",
     "releaseYear": 2020,
     "msrpUSD": 649,
-    "priceUSD": 479,
+    "priceUSD": 519.99,
     "priceNote": "MSRP $649; EOL; used ~$290-350.",
     "priceHistory": [
       {
@@ -2867,6 +3042,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 479,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 519.99,
         "source": "Newegg"
       }
     ],
@@ -2950,6 +3130,11 @@
         "date": "2026-09-14",
         "priceUSD": 797.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 797.99,
+        "source": "Newegg"
       }
     ],
     "vramGB": 16,
@@ -2987,7 +3172,7 @@
     "architecture": "RDNA 2",
     "releaseYear": 2022,
     "msrpUSD": 1099,
-    "priceUSD": 1120,
+    "priceUSD": 1085,
     "priceNote": "MSRP $1099; EOL; used ~$370-430.",
     "priceHistory": [
       {
@@ -3008,6 +3193,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 1120,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1085,
         "source": "Newegg"
       }
     ],
@@ -3089,6 +3279,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 339.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 339.99,
         "source": "Newegg"
       }
@@ -3173,6 +3368,11 @@
         "date": "2026-09-14",
         "priceUSD": 548.05,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 548.05,
+        "source": "Newegg"
       }
     ],
     "vramGB": 12,
@@ -3210,7 +3410,7 @@
     "architecture": "RDNA 3",
     "releaseYear": 2023,
     "msrpUSD": 499,
-    "priceUSD": 756.59,
+    "priceUSD": 746.79,
     "priceNote": "MSRP $499; new ~$430-480; used ~$380.",
     "priceHistory": [
       {
@@ -3231,6 +3431,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 756.59,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 746.79,
         "source": "Newegg"
       }
     ],
@@ -3312,6 +3517,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 899.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 899.99,
         "source": "Newegg"
       }
@@ -3396,6 +3606,11 @@
         "date": "2026-09-14",
         "priceUSD": 899,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 899,
+        "source": "Newegg"
       }
     ],
     "vramGB": 20,
@@ -3478,6 +3693,11 @@
         "date": "2026-09-14",
         "priceUSD": 1399,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 1399,
+        "source": "Newegg"
       }
     ],
     "vramGB": 24,
@@ -3535,6 +3755,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 469.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 469.99,
         "source": "Newegg"
       }
@@ -3617,6 +3842,11 @@
         "date": "2026-09-14",
         "priceUSD": 649.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 649.99,
+        "source": "Newegg"
       }
     ],
     "vramGB": 16,
@@ -3676,7 +3906,7 @@
     "architecture": "RDNA 4",
     "releaseYear": 2025,
     "msrpUSD": 599,
-    "priceUSD": 799,
+    "priceUSD": 759.99,
     "priceNote": "MSRP $599; street ~$620-700 (rarely at MSRP).",
     "priceHistory": [
       {
@@ -3697,6 +3927,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 799,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 759.99,
         "source": "Newegg"
       }
     ],
@@ -3816,6 +4051,11 @@
         "date": "2026-09-14",
         "priceUSD": 199.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 199.99,
+        "source": "Newegg"
       }
     ],
     "vramGB": 8,
@@ -3876,7 +4116,7 @@
     "architecture": "Alchemist (Xe-HPG)",
     "releaseYear": 2022,
     "msrpUSD": 289,
-    "priceUSD": 209,
+    "priceUSD": 209.99,
     "priceNote": "MSRP $289 (cut $199); new ~$170-200.",
     "priceHistory": [
       {
@@ -3897,6 +4137,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 209,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 209.99,
         "source": "Newegg"
       }
     ],
@@ -3973,6 +4218,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 319,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 319,
         "source": "Newegg"
       }
@@ -4129,6 +4379,11 @@
         "date": "2026-09-14",
         "priceUSD": 259.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 259.99,
+        "source": "Newegg"
       }
     ],
     "vramGB": 10,
@@ -4166,7 +4421,7 @@
     "architecture": "Battlemage (Xe2)",
     "releaseYear": 2024,
     "msrpUSD": 249,
-    "priceUSD": 309.99,
+    "priceUSD": 329.99,
     "priceNote": "MSRP $249; street ~$260-300 (rarely at MSRP).",
     "priceHistory": [
       {
@@ -4187,6 +4442,11 @@
       {
         "date": "2026-09-14",
         "priceUSD": 309.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
+        "priceUSD": 329.99,
         "source": "Newegg"
       }
     ],
@@ -4258,6 +4518,11 @@
       },
       {
         "date": "2026-09-14",
+        "priceUSD": 917.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-21",
         "priceUSD": 917.99,
         "source": "Newegg"
       }
