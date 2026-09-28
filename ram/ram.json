@@ -42,6 +42,11 @@
         "date": "2026-09-21",
         "priceUSD": 649.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 649.99,
+        "source": "Newegg"
       }
     ],
     "notes": "The default AM5 kit — 6000 CL30 is the Ryzen sweet spot. Model F5-6000J3038F16GX2-TZ5NR. Sept-2026 pricing is ~5x the $105 seen in late 2024.",
@@ -93,6 +98,11 @@
         "date": "2026-09-21",
         "priceUSD": 687.8,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 687.8,
+        "source": "Newegg"
       }
     ],
     "notes": "Binned-tighter version of the 6000 CL30 kit (F5-6000J2836G16GX2-TZ5NR). Small real-world gain over CL30 for a ~10% premium.",
@@ -117,8 +127,8 @@
     "icDie": "SK hynix M-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 1299.99,
-    "pricePerGB": 20.31,
+    "priceUSD": 1280,
+    "pricePerGB": 20,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -138,6 +148,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 1299.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 1280,
         "source": "Newegg"
       }
     ],
@@ -221,6 +236,11 @@
         "date": "2026-09-21",
         "priceUSD": 639.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 639.99,
+        "source": "Newegg"
       }
     ],
     "notes": "Intel-oriented sibling (F5-6400J3239G16GX2-TZ5RK). Runs fine on AM5 via XMP but 6400 is above the safe 1:1 FCLK ratio for many Ryzen 7000 chips.",
@@ -245,8 +265,8 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 709.69,
-    "pricePerGB": 22.18,
+    "priceUSD": 712.05,
+    "pricePerGB": 22.25,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -272,6 +292,11 @@
         "date": "2026-09-21",
         "priceUSD": 709.69,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 712.05,
+        "source": "Newegg"
       }
     ],
     "notes": "Mainstream high-speed Intel kit (F5-7200J3445G16GX2-TZ5RK). Needs a 2-DIMM or good 4-DIMM board on Raptor Lake / Arrow Lake.",
@@ -296,8 +321,8 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 1049.99,
-    "pricePerGB": 32.81,
+    "priceUSD": 1079.99,
+    "pricePerGB": 33.75,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -322,6 +347,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 1049.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 1079.99,
         "source": "Newegg"
       }
     ],
@@ -378,8 +408,8 @@
     "icDie": "SK hynix M-die (24Gb)",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 1983,
-    "pricePerGB": 20.66,
+    "priceUSD": 1979,
+    "pricePerGB": 20.61,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -394,6 +424,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 1983,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 1979,
         "source": "Newegg"
       }
     ],
@@ -441,6 +476,11 @@
         "date": "2026-09-21",
         "priceUSD": 629.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 629.99,
+        "source": "Newegg"
       }
     ],
     "notes": "Same bin as the Trident Z5 Neo 6000 CL30 without RGB and in a 33mm low-profile heatsink (F5-6000J3038F16GX2-FX5). Best G.Skill value on AM5.",
@@ -465,8 +505,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 33,
-    "priceUSD": 999.9,
-    "pricePerGB": 31.25,
+    "priceUSD": 629.99,
+    "pricePerGB": 19.69,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -486,6 +526,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 999.9,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 629.99,
         "source": "Newegg"
       }
     ],
@@ -511,8 +556,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 42,
-    "priceUSD": 259.99,
-    "pricePerGB": 16.25,
+    "priceUSD": 264.99,
+    "pricePerGB": 16.56,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -537,6 +582,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 259.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 264.99,
         "source": "Newegg"
       }
     ],
@@ -628,6 +678,11 @@
       },
       {
         "date": "2026-09-21",
+        "priceUSD": 134.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
         "priceUSD": 134.99,
         "source": "Newegg"
       }
@@ -722,6 +777,11 @@
         "date": "2026-09-21",
         "priceUSD": 226.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 226.99,
+        "source": "Newegg"
       }
     ],
     "notes": "F4-3600C16D-16GTZNC uses the 16-16-16-36 bin, which historically meant Samsung B-die. Availability is thinning.",
@@ -746,8 +806,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 559.99,
-    "pricePerGB": 17.5,
+    "priceUSD": 604.99,
+    "pricePerGB": 18.91,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -773,6 +833,11 @@
         "date": "2026-09-21",
         "priceUSD": 559.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 604.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMK32GX5M2B6000Z30 (grey, EXPO) / CMK32GX5M2B6000C30 (black, XMP). Low-profile 35mm heatsink; Corsair does not disclose the die.",
@@ -797,8 +862,8 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 569.99,
-    "pricePerGB": 17.81,
+    "priceUSD": 614.99,
+    "pricePerGB": 19.22,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -824,6 +889,11 @@
         "date": "2026-09-21",
         "priceUSD": 569.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 614.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMH32GX5M2B6000Z30K. Corsair's best seller; ten-zone RGB via iCUE. Listed $550 on Amazon and Newegg in early Sept 2026.",
@@ -848,8 +918,8 @@
     "icDie": "unknown",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 439.99,
-    "pricePerGB": 13.75,
+    "priceUSD": 429.99,
+    "pricePerGB": 13.44,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -874,6 +944,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 439.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 429.99,
         "source": "Newegg"
       }
     ],
@@ -924,6 +999,11 @@
       },
       {
         "date": "2026-09-21",
+        "priceUSD": 1239.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
         "priceUSD": 1239.99,
         "source": "Newegg"
       }
@@ -1008,6 +1088,11 @@
         "date": "2026-09-21",
         "priceUSD": 639.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 639.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMH32GX5M2B6400C32. Intel-tuned 6400; Corsair.com direct price in late Aug 2026 was $459.",
@@ -1057,6 +1142,11 @@
       },
       {
         "date": "2026-09-21",
+        "priceUSD": 669.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
         "priceUSD": 669.99,
         "source": "Newegg"
       }
@@ -1176,8 +1266,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 136.44,
-    "pricePerGB": 8.53,
+    "priceUSD": 144.99,
+    "pricePerGB": 9.06,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1203,6 +1293,11 @@
         "date": "2026-09-21",
         "priceUSD": 136.44,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 144.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMK16GX4M2E3200C16. The best-selling DDR4 kit of all time; Corsair now also markets EXPO support on the E-suffix revision.",
@@ -1227,8 +1322,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 199.5,
-    "pricePerGB": 6.23,
+    "priceUSD": 219,
+    "pricePerGB": 6.84,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1253,6 +1348,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 199.5,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 219,
         "source": "Newegg"
       }
     ],
@@ -1303,6 +1403,11 @@
       },
       {
         "date": "2026-09-21",
+        "priceUSD": 249,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
         "priceUSD": 249,
         "source": "Newegg"
       }
@@ -1380,8 +1485,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 639,
-    "pricePerGB": 19.97,
+    "priceUSD": 589.99,
+    "pricePerGB": 18.44,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1406,6 +1511,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 639,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 589.99,
         "source": "Newegg"
       }
     ],
@@ -1462,8 +1572,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 35,
-    "priceUSD": 549.99,
-    "pricePerGB": 17.19,
+    "priceUSD": 559.99,
+    "pricePerGB": 17.5,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1488,6 +1598,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 549.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 559.99,
         "source": "Newegg"
       }
     ],
@@ -1658,6 +1773,11 @@
         "date": "2026-09-21",
         "priceUSD": 622.47,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 622.47,
+        "source": "Newegg"
       }
     ],
     "notes": "KF564C32RSAK2-32. 6400 CL32 RGB Renegade.",
@@ -1707,6 +1827,11 @@
       },
       {
         "date": "2026-09-21",
+        "priceUSD": 1899.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
         "priceUSD": 1899.99,
         "source": "Newegg"
       }
@@ -1760,6 +1885,11 @@
         "date": "2026-09-21",
         "priceUSD": 229.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 229.99,
+        "source": "Newegg"
       }
     ],
     "notes": "KF432C16BBK2/16. MSRP was $41; the 2026 DDR4 spot-price spike (DDR4 chips at a record ~$42 each) pushed kit prices to ~$110.",
@@ -1809,6 +1939,11 @@
       },
       {
         "date": "2026-09-21",
+        "priceUSD": 299.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
         "priceUSD": 299.99,
         "source": "Newegg"
       }
@@ -2201,8 +2336,8 @@
     "icDie": "Micron",
     "rgb": false,
     "heightMm": 32,
-    "priceUSD": 501.29,
-    "pricePerGB": 15.67,
+    "priceUSD": 1002.57,
+    "pricePerGB": 31.33,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2222,6 +2357,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 501.29,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-09-28",
+        "priceUSD": 1002.57,
         "source": "Newegg"
       }
     ],
