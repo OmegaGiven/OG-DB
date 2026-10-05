@@ -17,8 +17,8 @@
     "randWrite4KIOPS": 1500000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 432.83,
-    "pricePerTB": 216,
+    "priceUSD": 393.06,
+    "pricePerTB": 197,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -48,6 +48,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 432.83,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 393.06,
         "source": "Newegg"
       }
     ],
@@ -103,6 +108,11 @@
         "date": "2026-09-28",
         "priceUSD": 474,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 474,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -155,6 +165,11 @@
       },
       {
         "date": "2026-09-28",
+        "priceUSD": 459,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
         "priceUSD": 459,
         "source": "Newegg"
       }
@@ -216,6 +231,11 @@
         "date": "2026-09-28",
         "priceUSD": 399.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 399.99,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -243,8 +263,8 @@
     "randWrite4KIOPS": 2600000,
     "tbwRating": 4800,
     "warrantyYears": 5,
-    "priceUSD": 2249.95,
-    "pricePerTB": 281,
+    "priceUSD": 1949.99,
+    "pricePerTB": 244,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -269,6 +289,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 2249.95,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 1949.99,
         "source": "Newegg"
       }
     ],
@@ -297,8 +322,8 @@
     "randWrite4KIOPS": 2400000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 410.27,
-    "pricePerTB": 205,
+    "priceUSD": 401,
+    "pricePerTB": 201,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -323,6 +348,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 410.27,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 401,
         "source": "Newegg"
       }
     ],
@@ -385,13 +415,18 @@
     "randWrite4KIOPS": 1500000,
     "tbwRating": 1400,
     "warrantyYears": 5,
-    "priceUSD": 340,
-    "pricePerTB": 170,
+    "priceUSD": 474.99,
+    "pricePerTB": 237,
     "priceHistory": [
       {
         "date": "2026-09",
         "priceUSD": 340,
         "source": "Amazon"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 474.99,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -716,8 +751,8 @@
     "randWrite4KIOPS": 1550000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 387.99,
-    "pricePerTB": 194,
+    "priceUSD": 385.99,
+    "pricePerTB": 193,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -747,6 +782,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 387.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 385.99,
         "source": "Newegg"
       }
     ],
@@ -807,6 +847,11 @@
         "date": "2026-09-28",
         "priceUSD": 848.75,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 848.75,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -834,8 +879,8 @@
     "randWrite4KIOPS": 1400000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 352.1,
-    "pricePerTB": 176,
+    "priceUSD": 329.99,
+    "pricePerTB": 165,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -865,6 +910,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 352.1,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 329.99,
         "source": "Newegg"
       }
     ],
@@ -925,6 +975,11 @@
         "date": "2026-09-28",
         "priceUSD": 499.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 499.99,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -952,7 +1007,7 @@
     "randWrite4KIOPS": 1100000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 351.6,
+    "priceUSD": 352.77,
     "pricePerTB": 176,
     "priceHistory": [
       {
@@ -984,6 +1039,11 @@
         "date": "2026-09-28",
         "priceUSD": 351.6,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 352.77,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -1011,8 +1071,8 @@
     "randWrite4KIOPS": 1100000,
     "tbwRating": 2400,
     "warrantyYears": 5,
-    "priceUSD": 689.99,
-    "pricePerTB": 172,
+    "priceUSD": 665,
+    "pricePerTB": 166,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1042,6 +1102,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 689.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 665,
         "source": "Newegg"
       }
     ],
@@ -1188,8 +1253,8 @@
     "randWrite4KIOPS": 1400000,
     "tbwRating": 600,
     "warrantyYears": 5,
-    "priceUSD": 183.33,
-    "pricePerTB": 183,
+    "priceUSD": 192.06,
+    "pricePerTB": 192,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1204,6 +1269,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 183.33,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 192.06,
         "source": "Newegg"
       }
     ],
@@ -1232,8 +1302,8 @@
     "randWrite4KIOPS": 1440000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 439.95,
-    "pricePerTB": 220,
+    "priceUSD": 403.44,
+    "pricePerTB": 202,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1264,6 +1334,11 @@
         "date": "2026-09-28",
         "priceUSD": 439.95,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 403.44,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -1291,8 +1366,8 @@
     "randWrite4KIOPS": 800000,
     "tbwRating": 440,
     "warrantyYears": 5,
-    "priceUSD": 305.9,
-    "pricePerTB": 153,
+    "priceUSD": 312.17,
+    "pricePerTB": 156,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1323,6 +1398,11 @@
         "date": "2026-09-28",
         "priceUSD": 305.9,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 312.17,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -1350,8 +1430,8 @@
     "randWrite4KIOPS": 1200000,
     "tbwRating": 440,
     "warrantyYears": 5,
-    "priceUSD": 299.99,
-    "pricePerTB": 150,
+    "priceUSD": 298.99,
+    "pricePerTB": 149,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1376,6 +1456,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 299.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 298.99,
         "source": "Newegg"
       }
     ],
@@ -1404,8 +1489,8 @@
     "randWrite4KIOPS": 1300000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 792.95,
-    "pricePerTB": 396,
+    "priceUSD": 745.12,
+    "pricePerTB": 373,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1430,6 +1515,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 792.95,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 745.12,
         "source": "Newegg"
       }
     ],
@@ -1592,6 +1682,11 @@
         "date": "2026-09-28",
         "priceUSD": 549.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 549.99,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": true,
@@ -1651,6 +1746,11 @@
         "date": "2026-09-28",
         "priceUSD": 349.95,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 349.95,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -1708,6 +1808,11 @@
       },
       {
         "date": "2026-09-28",
+        "priceUSD": 278.85,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
         "priceUSD": 278.85,
         "source": "Newegg"
       }
@@ -1815,8 +1920,8 @@
     "randWrite4KIOPS": 1000000,
     "tbwRating": 1500,
     "warrantyYears": 5,
-    "priceUSD": 329.99,
-    "pricePerTB": 165,
+    "priceUSD": 319.99,
+    "pricePerTB": 160,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1831,6 +1936,11 @@
       {
         "date": "2026-09-21",
         "priceUSD": 329.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 319.99,
         "source": "Newegg"
       }
     ],
@@ -1859,8 +1969,8 @@
     "randWrite4KIOPS": 1000000,
     "tbwRating": 3000,
     "warrantyYears": 5,
-    "priceUSD": 707,
-    "pricePerTB": 177,
+    "priceUSD": 635.22,
+    "pricePerTB": 159,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1885,6 +1995,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 707,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 635.22,
         "source": "Newegg"
       }
     ],
@@ -1981,8 +2096,8 @@
     "randWrite4KIOPS": 750000,
     "tbwRating": 600,
     "warrantyYears": 5,
-    "priceUSD": 168.8,
-    "pricePerTB": 169,
+    "priceUSD": 184.3,
+    "pricePerTB": 184,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2013,6 +2128,11 @@
         "date": "2026-09-28",
         "priceUSD": 168.8,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 184.3,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -2040,8 +2160,8 @@
     "randWrite4KIOPS": 850000,
     "tbwRating": 900,
     "warrantyYears": 5,
-    "priceUSD": 289.32,
-    "pricePerTB": 145,
+    "priceUSD": 280.63,
+    "pricePerTB": 140,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2071,6 +2191,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 289.32,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 280.63,
         "source": "Newegg"
       }
     ],
@@ -2199,6 +2324,11 @@
         "date": "2026-09-28",
         "priceUSD": 310,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 310,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -2292,6 +2422,11 @@
         "date": "2026-09-28",
         "priceUSD": 270,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 270,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -2319,8 +2454,8 @@
     "randWrite4KIOPS": 88000,
     "tbwRating": 1200,
     "warrantyYears": 5,
-    "priceUSD": 479.95,
-    "pricePerTB": 240,
+    "priceUSD": 493.99,
+    "pricePerTB": 247,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2351,6 +2486,11 @@
         "date": "2026-09-28",
         "priceUSD": 479.95,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 493.99,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -2378,8 +2518,8 @@
     "randWrite4KIOPS": 88000,
     "tbwRating": 720,
     "warrantyYears": 3,
-    "priceUSD": 479.95,
-    "pricePerTB": 240,
+    "priceUSD": 474.95,
+    "pricePerTB": 237,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2409,6 +2549,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 479.95,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 474.95,
         "source": "Newegg"
       }
     ],
@@ -2469,6 +2614,11 @@
         "date": "2026-09-28",
         "priceUSD": 889.89,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 889.89,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -2496,8 +2646,8 @@
     "randWrite4KIOPS": 88000,
     "tbwRating": 2880,
     "warrantyYears": 3,
-    "priceUSD": 1424.95,
-    "pricePerTB": 178,
+    "priceUSD": 1399,
+    "pricePerTB": 175,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2528,6 +2678,11 @@
         "date": "2026-09-28",
         "priceUSD": 1424.95,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 1399,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -2555,8 +2710,8 @@
     "randWrite4KIOPS": 90000,
     "tbwRating": 360,
     "warrantyYears": 5,
-    "priceUSD": 284.05,
-    "pricePerTB": 284,
+    "priceUSD": 323.66,
+    "pricePerTB": 324,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2581,6 +2736,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 284.05,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 323.66,
         "source": "Newegg"
       }
     ],
@@ -2609,8 +2769,8 @@
     "randWrite4KIOPS": null,
     "tbwRating": 360,
     "warrantyYears": 3,
-    "priceUSD": 198.95,
-    "pricePerTB": 199,
+    "priceUSD": 195.94,
+    "pricePerTB": 196,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2640,6 +2800,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 198.95,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 195.94,
         "source": "Newegg"
       }
     ],
@@ -2700,6 +2865,11 @@
         "date": "2026-09-28",
         "priceUSD": 599,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 599,
+        "source": "Newegg"
       }
     ],
     "heatsinkOption": false,
@@ -2747,6 +2917,11 @@
       },
       {
         "date": "2026-09-28",
+        "priceUSD": 187.15,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
         "priceUSD": 187.15,
         "source": "Newegg"
       }
@@ -2810,8 +2985,8 @@
     "randWrite4KIOPS": null,
     "tbwRating": 300,
     "warrantyYears": 3,
-    "priceUSD": 159,
-    "pricePerTB": 166,
+    "priceUSD": 252.99,
+    "pricePerTB": 264,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -2841,6 +3016,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 159,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-05",
+        "priceUSD": 252.99,
         "source": "Newegg"
       }
     ],
