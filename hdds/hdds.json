@@ -160,8 +160,8 @@
     "useCase": "enterprise / NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5.5,
-    "priceUSD": 882.99,
-    "pricePerTB": 44,
+    "priceUSD": 1180,
+    "pricePerTB": 59,
     "priceHistory": [
       {
         "date": "2023-09",
@@ -216,6 +216,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 882.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 1180,
         "source": "Newegg"
       }
     ],
@@ -841,8 +846,8 @@
     "useCase": "NAS",
     "warrantyYears": 3,
     "avgIdleWatts": 3.4,
-    "priceUSD": 454.45,
-    "pricePerTB": 57,
+    "priceUSD": 470,
+    "pricePerTB": 59,
     "priceHistory": [
       {
         "date": "2024-05",
@@ -888,6 +893,11 @@
         "date": "2026-09-28",
         "priceUSD": 454.45,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 470,
+        "source": "Newegg"
       }
     ],
     "notes": "WD80EFPX. 2026 price whiplash: $180 in May, $355 by Jul-Sep. Used ~$215. Quiet, cool; 3-yr warranty is the weak spot vs Pro.",
@@ -913,8 +923,8 @@
     "useCase": "NAS",
     "warrantyYears": 3,
     "avgIdleWatts": 4.8,
-    "priceUSD": 539.99,
-    "pricePerTB": 45,
+    "priceUSD": 520.99,
+    "pricePerTB": 43,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -954,6 +964,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 539.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 520.99,
         "source": "Newegg"
       }
     ],
@@ -1057,8 +1072,8 @@
     "useCase": "NAS",
     "warrantyYears": 5,
     "avgIdleWatts": 5.6,
-    "priceUSD": 969.99,
-    "pricePerTB": 44,
+    "priceUSD": 1053.99,
+    "pricePerTB": 48,
     "priceHistory": [
       {
         "date": "2024-09",
@@ -1098,6 +1113,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 969.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 1053.99,
         "source": "Newegg"
       }
     ],
@@ -1528,6 +1548,11 @@
         "date": "2026-10-05",
         "priceUSD": 579.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 579.99,
+        "source": "Newegg"
       }
     ],
     "notes": "HDWG51GXZSTB. MG09 platform. Rated 300 TB/yr (not 550) - Toshiba's Pro is 'up to 24 bays', a notch below Red Pro/IronWolf Pro.",
@@ -1578,6 +1603,11 @@
       },
       {
         "date": "2026-10-05",
+        "priceUSD": 709.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 709.99,
         "source": "Newegg"
       }
@@ -1806,8 +1836,8 @@
     "useCase": "surveillance",
     "warrantyYears": 5,
     "avgIdleWatts": 5.6,
-    "priceUSD": 809.99,
-    "pricePerTB": 45,
+    "priceUSD": 844.99,
+    "pricePerTB": 47,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -1847,6 +1877,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 809.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 844.99,
         "source": "Newegg"
       }
     ],
@@ -1913,6 +1948,11 @@
       },
       {
         "date": "2026-10-05",
+        "priceUSD": 190,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 190,
         "source": "Newegg"
       }
@@ -1982,6 +2022,11 @@
         "date": "2026-10-05",
         "priceUSD": 454,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 454,
+        "source": "Newegg"
       }
     ],
     "notes": "ST8000VX010. SMR (the older ST8000VX0022 was CMR - watch the model number). Do not use in RAID/ZFS.",
@@ -2007,8 +2052,8 @@
     "useCase": "surveillance",
     "warrantyYears": 5,
     "avgIdleWatts": 5,
-    "priceUSD": 479,
-    "pricePerTB": 40,
+    "priceUSD": 469,
+    "pricePerTB": 39,
     "priceHistory": [
       {
         "date": "2024-06",
@@ -2048,6 +2093,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 479,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 469,
         "source": "Newegg"
       }
     ],
@@ -2178,7 +2228,7 @@
     "useCase": "desktop",
     "warrantyYears": 2,
     "avgIdleWatts": 3.4,
-    "priceUSD": 329.99,
+    "priceUSD": 324.99,
     "pricePerTB": 41,
     "priceHistory": [
       {
@@ -2219,6 +2269,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 329.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 324.99,
         "source": "Newegg"
       }
     ],

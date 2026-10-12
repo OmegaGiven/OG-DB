@@ -15,8 +15,8 @@
     "icDie": "SK hynix A-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 649.99,
-    "pricePerGB": 20.31,
+    "priceUSD": 669.99,
+    "pricePerGB": 20.94,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -51,6 +51,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 649.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 669.99,
         "source": "Newegg"
       }
     ],
@@ -169,6 +174,11 @@
         "date": "2026-10-05",
         "priceUSD": 1390,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 1390,
+        "source": "Newegg"
       }
     ],
     "notes": "Dual-rank 2x32 kit (F5-6000J3040G32GX2-TZ5NR); slightly looser tRCD/tRP than the 2x16. Price went from ~$200 (Jan 2025) to over $1,000 in 2026.",
@@ -259,6 +269,11 @@
       },
       {
         "date": "2026-10-05",
+        "priceUSD": 659.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 659.99,
         "source": "Newegg"
       }
@@ -383,6 +398,11 @@
         "date": "2026-10-05",
         "priceUSD": 1079.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 1079.99,
+        "source": "Newegg"
       }
     ],
     "notes": "One of the first retail 8000 kits (F5-8000J3848H16GX2-TZ5RK). Launched at $530 in Dec 2022; the 2026 crunch put it back above launch price.",
@@ -438,8 +458,8 @@
     "icDie": "SK hynix M-die (24Gb)",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 1978.95,
-    "pricePerGB": 20.61,
+    "priceUSD": 1972.95,
+    "pricePerGB": 20.55,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -464,6 +484,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 1978.95,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 1972.95,
         "source": "Newegg"
       }
     ],
@@ -521,6 +546,11 @@
         "date": "2026-10-05",
         "priceUSD": 629.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 629.99,
+        "source": "Newegg"
       }
     ],
     "notes": "Same bin as the Trident Z5 Neo 6000 CL30 without RGB and in a 33mm low-profile heatsink (F5-6000J3038F16GX2-FX5). Best G.Skill value on AM5.",
@@ -575,6 +605,11 @@
       },
       {
         "date": "2026-10-05",
+        "priceUSD": 659.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 659.99,
         "source": "Newegg"
       }
@@ -636,6 +671,11 @@
       },
       {
         "date": "2026-10-05",
+        "priceUSD": 264.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 264.99,
         "source": "Newegg"
       }
@@ -820,8 +860,8 @@
     "icDie": "Samsung B-die",
     "rgb": true,
     "heightMm": 44,
-    "priceUSD": 188.6,
-    "pricePerGB": 11.79,
+    "priceUSD": 186.95,
+    "pricePerGB": 11.68,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -851,6 +891,11 @@
       {
         "date": "2026-10-05",
         "priceUSD": 188.6,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 186.95,
         "source": "Newegg"
       }
     ],
@@ -1096,6 +1141,11 @@
         "date": "2026-10-05",
         "priceUSD": 1239.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 1239.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMK64GX5M2B6000Z30. Dual-rank 2x32; Tom's index cites 64GB DDR5-6000 up 470%+ year over year.",
@@ -1188,6 +1238,11 @@
         "date": "2026-10-05",
         "priceUSD": 639.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 639.99,
+        "source": "Newegg"
       }
     ],
     "notes": "CMH32GX5M2B6400C32. Intel-tuned 6400; Corsair.com direct price in late Aug 2026 was $459.",
@@ -1247,6 +1302,11 @@
       },
       {
         "date": "2026-10-05",
+        "priceUSD": 669.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 669.99,
         "source": "Newegg"
       }
@@ -1422,8 +1482,8 @@
     "icDie": "unknown",
     "rgb": false,
     "heightMm": 34,
-    "priceUSD": 219,
-    "pricePerGB": 6.84,
+    "priceUSD": 229,
+    "pricePerGB": 7.16,
     "priceHistory": [
       {
         "date": "2026-09",
@@ -1453,6 +1513,11 @@
       {
         "date": "2026-09-28",
         "priceUSD": 219,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 229,
         "source": "Newegg"
       }
     ],
@@ -1513,6 +1578,11 @@
       },
       {
         "date": "2026-10-05",
+        "priceUSD": 309.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 309.99,
         "source": "Newegg"
       }
@@ -1816,6 +1886,11 @@
         "date": "2026-10-05",
         "priceUSD": 1229.99,
         "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
+        "priceUSD": 1229.99,
+        "source": "Newegg"
       }
     ],
     "notes": "KF560C30BBEK2-64. Dual-rank 64GB EXPO kit.",
@@ -1962,6 +2037,11 @@
       },
       {
         "date": "2026-09-28",
+        "priceUSD": 1899.99,
+        "source": "Newegg"
+      },
+      {
+        "date": "2026-10-12",
         "priceUSD": 1899.99,
         "source": "Newegg"
       }
